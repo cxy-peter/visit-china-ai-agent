@@ -1,0 +1,109 @@
+name: Publish and test V2
+on:
+  push:
+    paths:
+      - '.github/workflows/publish-v2.yml'
+      - '.bootstrap/source-*.txt'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: source-import-main
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify checksums and recover ordinary source files
+        shell: python
+        run: |
+          import base64, hashlib, json, lzma
+          from pathlib import Path, PurePosixPath
+          expected = [
+            '0e02678f3fbba4da4d516d08e3d81250af4f8ab22872bda78f920737ae57dfd4',
+            '08fcd3e0f09fe0dbff0c125ea4b814afce59ada5b5d8164ba5cd2d68e8ca1b59',
+            'e444066c62a63b89333b8425e1de436e9aad9f83f7ae4f5c6483e4c720748e34',
+            '8213cfd1e4702fec9ea95778de6ac810e3a1db20c13b8d02d28d1fff4849fade',
+            '3ed1ccd463af005895ba446a04b3b0306ab163c15cb94eb0725e31048d3e56c2',
+            'deebf63f2f2c6f9336428c73389ac12e8fbee34acc137230f4d584ce3fbd4f62',
+            '67a9e5d050094c6aaa24fef6d47ddc6aebe5bbf2d52721644cfe00998a32116a',
+            'd0788d2dff56671f15f5cac6b46dfd2f41b42f07ec5b95a08007a1b3ee3b9ca2'
+          ]
+          parts = []
+          for i, digest in enumerate(expected, 1):
+            raw = Path(f'.bootstrap/source-{i:02}.txt').read_bytes()
+            valid = next((b for b in (raw, raw.strip()) if hashlib.sha256(b).hexdigest() == digest), None)
+            assert valid is not None, f'Checksum mismatch in part {i}'
+            parts.append(raw.decode('ascii').strip())
+          compressed = base64.b64decode(''.join(parts), validate=True)
+          assert hashlib.sha256(compressed).hexdigest() == '771d8ebbebe2b00bbbb89c773c3f9484a7c881622cd715ba247c3a7b3090c69a', 'Bundle checksum mismatch'
+          document = json.loads(lzma.decompress(compressed, memlimit=128*1024*1024))
+          records = document.get('files', document) if isinstance(document, dict) else document
+          if isinstance(records, dict):
+            records = [dict(v, path=k) if isinstance(v, dict) else {'path': k, 'content': v} for k, v in records.items()]
+          assert isinstance(records, list) and len(records) == 51, 'Unexpected source manifest'
+          recovered = {}
+          for item in records:
+            if isinstance(item, list) and len(item) == 2:
+              item = {'path': item[0], 'content': item[1]}
+            name = item.get('path', item.get('name'))
+            path = PurePosixPath(name)
+            assert not path.is_absolute() and '..' not in path.parts and '\\' not in name, 'Unsafe path'
+            assert path.parts[0] not in ('.git', '.github', '.bootstrap'), 'Protected path'
+            assert path.name != '.env', 'Environment secrets are forbidden'
+            field = next((k for k in ('content_b64', 'data_b64', 'base64', 'b64', 'content', 'text', 'data') if k in item), None)
+            assert field is not None and isinstance(item[field], str), f'Missing file content: {name}'
+            value = item[field]
+            plain = value.encode('utf-8')
+            candidates = [plain]
+            try:
+              candidates.append(base64.b64decode(value, validate=True))
+            except Exception:
+              pass
+            digest = item.get('sha256')
+            if digest:
+              data = next((b for b in candidates if hashlib.sha256(b).hexdigest() == digest), None)
+              assert data is not None, f'File checksum mismatch: {name}'
+            elif 'b64' in field or field == 'base64' or item.get('encoding') == 'base64' or path.suffix in ('.webp', '.png', '.jpg'):
+              assert len(candidates) == 2, f'Invalid base64: {name}'
+              data = candidates[-1]
+            else:
+              data = plain
+            assert len(data) <= 4*1024*1024 and name not in recovered, 'Invalid file size or duplicate'
+            recovered[name] = data
+          assert sum(map(len, recovered.values())) <= 20*1024*1024
+          for name, data in recovered.items():
+            target = Path(name)
+            if target.exists() and target.read_bytes() != data:
+              old = target.read_bytes()
+              blob = hashlib.sha1(b'blob ' + str(len(old)).encode() + b'\0' + old).hexdigest()
+              assert name == 'README.md' and blob == '26a1e82d5e08da3cd8ef4862c2946a13023019e5', f'Refusing to overwrite changed file: {name}'
+          for name, data in recovered.items():
+            target = Path(name)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(data)
+          print(f'Verified and recovered {len(recovered)} ordinary files')
+      - name: Test and build recovered application
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm test
+          npm run evaluate
+          npm run build
+      - name: Commit verified source
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --cached --quiet || git commit -m 'Publish V2 application, documentation and passing development checks'
+          git push origin HEAD:main
+      - uses: actions/upload-artifact@v4
+        with:
+          name: visit-china-ai-v2
+          path: dist/
