@@ -1,0 +1,51 @@
+name: Collect official arrival sources V4
+on:
+  push:
+    paths: ['.github/workflows/collect-official-v4.yml']
+  workflow_dispatch:
+    inputs:
+      target:
+        description: Maximum requested unique records (1 to 5000)
+        default: '1200'
+      minutes:
+        description: Per-host time limit, in minutes
+        default: '20'
+permissions:
+  contents: write
+concurrency:
+  group: official-corpus-collection
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install parser dependencies
+        run: pip install requests beautifulsoup4
+      - name: Collect accessible public government pages
+        env:
+          TARGET: ${{ inputs.target || '1200' }}
+          MINUTES: ${{ inputs.minutes || '20' }}
+        run: python tools/collect_official.py --target "$TARGET" --minutes "$MINUTES"
+      - name: Record dependency versions
+        run: pip freeze > data/official/crawler-environment.txt
+      - name: Commit only public source metadata and audit logs
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/official
+          git diff --cached --quiet || git commit -m 'Add fetched official-source metadata and honest collection counts'
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: official-source-corpus-v4
+          path: |
+            data/official/
+            tools/collect_official.py
+          retention-days: 30
