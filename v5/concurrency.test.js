@@ -1,0 +1,9 @@
+'use strict';
+const test=require('node:test'),assert=require('node:assert/strict');
+const {Call}=require('./voice');
+function rig(){const drafts=[],texts=[],recognizers=[];class R{constructor(){recognizers.push(this);}start(){this.onstart?.();}abort(){this.onend?.();}}class U{constructor(text){this.text=text;}}const synthesis={cancel(){},speak(){}};const c=new Call({Recognition:R,Utterance:U,synthesis,onDraft:t=>drafts.push(t),onText:t=>texts.push(t)});c.start({consent:true});c.listen();return{c,drafts,texts,r:recognizers[0]};}
+function result(r,text,final){r.onresult({resultIndex:0,results:[Object.assign([{transcript:text}],{isFinal:final})]});}
+test('choice interruption preserves a partial phrase once and never commits it',()=>{const {c,r,drafts,texts}=rig();result(r,'I also need to',false);c.cancel({preserveInterim:true});c.cancel({preserveInterim:true});assert.deepEqual(drafts,['I also need to']);assert.deepEqual(texts,[]);assert.equal(c.active,true);c.stop();});
+test('final speech is committed once and is not also retained as a draft',()=>{const {c,r,drafts,texts}=rig();result(r,'I need',false);result(r,'I need luggage storage',true);c.cancel({preserveInterim:true});assert.deepEqual(texts,['I need luggage storage']);assert.deepEqual(drafts,[]);c.stop();});
+test('hangup clears unfinished audio-derived text without later revival',()=>{const {c,r,drafts}=rig();result(r,'unsubmitted private note',false);c.stop();c.cancel({preserveInterim:true});assert.deepEqual(drafts,[]);assert.equal(c.pendingInterim,'');});
+test('a cancelled recognition callback cannot commit after a UI choice',()=>{const {c,r,texts}=rig();const callback=r.onresult;c.cancel({preserveInterim:true});callback({resultIndex:0,results:[Object.assign([{transcript:'stale interpretation'}],{isFinal:true})]});assert.deepEqual(texts,[]);c.stop();});
