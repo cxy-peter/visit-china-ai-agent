@@ -1,0 +1,101 @@
+name: V5 call and five-reviewer verification
+on:
+  push:
+    paths:
+      - '.github/workflows/release-v5.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: visit-china-v5-release
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Apply reviewed corrections and verify original source hashes
+        run: |
+          python tools/finalize_voice_v5.py
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          expected=json.loads(Path('evidence/v5/source-manifest.json').read_text())
+          bad=[name for name, sha in expected.items() if hashlib.sha256(Path(name).read_bytes()).hexdigest()!=sha]
+          assert not bad, f'Source transfer differs from tested code: {bad}'
+          print('Verified',len(expected),'ordinary source files')
+          PY
+      - name: Run deterministic, provider-contract and real HTTP tests
+        run: |
+          set -euo pipefail
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm test | tee evidence/v5/node-tests.tap
+          npm run build
+          node - <<'JS'
+          const fs=require('node:fs');const {EXTRACT,IMPROVE}=require('./v5/server');
+          fs.mkdirSync('prompts',{recursive:true});
+          fs.writeFileSync('prompts/V5_EXTRACTION.txt',EXTRACT+'\n');
+          fs.writeFileSync('prompts/V5_WORKFLOW_CANDIDATE.txt',IMPROVE+'\n');
+          JS
+      - name: Verify real browser to Node and five different authenticated test accounts
+        run: |
+          pip install playwright==1.57.0
+          python -m playwright install --with-deps chromium
+          python v5/browser_test.py
+      - name: Create public preview and measured test report
+        run: |
+          mkdir -p preview
+          cp dist/Visit_China_AI_V5_Demo.html preview/index.html
+          python - <<'PY'
+          import json, re, os
+          from pathlib import Path
+          tap=Path('evidence/v5/node-tests.tap').read_text()
+          field=lambda x:int(re.search(r'^# '+x+r' (\d+)$',tap,re.M).group(1))
+          report={'version':'5.0.0','workflowRun':os.environ['GITHUB_RUN_ID'],'inputCommit':os.environ['GITHUB_SHA'],'node':{'tests':field('tests'),'passed':field('pass'),'failed':field('fail')},'browser':json.loads(Path('evidence/v5/browser-report.json').read_text()),'paidModelCalls':0,'actualMicrophoneTested':False,'fullDuplexImplemented':False,'reviewers':'Five distinct authenticated synthetic accounts, not five natural persons.','sourceManifest':'source-manifest.json'}
+          assert report['node']['failed']==0
+          Path('evidence/v5/test-report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+          PY
+      - name: Commit ordinary tested source and public evidence
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add v5 prompts evidence/v5 preview
+          git diff --cached --quiet || git commit -m 'Publish tested V5 voice-call workspace, five-reviewer gate and synthetic-browser evidence'
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - name: Package complete public working source, no secrets or recordings
+        run: |
+          python - <<'PY'
+          import zipfile,json,subprocess,shutil
+          from pathlib import Path
+          root=Path('.'); out=Path('release');out.mkdir(exist_ok=True)
+          blocked={'.git','node_modules','dist','.bootstrap','preview','release','runtime','private','DCG','__pycache__'}
+          with zipfile.ZipFile(out/'Visit_China_AI_V5_Source.zip','w',zipfile.ZIP_DEFLATED) as z:
+              for p in root.rglob('*'):
+                  if not p.is_file() or any(x in blocked or x.startswith('DCG') for x in p.parts):continue
+                  if p.name.startswith('.env') and p.name!='.env.example':continue
+                  if p.suffix.lower() in {'.key','.pem','.wav','.mp3','.webm','.woff','.woff2','.ttf','.otf','.pyc'}:continue
+                  z.write(p,Path('visit-china-ai-agent')/p)
+          shutil.copyfile('dist/Visit_China_AI_V5_Demo.html',out/'Visit_China_AI_V5_Demo.html')
+          meta={'publishedCommit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'scope':'Browser call prototype + local authenticated backend. No real paid model or microphone test.'}
+          (out/'release-metadata.json').write_text(json.dumps(meta,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: visit-china-v5-source-tests-preview
+          path: |
+            release/
+            evidence/v5/
+            v5/
+            tools/finalize_voice_v5.py
+          retention-days: 30
