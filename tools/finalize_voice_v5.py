@@ -4,6 +4,8 @@ ROOT = Path(__file__).resolve().parents[1]
 def replace(file, old, new):
     p = ROOT / file
     text = p.read_text()
+    if new in text:
+        return
     if old in text:
         assert text.count(old) == 1, (file, 'ambiguous edit')
         p.write_text(text.replace(old, new))
