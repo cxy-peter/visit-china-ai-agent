@@ -1,0 +1,602 @@
+
+> visit-china-ai-agent@5.1.0 test
+> node --test v4/tests.js v5/tests.js v5/concurrency.test.js
+
+TAP version 13
+# Subtest: Weixin base fee 0
+ok 1 - Weixin base fee 0
+  ---
+  duration_ms: 2.077142
+  type: 'test'
+  ...
+# Subtest: Weixin base fee 199
+ok 2 - Weixin base fee 199
+  ---
+  duration_ms: 0.162981
+  type: 'test'
+  ...
+# Subtest: Weixin base fee 200
+ok 3 - Weixin base fee 200
+  ---
+  duration_ms: 0.216069
+  type: 'test'
+  ...
+# Subtest: Weixin base fee 201
+ok 4 - Weixin base fee 201
+  ---
+  duration_ms: 0.165906
+  type: 'test'
+  ...
+# Subtest: Weixin base fee 500
+ok 5 - Weixin base fee 500
+  ---
+  duration_ms: 0.175184
+  type: 'test'
+  ...
+# Subtest: Weixin base fee 1000
+ok 6 - Weixin base fee 1000
+  ---
+  duration_ms: 0.148083
+  type: 'test'
+  ...
+# Subtest: Reject invalid amount -1
+ok 7 - Reject invalid amount -1
+  ---
+  duration_ms: 0.33627
+  type: 'test'
+  ...
+# Subtest: Reject invalid amount no
+ok 8 - Reject invalid amount no
+  ---
+  duration_ms: 0.168702
+  type: 'test'
+  ...
+# Subtest: Reject invalid amount Infinity
+ok 9 - Reject invalid amount Infinity
+  ---
+  duration_ms: 0.407963
+  type: 'test'
+  ...
+# Subtest: Reject invalid amount 1000001
+ok 10 - Reject invalid amount 1000001
+  ---
+  duration_ms: 0.552169
+  type: 'test'
+  ...
+# Subtest: Redact emails and long card numbers
+ok 11 - Redact emails and long card numbers
+  ---
+  duration_ms: 0.917573
+  type: 'test'
+  ...
+# Subtest: Multi-turn city corrections and battery are retained
+ok 12 - Multi-turn city corrections and battery are retained
+  ---
+  duration_ms: 2.245933
+  type: 'test'
+  ...
+# Subtest: Unknown facts remain unknown
+ok 13 - Unknown facts remain unknown
+  ---
+  duration_ms: 0.751006
+  type: 'test'
+  ...
+# Subtest: Draft schema rejects unknown category
+ok 14 - Draft schema rejects unknown category
+  ---
+  duration_ms: 0.316804
+  type: 'test'
+  ...
+# Subtest: Draft schema rejects empty needs
+ok 15 - Draft schema rejects empty needs
+  ---
+  duration_ms: 0.209306
+  type: 'test'
+  ...
+# Subtest: Requirement text does not introduce a URL
+ok 16 - Requirement text does not introduce a URL
+  ---
+  duration_ms: 0.246715
+  type: 'test'
+  ...
+# Subtest: Correct-city ranking excludes another city
+ok 17 - Correct-city ranking excludes another city
+  ---
+  duration_ms: 0.609885
+  type: 'test'
+  ...
+# Subtest: Selected payment sources are operator primary
+ok 18 - Selected payment sources are operator primary
+  ---
+  duration_ms: 0.38469
+  type: 'test'
+  ...
+# Subtest: Past review deadline is explicit
+ok 19 - Past review deadline is explicit
+  ---
+  duration_ms: 0.231487
+  type: 'test'
+  ...
+# Subtest: No key model reports unconfigured
+ok 20 - No key model reports unconfigured
+  ---
+  duration_ms: 0.326432
+  type: 'test'
+  ...
+# Subtest: Key is never returned by model status
+ok 21 - Key is never returned by model status
+  ---
+  duration_ms: 0.28672
+  type: 'test'
+  ...
+# Subtest: Reject arbitrary model IDs
+ok 22 - Reject arbitrary model IDs
+  ---
+  duration_ms: 0.185562
+  type: 'test'
+  ...
+# Subtest: Reject SSRF target http://127.0.0.1
+ok 23 - Reject SSRF target http://127.0.0.1
+  ---
+  duration_ms: 0.365504
+  type: 'test'
+  ...
+# Subtest: Reject SSRF target https://127.0.0.1/
+ok 24 - Reject SSRF target https://127.0.0.1/
+  ---
+  duration_ms: 0.123348
+  type: 'test'
+  ...
+# Subtest: Reject SSRF target https://english.shanghai.gov.cn.evil.test/
+ok 25 - Reject SSRF target https://english.shanghai.gov.cn.evil.test/
+  ---
+  duration_ms: 0.100626
+  type: 'test'
+  ...
+# Subtest: Reject SSRF target https://user:pw@english.shanghai.gov.cn/
+ok 26 - Reject SSRF target https://user:pw@english.shanghai.gov.cn/
+  ---
+  duration_ms: 0.962807
+  type: 'test'
+  ...
+# Subtest: Reject SSRF target https://english.shanghai.gov.cn:8443/
+ok 27 - Reject SSRF target https://english.shanghai.gov.cn:8443/
+  ---
+  duration_ms: 0.148153
+  type: 'test'
+  ...
+# Subtest: Allow approved official source
+ok 28 - Allow approved official source
+  ---
+  duration_ms: 0.162299
+  type: 'test'
+  ...
+# Subtest: Robots disallow and longer allow work
+ok 29 - Robots disallow and longer allow work
+  ---
+  duration_ms: 1.819456
+  type: 'test'
+  ...
+# Subtest: Specific robot group overrides wildcard
+ok 30 - Specific robot group overrides wildcard
+  ---
+  duration_ms: 0.275307
+  type: 'test'
+  ...
+# Subtest: Remove script/style before model context
+ok 31 - Remove script/style before model context
+  ---
+  duration_ms: 1.360079
+  type: 'test'
+  ...
+# Subtest: Valid source-only node passes shape checks
+ok 32 - Valid source-only node passes shape checks
+  ---
+  duration_ms: 0.850068
+  type: 'test'
+  ...
+# Subtest: Invented citation is rejected
+ok 33 - Invented citation is rejected
+  ---
+  duration_ms: 0.207273
+  type: 'test'
+  ...
+# Subtest: Invented gate number is rejected
+ok 34 - Invented gate number is rejected
+  ---
+  duration_ms: 0.34714
+  type: 'test'
+  ...
+# Subtest: Live-source failure cannot substantiate model answer
+ok 35 - Live-source failure cannot substantiate model answer
+  ---
+  duration_ms: 0.231537
+  type: 'test'
+  ...
+# Subtest: Model output cannot contain arbitrary clickable URL
+ok 36 - Model output cannot contain arbitrary clickable URL
+  ---
+  duration_ms: 0.260821
+  type: 'test'
+  ...
+# Subtest: Low battery returns a non-scanning fallback
+ok 37 - Low battery returns a non-scanning fallback
+  ---
+  duration_ms: 0.285086
+  type: 'test'
+  ...
+# Subtest: Changed source does not reuse reviewed summary
+ok 38 - Changed source does not reuse reviewed summary
+  ---
+  duration_ms: 0.208284
+  type: 'test'
+  ...
+# Subtest: Provider usage is counted but never treated as balance
+ok 39 - Provider usage is counted but never treated as balance
+  ---
+  duration_ms: 26.094394
+  type: 'test'
+  ...
+# Subtest: Provider 401 does not masquerade as successful generation
+ok 40 - Provider 401 does not masquerade as successful generation
+  ---
+  duration_ms: 0.624211
+  type: 'test'
+  ...
+# Subtest: Robots refusal does not fetch page
+ok 41 - Robots refusal does not fetch page
+  ---
+  duration_ms: 0.9919
+  type: 'test'
+  ...
+# Subtest: Cross-host redirect is stopped
+ok 42 - Cross-host redirect is stopped
+  ---
+  duration_ms: 1.374786
+  type: 'test'
+  ...
+# Subtest: Real local HTTP: status, auth, consent, confirmation, plan, corrections
+ok 43 - Real local HTTP: status, auth, consent, confirmation, plan, corrections
+  ---
+  duration_ms: 161.536341
+  type: 'test'
+  ...
+# Subtest: Another session cannot use a confirmation token
+ok 44 - Another session cannot use a confirmation token
+  ---
+  duration_ms: 19.282392
+  type: 'test'
+  ...
+# Subtest: Unknown arrival city cannot borrow Shanghai airport directions
+ok 45 - Unknown arrival city cannot borrow Shanghai airport directions
+  ---
+  duration_ms: 2.848916
+  type: 'test'
+  ...
+# Subtest: Future editorial date is not a current verified source
+ok 46 - Future editorial date is not a current verified source
+  ---
+  duration_ms: 0.143395
+  type: 'test'
+  ...
+# Subtest: A close listener captures its own plan controller
+ok 47 - A close listener captures its own plan controller
+  ---
+  duration_ms: 0.413824
+  type: 'test'
+  ...
+# Subtest: RMB exchange is recognized without the exact word cash
+ok 48 - RMB exchange is recognized without the exact word cash
+  ---
+  duration_ms: 4.430223
+  type: 'test'
+  ...
+# Subtest: A new city does not inherit the previous airport
+ok 49 - A new city does not inherit the previous airport
+  ---
+  duration_ms: 0.193357
+  type: 'test'
+  ...
+# Subtest: choice interruption preserves a partial phrase once and never commits it
+ok 50 - choice interruption preserves a partial phrase once and never commits it
+  ---
+  duration_ms: 2.993873
+  type: 'test'
+  ...
+# Subtest: final speech is committed once and is not also retained as a draft
+ok 51 - final speech is committed once and is not also retained as a draft
+  ---
+  duration_ms: 0.333235
+  type: 'test'
+  ...
+# Subtest: hangup clears unfinished audio-derived text without later revival
+ok 52 - hangup clears unfinished audio-derived text without later revival
+  ---
+  duration_ms: 0.206711
+  type: 'test'
+  ...
+# Subtest: a cancelled recognition callback cannot commit after a UI choice
+ok 53 - a cancelled recognition callback cannot commit after a UI choice
+  ---
+  duration_ms: 0.23323
+  type: 'test'
+  ...
+# Subtest: incremental requirements survive unrelated messages
+ok 54 - incremental requirements survive unrelated messages
+  ---
+  duration_ms: 8.932819
+  type: 'test'
+  ...
+# Subtest: short spoken yes and no use the question context
+ok 55 - short spoken yes and no use the question context
+  ---
+  duration_ms: 1.057701
+  type: 'test'
+  ...
+# Subtest: yes without a question does not fabricate bookings
+ok 56 - yes without a question does not fabricate bookings
+  ---
+  duration_ms: 1.342336
+  type: 'test'
+  ...
+# Subtest: clicks and speech produce the same city state
+ok 57 - clicks and speech produce the same city state
+  ---
+  duration_ms: 1.015203
+  type: 'test'
+  ...
+# Subtest: foreign context is not evidence of Shanghai
+ok 58 - foreign context is not evidence of Shanghai
+  ---
+  duration_ms: 0.362118
+  type: 'test'
+  ...
+# Subtest: unknown choice IDs are rejected
+ok 59 - unknown choice IDs are rejected
+  ---
+  duration_ms: 0.670046
+  type: 'test'
+  ...
+# Subtest: flight updates are not hotel updates
+ok 60 - flight updates are not hotel updates
+  ---
+  duration_ms: 0.443398
+  type: 'test'
+  ...
+# Subtest: new destination invalidates old local details
+ok 61 - new destination invalidates old local details
+  ---
+  duration_ms: 0.611198
+  type: 'test'
+  ...
+# Subtest: urgent power suppresses extensions and asks for help
+ok 62 - urgent power suppresses extensions and asks for help
+  ---
+  duration_ms: 0.741828
+  type: 'test'
+  ...
+# Subtest: adequate battery with no network uses connection recovery
+ok 63 - adequate battery with no network uses connection recovery
+  ---
+  duration_ms: 1.668598
+  type: 'test'
+  ...
+# Subtest: explicit metro problem interrupts the planning questionnaire
+ok 64 - explicit metro problem interrupts the planning questionnaire
+  ---
+  duration_ms: 0.41751
+  type: 'test'
+  ...
+# Subtest: resolved issue returns to planning
+ok 65 - resolved issue returns to planning
+  ---
+  duration_ms: 0.406159
+  type: 'test'
+  ...
+# Subtest: spoken confirmation organizes a plan without ordering
+ok 66 - spoken confirmation organizes a plan without ordering
+  ---
+  duration_ms: 0.934904
+  type: 'test'
+  ...
+# Subtest: edits invalidate prior confirmation
+ok 67 - edits invalidate prior confirmation
+  ---
+  duration_ms: 0.344866
+  type: 'test'
+  ...
+# Subtest: facts reject unsupported fields and invalid ranges
+ok 68 - facts reject unsupported fields and invalid ranges
+  ---
+  duration_ms: 0.313108
+  type: 'test'
+  ...
+# Subtest: model facts require matching quote evidence
+ok 69 - model facts require matching quote evidence
+  ---
+  duration_ms: 0.458185
+  type: 'test'
+  ...
+# Subtest: sensitive text is redacted before history
+ok 70 - sensitive text is redacted before history
+  ---
+  duration_ms: 0.239041
+  type: 'test'
+  ...
+# Subtest: base and candidate replay check actual engine outputs
+ok 71 - base and candidate replay check actual engine outputs
+  ---
+  duration_ms: 3.838191
+  type: 'test'
+  ...
+# Subtest: five DISTINCT approvals publish exactly once
+ok 72 - five DISTINCT approvals publish exactly once
+  ---
+  duration_ms: 2.58047
+  type: 'test'
+  ...
+# Subtest: author cannot approve even if on reviewer roster
+ok 73 - author cannot approve even if on reviewer roster
+  ---
+  duration_ms: 1.00843
+  type: 'test'
+  ...
+# Subtest: a rejection blocks even five approvals
+ok 74 - a rejection blocks even five approvals
+  ---
+  duration_ms: 1.060226
+  type: 'test'
+  ...
+# Subtest: editing resets votes and replay identity
+ok 75 - editing resets votes and replay identity
+  ---
+  duration_ms: 1.35002
+  type: 'test'
+  ...
+# Subtest: no evaluation means no votes
+ok 76 - no evaluation means no votes
+  ---
+  duration_ms: 0.262094
+  type: 'test'
+  ...
+# Subtest: unknown reviewers cannot vote
+ok 77 - unknown reviewers cannot vote
+  ---
+  duration_ms: 1.006637
+  type: 'test'
+  ...
+# Subtest: candidate base changes cannot silently overwrite a new release
+ok 78 - candidate base changes cannot silently overwrite a new release
+  ---
+  duration_ms: 1.965175
+  type: 'test'
+  ...
+# Subtest: rollback restores config with a new monotonically increasing version
+ok 79 - rollback restores config with a new monotonically increasing version
+  ---
+  duration_ms: 1.131568
+  type: 'test'
+  ...
+# Subtest: existing calls keep the pinned policy snapshot
+ok 80 - existing calls keep the pinned policy snapshot
+  ---
+  duration_ms: 0.969348
+  type: 'test'
+  ...
+# Subtest: feedback is deduplicated within the same owner and task key
+ok 81 - feedback is deduplicated within the same owner and task key
+  ---
+  duration_ms: 0.251023
+  type: 'test'
+  ...
+# Subtest: config cannot lower safety or expand tool permissions
+ok 82 - config cannot lower safety or expand tool permissions
+  ---
+  duration_ms: 0.18964
+  type: 'test'
+  ...
+# Subtest: voice requires explicit consent
+ok 83 - voice requires explicit consent
+  ---
+  duration_ms: 0.509931
+  type: 'test'
+  ...
+# Subtest: call initiates a question and automatically listens after speech
+ok 84 - call initiates a question and automatically listens after speech
+  ---
+  duration_ms: 0.642065
+  type: 'test'
+  ...
+# Subtest: click while speaking cancels old speech without ending call
+ok 85 - click while speaking cancels old speech without ending call
+  ---
+  duration_ms: 0.228131
+  type: 'test'
+  ...
+# Subtest: interim transcription stays visible and final submits automatically once
+ok 86 - interim transcription stays visible and final submits automatically once
+  ---
+  duration_ms: 0.3576
+  type: 'test'
+  ...
+# Subtest: hangup prevents late input and delayed playback callbacks
+ok 87 - hangup prevents late input and delayed playback callbacks
+  ---
+  duration_ms: 0.259518
+  type: 'test'
+  ...
+# Subtest: permission denial pauses instead of pretending to listen
+ok 88 - permission denial pauses instead of pretending to listen
+  ---
+  duration_ms: 0.232198
+  type: 'test'
+  ...
+# Subtest: HTTP forbids unauthenticated governance and config
+ok 89 - HTTP forbids unauthenticated governance and config
+  ---
+  duration_ms: 401.202109
+  type: 'test'
+  ...
+# Subtest: HTTP idempotency and stale turn revision
+ok 90 - HTTP idempotency and stale turn revision
+  ---
+  duration_ms: 293.18041
+  type: 'test'
+  ...
+# Subtest: HTTP identity comes from authentication, not the vote payload
+ok 91 - HTTP identity comes from authentication, not the vote payload
+  ---
+  duration_ms: 242.709721
+  type: 'test'
+  ...
+# Subtest: HTTP five authenticated accounts publish and persistence is written
+ok 92 - HTTP five authenticated accounts publish and persistence is written
+  ---
+  duration_ms: 454.013076
+  type: 'test'
+  ...
+# Subtest: HTTP quoted model proposal, confirmation, and usage use mock provider only
+ok 93 - HTTP quoted model proposal, confirmation, and usage use mock provider only
+  ---
+  duration_ms: 248.262623
+  type: 'test'
+  ...
+# Subtest: HTTP old V4 workspace remains accessible
+ok 94 - HTTP old V4 workspace remains accessible
+  ---
+  duration_ms: 226.095598
+  type: 'test'
+  ...
+# Subtest: HTTP rejects cross-origin credential changes
+ok 95 - HTTP rejects cross-origin credential changes
+  ---
+  duration_ms: 223.519874
+  type: 'test'
+  ...
+# Subtest: booking status is not a hotel name
+ok 96 - booking status is not a hotel name
+  ---
+  duration_ms: 0.312565
+  type: 'test'
+  ...
+# Subtest: task outcome persists through later turns and cannot mark an absent task
+ok 97 - task outcome persists through later turns and cannot mark an absent task
+  ---
+  duration_ms: 0.440806
+  type: 'test'
+  ...
+# Subtest: HTTP low power blocks model traffic even with consent and key
+ok 98 - HTTP low power blocks model traffic even with consent and key
+  ---
+  duration_ms: 230.989931
+  type: 'test'
+  ...
+1..98
+# tests 98
+# suites 0
+# pass 98
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2467.863778

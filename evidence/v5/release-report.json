@@ -1,0 +1,22 @@
+{
+  "version": "5.1.0",
+  "checkedAt": "2026-09-24T21:10:46.599436+00:00",
+  "sourceInputCommit": "b4433bd190b01e7052a8a57eed8e67f44561fb65",
+  "runUrl": "https://github.com/cxy-peter/visit-china-ai-agent/actions/runs/36059691213",
+  "nodeTestsPassed": 98,
+  "nodeTestsFailed": 0,
+  "browserChecksPassed": 35,
+  "browserScope": "Real Chromium -> Node HTTP. Five separate authenticated test accounts; NOT five real reviewers. Speech APIs are synthetic test doubles, not microphone or spoken-audio validation. No paid model, booking, or provider inventory calls.",
+  "realMicrophoneValidated": false,
+  "realPaidModelCalls": 0,
+  "realHumanReviewers": 0,
+  "testReviewerAccounts": 5,
+  "vercelDeploymentVerified": false,
+  "officialCorpusCount": 1114,
+  "limitations": [
+    "Automatic alternating browser voice, not full-duplex acoustic barge-in",
+    "Five authenticated test accounts are not five independently identified people",
+    "No production OTA, charging or luggage inventory",
+    "V4 real source workspace retained separately; V5 guide cards use saved summaries"
+  ]
+}

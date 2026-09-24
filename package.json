@@ -1,12 +1,14 @@
 {
   "name": "visit-china-ai-agent",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "private": true,
   "description": "Call-first travel companion, shared speech/click state and five-reviewer release governance",
-  "engines": {"node": ">=22"},
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "start": "node v5/server.js",
-    "test": "node --test v4/tests.js v5/tests.js",
+    "test": "node --test v4/tests.js v5/tests.js v5/concurrency.test.js",
     "build": "node v5/build.js",
     "evaluate": "node --test v5/tests.js",
     "start:v4": "node v4/server.js",

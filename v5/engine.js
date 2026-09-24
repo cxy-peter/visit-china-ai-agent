@@ -24,14 +24,14 @@ function parse(text,previous){const s=clean(text),p={},tasks=[];
   if(new RegExp('(?:booked|reserved|already have).{0,28}(?:'+word+')|(?:'+word+').{0,15}(?:is booked|already booked|已订|已经订|订好了)|(?:已订|订好).{0,8}(?:'+word+')','i').test(s))p[field]='booked';
   if(new RegExp('(?:haven.t|have not|not|no|need to).{0,22}(?:booked? |reserved? |chosen |a |my |the )?(?:'+word+')|(?:'+word+').{0,10}(?:not booked|未订|没订)|(?:未订|没订|还没订).{0,6}(?:'+word+')','i').test(s))p[field]='not_booked';
  }
- const hn=s.match(/(?:staying at|my hotel is|住在|酒店是)\s*([^。.!?\n,，]{2,90})/i);if(hn){p.hotelName=hn[1].trim();p.hotel='booked';}
+ const hn=s.match(/(?:staying at|my hotel is|住在|酒店是)\s*([^。.!?\n,，]{2,90})/i);if(hn&&!/^(?:booked|not booked|already booked|已订|未订|没订)$/i.test(hn[1].trim())){p.hotelName=hn[1].trim();p.hotel='booked';}
  if(/with my parents|with parents|父母|爸妈|老人/i.test(s))p.party='with parents';if(/with (?:my )?(?:kids|children)|带孩子|带娃/i.test(s))p.party='with children';if(/travelling alone|traveling alone|solo|一个人/i.test(s))p.party='solo';
  const b=s.match(/(?:battery|电量|只剩|剩)[^\d]{0,12}(\d{1,3})\s*%|(\d{1,3})\s*%\s*(?:battery|电)/i);if(b)p.battery=Math.min(100,Number(b[1]||b[2]));
  if(/no (?:internet|network|data)|offline|没网|断网/i.test(s))p.network='offline';else if(/weak|poor connection|弱网/i.test(s))p.network='poor';else if(/online now|good network|网络恢复|网络正常/i.test(s))p.network='online';
  if(/prefer (?:the )?metro|take (?:the )?metro|选地铁|坐地铁去/i.test(s))p.transfer='metro';if(/prefer (?:a )?taxi|take (?:a )?taxi|想打车|选出租车/i.test(s))p.transfer='taxi';if(/private driver|airport pickup|司机接送|预约接机/i.test(s))p.transfer='driver';
  const interests=[];for(const [rx,name]of [[/architecture|建筑/i,'architecture'],[/food|美食/i,'food'],[/museum|博物馆/i,'museums'],[/garden|公园|园林/i,'gardens'],[/shopping|购物/i,'shopping']])if(rx.test(s))interests.push(name);if(interests.length)p.interests=interests.join(', ');
  for(const [id,rx]of [['power',/充电|battery|power bank/i],['connection',/网络|internet|sim card|esim|offline|没网/i],['metro',/subway|metro station|地铁站|地铁票/i],['cash',/exchange|换汇|现金|硬币|need cash/i],['payment',/支付|手续费|alipay|wechat|weixin|fee/i],['rail',/train|rail|火车|高铁/i],['luggage',/luggage storage|store.{0,10}bag|寄存/i],['help',/staff|help desk|工作人员|求助/i]])if(rx.test(s))tasks.push(id);
- if(p.flight==='not_booked')tasks.push('flight');if(p.hotel==='not_booked')tasks.push('hotel');if(p.transfer)tasks.push('transfer');if(p.interests)tasks.push('explore');
+ if(/need (?:a|an) hotel\b/i.test(s))p.hotel='not_booked';if(/need (?:a|an) flight\b/i.test(s))p.flight='not_booked';if(p.flight==='not_booked')tasks.push('flight');if(p.hotel==='not_booked')tasks.push('hotel');if(p.transfer)tasks.push('transfer');if(p.interests)tasks.push('explore');
  if(previous.lastQuestion==='interests'&&!p.interests&&s&&!/^skip|跳过|随便$/i.test(s))p.interests=clean(s,240);
  return{patch:p,tasks};}
 function apply(previous,event){const s=copy(previous);if(!event||typeof event!=='object')throw Error('EVENT_REQUIRED');const before=copy(s.facts);s.revision++;s.confirmedRevision=null;let message='',patch={},tasks=[];
@@ -41,7 +41,7 @@ function apply(previous,event){const s=copy(previous);if(!event||typeof event!==
  }else if(event.type==='choice'){
   const options=reply(previous).options;const item=options.find(x=>x.id===event.id);if(!item)throw Error('CHOICE_NOT_CURRENT');patch=item.patch||{};tasks=item.tasks||[];message=item.label;
   if(item.clearIssue)s.currentIssue=null;if(item.skip)s.answered.push(s.lastQuestion);if(item.confirm)s.confirmedRevision=s.revision;
- }else if(event.type==='facts'){patch=validatePatch(event.patch);message='Confirmed structured facts';}else if(event.type==='confirm'){s.confirmedRevision=s.revision;message=s.language==='zh'?'确认这些需求':'Confirm these needs';}else throw Error('EVENT_NOT_ALLOWED');
+ }else if(event.type==='facts'){patch=validatePatch(event.patch);message='Confirmed structured facts';}else if(event.type==='confirm'){s.confirmedRevision=s.revision;message=s.language==='zh'?'确认这些需求':'Confirm these needs';}else if(event.type==='outcome'){if(!reply(previous).plan.some(x=>x.id===event.task))throw Error('TASK_NOT_PRESENT');s.outcomes[event.task]='done';message='User confirmed task complete: '+event.task;s.confirmedRevision=previous.confirmedRevision===previous.revision?s.revision:null;}else throw Error('EVENT_NOT_ALLOWED');
  patch=validatePatch(patch);if(patch.city&&patch.city!==s.facts.city){delete s.facts.airport;delete s.facts.terminal;delete s.facts.zone;delete s.facts.hotelName;delete s.facts.area;delete s.facts.transfer;delete s.facts.hotel;delete s.facts.flight;s.outcomes={};s.answered=[];}
  if(patch.airport&&patch.airport!==s.facts.airport){delete s.facts.terminal;delete s.facts.zone;}
  Object.assign(s.facts,patch);if(patch.stage==='arriving')s.facts.flight='booked';

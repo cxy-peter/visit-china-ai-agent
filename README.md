@@ -1,3 +1,7 @@
+## V5.1 release verification
+
+Continuous browser-call loop, speech/click shared state, unfinished transcript recovery, and five-distinct-account approvals are now verified. See [measured results](evidence/v5/release-report.json), [voice research](docs/V5_1_VOICE_RESEARCH.md), [Codex handoff](docs/V5_1_CODEX_HANDOFF.md), and [resume wording](docs/V5_1_RESUME.md). No real microphone, paid model or Vercel deployment is claimed.
+
 # Visit China AI V5 · Call-first travel companion
 
 **主动开口，边聊边选，逐步记住需求；运营变更经过五个不同审核账号同意后发布。**
