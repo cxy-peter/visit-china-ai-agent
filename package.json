@@ -1,0 +1,14 @@
+{
+  "name": "visit-china-ai-agent",
+  "version": "4.0.0",
+  "private": true,
+  "description": "Confirmed conversations, source-backed DeepSeek planning and auditable official records",
+  "engines": {"node": ">=22"},
+  "scripts": {
+    "start": "node v4/server.js",
+    "test": "node --test v4/tests.js",
+    "build": "node v4/build.js",
+    "evaluate": "node --test v4/tests.js"
+  },
+  "license": "MIT"
+}
