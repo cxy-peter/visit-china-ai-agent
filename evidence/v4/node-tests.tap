@@ -2,291 +2,303 @@ TAP version 13
 # Subtest: Weixin base fee 0
 ok 1 - Weixin base fee 0
   ---
-  duration_ms: 2.087777
+  duration_ms: 1.145064
   type: 'test'
   ...
 # Subtest: Weixin base fee 199
 ok 2 - Weixin base fee 199
   ---
-  duration_ms: 0.1127
+  duration_ms: 0.110746
   type: 'test'
   ...
 # Subtest: Weixin base fee 200
 ok 3 - Weixin base fee 200
   ---
-  duration_ms: 0.134497
+  duration_ms: 0.12139
   type: 'test'
   ...
 # Subtest: Weixin base fee 201
 ok 4 - Weixin base fee 201
   ---
-  duration_ms: 0.082578
+  duration_ms: 0.082981
   type: 'test'
   ...
 # Subtest: Weixin base fee 500
 ok 5 - Weixin base fee 500
   ---
-  duration_ms: 0.076998
+  duration_ms: 0.081163
   type: 'test'
   ...
 # Subtest: Weixin base fee 1000
 ok 6 - Weixin base fee 1000
   ---
-  duration_ms: 0.07094
+  duration_ms: 0.073953
   type: 'test'
   ...
 # Subtest: Reject invalid amount -1
 ok 7 - Reject invalid amount -1
   ---
-  duration_ms: 0.204967
+  duration_ms: 0.234791
   type: 'test'
   ...
 # Subtest: Reject invalid amount no
 ok 8 - Reject invalid amount no
   ---
-  duration_ms: 0.067887
+  duration_ms: 0.072705
   type: 'test'
   ...
 # Subtest: Reject invalid amount Infinity
 ok 9 - Reject invalid amount Infinity
   ---
-  duration_ms: 0.236969
+  duration_ms: 0.225812
   type: 'test'
   ...
 # Subtest: Reject invalid amount 1000001
 ok 10 - Reject invalid amount 1000001
   ---
-  duration_ms: 0.279172
+  duration_ms: 0.289106
   type: 'test'
   ...
 # Subtest: Redact emails and long card numbers
 ok 11 - Redact emails and long card numbers
   ---
-  duration_ms: 0.649515
+  duration_ms: 0.604013
   type: 'test'
   ...
 # Subtest: Multi-turn city corrections and battery are retained
 ok 12 - Multi-turn city corrections and battery are retained
   ---
-  duration_ms: 1.008027
+  duration_ms: 1.303406
   type: 'test'
   ...
 # Subtest: Unknown facts remain unknown
 ok 13 - Unknown facts remain unknown
   ---
-  duration_ms: 0.383544
+  duration_ms: 0.405335
   type: 'test'
   ...
 # Subtest: Draft schema rejects unknown category
 ok 14 - Draft schema rejects unknown category
   ---
-  duration_ms: 0.18455
+  duration_ms: 0.20026
   type: 'test'
   ...
 # Subtest: Draft schema rejects empty needs
 ok 15 - Draft schema rejects empty needs
   ---
-  duration_ms: 0.070785
+  duration_ms: 0.082984
   type: 'test'
   ...
 # Subtest: Requirement text does not introduce a URL
 ok 16 - Requirement text does not introduce a URL
   ---
-  duration_ms: 0.153763
+  duration_ms: 0.128374
   type: 'test'
   ...
 # Subtest: Correct-city ranking excludes another city
 ok 17 - Correct-city ranking excludes another city
   ---
-  duration_ms: 0.317617
+  duration_ms: 0.340448
   type: 'test'
   ...
 # Subtest: Selected payment sources are operator primary
 ok 18 - Selected payment sources are operator primary
   ---
-  duration_ms: 0.168131
+  duration_ms: 0.188928
   type: 'test'
   ...
 # Subtest: Past review deadline is explicit
 ok 19 - Past review deadline is explicit
   ---
-  duration_ms: 0.086347
+  duration_ms: 0.101844
   type: 'test'
   ...
 # Subtest: No key model reports unconfigured
 ok 20 - No key model reports unconfigured
   ---
-  duration_ms: 0.116003
+  duration_ms: 0.1331
   type: 'test'
   ...
 # Subtest: Key is never returned by model status
 ok 21 - Key is never returned by model status
   ---
-  duration_ms: 0.163743
+  duration_ms: 0.147473
   type: 'test'
   ...
 # Subtest: Reject arbitrary model IDs
 ok 22 - Reject arbitrary model IDs
   ---
-  duration_ms: 0.082617
+  duration_ms: 0.09071
   type: 'test'
   ...
 # Subtest: Reject SSRF target http://127.0.0.1
 ok 23 - Reject SSRF target http://127.0.0.1
   ---
-  duration_ms: 0.213209
+  duration_ms: 0.241881
   type: 'test'
   ...
 # Subtest: Reject SSRF target https://127.0.0.1/
 ok 24 - Reject SSRF target https://127.0.0.1/
   ---
-  duration_ms: 0.070031
+  duration_ms: 0.078132
   type: 'test'
   ...
 # Subtest: Reject SSRF target https://english.shanghai.gov.cn.evil.test/
 ok 25 - Reject SSRF target https://english.shanghai.gov.cn.evil.test/
   ---
-  duration_ms: 0.048505
+  duration_ms: 0.057575
   type: 'test'
   ...
 # Subtest: Reject SSRF target https://user:pw@english.shanghai.gov.cn/
 ok 26 - Reject SSRF target https://user:pw@english.shanghai.gov.cn/
   ---
-  duration_ms: 0.049417
+  duration_ms: 0.059356
   type: 'test'
   ...
 # Subtest: Reject SSRF target https://english.shanghai.gov.cn:8443/
 ok 27 - Reject SSRF target https://english.shanghai.gov.cn:8443/
   ---
-  duration_ms: 0.046526
+  duration_ms: 0.78346
   type: 'test'
   ...
 # Subtest: Allow approved official source
 ok 28 - Allow approved official source
   ---
-  duration_ms: 0.061247
+  duration_ms: 0.099578
   type: 'test'
   ...
 # Subtest: Robots disallow and longer allow work
 ok 29 - Robots disallow and longer allow work
   ---
-  duration_ms: 1.454636
+  duration_ms: 0.65336
   type: 'test'
   ...
 # Subtest: Specific robot group overrides wildcard
 ok 30 - Specific robot group overrides wildcard
   ---
-  duration_ms: 0.186678
+  duration_ms: 0.199032
   type: 'test'
   ...
 # Subtest: Remove script/style before model context
 ok 31 - Remove script/style before model context
   ---
-  duration_ms: 0.881932
+  duration_ms: 0.760015
   type: 'test'
   ...
 # Subtest: Valid source-only node passes shape checks
 ok 32 - Valid source-only node passes shape checks
   ---
-  duration_ms: 0.534828
+  duration_ms: 0.54935
   type: 'test'
   ...
 # Subtest: Invented citation is rejected
 ok 33 - Invented citation is rejected
   ---
-  duration_ms: 0.108899
+  duration_ms: 0.110898
   type: 'test'
   ...
 # Subtest: Invented gate number is rejected
 ok 34 - Invented gate number is rejected
   ---
-  duration_ms: 0.213031
+  duration_ms: 0.192258
   type: 'test'
   ...
 # Subtest: Live-source failure cannot substantiate model answer
 ok 35 - Live-source failure cannot substantiate model answer
   ---
-  duration_ms: 0.090742
+  duration_ms: 0.133765
   type: 'test'
   ...
 # Subtest: Model output cannot contain arbitrary clickable URL
 ok 36 - Model output cannot contain arbitrary clickable URL
   ---
-  duration_ms: 0.120673
+  duration_ms: 0.143729
   type: 'test'
   ...
 # Subtest: Low battery returns a non-scanning fallback
 ok 37 - Low battery returns a non-scanning fallback
   ---
-  duration_ms: 0.163065
+  duration_ms: 0.169198
   type: 'test'
   ...
 # Subtest: Changed source does not reuse reviewed summary
 ok 38 - Changed source does not reuse reviewed summary
   ---
-  duration_ms: 0.073656
+  duration_ms: 0.085921
   type: 'test'
   ...
 # Subtest: Provider usage is counted but never treated as balance
 ok 39 - Provider usage is counted but never treated as balance
   ---
-  duration_ms: 21.436155
+  duration_ms: 78.105815
   type: 'test'
   ...
 # Subtest: Provider 401 does not masquerade as successful generation
 ok 40 - Provider 401 does not masquerade as successful generation
   ---
-  duration_ms: 0.52721
+  duration_ms: 0.636844
   type: 'test'
   ...
 # Subtest: Robots refusal does not fetch page
 ok 41 - Robots refusal does not fetch page
   ---
-  duration_ms: 1.013761
+  duration_ms: 0.993412
   type: 'test'
   ...
 # Subtest: Cross-host redirect is stopped
 ok 42 - Cross-host redirect is stopped
   ---
-  duration_ms: 1.04333
+  duration_ms: 1.237703
   type: 'test'
   ...
 # Subtest: Real local HTTP: status, auth, consent, confirmation, plan, corrections
 ok 43 - Real local HTTP: status, auth, consent, confirmation, plan, corrections
   ---
-  duration_ms: 120.896003
+  duration_ms: 170.390964
   type: 'test'
   ...
 # Subtest: Another session cannot use a confirmation token
 ok 44 - Another session cannot use a confirmation token
   ---
-  duration_ms: 10.982681
+  duration_ms: 17.058782
   type: 'test'
   ...
 # Subtest: Unknown arrival city cannot borrow Shanghai airport directions
 ok 45 - Unknown arrival city cannot borrow Shanghai airport directions
   ---
-  duration_ms: 0.3431
+  duration_ms: 0.330645
   type: 'test'
   ...
 # Subtest: Future editorial date is not a current verified source
 ok 46 - Future editorial date is not a current verified source
   ---
-  duration_ms: 0.111268
+  duration_ms: 0.097385
   type: 'test'
   ...
 # Subtest: A close listener captures its own plan controller
 ok 47 - A close listener captures its own plan controller
   ---
-  duration_ms: 0.303822
+  duration_ms: 0.198671
   type: 'test'
   ...
-1..47
-# tests 47
+# Subtest: RMB exchange is recognized without the exact word cash
+ok 48 - RMB exchange is recognized without the exact word cash
+  ---
+  duration_ms: 0.858926
+  type: 'test'
+  ...
+# Subtest: A new city does not inherit the previous airport
+ok 49 - A new city does not inherit the previous airport
+  ---
+  duration_ms: 0.160962
+  type: 'test'
+  ...
+1..49
+# tests 49
 # suites 0
-# pass 47
+# pass 49
 # fail 0
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 237.439632
+# duration_ms 362.83945

@@ -1,54 +1,54 @@
 {
-  "checkedAt": "2026-09-24T17:46:53.312Z",
+  "checkedAt": "2026-09-24T17:49:35.994Z",
   "kind": "real-network-official-source-smoke",
   "sources": [
     {
       "id": "wechat-fee",
       "url": "https://posts.tenpay.com/posts/9e70c66564910e6002958e997eabb18b.html",
-      "checkedAt": "2026-09-24T17:46:43.362Z",
+      "checkedAt": "2026-09-24T17:49:26.119Z",
       "status": "unavailable",
       "httpStatus": null,
       "anchorCheck": null,
       "content_sha256": null,
       "bodyCharacters": 0,
       "error": "ROBOTS_UNAVAILABLE",
-      "latencyMs": 1924
+      "latencyMs": 1388
     },
     {
       "id": "pvg-arrival",
       "url": "https://english.shanghai.gov.cn/en-Latest-WhatsNew/20260424/88cde5e96ef242daa534102069450a03.html",
-      "checkedAt": "2026-09-24T17:46:45.286Z",
-      "status": "unavailable",
-      "httpStatus": null,
-      "anchorCheck": null,
-      "content_sha256": null,
-      "bodyCharacters": 0,
-      "error": "ROBOTS_UNAVAILABLE",
-      "latencyMs": 1119
+      "checkedAt": "2026-09-24T17:49:27.507Z",
+      "status": "fetched",
+      "httpStatus": 200,
+      "anchorCheck": "passed",
+      "content_sha256": "3c84c85e21361ffd874cd2b1faf6b43f0ecd2bb0692c43b21825d6f1bb3e36ff",
+      "bodyCharacters": 3580,
+      "error": null,
+      "latencyMs": 1936
     },
     {
       "id": "sh-metro",
       "url": "https://english.shanghai.gov.cn/en-Latest-WhatsNew/20250627/d8f21f2e7d3b45a5b03757e35039b806.html",
-      "checkedAt": "2026-09-24T17:46:46.405Z",
+      "checkedAt": "2026-09-24T17:49:29.443Z",
       "status": "fetched",
       "httpStatus": 200,
       "anchorCheck": "passed",
       "content_sha256": "8153ccaa6c1359b0ea4d16d25f1cda097c4a67b44a15da357b011714cd258a33",
       "bodyCharacters": 2474,
       "error": null,
-      "latencyMs": 1132
+      "latencyMs": 326
     },
     {
       "id": "beijing-arrival",
       "url": "https://english.beijing.gov.cn/specials/beijingservice/index.html",
-      "checkedAt": "2026-09-24T17:46:47.537Z",
+      "checkedAt": "2026-09-24T17:49:29.769Z",
       "status": "fetched",
       "httpStatus": 200,
       "anchorCheck": "passed",
       "content_sha256": "9182db2a84be1a87dfac2130bd2db5ba71bdebc5368574c7aec3a129413cd08c",
       "bodyCharacters": 3938,
       "error": null,
-      "latencyMs": 4234
+      "latencyMs": 4176
     }
   ],
   "images": [
@@ -71,8 +71,10 @@
     {
       "url": "https://english.shanghai.gov.cn/cmsres/b5/b524e6cbb34b4b6ca203fe7fbaadf260/bcc4843d94fb4e2a6e8c919b5acc1673.png",
       "source": "sh-metro",
-      "error": "fetch failed",
-      "downloaded": false
+      "status": 200,
+      "type": "image/png",
+      "downloaded": false,
+      "rights": "Shanghai Metro; external reference, not redistributed"
     }
   ],
   "deepseekPaidCalls": 0,

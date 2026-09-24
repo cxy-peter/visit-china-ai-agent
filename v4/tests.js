@@ -61,3 +61,7 @@ test('Another session cannot use a confirmation token',async()=>{const f=await f
 test('Unknown arrival city cannot borrow Shanghai airport directions',()=>{const n={category:'transport',text:'airport metro'};const r=C.forNeed(n,{city:'Unknown'},D.sources);assert.ok(r.every(x=>x.city==='China'||!x.city));});
 test('Future editorial date is not a current verified source',()=>assert.equal(Boolean(C.current({reviewedAt:'2030-01-01',reviewDays:7},Date.parse('2026-09-24'))),false));
 test('A close listener captures its own plan controller',()=>{const source=require('node:fs').readFileSync(require('node:path').join(__dirname,'server.js'),'utf8');assert.ok(source.includes("if(!res.writableEnded)planController.abort()"));assert.ok(!source.includes("if(!res.writableEnded)s.controller?.abort()"));});
+
+
+test('RMB exchange is recognized without the exact word cash',()=>{const d=C.draft([{text:'我刚到上海浦东机场T2公共到达厅，需要换人民币'}],1);assert.ok(d.needs.some(n=>n.category==='cash'));assert.equal(d.location.airport,'PVG');assert.equal(d.location.terminal,'T2');assert.equal(d.location.zone,'public');assert.equal(d.missing.length,0);});
+test('A new city does not inherit the previous airport',()=>{const d=C.draft([{text:'Shanghai PVG T2 public arrivals'},{text:'Actually Beijing'}],2);assert.equal(d.city,'Beijing');assert.equal(d.location.airport,'Unknown');});
