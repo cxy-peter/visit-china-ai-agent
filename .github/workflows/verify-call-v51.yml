@@ -1,0 +1,109 @@
+name: V5.1 continuous call and five-reviewer release
+on:
+  push:
+    paths:
+      - '.github/workflows/verify-call-v51.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: visit-china-call-release
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify recovered source and apply reviewed additive fixes
+        run: |
+          python tools/finalize_voice_v5.py
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          manifest=Path('evidence/v5/source-manifest.json')
+          expected=json.loads(manifest.read_text())
+          bad=[p for p,h in expected.items() if hashlib.sha256(Path(p).read_bytes()).hexdigest()!=h]
+          assert not bad, f'Unexpected source changes: {bad}'
+          print('Verified prior source manifest:',len(expected))
+          PY
+          python tools/finish_call_v51.py
+      - name: Run deterministic and true local HTTP tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm test | tee evidence/v5/node-tests.tap
+          npm run build
+      - name: Test real browser to Node with synthetic audio APIs
+        run: |
+          pip install playwright==1.57.0
+          python -m playwright install --with-deps chromium
+          python v5/browser_test.py
+      - name: Export prompts, measurements and source identity
+        run: |
+          node - <<'JS'
+          const fs=require('node:fs'),{EXTRACT,IMPROVE}=require('./v5/server');
+          fs.mkdirSync('prompts',{recursive:true});
+          fs.writeFileSync('prompts/V5_EXTRACTION.txt',EXTRACT+'\n');
+          fs.writeFileSync('prompts/V5_WORKFLOW_CANDIDATE.txt',IMPROVE+'\n');
+          JS
+          python - <<'PY'
+          import json,re,hashlib,datetime,os
+          from pathlib import Path
+          e=Path('evidence/v5');tap=(e/'node-tests.tap').read_text();browser=json.loads((e/'browser-report.json').read_text())
+          report={'version':'5.1.0','checkedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'sourceInputCommit':os.environ['GITHUB_SHA'],'runUrl':f"https://github.com/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}",'nodeTestsPassed':int(re.search(r'# pass (\d+)',tap)[1]),'nodeTestsFailed':int(re.search(r'# fail (\d+)',tap)[1]),'browserChecksPassed':browser['passed'],'browserScope':browser['scope'],'realMicrophoneValidated':False,'realPaidModelCalls':0,'realHumanReviewers':0,'testReviewerAccounts':5,'vercelDeploymentVerified':False,'officialCorpusCount':1114,'limitations':['Automatic alternating browser voice, not full-duplex acoustic barge-in','Five authenticated test accounts are not five independently identified people','No production OTA, charging or luggage inventory','V4 real source workspace retained separately; V5 guide cards use saved summaries']}
+          assert report['nodeTestsFailed']==0
+          (e/'release-report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+          names=sorted(str(p) for p in Path('v5').glob('*') if p.is_file())
+          (e/'source-manifest.json').write_text(json.dumps({p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in names},indent=2)+'\n')
+          p=Path('README.md');text=p.read_text();marker='## V5.1 release verification'
+          if marker not in text:
+              p.write_text(marker+'\n\nContinuous browser-call loop, speech/click shared state, unfinished transcript recovery, and five-distinct-account approvals are now verified. See [measured results](evidence/v5/release-report.json), [voice research](docs/V5_1_VOICE_RESEARCH.md), [Codex handoff](docs/V5_1_CODEX_HANDOFF.md), and [resume wording](docs/V5_1_RESUME.md). No real microphone, paid model or Vercel deployment is claimed.\n\n'+text)
+          PY
+      - name: Commit ordinary tested application and documentation
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add v5 package.json package-lock.json prompts evidence/v5 README.md
+          git diff --cached --quiet || git commit -m 'Release V5.1 tested continuous call, concurrent choices and five-account governance'
+          git push origin HEAD:main
+      - name: Package public source only
+        run: |
+          python - <<'PY'
+          import zipfile,shutil
+          from pathlib import Path
+          out=Path('release');out.mkdir(exist_ok=True)
+          allowed={'v4','v5','tools','docs','prompts','data','evidence','.github'}
+          rootfiles={'package.json','package-lock.json','README.md','vercel.json','.env.example','.gitignore'}
+          paths=[]
+          for p in Path('.').rglob('*'):
+              if not p.is_file():continue
+              q=p.parts
+              if q[0] not in allowed and str(p) not in rootfiles:continue
+              if any(x in q for x in ['runtime','__pycache__','node_modules','.git','.bootstrap']):continue
+              if p.name in {'.env','reviewers.local.json'} or p.name.startswith('.env.') and p.name!='.env.example':continue
+              if p.suffix.lower() in {'.ttf','.otf','.woff','.woff2','.wav','.mp3','.m4a','.mp4','.webm'}:continue
+              paths.append(p)
+          with zipfile.ZipFile(out/'Visit_China_AI_V5_1_Source.zip','w',zipfile.ZIP_DEFLATED) as z:
+              for p in paths:z.write(p,p.as_posix())
+          shutil.copyfile('dist/Visit_China_AI_V5_Demo.html',out/'Visit_China_AI_V5_1_Demo.html')
+          for src,dst in [('docs/V5_1_VOICE_RESEARCH.md','Visit_China_AI_V5_1_Voice_Research.md'),('docs/V5_1_CODEX_HANDOFF.md','Visit_China_AI_V5_1_Codex_Handoff.md'),('docs/V5_1_RESUME.md','Visit_China_AI_V5_1_Resume.md'),('prompts/CODEX_NEXT_TASK_V5_1.md','Visit_China_AI_V5_1_Codex_Prompt.md'),('evidence/v5/release-report.json','Visit_China_AI_V5_1_Test_Report.json'),('evidence/v5/call.png','Visit_China_AI_V5_1_Call.png'),('evidence/v5/operations.png','Visit_China_AI_V5_1_Operations.png')]:
+              shutil.copyfile(src,out/dst)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: visit-china-v51-verified-delivery
+          path: |
+            release/
+            evidence/v5/
+          retention-days: 30
