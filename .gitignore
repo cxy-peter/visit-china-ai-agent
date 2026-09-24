@@ -1,0 +1,11 @@
+.env
+.env.local
+.env.*.local
+node_modules/
+__pycache__/
+*.pyc
+private/
+runtime/
+*.key
+*.pem
+.DS_Store
