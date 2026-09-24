@@ -1,0 +1,63 @@
+name: V4 source, HTTP and browser verification
+on:
+  push:
+    paths:
+      - 'v4/**'
+      - 'package*.json'
+      - 'data/official/collection-report.json'
+      - '.github/workflows/test-v4.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: v4-verify
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check source syntax and unit/HTTP contracts
+        run: |
+          mkdir -p evidence/v4
+          npm ci --ignore-scripts --no-audit --no-fund
+          node --check v4/server.js
+          node --check v4/app.js
+          node --test --test-reporter=tap v4/tests.js | tee evidence/v4/node-tests.tap
+      - name: Build ordinary files and standalone demo
+        run: npm run build
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser test runner
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Run genuine browser to local backend checks
+        run: |
+          npm start > evidence/v4/server.log 2>&1 &
+          sleep 2
+          python v4/browser_test.py
+      - name: Record environment and commit
+        if: always()
+        run: |
+          git rev-parse HEAD > evidence/v4/source-commit.txt
+          node --version > evidence/v4/node-version.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: visit-china-v4-source-and-evidence
+          path: |
+            v4/
+            package.json
+            package-lock.json
+            dist/
+            data/official/
+            tools/collect_official.py
+            evidence/v4/
+            docs/V4*.md
+          retention-days: 30
