@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Arrival - Visit China AI</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<aside class="sidebar">
+<a class="brand" href="#chat"><span>a</span><b>arrival<small>VISIT CHINA AI</small></b></a>
+<div class="trip-mini"><small>YOUR JOURNEY</small><strong id="city-label">Somewhere new</strong><span id="stage-label">We will work it out together</span></div>
+<nav>
+<button data-tab="chat" class="active">◌ <span>Travel companion</span></button>
+<button data-tab="nearby">⌖ <span>Nearby services</span></button>
+<button data-tab="trip">▤ <span>My journey</span></button>
+<button data-tab="guides">▧ <span>Guides &amp; sources</span></button>
+<button data-tab="ops">⚙ <span>Operations</span></button>
+</nav>
+<div class="sidebar-foot"><span id="runtime">Checking connection...</span><p>Personal prototype - V5<br>No booking or emergency dispatch</p></div>
+</aside>
+<main><header><span id="breadcrumb">Your travel companion</span><div><button id="reset" class="quiet">New conversation</button><button id="language" class="quiet">EN / 中文</button><button id="voice-open" class="primary rounded">◉ Start voice chat</button></div></header><div id="page"></div></main>
+<dialog id="modal"><button id="close-modal" class="close" aria-label="Close">×</button><div id="modal-content"></div></dialog>
+<div id="toast" role="status"></div>
+<script src="base-data.js"></script>
+<script src="data.js"></script>
+<script src="core.js"></script>
+<script src="voice.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
