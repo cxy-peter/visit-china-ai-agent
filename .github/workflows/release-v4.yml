@@ -1,0 +1,65 @@
+name: Release V4 conversation and evidence
+on:
+  push:
+    paths: ['.github/workflows/release-v4.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Refine requirement retention without altering official data
+        run: python tools/refine_conversation_v4.py
+      - name: Verify code and build the 1114-record demo
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          node --check v4/app.js
+          node --check v4/core.js
+          node --test --test-reporter=tap v4/tests.js | tee evidence/v4/node-tests.tap
+          npm run build
+          node v4/live_smoke.js
+      - name: Verify real browser to local server
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+          npm start > evidence/v4/server.log 2>&1 &
+          sleep 2
+          python v4/browser_test.py
+      - name: Save tested source and evidence
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rev-parse HEAD > evidence/v4/test-input-commit.txt
+          git add v4/core.js v4/app.js v4/tests.js v4/browser_test.py evidence/v4
+          git diff --cached --quiet || git commit -m 'Release verified V4 airport context retention and final evidence'
+          git pull --rebase origin main
+          git push origin HEAD:main
+          git rev-parse HEAD > evidence/v4/source-commit.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: visit-china-ai-v4-release
+          include-hidden-files: true
+          path: |
+            v4/
+            dist/
+            data/official/
+            evidence/v4/
+            docs/V4*.md
+            tools/collect_official.py
+            package.json
+            package-lock.json
+            README.md
+            .env.example
+            .gitignore
+            vercel.json
+          retention-days: 30
