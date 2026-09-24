@@ -1,0 +1,82 @@
+name: Finalize V4 with official corpus
+on:
+  push:
+    paths: ['.github/workflows/finalize-v4.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: finalize-v4
+  cancel-in-progress: false
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Apply narrowly scoped source changes
+        run: python tools/harden_v4.py
+      - name: Test code, HTTP and corpus integrity
+        run: |
+          mkdir -p evidence/v4
+          npm ci --ignore-scripts --no-audit --no-fund
+          node --check v4/server.js
+          node --check v4/app.js
+          node --test --test-reporter=tap v4/tests.js | tee evidence/v4/node-tests.tap
+          python - <<'PY'
+          import json, hashlib
+          from pathlib import Path
+          p=Path('data/official/records.json'); rows=json.loads(p.read_text()); report=json.loads(Path('data/official/collection-report.json').read_text())
+          assert len(rows)==1114
+          assert len(set(x['url'] for x in rows))==1114
+          assert len(set(x['content_sha256'] for x in rows))==1114
+          assert hashlib.sha256(p.read_bytes()).hexdigest()==report['records_sha256']
+          assert all(x['fetch_status']==200 for x in rows)
+          print('Verified 1114 distinct fetched records and original corpus checksum')
+          PY
+          npm run build
+      - name: Check actual official websites without a model key
+        run: node v4/live_smoke.js
+      - name: Install and run real browser checks
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+          npm start > evidence/v4/server.log 2>&1 &
+          sleep 2
+          python v4/browser_test.py
+      - name: Commit tested ordinary source and evidence
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rev-parse HEAD > evidence/v4/test-input-commit.txt
+          node --version > evidence/v4/node-version.txt
+          git add v4/core.js v4/server.js v4/app.js v4/tests.js evidence/v4
+          git diff --cached --quiet || git commit -m 'Publish tested V4 hardening and real network/browser evidence'
+          git pull --rebase origin main
+          git push origin HEAD:main
+          git rev-parse HEAD > evidence/v4/source-commit.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: visit-china-v4-final-source-and-corpus
+          include-hidden-files: true
+          path: |
+            v4/
+            package.json
+            package-lock.json
+            README.md
+            .env.example
+            .gitignore
+            vercel.json
+            dist/
+            data/official/
+            tools/collect_official.py
+            evidence/v4/
+            docs/V4*.md
+          retention-days: 30
