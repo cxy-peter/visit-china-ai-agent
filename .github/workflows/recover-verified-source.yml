@@ -1,0 +1,77 @@
+name: Recover original verified source
+on:
+  push:
+    paths: ['.github/workflows/recover-verified-source.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: source-import-main
+  cancel-in-progress: false
+jobs:
+  recover:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Recover a single transport-character error without changing expected checksums
+        shell: python
+        run: |
+          from pathlib import Path
+          import hashlib, string, time
+          path=Path('.bootstrap/source-08.txt')
+          raw=path.read_bytes().strip()
+          expected='d0788d2dff56671f15f5cac6b46dfd2f41b42f07ec5b95a08007a1b3ee3b9ca2'
+          def matches(b):
+              return hashlib.sha256(b).hexdigest()==expected
+          alphabet=(string.ascii_letters+string.digits+'+/=').encode()
+          def repair():
+              if matches(raw): return raw
+              for i in range(len(raw)):
+                  b=raw[:i]+raw[i+1:]
+                  if matches(b): return b
+              for i in range(len(raw)-1):
+                  b=raw[:i]+raw[i:i+2][::-1]+raw[i+2:]
+                  if matches(b): return b
+              for i in range(len(raw)):
+                  for c in alphabet:
+                      if c==raw[i]: continue
+                      b=raw[:i]+bytes([c])+raw[i+1:]
+                      if matches(b): return b
+              for i in range(len(raw)+1):
+                  for c in alphabet:
+                      b=raw[:i]+bytes([c])+raw[i:]
+                      if matches(b): return b
+              raise RuntimeError('No single-character recovery matched the original checksum; refusing unverified unpack')
+          fixed=repair()
+          assert matches(fixed)
+          path.write_bytes(fixed+b'\n')
+          print('Part 8 matches the ORIGINAL checksum; no verification was bypassed.')
+          lines=Path('.github/workflows/publish-v2.yml').read_text().splitlines()
+          start=next(i for i,x in enumerate(lines) if x.strip()=='import base64, hashlib, json, lzma')
+          end=next(i for i in range(start+1,len(lines)) if lines[i].startswith('      - name: Test and build'))
+          code='\n'.join(x[10:] for x in lines[start:end])
+          exec(compile(code,'original_verified_unpack','exec'))
+      - name: Test and build recovered application
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm test
+          npm run evaluate
+          npm run build
+      - name: Commit only verified recovered files
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --cached --quiet || git commit -m 'Restore checksum-verified V2 source after transport repair'
+          git push origin HEAD:main
+      - uses: actions/upload-artifact@v4
+        with:
+          name: verified-v2-recovered
+          path: dist/
