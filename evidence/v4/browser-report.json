@@ -1,0 +1,58 @@
+{
+  "checks": [
+    {
+      "name": "real Node connection detected",
+      "passed": true
+    },
+    {
+      "name": "numbered requirements created",
+      "passed": true
+    },
+    {
+      "name": "user confirmation required before plan",
+      "passed": true
+    },
+    {
+      "name": "plan nodes rendered from HTTP stream",
+      "passed": true
+    },
+    {
+      "name": "per-node audit present",
+      "passed": true
+    },
+    {
+      "name": "source drawer shows provenance",
+      "passed": true
+    },
+    {
+      "name": "201 RMB Weixin example uses full amount",
+      "passed": true
+    },
+    {
+      "name": "actual admin login opens operations",
+      "passed": true
+    },
+    {
+      "name": "audit distinguishes token usage from balance",
+      "passed": true
+    },
+    {
+      "name": "experience and benchmark views separated",
+      "passed": true
+    },
+    {
+      "name": "low power fallback appears",
+      "passed": true
+    },
+    {
+      "name": "city corrected in same conversation",
+      "passed": true
+    },
+    {
+      "name": "mobile does not overflow horizontally",
+      "passed": true
+    }
+  ],
+  "passed": 13,
+  "scope": "Real Chromium -> localhost Node server on GitHub runner. Default planning; official refresh disabled for deterministic UI tests. No real DeepSeek key, microphone, booking provider or Vercel deployment."
+}

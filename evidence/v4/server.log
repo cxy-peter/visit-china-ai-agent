@@ -1,0 +1,5 @@
+
+> visit-china-ai-agent@4.0.0 start
+> node v4/server.js
+
+Visit China V4: http://127.0.0.1:8787 — local prototype, not a booking service

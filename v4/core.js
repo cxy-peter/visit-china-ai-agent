@@ -26,9 +26,9 @@ function rank(query,city,records,limit=8){const tokens=tokenize(query);return re
 function forNeed(need,d,records){const preset={power:d.city==='Beijing'?['beijing-arrival']:['pvg-arrival'],connection:d.city==='Beijing'?['beijing-arrival']:['pvg-arrival'],cash:d.city==='Beijing'?['beijing-arrival']:['pvg-arrival'],payment:['wechat-fee','alipay-app'],transport:d.city==='Beijing'?['beijing-arrival']:['sh-metro','pvg-arrival'],rail:['rail-passport'],hotel:[],destination:[],general:[]};
  let ids=preset[need.category]||[];if(d.city==='Unknown')ids=ids.filter(id=>['wechat-fee','alipay-app','rail-passport'].includes(id));
  const rows=ids.map(id=>records.find(x=>x.id===id)).filter(Boolean);if(rows.length<2)for(const r of rank(need.text+' '+need.category,d.city,records,5))if(!rows.some(x=>x.id===r.id))rows.push(r);
- return rows.slice(0,3);
+ return rows.filter(r=>d.city!=='Unknown'||r.city==='China'||!r.city).slice(0,3);
 }
-function current(r,date=Date.now()){return r.reviewedAt&&Number.isFinite(Date.parse(r.reviewedAt))&&date-Date.parse(r.reviewedAt)<=Number(r.reviewDays||14)*86400000;}
+function current(r,date=Date.now()){return r.reviewedAt&&Number.isFinite(Date.parse(r.reviewedAt))&&Date.parse(r.reviewedAt)<=date&&date-Date.parse(r.reviewedAt)<=Number(r.reviewDays||14)*86400000;}
 function publicSource(r){const {body,...p}=r;return p;}
 function fallbackNode(need,d,evidence){const zh=d.language==='zh';const reliable=evidence.filter(e=>e.active!==false&&e.summary&&current(e)&&e.liveStatus!=='changed_or_unmatched');
  let actions=reliable.slice(0,2).map(r=>zh?(r.summaryZh||r.summary):r.summary);

@@ -1,0 +1,80 @@
+{
+  "checkedAt": "2026-09-24T17:46:53.312Z",
+  "kind": "real-network-official-source-smoke",
+  "sources": [
+    {
+      "id": "wechat-fee",
+      "url": "https://posts.tenpay.com/posts/9e70c66564910e6002958e997eabb18b.html",
+      "checkedAt": "2026-09-24T17:46:43.362Z",
+      "status": "unavailable",
+      "httpStatus": null,
+      "anchorCheck": null,
+      "content_sha256": null,
+      "bodyCharacters": 0,
+      "error": "ROBOTS_UNAVAILABLE",
+      "latencyMs": 1924
+    },
+    {
+      "id": "pvg-arrival",
+      "url": "https://english.shanghai.gov.cn/en-Latest-WhatsNew/20260424/88cde5e96ef242daa534102069450a03.html",
+      "checkedAt": "2026-09-24T17:46:45.286Z",
+      "status": "unavailable",
+      "httpStatus": null,
+      "anchorCheck": null,
+      "content_sha256": null,
+      "bodyCharacters": 0,
+      "error": "ROBOTS_UNAVAILABLE",
+      "latencyMs": 1119
+    },
+    {
+      "id": "sh-metro",
+      "url": "https://english.shanghai.gov.cn/en-Latest-WhatsNew/20250627/d8f21f2e7d3b45a5b03757e35039b806.html",
+      "checkedAt": "2026-09-24T17:46:46.405Z",
+      "status": "fetched",
+      "httpStatus": 200,
+      "anchorCheck": "passed",
+      "content_sha256": "8153ccaa6c1359b0ea4d16d25f1cda097c4a67b44a15da357b011714cd258a33",
+      "bodyCharacters": 2474,
+      "error": null,
+      "latencyMs": 1132
+    },
+    {
+      "id": "beijing-arrival",
+      "url": "https://english.beijing.gov.cn/specials/beijingservice/index.html",
+      "checkedAt": "2026-09-24T17:46:47.537Z",
+      "status": "fetched",
+      "httpStatus": 200,
+      "anchorCheck": "passed",
+      "content_sha256": "9182db2a84be1a87dfac2130bd2db5ba71bdebc5368574c7aec3a129413cd08c",
+      "bodyCharacters": 3938,
+      "error": null,
+      "latencyMs": 4234
+    }
+  ],
+  "images": [
+    {
+      "url": "https://english.shanghai.gov.cn/cmsres/1e/1e0a561264684a5d90207795cc4bcf52/2382c315a6ba396be1932dd8dafaff52.png",
+      "source": "pvg-arrival",
+      "status": 200,
+      "type": "image/png",
+      "downloaded": false,
+      "rights": "Shanghai Airport Group; external reference, not redistributed"
+    },
+    {
+      "url": "https://english.shanghai.gov.cn/cmsres/60/6069e9a661134f64994299d2cbc56759/ce6e2814f207c9333f10785606c57df3.png",
+      "source": "pvg-arrival",
+      "status": 200,
+      "type": "image/png",
+      "downloaded": false,
+      "rights": "Shanghai Airport Group; external reference, not redistributed"
+    },
+    {
+      "url": "https://english.shanghai.gov.cn/cmsres/b5/b524e6cbb34b4b6ca203fe7fbaadf260/bcc4843d94fb4e2a6e8c919b5acc1673.png",
+      "source": "sh-metro",
+      "error": "fetch failed",
+      "downloaded": false
+    }
+  ],
+  "deepseekPaidCalls": 0,
+  "notes": "No model key used. No images or complete third-party article bodies redistributed. HTTP and anchor checks are not full semantic, policy-currentness, visual or availability validation."
+}

@@ -56,3 +56,8 @@ test('Real local HTTP: status, auth, consent, confirmation, plan, corrections',a
  x=await f.call('/api/reset',{});assert.equal(x.status,200);
  }finally{await f.close();}});
 test('Another session cannot use a confirmation token',async()=>{const f=await fixture();try{let x=await f.call('/api/draft',{message:'Shanghai train'});x=await f.call('/api/confirm',{revision:x.data.draft.revision,selected:['n1']});const r=await fetch(f.base+'/api/plan',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({confirmation:x.data.confirmation,live:false})});assert.equal(r.status,409);}finally{await f.close();}});
+
+
+test('Unknown arrival city cannot borrow Shanghai airport directions',()=>{const n={category:'transport',text:'airport metro'};const r=C.forNeed(n,{city:'Unknown'},D.sources);assert.ok(r.every(x=>x.city==='China'||!x.city));});
+test('Future editorial date is not a current verified source',()=>assert.equal(Boolean(C.current({reviewedAt:'2030-01-01',reviewDays:7},Date.parse('2026-09-24'))),false));
+test('A close listener captures its own plan controller',()=>{const source=require('node:fs').readFileSync(require('node:path').join(__dirname,'server.js'),'utf8');assert.ok(source.includes("if(!res.writableEnded)planController.abort()"));assert.ok(!source.includes("if(!res.writableEnded)s.controller?.abort()"));});
