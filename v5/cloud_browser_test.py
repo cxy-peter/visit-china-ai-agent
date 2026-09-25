@@ -2,7 +2,7 @@
 import json, os, pathlib, shutil, socket, subprocess, tempfile, time, urllib.request
 from playwright.sync_api import sync_playwright, expect
 ROOT=pathlib.Path(__file__).resolve().parents[1]
-OUT=ROOT/'evidence/v5.9';OUT.mkdir(parents=True,exist_ok=True)
+OUT=ROOT/'evidence/v6';OUT.mkdir(parents=True,exist_ok=True)
 with socket.socket() as s:s.bind(('127.0.0.1',0));port=s.getsockname()[1]
 runtime=tempfile.mkdtemp(prefix='vc56-cloud-');checks=[];pending=[];requests=[];authorized=False
 def check(name,value):
@@ -28,7 +28,7 @@ try:
         page.route('**/api/chat',cloud);page.goto(url);expect(page.locator('#mode')).to_contain_text('云端聊天后端')
         page.locator('#message').fill('我想带父母慢慢游览上海');page.locator('#send').click()
         check('private model waits for connection and consent',not pending and not requests)
-        page.locator('#chat-settings-open').click();page.locator('#cloud-access-code').fill('fixture-private-code');page.locator('#cloud-login button').click()
+        page.locator('#chat-settings-open').click();page.locator('#cloud-access-code').fill('fixture-private-code-long-enough');page.locator('#cloud-login button').click()
         expect(page.locator('#model-progress')).to_contain_text('DeepSeek 正在')
         check('login explicitly enables one shared model consent',page.locator('#model-consent').is_checked() and page.locator('#shared-model-consent').is_checked())
         check('pending answer receives current context',len(pending)==1 and requests[-1]['memory']['facts']['city']=='Shanghai' and requests[-1]['modelConsent'])

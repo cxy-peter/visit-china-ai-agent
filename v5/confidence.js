@@ -2,7 +2,7 @@
 (function(r,f){if(typeof module==='object'&&module.exports)module.exports=f();else r.TravelConfidence=f();})(globalThis,function(){
 'use strict';
 const governments=new Set(['english.shanghai.gov.cn','www.shanghai.gov.cn','jtw.sh.gov.cn','service.shanghai.gov.cn','english.beijing.gov.cn','jtw.beijing.gov.cn']);
-const operators=new Set(['service.shmetro.com','map.amap.com','www.12306.cn','mobile.12306.cn','kyfw.12306.cn']);
+const operators=new Set(['service.shmetro.com','map.amap.com','www.12306.cn','mobile.12306.cn','kyfw.12306.cn','www.marriott.com']);
 function host(url){try{return new URL(url).hostname;}catch(_){return '';}}
 function source(row,now=Date.now()){
  const gov=governments.has(host(row.url)),operator=operators.has(host(row.url)),summary=Boolean(row.summary||row.summaryZh),current=Boolean(row.reviewedAt&&Date.parse(row.reviewedAt)<=now&&now-Date.parse(row.reviewedAt)<=Number(row.reviewDays||14)*86400000),held=row.active===false||row.lastCheck?.status==='changed';

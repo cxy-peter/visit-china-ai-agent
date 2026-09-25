@@ -1,7 +1,7 @@
 import json,pathlib,os,time,tempfile,subprocess,socket,hashlib,shutil,urllib.request
 from playwright.sync_api import sync_playwright,expect
 BASE=pathlib.Path(__file__).resolve().parents[1]
-OUT=BASE/'evidence/v5.9';OUT.mkdir(parents=True,exist_ok=True)
+OUT=BASE/'evidence/v6';OUT.mkdir(parents=True,exist_ok=True)
 accounts={name:'local-test-password' for name in ['admin','reviewer1','reviewer2','reviewer3','reviewer4','reviewer5']}
 users={name:{'role':'admin' if name=='admin' else 'reviewer','salt':'test-salt','hash':hashlib.scrypt(password.encode(),salt=b'test-salt',n=16384,r=8,p=1,dklen=32).hex()} for name,password in accounts.items()}
 with socket.socket() as sock:sock.bind(('127.0.0.1',0));port=sock.getsockname()[1]
@@ -48,9 +48,9 @@ try:
   page.locator('#nav-library').click();expect(page.locator('#library-refresh-status')).to_contain_text('每三天');expect(page.locator('#library-submit')).to_be_visible()
   page.locator('#library-query').fill('出租车');page.locator('#library-search button').click();check('new tariff is searchable in original library UI',page.locator('#library-results').inner_text().find('Shanghai metered taxi')>=0)
   page.locator('#nav-ops').click();expect(page.locator('#ops-cloud-login')).to_be_visible()
-  page.locator('#ops-cloud-login [name=username]').fill('admin');page.locator('#ops-cloud-login [name=password]').fill(accounts['admin']);page.locator('#ops-cloud-login button').click();expect(page.locator('.ops-kpis')).to_be_visible()
+  page.locator('#ops-cloud-login [name=username]').fill('admin');page.locator('#ops-cloud-login [name=password]').fill(accounts['admin']);page.locator('#ops-cloud-login button').click();expect(page.locator('.ops-kpis').last).to_be_visible()
   check('admin cloud login works',page.locator('.ops-top').inner_text().find('管理员')>=0)
-  page.locator('#ops-dataset').select_option('demo');expect(page.locator('.ops-kpis strong').first).to_have_text('120');check('synthetic CTR matches known fixture','45.3%' in page.locator('.ops-kpis').inner_text())
+  page.locator('#ops-dataset').select_option('demo');expect(page.locator('.ops-kpis').last.locator('strong').first).to_have_text('120');check('synthetic CTR matches known fixture','45.3%' in page.locator('.ops-kpis').last.inner_text())
   page.screenshot(path=str(OUT/'V5_7_Operations_Dashboard.png'))
   page.locator('[data-ops-tab="sources"]').click();check('source refresh and proposals accessible',page.locator('#ops-refresh-sources').is_enabled())
   page.locator('[data-ops-tab="reviews"]').click();expect(page.locator('#ops-content')).to_contain_text('五个不同审核账号')

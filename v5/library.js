@@ -1,9 +1,9 @@
 /* One source catalog for the library, text chat and voice transcript. */
-(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('../v4/core'),require('../v4/data'),require('../data/official/records.json'),require('./discovery'));else root.TravelLibrary=factory(root.ArrivalCore,root.ArrivalData,root.ArrivalCorpus,root.TravelDiscovery);})(globalThis,function(C,D,corpus,Discovery){
+(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('../v4/core'),require('../v4/data'),require('../data/official/records.json'),require('./discovery'),require('./service-data'));else root.TravelLibrary=factory(root.ArrivalCore,root.ArrivalData,root.ArrivalCorpus,root.TravelDiscovery,root.TravelServices);})(globalThis,function(C,D,corpus,Discovery,Services){
 'use strict';
 const indexed=Array.isArray(corpus)?corpus:corpus?.records||[],seen=new Set();
 const records=[...D.sources,...indexed].filter(r=>{if(seen.has(r.url))return false;seen.add(r.url);return true;}).map(r=>({...r,kind:r.kind||r.source_kind}));
-records.push(...Discovery.records());
+records.push(...Discovery.records(),...Services.records);
 const byId=new Map(records.map(r=>[r.id,r])),baseline=new Map(byId);let dynamicIds=new Set();
 const ids=value=>[...new Set((Array.isArray(value)?value:[]).filter(id=>typeof id==='string'&&byId.has(id)))].slice(0,3);
 function search(query='',city='Unknown',kind='all'){

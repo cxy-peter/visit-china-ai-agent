@@ -3,7 +3,7 @@ The separate production smoke test uses real DeepSeek; this suite incurs no API 
 """
 import json,pathlib,os,time,tempfile,subprocess,socket,hashlib,shutil,urllib.request
 from playwright.sync_api import sync_playwright,expect
-BASE=pathlib.Path(__file__).resolve().parents[1];OUT=BASE/'evidence/v5.9';OUT.mkdir(parents=True,exist_ok=True)
+BASE=pathlib.Path(__file__).resolve().parents[1];OUT=BASE/'evidence/v6';OUT.mkdir(parents=True,exist_ok=True)
 with socket.socket() as sock:sock.bind(('127.0.0.1',0));port=sock.getsockname()[1]
 URL=f'http://127.0.0.1:{port}';runtime=tempfile.mkdtemp(prefix='vc59-discovery-')
 names=['admin','reviewer1','reviewer2','reviewer3','reviewer4','reviewer5'];password='v59-local-test-password'

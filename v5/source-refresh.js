@@ -1,6 +1,6 @@
 'use strict';
 const crypto=require('node:crypto'),G=require('./governance'),O=require('./operations'),{htmlText,robotsAllowed}=require('../v4/server');
-const HOSTS=new Set(['english.shanghai.gov.cn','www.shanghai.gov.cn','jtw.sh.gov.cn','english.beijing.gov.cn','jtw.beijing.gov.cn','www.12306.cn','mobile.12306.cn','kyfw.12306.cn','service.shmetro.com','posts.tenpay.com','play.google.com']);
+const HOSTS=new Set(['english.shanghai.gov.cn','www.shanghai.gov.cn','jtw.sh.gov.cn','english.beijing.gov.cn','jtw.beijing.gov.cn','www.12306.cn','mobile.12306.cn','kyfw.12306.cn','service.shmetro.com','posts.tenpay.com','play.google.com','www.marriott.com']);
 async function limited(r){let size=0,parts=[];for await(const chunk of r.body){size+=chunk.length;if(size>1500000)throw Error('SOURCE_TOO_LARGE');parts.push(chunk);}return Buffer.concat(parts).toString('utf8');}
 function checker(fetcher=fetch,{includeContent=false}={}){const robots=new Map(),hosts=new Map();return async source=>{
  const at=new Date().toISOString();try{const u=new URL(source.url);if(u.protocol!=='https:'||u.port||u.username||u.password||!HOSTS.has(u.hostname))throw Error('MANUAL_CONNECTOR_REQUIRED');
@@ -12,7 +12,7 @@ function checker(fetcher=fetch,{includeContent=false}={}){const robots=new Map()
  }catch(e){return{id:source.id,at,status:'unavailable',error:/^[A-Z_0-9]+$/.test(e.message)?e.message:'SOURCE_UNAVAILABLE',baseSourceHash:G.digest(source)};}
 };}
 async function refresh(store,{manual=false,actor='scheduler',now=Date.now(),fetcher=fetch,check=checker(fetcher)}={}){
- const lease=crypto.randomUUID();const sources=await store.mutate(s=>{if(s.refresh.leaseUntil>now)throw Error('REFRESH_BUSY');if(!manual&&s.refresh.nextDueAt&&Date.parse(s.refresh.nextDueAt)>now)return null;if(manual&&s.refresh.lastStartedAt&&now-Date.parse(s.refresh.lastStartedAt)<60000)throw Error('REFRESH_COOLDOWN');s.refresh={...s.refresh,lease,leaseUntil:now+240000,lastStartedAt:new Date(now).toISOString()};return s.sources.filter(r=>r.active!==false).slice(0,30);});
+ const lease=crypto.randomUUID();const sources=await store.mutate(s=>{if(s.refresh.leaseUntil>now)throw Error('REFRESH_BUSY');if(!manual&&s.refresh.nextDueAt&&Date.parse(s.refresh.nextDueAt)>now)return null;if(manual&&s.refresh.lastStartedAt&&now-Date.parse(s.refresh.lastStartedAt)<60000)throw Error('REFRESH_COOLDOWN');for(const r of require('./service-data').records)if(!s.sources.some(x=>x.id===r.id))s.sources.push({...r});s.refresh={...s.refresh,lease,leaseUntil:now+240000,lastStartedAt:new Date(now).toISOString()};return s.sources.filter(r=>r.active!==false).slice(0,30);});
  if(!sources)return{skipped:true};const results=[];
  try{for(let start=0;start<sources.length;start+=3)results.push(...await Promise.all(sources.slice(start,start+3).map(check)));
   return await store.mutate(s=>{if(s.refresh.lease!==lease)throw Error('REFRESH_LEASE_EXPIRED');let changed=0;for(const result of results){const previous=s.checks.find(c=>c.id===result.id),source=s.sources.find(r=>r.id===result.id);if(!source||G.digest(source)!==result.baseSourceHash)continue;

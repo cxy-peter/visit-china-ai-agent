@@ -1,0 +1,86 @@
+{
+  "checks": [
+    {
+      "name": "exact user query answers directly, with a bilingual map",
+      "passed": true
+    },
+    {
+      "name": "no intercity ticket card on metro request",
+      "passed": true
+    },
+    {
+      "name": "nearby cards have real addresses and original sources",
+      "passed": true
+    },
+    {
+      "name": "food filter narrows actual venue cards",
+      "passed": true
+    },
+    {
+      "name": "adding a place adds its station as via, preserving endpoints",
+      "passed": true
+    },
+    {
+      "name": "destination correction remains a route, not a scenic-place description",
+      "passed": true
+    },
+    {
+      "name": "nearby follow-up keeps the latest destination and real venue",
+      "passed": true
+    },
+    {
+      "name": "public stations are searchable in source library",
+      "passed": true
+    },
+    {
+      "name": "places are searchable with the actual address",
+      "passed": true
+    },
+    {
+      "name": "source detail exposes evidence score and its basis",
+      "passed": true
+    },
+    {
+      "name": "login page shows role guide without exposing a credential",
+      "passed": true
+    },
+    {
+      "name": "private account document fills locally without password text in page",
+      "passed": true
+    },
+    {
+      "name": "operations has a station inventory and confidence scores",
+      "passed": true
+    },
+    {
+      "name": "administrator submission publishes immediately and exposes review materials",
+      "passed": true
+    },
+    {
+      "name": "publication proof and base-version material visible",
+      "passed": true
+    },
+    {
+      "name": "loop shows provenance, corpus version and downloadable full cases",
+      "passed": true
+    },
+    {
+      "name": "entire corpus and historical scenarios run from Operations",
+      "passed": true
+    },
+    {
+      "name": "new chat removes previous destination and nearby cards",
+      "passed": true
+    },
+    {
+      "name": "mobile body does not overflow",
+      "passed": true
+    },
+    {
+      "name": "no browser JavaScript errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "scope": "Local browser with actual server/auth/storage; no paid model call"
+}

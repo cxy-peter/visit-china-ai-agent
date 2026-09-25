@@ -5,7 +5,7 @@ import argparse, base64, json, os, pathlib, shutil, socket, subprocess, tempfile
 from playwright.sync_api import sync_playwright, expect
 
 ROOT=pathlib.Path(__file__).resolve().parents[1]
-OUT=ROOT/'evidence/v5.6';OUT.mkdir(parents=True,exist_ok=True)
+OUT=ROOT/'evidence/v6';OUT.mkdir(parents=True,exist_ok=True)
 args=argparse.ArgumentParser();args.add_argument('--en',required=True);args.add_argument('--zh',required=True);args=args.parse_args()
 with socket.socket() as sock:
     sock.bind(('127.0.0.1',0));port=sock.getsockname()[1]

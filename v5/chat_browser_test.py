@@ -2,7 +2,7 @@
 import json, os, pathlib, shutil, socket, subprocess, tempfile, time, urllib.request
 from playwright.sync_api import sync_playwright, expect
 ROOT=pathlib.Path(__file__).resolve().parents[1]
-OUT=ROOT/('evidence/v5.9/hosted' if os.environ.get('CHAT_TEST_URL') else 'evidence/v5.9');OUT.mkdir(parents=True,exist_ok=True)
+OUT=ROOT/('evidence/v6/hosted' if os.environ.get('CHAT_TEST_URL') else 'evidence/v6');OUT.mkdir(parents=True,exist_ok=True)
 with socket.socket() as s:s.bind(('127.0.0.1',0));port=s.getsockname()[1]
 runtime=tempfile.mkdtemp(prefix='vc54-chat-');server=None;checks=[]
 def check(name,result):
@@ -66,9 +66,9 @@ try:
         check('desktop transcript is expanded',page.locator('#transcript').bounding_box()['height']>430)
         check('jump to latest is an overlay',page.locator('#jump-latest').evaluate("el=>getComputedStyle(el).position==='absolute'"))
         page.screenshot(path=str(OUT/'metro-conversation-desktop.png'),full_page=True)
-        page.locator('#new-chat-top').click();page.locator('[data-demo=railout]').click()
+        page.locator('#new-chat-top').click();page.locator('[data-demo=railout]').click();page.locator('#send').click()
         check('outbound Shanghai rail example follows conversation','上海虹桥 → 杭州东' in page.locator('.offer-group').inner_text())
-        page.locator('#new-chat-top').click();page.locator('[data-demo=flight]').click()
+        page.locator('#new-chat-top').click();page.locator('[data-demo=flight]').click();page.locator('#send').click()
         check('inbound flight example follows conversation','北京 → 上海' in page.locator('.offer-group').filter(has_text='模拟航班').inner_text())
         page.set_viewport_size({'width':390,'height':844});page.locator('#new-chat-top').click();send('从陆家嘴到豫园的地铁怎么走')
         check('mobile metro fits without horizontal overflow',page.evaluate('document.documentElement.scrollWidth<=innerWidth+2'))

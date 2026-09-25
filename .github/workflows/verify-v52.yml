@@ -1,4 +1,4 @@
-name: V5.9 verify actual branch
+name: V6 verify actual branch
 on:
   pull_request:
   push:
@@ -32,12 +32,13 @@ jobs:
       - run: python v5/library_browser_test.py
       - run: python v5/operations_browser_test.py
       - run: python v5/discovery_browser_test.py
+      - run: python v5/harness_browser_test.py
       - run: python v5/local_voice_browser_test.py --en v5/fixtures/synthetic-en.wav --zh v5/fixtures/synthetic-zh.wav
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: v59-browser-evidence
+          name: v6-browser-evidence
           path: |
-            evidence/v5.9/
+            evidence/v6/
             evidence/v5.6/
           retention-days: 14

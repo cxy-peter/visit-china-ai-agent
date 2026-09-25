@@ -1,3 +1,9 @@
+# V6: automatic RAG and an editable Operations Harness
+
+Private DeepSeek access now supports credential-document import and authenticated administrator connection. Reviewed sources are chunked and automatically retrieved with BM25, sparse TF-IDF, RRF and evidence-aware reranking. Operations adds bounded skill versions, automatic acceptance, rollback, execution traces and quality metrics with explicit denominators. Location-based hotel, power-bank, luggage, train and metro-ticket queries distinguish real sources from unconnected inventory.
+
+[Architecture, operating guide, data contracts, references and limitations](docs/V6_HARNESS_RAG_OPERATIONS.md). Existing metro, voice, source-review and concurrency safeguards are preserved; no Neo4j service or learned embedding provider is claimed.
+
 # V5.8: model intent, Shanghai metro routing and outcome feedback
 
 DeepSeek now identifies the current intent and route endpoints before read-only tools run. Shanghai metro routing uses a dated 418-station public network snapshot with bilingual maps, editable endpoints and via stations. Per-answer solved/unsolved feedback feeds the Operations quality dashboard and triage queue. [Scope, data provenance and verification](docs/V5_8_METRO_AND_FEEDBACK.md).
