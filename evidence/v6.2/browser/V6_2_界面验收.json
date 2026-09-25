@@ -1,0 +1,102 @@
+{
+  "checks": [
+    {
+      "name": "model mode defaults Auto",
+      "passed": true
+    },
+    {
+      "name": "manual mode persists",
+      "passed": true
+    },
+    {
+      "name": "admin login",
+      "passed": true
+    },
+    {
+      "name": "Loop full sample controls visible",
+      "passed": true
+    },
+    {
+      "name": "admin private DeepSeek connection",
+      "passed": true
+    },
+    {
+      "name": "sourced district route visible",
+      "passed": true
+    },
+    {
+      "name": "itinerary hotel phone",
+      "passed": true
+    },
+    {
+      "name": "timestamps and real map links",
+      "passed": true
+    },
+    {
+      "name": "itinerary export includes sources",
+      "passed": true
+    },
+    {
+      "name": "mobile itinerary has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "time adjustment sends contextual request",
+      "passed": true
+    },
+    {
+      "name": "Auto chooses Pro",
+      "passed": true
+    },
+    {
+      "name": "typing pauses old generation",
+      "passed": true
+    },
+    {
+      "name": "late output cannot replace new context",
+      "passed": true
+    },
+    {
+      "name": "followup request retains both turns",
+      "passed": true
+    },
+    {
+      "name": "natural pause does not send phrase 0",
+      "passed": true
+    },
+    {
+      "name": "natural pause does not send phrase 1",
+      "passed": true
+    },
+    {
+      "name": "natural pause does not send phrase 2",
+      "passed": true
+    },
+    {
+      "name": "three phrases saved in a single turn",
+      "passed": true
+    },
+    {
+      "name": "automatic barge-in stops playback",
+      "passed": true
+    },
+    {
+      "name": "barge-in saved without Interrupt button",
+      "passed": true
+    },
+    {
+      "name": "hangup stops recorder",
+      "passed": true
+    },
+    {
+      "name": "source self-assessment entry available",
+      "passed": true
+    },
+    {
+      "name": "no uncaught browser errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "scope": "Local browser with fixture model and synthetic recognition events, not human microphone quality."
+}

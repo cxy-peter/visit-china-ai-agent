@@ -1,0 +1,28 @@
+{
+  "version": "6.0.0",
+  "nodeTests": {
+    "passed": 242,
+    "failed": 0
+  },
+  "browserChecks": {
+    "browser-report.json": 49,
+    "chat-browser-report.json": 29,
+    "cloud-browser-report.json": 11,
+    "library-browser-report.json": 18,
+    "discovery-browser-results.json": 20,
+    "V5_7_浏览器验收.json": 18,
+    "harness-browser-report.json": 18
+  },
+  "browserTotal": 163,
+  "syntheticWasmSpeechChecks": 18,
+  "humanMicrophoneStudy": false,
+  "retrievalAcceptance": {
+    "passed": 21,
+    "total": 21
+  },
+  "existingScenarioCorpus": {
+    "passed": 1231,
+    "total": 1231
+  },
+  "realModel": "Recorded separately after deployment; browser fixtures are not paid model evidence."
+}

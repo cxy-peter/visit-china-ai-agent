@@ -1,0 +1,82 @@
+{
+  "checks": [
+    {
+      "name": "20 clickable bilingual starter questions",
+      "passed": true
+    },
+    {
+      "name": "single opening sentence",
+      "passed": true
+    },
+    {
+      "name": "admin connection",
+      "passed": true
+    },
+    {
+      "name": "starter submits a real question and answer",
+      "passed": true
+    },
+    {
+      "name": "charging source and provider cards",
+      "passed": true
+    },
+    {
+      "name": "station location creates no rail task",
+      "passed": true
+    },
+    {
+      "name": "no train comparison or optional product upsell",
+      "passed": true
+    },
+    {
+      "name": "CSAT merged into solved feedback",
+      "passed": true
+    },
+    {
+      "name": "unsolved opens contextual issue report",
+      "passed": true
+    },
+    {
+      "name": "original question in issue report",
+      "passed": true
+    },
+    {
+      "name": "arrival guide no map or fare table",
+      "passed": true
+    },
+    {
+      "name": "departure bounds remove earlier and later rows",
+      "passed": true
+    },
+    {
+      "name": "contextual real provider and example tour links",
+      "passed": true
+    },
+    {
+      "name": "current events below nearby",
+      "passed": true
+    },
+    {
+      "name": "mobile no page overflow",
+      "passed": true
+    },
+    {
+      "name": "new chat clears current scene",
+      "passed": true
+    },
+    {
+      "name": "archives retained",
+      "passed": true
+    },
+    {
+      "name": "ignored response safely stays silent",
+      "passed": true
+    },
+    {
+      "name": "no browser errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "scope": "Real browser with fake model and fixture credentials; no real microphone."
+}

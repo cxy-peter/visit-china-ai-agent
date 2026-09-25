@@ -1,0 +1,40 @@
+{
+  "version": "6.4.0",
+  "verifiedAt": "2026-09-25T08:19:25.472501+00:00",
+  "programAndApiTests": 372,
+  "browserChecks": {
+    "legacy": 169,
+    "voiceAndMultiRequest": 33,
+    "newInteraction": 19,
+    "total": 221
+  },
+  "officialIndex": 5000,
+  "communityQuestions": {
+    "unique": 5000,
+    "themes": 50,
+    "targetRecall": 4485,
+    "scope": "Authored variations; target-source recall, not model accuracy."
+  },
+  "loop": {
+    "count": 12000,
+    "start": 48000,
+    "improved": 175,
+    "regressed": 0,
+    "gate": {
+      "fullNewSample": true,
+      "minSample": true,
+      "fullHistorical": true,
+      "targetRecall": true,
+      "noNewRegression": true,
+      "noHistoricalRegression": true,
+      "boundaries": true,
+      "smallGold": true,
+      "measuredImprovement": true
+    },
+    "published": false
+  },
+  "realModel": "Initial failures retained in model-initial.json; the corrected bilingual payment and event flows pass model-retest.json.",
+  "voiceScope": "Synthetic browser recognition events; no human microphone quality or full-duplex claim.",
+  "productionNumericRepair": "Initial production failure preserved; numeric evidence map plus at most one correction, all original validation retained.",
+  "cityNormalization": "Chinese/English city aliases canonicalized at model schema boundary, preserving unknown cities and endpoints."
+}

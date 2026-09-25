@@ -39,7 +39,7 @@ jobs:
           python -m playwright install --with-deps chromium
       - name: Run genuine browser to local backend checks
         run: |
-          npm start > evidence/v4/server.log 2>&1 &
+          npm run start:v4 > evidence/v4/server.log 2>&1 &
           sleep 2
           python v4/browser_test.py
       - name: Record environment and commit

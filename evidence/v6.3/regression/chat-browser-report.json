@@ -1,0 +1,130 @@
+{
+  "passed": 31,
+  "checks": [
+    {
+      "name": "chat greets without microphone consent",
+      "passed": true
+    },
+    {
+      "name": "entry does not scroll the top controls off screen",
+      "passed": true
+    },
+    {
+      "name": "composer visible on desktop",
+      "passed": true
+    },
+    {
+      "name": "four requested service types follow the relevant assistant bubble",
+      "passed": true
+    },
+    {
+      "name": "verified service records replace only their own sample category",
+      "passed": true
+    },
+    {
+      "name": "flight record has dated source instead of fabricated inventory",
+      "passed": true
+    },
+    {
+      "name": "current needs and opening request are visible",
+      "passed": true
+    },
+    {
+      "name": "economy preference stays visible without inventing verified hotel prices",
+      "passed": true
+    },
+    {
+      "name": "Chinese input can produce English replies",
+      "passed": true
+    },
+    {
+      "name": "first large need remains after later requests",
+      "passed": true
+    },
+    {
+      "name": "spoken-distance pattern pre-fills fare form",
+      "passed": true
+    },
+    {
+      "name": "fare estimate exposes official source and scope",
+      "passed": true
+    },
+    {
+      "name": "new chat removes old destination, tasks, opening request and all cards",
+      "passed": true
+    },
+    {
+      "name": "new chat retains only opted-in preferences",
+      "passed": true
+    },
+    {
+      "name": "economy preference still changes unsupported-city sample hotel budget",
+      "passed": true
+    },
+    {
+      "name": "Boston rail uses correct provider",
+      "passed": true
+    },
+    {
+      "name": "new chat clears preferences when carry-over is off",
+      "passed": true
+    },
+    {
+      "name": "reset leaves a fresh open chat",
+      "passed": true
+    },
+    {
+      "name": "mobile preference controls update the same shared state",
+      "passed": true
+    },
+    {
+      "name": "mobile has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "metro guide separates rail station from airport",
+      "passed": true
+    },
+    {
+      "name": "Yuyuan metro diagram is visible",
+      "passed": true
+    },
+    {
+      "name": "origin selection creates a traceable new route turn",
+      "passed": true
+    },
+    {
+      "name": "dated official network map and reusable skill are linked",
+      "passed": true
+    },
+    {
+      "name": "composer does not repeat speech or settings",
+      "passed": true
+    },
+    {
+      "name": "desktop transcript is expanded",
+      "passed": true
+    },
+    {
+      "name": "jump to latest is an overlay",
+      "passed": true
+    },
+    {
+      "name": "outbound Shanghai rail guide and actual provider follow conversation",
+      "passed": true
+    },
+    {
+      "name": "inbound flight uses real airport archive instead of invented fares",
+      "passed": true
+    },
+    {
+      "name": "mobile metro fits without horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "no uncaught errors in chat workflow",
+      "passed": true
+    }
+  ],
+  "scope": "Real Node HTTP and Chromium UI; no booking, microphone or paid model requests."
+}

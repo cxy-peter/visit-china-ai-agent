@@ -1,0 +1,188 @@
+{
+  "url": "https://visit-china-ai-agent-4brqcgqen-cxy-peters-projects.vercel.app",
+  "checks": [
+    {
+      "name": "admin login works",
+      "passed": true
+    },
+    {
+      "name": "trial created",
+      "passed": true
+    },
+    {
+      "name": "trial login",
+      "passed": true
+    },
+    {
+      "name": "real model identifies rail",
+      "passed": true
+    },
+    {
+      "name": "known endpoints retained",
+      "passed": true
+    },
+    {
+      "name": "no repeated origin/destination question",
+      "passed": true
+    },
+    {
+      "name": "provider source and query path given",
+      "passed": true
+    },
+    {
+      "name": "real usage and evaluation trace",
+      "passed": true
+    }
+  ],
+  "answers": [
+    {
+      "input": "苏州出发去杭州坐动车，帮我保留这两个城市并告诉我去哪里查票。",
+      "answer": {
+        "intent": {
+          "kind": "rail",
+          "origin": "苏州",
+          "destination": "杭州",
+          "via": null,
+          "city": null,
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 1696,
+          "completion_tokens": 140,
+          "total_tokens": 1836,
+          "prompt_tokens_details": {
+            "cached_tokens": 640
+          },
+          "prompt_cache_hit_tokens": 640,
+          "prompt_cache_miss_tokens": 1056
+        },
+        "services": [
+          {
+            "id": "verified-rail-12306",
+            "kind": "rail",
+            "title": "铁路12306英文购票与证件指引",
+            "description": "12306英文站提供购票、改签、退票等服务；外国旅客可按规则使用有效护照购票。乘车使用购票时的有效证件，行程信息单不能作为车票。未接入本站实时余票、价格或下单。 线上官方服务；非实体门店 · 页面核对记录；营业、可用量和价格请向运营方确认。未接实时库存或预订接口。",
+            "url": "https://www.12306.cn/en/",
+            "sourceUrl": "https://www.12306.cn/en/faq.html",
+            "sourceId": "verified-rail-12306",
+            "status": "official-guide",
+            "address": "线上官方服务；非实体门店",
+            "phone": null,
+            "phoneExtension": null,
+            "phoneRole": null,
+            "station": null,
+            "stations": [],
+            "stationEvidence": [],
+            "checkedAt": "2026-09-25",
+            "liveAvailability": false
+          }
+        ],
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "rail-passport",
+              "score": 85,
+              "level": "high",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "已匹配运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 85,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "text": "已记下 苏州 → 杭州。查询中国铁路时，在12306按上述地点选择具体出发站、到达站和乘车日期。城市名称不等于具体车站；本助手尚未取得实时车次、余票和票价，查询结果以12306为准。",
+        "sourceIds": [
+          "rail-passport"
+        ],
+        "mode": "deepseek-tool",
+        "notice": "model-intent-verified-tool",
+        "tool": {
+          "kind": "rail",
+          "metro": null,
+          "estimate": null,
+          "request": null,
+          "places": null
+        },
+        "routeVersion": null,
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 84
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 1331
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "rail"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 494,
+            "candidates": 3,
+            "elapsedMs": 84,
+            "hits": [
+              {
+                "id": "sh-hz-rail:17fdb729f60d1c76:0",
+                "sourceId": "sh-hz-rail",
+                "version": "17fdb729f60d1c76",
+                "score": 0.02552,
+                "coverage": 0.077
+              },
+              {
+                "id": "verified-hongqiao-airport-taxi:9ec5b44088d58128:0",
+                "sourceId": "verified-hongqiao-airport-taxi",
+                "version": "9ec5b44088d58128",
+                "score": 0.02511,
+                "coverage": 0.077
+              },
+              {
+                "id": "place-coffee:de39552d40b87682:0",
+                "sourceId": "place-coffee",
+                "version": "de39552d40b87682",
+                "score": 0.01719,
+                "coverage": 0.077
+              }
+            ]
+          },
+          "totalMs": 1419
+        },
+        "dataset": "evaluation",
+        "executionId": "36121ae3-4623-4b0e-918b-840838afb4ec",
+        "assessmentId": "a1ed05e4-baf4-4534-acef-3d77a58a304d"
+      },
+      "error": null
+    }
+  ],
+  "scope": "Small real DeepSeek sample, explicitly tagged evaluation. Separate from 20k offline cases."
+}

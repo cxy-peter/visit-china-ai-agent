@@ -1,0 +1,49 @@
+name: V6.4 verify actual branch
+on:
+  pull_request:
+  push:
+    branches: [main, 'codex/**']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: verify-v52-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: npm ci
+      - run: npm test
+      - run: python tools/collect-official-v61.py --target 5000 --verify-only
+      - run: npm run voice:check && npm run voice:build && npm run build
+      - run: pip install playwright==1.57.0 && python -m playwright install --with-deps chromium
+      - run: python v5/browser_test.py
+      - run: python v5/chat_browser_test.py
+      - run: python v5/cloud_browser_test.py
+      - run: python v5/library_browser_test.py
+      - run: python v5/operations_browser_test.py
+      - run: python v5/discovery_browser_test.py
+      - run: python v5/harness_browser_test.py
+      - run: python v5/v63_browser_test.py
+      - run: python v5/v64_browser_test.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v6-4-browser-evidence
+          path: |
+            evidence/v6/
+            evidence/v5.6/
+            evidence/v6.1/
+            evidence/v6.3/
+            evidence/v6.4/
+          retention-days: 14

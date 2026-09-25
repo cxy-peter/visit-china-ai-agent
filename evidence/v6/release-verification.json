@@ -1,0 +1,40 @@
+{
+  "version": "6.0.0",
+  "at": "2026-09-25T05:27:28.971594+00:00",
+  "production": "https://visit-china-ai-agent.vercel.app/",
+  "deployment": "https://visit-china-ai-agent-gsfqt973w-cxy-peters-projects.vercel.app",
+  "deploymentId": "dpl_CSCcweGs2hnn1acWUrCxUUHnr6vF",
+  "sourceCommit": "b5698a51cf0d1ec0e27fcff63498265a90d82762",
+  "githubActions": [
+    36098372976,
+    36098369652
+  ],
+  "programAndApi": 242,
+  "localBrowser": 163,
+  "syntheticWasmVoice": 18,
+  "humanMicrophoneStudy": false,
+  "retrievalAcceptance": 21,
+  "deterministicScenarios": 1231,
+  "realDeepSeekFinalCandidate": 10,
+  "realDeepSeekMainDomain": 4,
+  "candidateChecks": 42,
+  "publicPageChecks": 18,
+  "publicChatChecks": 13,
+  "smallSampleOnly": true,
+  "issuesFoundDuringIteration": [
+    "Private-code formatting recovery and signed admin connection verified; original delivered code was already valid.",
+    "Intent-only service output required one grounded-generation recovery.",
+    "English luggage questions initially received Chinese prose; explicit output-language rules and bounded recovery added.",
+    "A production UI call was rejected as ANSWER_NUMBER. Numeric validation now distinguishes line-leading list numbering and retries invalid prose once; rejected raw model prose was not logged.",
+    "A later luggage-nearby test was misrouted as sightseeing despite 0.93 model self-confidence. Service-first routing, explicit current request and low-variance sampling added.",
+    "An earlier main-domain forced-language assertion failed without capturing its raw response; it was not counted as a pass."
+  ],
+  "boundaries": [
+    "Retrieval uses BM25, sparse TF-IDF, RRF and deterministic reranking; no learned embedding API.",
+    "No new Neo4j service; fixed execution graph and Shanghai station graph.",
+    "Live service inventory, real booking and order-payment callbacks are not integrated.",
+    "The 1231 scenarios and fixture browser tests are not 1231 paid model calls or real traveler outcomes.",
+    "Final real model checks are tagged evaluation; unrelated browser telemetry is not a controlled business experiment.",
+    "No assertion of production intent accuracy, resolution uplift, statistical significance or human speech quality."
+  ]
+}

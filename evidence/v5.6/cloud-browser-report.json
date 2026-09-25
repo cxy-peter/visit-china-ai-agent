@@ -1,0 +1,50 @@
+{
+  "passed": 11,
+  "checks": [
+    {
+      "name": "private model waits for connection and consent",
+      "passed": true
+    },
+    {
+      "name": "login explicitly enables one shared model consent",
+      "passed": true
+    },
+    {
+      "name": "pending answer receives current context",
+      "passed": true
+    },
+    {
+      "name": "private code is cleared from form",
+      "passed": true
+    },
+    {
+      "name": "model answer appears inside its conversation turn",
+      "passed": true
+    },
+    {
+      "name": "private consent survives same-tab refresh",
+      "passed": true
+    },
+    {
+      "name": "reset discards in-flight model context",
+      "passed": true
+    },
+    {
+      "name": "provider failure stays visible in conversation",
+      "passed": true
+    },
+    {
+      "name": "logout disables cloud authorization",
+      "passed": true
+    },
+    {
+      "name": "logout revokes model consent across reload",
+      "passed": true
+    },
+    {
+      "name": "no uncaught cloud UI errors",
+      "passed": true
+    }
+  ],
+  "scope": "Mock cloud HTTP contract. Actual production provider verification is reported separately."
+}

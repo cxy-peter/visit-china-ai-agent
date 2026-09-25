@@ -1,0 +1,600 @@
+{
+  "url": "https://visit-china-ai-agent.vercel.app",
+  "checks": [
+    {
+      "name": "admin test session authenticated",
+      "passed": true
+    },
+    {
+      "name": "actual chat answer luggage",
+      "passed": true
+    },
+    {
+      "name": "actual chat requested language luggage",
+      "passed": true
+    },
+    {
+      "name": "real UI execution tagged evaluation luggage",
+      "passed": true
+    },
+    {
+      "name": "actual chat answer charging",
+      "passed": true
+    },
+    {
+      "name": "actual chat requested language charging",
+      "passed": true
+    },
+    {
+      "name": "real UI execution tagged evaluation charging",
+      "passed": true
+    },
+    {
+      "name": "service follow-up retains People Square",
+      "passed": true
+    },
+    {
+      "name": "actual chat answer metro",
+      "passed": true
+    },
+    {
+      "name": "actual chat requested language metro",
+      "passed": true
+    },
+    {
+      "name": "real UI execution tagged evaluation metro",
+      "passed": true
+    },
+    {
+      "name": "three real turns stay in conversation",
+      "passed": true
+    },
+    {
+      "name": "real UI has no uncaught JavaScript errors",
+      "passed": true
+    }
+  ],
+  "responses": [
+    {
+      "answer": {
+        "text": "To find luggage storage near People's Square (人民广场) in Shanghai, use the official tourist-service luggage-storage guide, which points to storage options at metro stations, parks and commercial areas plus the Cunzhiji (存知己) search platform. Search by your location (People's Square) there. Always re-check with the provider for current opening hours, locker availability, fees and bag-size limits, since live data is not available here.",
+        "sourceIds": [
+          "sh-luggage-guide",
+          "station-12"
+        ],
+        "mode": "deepseek",
+        "notice": "saved-summaries",
+        "intent": {
+          "kind": "luggage",
+          "origin": null,
+          "destination": "人民广场",
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 2499,
+          "completion_tokens": 147,
+          "total_tokens": 2646,
+          "prompt_tokens_details": {
+            "cached_tokens": 768
+          },
+          "prompt_cache_hit_tokens": 768,
+          "prompt_cache_miss_tokens": 1731
+        },
+        "services": [
+          {
+            "id": "service-luggage",
+            "kind": "luggage",
+            "title": "Luggage storage near 人民广场",
+            "description": "Search the provider; confirm locations, opening hours and availability there.",
+            "url": "https://uri.amap.com/search?keyword=%E4%BA%BA%E6%B0%91%E5%B9%BF%E5%9C%BA%20%E8%A1%8C%E6%9D%8E%E5%AF%84%E5%AD%98&city=上海&view=map",
+            "sourceId": "sh-luggage-guide",
+            "status": "provider-search"
+          },
+          {
+            "id": "guide-luggage",
+            "kind": "luggage",
+            "title": "Official guide",
+            "description": "The official tourist-service guide links to metro, park and commercial-area luggage storage and the Cunzhiji search platform. Check the provider for current hours, availability, fees and bag-size limits.",
+            "url": "https://english.shanghai.gov.cn/en-Individuals-Tourism-TouristServices/20260916/719ada5276444dfdb0d4f342ff68da26.html",
+            "sourceId": "sh-luggage-guide",
+            "status": "official-guide"
+          }
+        ],
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "station-12",
+              "score": 85,
+              "level": "high",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "已匹配运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内",
+                "静态站点快照，非实时运营"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "sh-luggage-guide",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 85,
+          "requiresReview": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 42
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 1313
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "luggage"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 452,
+            "candidates": 12,
+            "elapsedMs": 42,
+            "hits": [
+              {
+                "id": "station-12:9cc8b4c2057c9e4c:0",
+                "sourceId": "station-12",
+                "version": "9cc8b4c2057c9e4c",
+                "score": 0.03203,
+                "coverage": 0.2
+              },
+              {
+                "id": "sh-luggage-guide:30603d82ca13f40a:0",
+                "sourceId": "sh-luggage-guide",
+                "version": "30603d82ca13f40a",
+                "score": 0.02867,
+                "coverage": 0.333
+              },
+              {
+                "id": "sh-marriott-city-centre:d95fbe4d18488db5:0",
+                "sourceId": "sh-marriott-city-centre",
+                "version": "d95fbe4d18488db5",
+                "score": 0.02734,
+                "coverage": 0.333
+              },
+              {
+                "id": "sh-power-bank:cb0ac35360170622:0",
+                "sourceId": "sh-power-bank",
+                "version": "cb0ac35360170622",
+                "score": 0.02225,
+                "coverage": 0.133
+              },
+              {
+                "id": "place-history:6c2d0e8f7b683e6a:0",
+                "sourceId": "place-history",
+                "version": "6c2d0e8f7b683e6a",
+                "score": 0.01948,
+                "coverage": 0.333
+              },
+              {
+                "id": "place-peoplespark:07b124febe00cd0b:0",
+                "sourceId": "place-peoplespark",
+                "version": "07b124febe00cd0b",
+                "score": 0.01888,
+                "coverage": 0.267
+              },
+              {
+                "id": "place-taikoosquare:7db6b5b430cb24f6:0",
+                "sourceId": "place-taikoosquare",
+                "version": "7db6b5b430cb24f6",
+                "score": 0.01689,
+                "coverage": 0.133
+              },
+              {
+                "id": "place-coffee:de39552d40b87682:0",
+                "sourceId": "place-coffee",
+                "version": "de39552d40b87682",
+                "score": 0.01664,
+                "coverage": 0.133
+              }
+            ]
+          },
+          "totalMs": 1356
+        },
+        "dataset": "evaluation",
+        "executionId": "93b5e44b-0aea-4c7a-b0ec-ceee2304077d",
+        "assessmentId": "35065712-0ff9-4005-b8f2-966dfa2b521a"
+      },
+      "revision": 2
+    },
+    {
+      "answer": {
+        "text": "人民广场附近可以找共享充电宝：商场、餐厅、地铁站等公共场所通常设有租借柜。扫码后先核对费用和归还规则，再按页面操作租借。本站没有接入柜机定位、剩余数量或实时价格，请用地图或柜机运营商App核实附近可借、可还的具体位置。",
+        "sourceIds": [
+          "sh-power-bank",
+          "station-12"
+        ],
+        "mode": "deepseek",
+        "notice": "saved-summaries",
+        "intent": {
+          "kind": "charging",
+          "origin": null,
+          "destination": "人民广场",
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 2576,
+          "completion_tokens": 125,
+          "total_tokens": 2701,
+          "prompt_tokens_details": {
+            "cached_tokens": 640
+          },
+          "prompt_cache_hit_tokens": 640,
+          "prompt_cache_miss_tokens": 1936
+        },
+        "services": [
+          {
+            "id": "service-charging",
+            "kind": "charging",
+            "title": "人民广场 · 充电宝",
+            "description": "地图／平台查询入口；位置、营业和余量需在打开后核对。",
+            "url": "https://uri.amap.com/search?keyword=%E4%BA%BA%E6%B0%91%E5%B9%BF%E5%9C%BA%20%E5%85%85%E7%94%B5%E5%AE%9D&city=上海&view=map",
+            "sourceId": "sh-power-bank",
+            "status": "provider-search"
+          },
+          {
+            "id": "guide-charging",
+            "kind": "charging",
+            "title": "官方使用与查询指引",
+            "description": "商场、餐厅、地铁站等公共场所可寻找共享充电宝租借柜。扫码后先核对费用和归还规则，再按页面操作租借。本站没有接入柜机定位、剩余数量或实时价格，请使用地图和柜机运营商核实附近可借、可还的位置。",
+            "url": "https://english.shanghai.gov.cn/en-MobileAndInternet/20260727/56b62a3a9d2f4ddaa8d77367c206b2ae.html",
+            "sourceId": "sh-power-bank",
+            "status": "official-guide"
+          }
+        ],
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "station-12",
+              "score": 85,
+              "level": "high",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "已匹配运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内",
+                "静态站点快照，非实时运营"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "sh-power-bank",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 85,
+          "requiresReview": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 32
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 1291
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "charging"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 452,
+            "candidates": 8,
+            "elapsedMs": 32,
+            "hits": [
+              {
+                "id": "station-12:9cc8b4c2057c9e4c:0",
+                "sourceId": "station-12",
+                "version": "9cc8b4c2057c9e4c",
+                "score": 0.03301,
+                "coverage": 0.231
+              },
+              {
+                "id": "sh-power-bank:cb0ac35360170622:0",
+                "sourceId": "sh-power-bank",
+                "version": "cb0ac35360170622",
+                "score": 0.03035,
+                "coverage": 0.462
+              },
+              {
+                "id": "sh-marriott-city-centre:d95fbe4d18488db5:0",
+                "sourceId": "sh-marriott-city-centre",
+                "version": "d95fbe4d18488db5",
+                "score": 0.02681,
+                "coverage": 0.308
+              },
+              {
+                "id": "place-peoplespark:07b124febe00cd0b:0",
+                "sourceId": "place-peoplespark",
+                "version": "07b124febe00cd0b",
+                "score": 0.0194,
+                "coverage": 0.308
+              },
+              {
+                "id": "place-history:6c2d0e8f7b683e6a:0",
+                "sourceId": "place-history",
+                "version": "6c2d0e8f7b683e6a",
+                "score": 0.01894,
+                "coverage": 0.308
+              },
+              {
+                "id": "place-taikoosquare:7db6b5b430cb24f6:0",
+                "sourceId": "place-taikoosquare",
+                "version": "7db6b5b430cb24f6",
+                "score": 0.01706,
+                "coverage": 0.154
+              },
+              {
+                "id": "place-coffee:de39552d40b87682:0",
+                "sourceId": "place-coffee",
+                "version": "de39552d40b87682",
+                "score": 0.01681,
+                "coverage": 0.154
+              },
+              {
+                "id": "place-jinganpark:e6dec31fb78989bf:0",
+                "sourceId": "place-jinganpark",
+                "version": "e6dec31fb78989bf",
+                "score": 0.01656,
+                "coverage": 0.154
+              }
+            ]
+          },
+          "totalMs": 1324
+        },
+        "dataset": "evaluation",
+        "executionId": "99d2b4e8-9793-4d38-b43b-049728df833f",
+        "assessmentId": "e271adb2-eafe-4ec9-8f77-65ab8e23491f"
+      },
+      "revision": 4
+    },
+    {
+      "answer": {
+        "intent": {
+          "kind": "metro",
+          "origin": "浦东机场",
+          "destination": "上海火车站",
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 2871,
+          "completion_tokens": 47,
+          "total_tokens": 2918,
+          "prompt_tokens_details": {
+            "cached_tokens": 640
+          },
+          "prompt_cache_hit_tokens": 640,
+          "prompt_cache_miss_tokens": 2231
+        },
+        "confidence": {
+          "model": 0.97,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "sh-metro-map",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 90,
+          "requiresReview": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "text": "从浦东1号2号航站楼乘坐2号线（往蟠祥路·国家会计学院方向），到人民广场下车。 在人民广场换乘1号线（往富锦路方向），到上海火车站下车。 路线图和途经站在下方。",
+        "sourceIds": [
+          "sh-metro-map"
+        ],
+        "mode": "deepseek-tool",
+        "notice": "model-intent-verified-tool",
+        "tool": {
+          "kind": "metro",
+          "metro": {
+            "kind": "metro",
+            "origin": "浦东1号2号航站楼",
+            "destination": "上海火车站",
+            "via": null
+          },
+          "estimate": null,
+          "request": null,
+          "places": null
+        },
+        "routeVersion": "shanghai-metro-2026-09-25",
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 41
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 1021
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "metro"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 452,
+            "candidates": 447,
+            "elapsedMs": 41,
+            "hits": [
+              {
+                "id": "station-15:6f80ee45a8a01e1d:0",
+                "sourceId": "station-15",
+                "version": "6f80ee45a8a01e1d",
+                "score": 0.03631,
+                "coverage": 0.421
+              },
+              {
+                "id": "sh-metro-map:6a1b43a40e1dfea9:0",
+                "sourceId": "sh-metro-map",
+                "version": "6a1b43a40e1dfea9",
+                "score": 0.02201,
+                "coverage": 0.368
+              },
+              {
+                "id": "sh-marriott-city-centre:d95fbe4d18488db5:0",
+                "sourceId": "sh-marriott-city-centre",
+                "version": "d95fbe4d18488db5",
+                "score": 0.02094,
+                "coverage": 0.211
+              },
+              {
+                "id": "sh-luggage-guide:30603d82ca13f40a:0",
+                "sourceId": "sh-luggage-guide",
+                "version": "30603d82ca13f40a",
+                "score": 0.02087,
+                "coverage": 0.211
+              },
+              {
+                "id": "pvg-arrival:5985bdc9e0cddcd4:0",
+                "sourceId": "pvg-arrival",
+                "version": "5985bdc9e0cddcd4",
+                "score": 0.01995,
+                "coverage": 0.105
+              },
+              {
+                "id": "sh-power-bank:cb0ac35360170622:0",
+                "sourceId": "sh-power-bank",
+                "version": "cb0ac35360170622",
+                "score": 0.01939,
+                "coverage": 0.211
+              },
+              {
+                "id": "sh-hz-rail:17fdb729f60d1c76:0",
+                "sourceId": "sh-hz-rail",
+                "version": "17fdb729f60d1c76",
+                "score": 0.01708,
+                "coverage": 0.211
+              },
+              {
+                "id": "sh-taxi-tariff:cd94ac3262c533f3:0",
+                "sourceId": "sh-taxi-tariff",
+                "version": "cd94ac3262c533f3",
+                "score": 0.01654,
+                "coverage": 0.105
+              }
+            ]
+          },
+          "totalMs": 1064
+        },
+        "dataset": "evaluation",
+        "executionId": "16e1e92a-de84-4848-9729-a1814958d114",
+        "assessmentId": "d92c3e1a-47c2-4ef4-b98f-53e87c395cd7"
+      },
+      "revision": 6
+    }
+  ],
+  "errors": [],
+  "scope": "Three user-interface submissions to real DeepSeek; evaluation flag injected solely to exclude QA executions from live metrics"
+}

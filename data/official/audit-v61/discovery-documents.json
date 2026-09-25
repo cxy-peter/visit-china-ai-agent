@@ -1,0 +1,1082 @@
+{
+  "https://www.gov.cn/": {
+    "sha256": "3a69dca70416f132f8aca53c18eae3e56d07f1a76c37c103d82fd4223f75ec49",
+    "seen_at": "2026-09-25T05:35:54.942851+00:00"
+  },
+  "https://en.nia.gov.cn/": {
+    "sha256": "a241674c4b53799187f59da259e9392f7f62265fd1d086a0ebfdfb6c22d71e33",
+    "seen_at": "2026-09-25T05:35:59.719100+00:00"
+  },
+  "https://english.shanghai.gov.cn/": {
+    "sha256": "0e65ee7419dd01c1506b0862f02dd02eba3ab855957ea813fb99ebe809b22257",
+    "seen_at": "2026-09-25T05:36:00.046300+00:00"
+  },
+  "https://www.gov.cn/zhengce/index.htm": {
+    "sha256": "9c99ab00b1267db28997fd12f72871458fa7c50288681d3e5418a1a82352f2d2",
+    "seen_at": "2026-09-25T05:36:02.074977+00:00"
+  },
+  "https://www.gov.cn/zhengce/xxgk/": {
+    "sha256": "f26668cde19a019347d1aaae6fee9c587655b468d4fbbc95ba09834a5b693cbe",
+    "seen_at": "2026-09-25T05:36:03.645955+00:00"
+  },
+  "https://www.gov.cn/zhuanti/202608jjsj/index.htm": {
+    "sha256": "1bb0466db78ba0057647568fd30c6b8ac425c46be467e06d00d1f4fe6bb8b293",
+    "seen_at": "2026-09-25T05:36:06.426152+00:00"
+  },
+  "https://www.gov.cn/gwyzzjg/": {
+    "sha256": "6608420ee404584d08362f37101b6b7d383bf9ff50f602e2d1e789da62fcc555",
+    "seen_at": "2026-09-25T05:36:07.081322+00:00"
+  },
+  "https://www.gov.cn/guoqing/": {
+    "sha256": "57012741543314c11ba5382ba53b3c57764606ca6dc5ef3acf5910617447ecf9",
+    "seen_at": "2026-09-25T05:36:11.478285+00:00"
+  },
+  "https://www.gov.cn/gzjxs/": {
+    "sha256": "b1648611a78f0e7eb0606540f1e63922749e0b9ac32f24098fa33dea21bfe755",
+    "seen_at": "2026-09-25T05:36:15.321228+00:00"
+  },
+  "https://www.gov.cn/fuwu/gongmin/": {
+    "sha256": "3a3e5c1d70f9670e120c7f28a65957d69586d218d5c70df0f60aed751c8d2de4",
+    "seen_at": "2026-09-25T05:36:20.397412+00:00"
+  },
+  "https://www.gov.cn/fuwu/gongmin/chusheng/": {
+    "sha256": "c93f0d1a1c9304629c38d54075bd2cae362269766d20e0bc1c38c14c33b2d570",
+    "seen_at": "2026-09-25T05:36:21.393774+00:00"
+  },
+  "https://www.gov.cn/fuwu/qiye/": {
+    "sha256": "411898a02f0580cad4b133cf0ce66e143ae3a2e64c11b86e38de41875e8962ac",
+    "seen_at": "2026-09-25T05:36:26.341061+00:00"
+  },
+  "https://www.gov.cn/fuwu/qiye/kbqy/": {
+    "sha256": "6dbbf0206043e3d6823694f38a38199a2fa515e30b810d18625d429e25d76841",
+    "seen_at": "2026-09-25T05:36:27.351029+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index.html": {
+    "sha256": "b795ee1520b1f4fcd448d61c6dc1b2c5e495c1fefeefd0e99b3ee9f2e4e0390b",
+    "seen_at": "2026-09-25T05:36:39.641049+00:00"
+  },
+  "https://en.nia.gov.cn/n147433/index.html": {
+    "sha256": "63652987725af9eb10e012be2d7ab73f08d521f3598e6ecc66d15352c280b3e6",
+    "seen_at": "2026-09-25T05:36:41.646627+00:00"
+  },
+  "https://en.nia.gov.cn/n147418/n147458/index.html": {
+    "sha256": "1c0d6501afe871fe3c1f0dbef204b016c74fb2ae6b8c10a9a01b18e6084b03b8",
+    "seen_at": "2026-09-25T05:36:43.643870+00:00"
+  },
+  "https://en.nia.gov.cn/n147418/n147468/index.html": {
+    "sha256": "b2486fe250878839770580b7dde259ff34b1597438cd09c8bebed431741adf37",
+    "seen_at": "2026-09-25T05:36:44.641036+00:00"
+  },
+  "https://en.nia.gov.cn/n147418/n147463/index.html": {
+    "sha256": "0174f4fc4f8450c4e30e8e1a9bbbf2a7b4c4a4f53fdeaa84f19a02b560cd711b",
+    "seen_at": "2026-09-25T05:36:45.660259+00:00"
+  },
+  "https://en.nia.gov.cn/n147418/n147473/index.html": {
+    "sha256": "942776c65bbc6572766fcc9f8fc348f6c1c1e1d413dd411847da645280ae0295",
+    "seen_at": "2026-09-25T05:36:46.666995+00:00"
+  },
+  "https://en.nia.gov.cn/n147423/n196714/index.html": {
+    "sha256": "53d460fda761e35e9cc02a770524f960dc76096a58721d0334abe73db1a067db",
+    "seen_at": "2026-09-25T05:36:47.663521+00:00"
+  },
+  "https://en.nia.gov.cn/n147423/n147478/index.html": {
+    "sha256": "3252cc2884b683b1f4cf7ff1869afd06f579c91529208b4ea99b2f800bce75e2",
+    "seen_at": "2026-09-25T05:36:48.665786+00:00"
+  },
+  "https://en.nia.gov.cn/n147428/n147503/index.html": {
+    "sha256": "3b62c35cff92830932185b7684716d2a84d76f80eccc1c3db92e0a6d46515ef4",
+    "seen_at": "2026-09-25T05:36:51.694820+00:00"
+  },
+  "https://en.nia.gov.cn/n147428/n147508/index.html": {
+    "sha256": "c53d8d1e77e2add2204891db13cbad96e133e19f4f19ff436ae7b220dfdfda5f",
+    "seen_at": "2026-09-25T05:36:52.652423+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-WorldSkillsShanghai2026/index.html": {
+    "sha256": "69ab80cccac085a3e0c58dcadf2f8e7867b9b823124959bd091349606e16f738",
+    "seen_at": "2026-09-25T05:36:53.944411+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-2026ShanghaiSummer/index.html": {
+    "sha256": "0909949a68bad9b5eced2eb6335b6cac9d452205585ef16ee24f547117bbc27e",
+    "seen_at": "2026-09-25T05:36:54.947246+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-2026ShanghaiTourismFestival/index.html": {
+    "sha256": "b907030da2503c270132198345e47cece0a837286a4ee9631a7a59610dd35d4b",
+    "seen_at": "2026-09-25T05:36:55.959992+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-IWantto/index.html": {
+    "sha256": "181d5d265ae193cc529798ce110ef87981676923af0c4f05ba85db994b98954c",
+    "seen_at": "2026-09-25T05:36:56.945439+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-DoBusiness/index.html": {
+    "sha256": "1a7b485deeb80c2fa3d82a79ce3ad10c0457a6ea95ff30d6625ff21cad76f268",
+    "seen_at": "2026-09-25T05:36:57.972724+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-WorkinShanghai/index.html": {
+    "sha256": "4105585a913ca08e343346669b6dcf54a9a996768cd9e97fbe26e992c40d3d87",
+    "seen_at": "2026-09-25T05:36:58.933730+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-TravelinShanghai/index.html": {
+    "sha256": "15e9aa776e0c5bee14c3e0cc86d2352aa2daf26df420d3d1bfe4727397bec622",
+    "seen_at": "2026-09-25T05:37:00.274151+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-StudyinShanghai/index.html": {
+    "sha256": "853af0fb9492da81d97186798ad2f0dcf8f3c0f6d9ff1de9241e291266268444",
+    "seen_at": "2026-09-25T05:37:00.961040+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-ShopinShanghai/index.html": {
+    "sha256": "d49100b9f2f3814597fcf191619c7590f9701f078cd2707824e1d6b7510656f6",
+    "seen_at": "2026-09-25T05:37:01.995863+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-ShanghaiStyle/index.html": {
+    "sha256": "1f61b1c5e4cd502004477fb766f9be07dc268631c6655c67b807c9a84f962f9f",
+    "seen_at": "2026-09-25T05:37:03.947912+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-RefundUponPurchaseService/index.html": {
+    "sha256": "4ca25c668a23f0e812e9ff878c96532a64a3f4d355e8868ec576b5ace9d8bf80",
+    "seen_at": "2026-09-25T05:37:04.952707+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-WhatsNew/index.html": {
+    "sha256": "d9743fbf4950ec77c8df1a0ed5441da33a092bca315fe8697be36e76e5558b1a",
+    "seen_at": "2026-09-25T05:37:06.009850+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-LivinginShanghai/index.html": {
+    "sha256": "56a58a73d33fb13e8d951ea73efe3c2f93189e877b7a0343b1969c5051527fe5",
+    "seen_at": "2026-09-25T05:37:07.952715+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-UsefulApps/index.html": {
+    "sha256": "54413cf247c32e3e5202bfe48bce42b5b1c760c1c7478f26898594d2d4a4e0d1",
+    "seen_at": "2026-09-25T05:37:08.951591+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-KeepingAPetInShanghai/index.html": {
+    "sha256": "87f11027d4d15ada511b6a786c56b729f0087917a7695202eabfc29579b14222",
+    "seen_at": "2026-09-25T05:37:09.995773+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Transportation/index.html": {
+    "sha256": "49b1ce93240dc2bd62ab55773e852a2b71417714ec32d6f26517b57e522772dd",
+    "seen_at": "2026-09-25T05:37:10.993907+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-visas/index.html": {
+    "sha256": "e0c8c36166b4eb78734c71caf9125bc8dc7d2bb4570ecc5517e48c49af334e2c",
+    "seen_at": "2026-09-25T05:37:12.018005+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-BecomeaVolunteer/index.html": {
+    "sha256": "ee08390104db651392a4ec2e3c0a3e156deaff02b922fdb4474c87b94688c895",
+    "seen_at": "2026-09-25T05:37:12.972579+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Marriage/index.html": {
+    "sha256": "13a6ff367c4531f2e21c9b6b2ed818c47a57b5cea4de751593a42aee65a20dda",
+    "seen_at": "2026-09-25T05:37:13.971708+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-RentaShanghai/index.html": {
+    "sha256": "009334dfe450345f2f7bcd94a7ed31cc10c44f712a2590655be851bfdd1a64e9",
+    "seen_at": "2026-09-25T05:37:14.964409+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-IntlMedicalServices/index.html": {
+    "sha256": "69c7622693bf48d535222be22a522fa49a1e7f740defca4578d0ca496bbdcfa5",
+    "seen_at": "2026-09-25T05:37:16.051098+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-ShoppingCenters/index.html": {
+    "sha256": "567ee83363c18c17db05dd117a0e8e8e5c6b7b86a874a949c5f4e2bf0d4a4d61",
+    "seen_at": "2026-09-25T05:37:16.993597+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Nightlife/index.html": {
+    "sha256": "64312201317a322d3ace01103f68ea9f1f8dd7e7a2d38bdbc15b78fb539e70a3",
+    "seen_at": "2026-09-25T05:37:20.004626+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-BarsandPubs/index.html": {
+    "sha256": "fef94cdba24c0bce146b6063cd89837c1eadadadb38714ce3d806bf84f61147b",
+    "seen_at": "2026-09-25T05:37:21.003402+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Cafes/index.html": {
+    "sha256": "172be10d56e0f49753d2d4549b4fad51ca90542ba3503f3a773cec2d9f2e5c57",
+    "seen_at": "2026-09-25T05:37:21.993543+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-SpecialtyFood/index.html": {
+    "sha256": "6722aa62af4aac29d5bae5ae91b6c3faae2b122089af05e48008e7217ec95e53",
+    "seen_at": "2026-09-25T05:37:22.981164+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-TalentinShanghai/index.html": {
+    "sha256": "ed433cbbc1800d086c58af42f23708a9e97487c2d8601558a47c78943a75cef6",
+    "seen_at": "2026-09-25T05:37:24.008792+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-ExpatStories-WhatisNew/index.html": {
+    "sha256": "37f5146c9928d5f51a11c7591d6b10f344be62aa0e5fc5b57a0d11b44faf14bf",
+    "seen_at": "2026-09-25T05:37:25.004700+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-ShanghaiWeeklyBulletin/index.html": {
+    "sha256": "db8cf365fd2c30b4f27f7f2e363c3a97013710aa1a5ba7a8687203e4299728aa",
+    "seen_at": "2026-09-25T05:37:28.001645+00:00"
+  },
+  "https://www.gov.cn/home/toutu/": {
+    "sha256": "bb5096bc2a70138494088e31086376888f884860c6ff84737d4d81c7173c1c73",
+    "seen_at": "2026-09-25T05:37:28.527851+00:00"
+  },
+  "https://www.gov.cn/zhuanti/zggcddescqgdbdh/": {
+    "sha256": "48879b1751fe59841b69b30571ebc4817289cab6ff1c2c4f4f5cf4e3603f7b2a",
+    "seen_at": "2026-09-25T05:37:30.370780+00:00"
+  },
+  "https://www.gov.cn/toutiao/qthy/": {
+    "sha256": "21d6bf003173aebd8168b4eeeb36ccb94f59a2452482636f3ee5893858a73285",
+    "seen_at": "2026-09-25T05:37:31.358403+00:00"
+  },
+  "https://www.gov.cn/yaowen/liebiao/YAOWENLIEBIAO.json": {
+    "sha256": "7871c5bba14a6804e5a98f54ccc9805fc52e61d34f9f7762e5217ab5fe5dcd01",
+    "seen_at": "2026-09-25T05:37:36.306436+00:00"
+  },
+  "https://www.gov.cn/zhengce/gongbao/guowuyuan1954_1999/": {
+    "sha256": "3adc8a1627c82b62160a9d5b63ee4e5d5fa1bba1e2fe08d98c928eeb9ada415a",
+    "seen_at": "2026-09-25T05:37:40.353590+00:00"
+  },
+  "https://www.gov.cn/lianbo/YAOWENLIEBIAO.json": {
+    "sha256": "8c9a9301e41ea3cdbb72f43ddcf75d98e2740b0a3fdc3361b750583e95ccc5f4",
+    "seen_at": "2026-09-25T05:37:54.073754+00:00"
+  },
+  "https://www.gov.cn/hudong/wsdy/WSDYLIST.json": {
+    "sha256": "e56d7fb35640432f6c4fc02270fb6e19a3df19754f814d5dd7fed37c759ba4aa",
+    "seen_at": "2026-09-25T05:37:56.350248+00:00"
+  },
+  "https://www.gov.cn/hudong/hygq/lyhf/TONGYONGLIEBIAODRQ.json": {
+    "sha256": "6941a6761ce2480b6e60de23bed1ce019433cbc379bca8589628e66447b7724e",
+    "seen_at": "2026-09-25T05:37:57.398211+00:00"
+  },
+  "https://www.gov.cn/fuwu/bmdfdt/": {
+    "sha256": "c435238675b6997ca37223039577046cc51e4c5934dda88d98e58def7e03e120",
+    "seen_at": "2026-09-25T05:38:00.342833+00:00"
+  },
+  "https://www.gov.cn/fuwu/gongmin/huji/hjgd/": {
+    "sha256": "6d70c223aae0b6b6d2a5943a88d97d4df1c1bac25424e145ff7dbda5d9f67c70",
+    "seen_at": "2026-09-25T05:38:02.408601+00:00"
+  },
+  "https://www.gov.cn/fuwu/gongmin/chusheng/csgd/": {
+    "sha256": "f4e51d2683ca9b6893ee72685740a8e116b90c4b530f33a778164e7aedf43869",
+    "seen_at": "2026-09-25T05:38:03.876764+00:00"
+  },
+  "https://www.gov.cn/fuwu/gongmin/ruxue/rxgd/": {
+    "sha256": "c20a782ec38610b3e33ca7639ded0c367dc7de7a49982fa8f709504a61d9a095",
+    "seen_at": "2026-09-25T05:38:04.471890+00:00"
+  },
+  "https://www.gov.cn/fuwu/gongmin/gongzuo/gzgd/": {
+    "sha256": "8f1933f6396955584b73d590254fa7c4a8c0cd92d6e5cce0690cf7e406916bc1",
+    "seen_at": "2026-09-25T05:38:05.703439+00:00"
+  },
+  "https://www.gov.cn/fuwu/gongmin/shenghuo/shgd/": {
+    "sha256": "0b10d4584bb2ac6b8a69b770e6159acb9cbc9f98ba3acef2a336d41664506d36",
+    "seen_at": "2026-09-25T05:38:06.432690+00:00"
+  },
+  "https://www.gov.cn/fuwu/gongmin/anju/ajgd/": {
+    "sha256": "42950f70f38960937a75542cdda22c60d9c508eb2733ea237d7d483c2f26091e",
+    "seen_at": "2026-09-25T05:38:07.432668+00:00"
+  },
+  "https://www.gov.cn/fuwu/gongmin/jiuyi/jygd/": {
+    "sha256": "0579cbe8260ba039cb6815cf43588cd1ba8ffa60b44fcec5ab7376b53d1579c1",
+    "seen_at": "2026-09-25T05:38:09.537804+00:00"
+  },
+  "https://www.gov.cn/fuwu/gongmin/lvyou/lygd/": {
+    "sha256": "d280f9cc1b9973d877118526faaab73079195cad4c44fb8f59fac18d94f61dde",
+    "seen_at": "2026-09-25T05:38:10.484547+00:00"
+  },
+  "https://www.gov.cn/fuwu/gongmin/tuixiu/txgd/": {
+    "sha256": "1f50611167f62f141737fbd2eac6bbde2d6d9f5705c03f4ea4cdaff775d6230c",
+    "seen_at": "2026-09-25T05:38:11.849085+00:00"
+  },
+  "https://www.gov.cn/fuwu/qiye/kbqy/kbqygd/": {
+    "sha256": "ea34c124c07c74d43074401bfa091bbe1eda3e2feae352ea462aaf6241d6279e",
+    "seen_at": "2026-09-25T05:38:14.454867+00:00"
+  },
+  "https://www.gov.cn/fuwu/qiye/jyfz/jyfzgd/": {
+    "sha256": "26d0aa7e2184a23970c18359f1b394203d59bb75b3cd624f641fd5a656131440",
+    "seen_at": "2026-09-25T05:38:15.404630+00:00"
+  },
+  "https://www.gov.cn/fuwu/qiye/qyyg/qyyggd/": {
+    "sha256": "54184be17557a56ffeade8d29a6bdc10f82165c0e69de1d1e14171a45f38c4ee",
+    "seen_at": "2026-09-25T05:38:16.417815+00:00"
+  },
+  "https://www.gov.cn/fuwu/qiye/nsjf/nsjfgd/": {
+    "sha256": "53954b20bb92aec81ef17a31d47fc776e35fce16fff7a10323806381cdf58983",
+    "seen_at": "2026-09-25T05:38:17.454887+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_1.html": {
+    "sha256": "414b30053d53cab53c4e47b93581c5860a3c4a4c26a3e4529bed22eb38b7d228",
+    "seen_at": "2026-09-25T05:38:19.777798+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_2.html": {
+    "sha256": "7559eb871e7aa3602f9da233fd1c360b832f46b2fa4d052eead9ffbaff3042d7",
+    "seen_at": "2026-09-25T05:38:20.122676+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_3.html": {
+    "sha256": "12ad5fcadb2d6634d7d7f664eea8e354a255903e31ff4367e463a543bb603aca",
+    "seen_at": "2026-09-25T05:38:21.158694+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_4.html": {
+    "sha256": "d03803a7d141c546c7836ad9643b6b7060ee957ad8963a527673a9ff45853803",
+    "seen_at": "2026-09-25T05:38:22.073959+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_5.html": {
+    "sha256": "31c565e4b90daf414431c194d9691e73fe9f2bd384d950d5dfe3634d33ef5c22",
+    "seen_at": "2026-09-25T05:38:23.067677+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_6.html": {
+    "sha256": "d4482d4174de31e70068ae625111c2b83490c05ac5e5713cabb8bd910d7a730e",
+    "seen_at": "2026-09-25T05:38:24.119942+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_7.html": {
+    "sha256": "34b625991ab4327824a7cc961f3ba0ceac1da92c0eaf9f52fa209fd5c1d9bdc4",
+    "seen_at": "2026-09-25T05:38:25.082457+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_8.html": {
+    "sha256": "ea1f193dd04d322a1a9233ada982869bc824fee50e57aaa72d52875f54902049",
+    "seen_at": "2026-09-25T05:38:26.115522+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_9.html": {
+    "sha256": "9d48e6699203e6d4076913f630dbf6e0a492623010451dd5350ce5206b82922a",
+    "seen_at": "2026-09-25T05:38:27.312418+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_10.html": {
+    "sha256": "7cd0e8bcd803f4bc8fcf746485d4af947b058d60e6fb23768b6ae77ff83dffc8",
+    "seen_at": "2026-09-25T05:38:28.103814+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_11.html": {
+    "sha256": "67f1c121ed2fa29be921ea6214111516b4d59556c9a91e124812af57168ca652",
+    "seen_at": "2026-09-25T05:38:29.490051+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_12.html": {
+    "sha256": "75bd24d7e548adec1bd227247336d54d3e00567e4f9b988c2d338de32617fb67",
+    "seen_at": "2026-09-25T05:38:30.181251+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_13.html": {
+    "sha256": "65bed21a6a20593a07d280c1dde1fbf58c56946c694029b5301bfadacc7ea3a7",
+    "seen_at": "2026-09-25T05:38:31.111100+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_14.html": {
+    "sha256": "b89bcf8f5382ad0f911ea3f4afde1235b30317c014d8848a45365949435adcfd",
+    "seen_at": "2026-09-25T05:38:32.076571+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_15.html": {
+    "sha256": "8809b97c57a06abd15220ac966df4b2ccc65a1f2a4fae0389b9cc2cdb63d4c76",
+    "seen_at": "2026-09-25T05:38:33.153716+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_16.html": {
+    "sha256": "05249201588d43dd0a756da645e519a9cf087c7f6ee6be4a12e9d055f3d034eb",
+    "seen_at": "2026-09-25T05:38:34.079504+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_17.html": {
+    "sha256": "ae13823b4612453f917340ff416f9881a5d455758cc5e195ca53d244bf5b6255",
+    "seen_at": "2026-09-25T05:38:35.092607+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_18.html": {
+    "sha256": "a3b52cfc75c37c4919a255988fe8b9629cbb0ba0bceb30ae9dd765c59c76fb02",
+    "seen_at": "2026-09-25T05:38:36.226675+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_19.html": {
+    "sha256": "7c8974180a2b634e679889dee52f9a5c73b94854c79bc720688112bf05a55446",
+    "seen_at": "2026-09-25T05:38:37.103832+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_20.html": {
+    "sha256": "ff769616cac02d6a848e5b412736135092633ad5b6c06f19d86c7fbe751b7fff",
+    "seen_at": "2026-09-25T05:38:38.102758+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_21.html": {
+    "sha256": "56fce0773bac74fd56d5d80d83508dca5492d745cbdf0957c4eef4830e2f7246",
+    "seen_at": "2026-09-25T05:38:39.302232+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_22.html": {
+    "sha256": "8c954a4aacb7ce7523c7e760707bdb081fe7bf85bf3943a8d900f29f17a4633c",
+    "seen_at": "2026-09-25T05:38:40.093203+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_23.html": {
+    "sha256": "f9ce08f474e23a95cb7462683e57d6cd40bcdaedba9c7eb63fd1360cb1e519ae",
+    "seen_at": "2026-09-25T05:38:41.087206+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_24.html": {
+    "sha256": "2ea4ecb08636bde7842857262ef656b8ac053566c524d4da9f306d90d3cb06d2",
+    "seen_at": "2026-09-25T05:38:42.261341+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_25.html": {
+    "sha256": "698755bdc3b155b9ef1afc9e25ad27617ade3ab9c8928a2d6165f31a828295a1",
+    "seen_at": "2026-09-25T05:38:43.100123+00:00"
+  },
+  "https://en.nia.gov.cn/n147413/index_150075_26.html": {
+    "sha256": "b3a53f43a4a3f5b3f25022461d02084f5c626d1c6ba8e38fd4dd5c2a02f494d5",
+    "seen_at": "2026-09-25T05:38:44.178462+00:00"
+  },
+  "https://en.nia.gov.cn/n147418/n147468/index_150398_1.html": {
+    "sha256": "ce606f82192b6700654709d9bc397d266bc80d3e5e5fb8a28b79858cb847e66d",
+    "seen_at": "2026-09-25T05:38:46.083852+00:00"
+  },
+  "https://en.nia.gov.cn/n147418/n147468/index_150398_2.html": {
+    "sha256": "9e34b86654804df34561551701c122724c887ffcec50c60d0af8d6f45427b1a7",
+    "seen_at": "2026-09-25T05:38:47.104544+00:00"
+  },
+  "https://en.nia.gov.cn/n147418/n147468/index_150398_3.html": {
+    "sha256": "a68a41a01d527a42f90c1c760d610b44700184128791c4780ca08bfd320fa026",
+    "seen_at": "2026-09-25T05:38:48.340668+00:00"
+  },
+  "https://en.nia.gov.cn/n147418/n147463/index_150398_1.html": {
+    "sha256": "163c82fec40164a297b1957456dda83a2cd2c143293f916c5d1515113925473a",
+    "seen_at": "2026-09-25T05:38:49.089761+00:00"
+  },
+  "https://en.nia.gov.cn/n147418/n147473/index_150398_1.html": {
+    "sha256": "cb8e3db0bce6e2da4e8b8e44f442268e64a1d4a2349d871810b013a07383550f",
+    "seen_at": "2026-09-25T05:38:50.154215+00:00"
+  },
+  "https://en.nia.gov.cn/n147418/n147473/index_150398_2.html": {
+    "sha256": "fae0cc46c05d47eb7990e0dee7bfacd9f7d6965539a51d43ea6181ed8e131752",
+    "seen_at": "2026-09-25T05:38:51.123927+00:00"
+  },
+  "https://en.nia.gov.cn/n147428/n147503/n147800/index.html": {
+    "sha256": "21ba67a13d127d391006d92181b5f7b634aef4aca109f81a4e4854af3805cf95",
+    "seen_at": "2026-09-25T05:38:59.175695+00:00"
+  },
+  "https://en.nia.gov.cn/n147428/n147503/n147805/index.html": {
+    "sha256": "71ff34ff3109a8cee6d7977410e31d44752e337b7b53fd24f3ce4079f739a2c9",
+    "seen_at": "2026-09-25T05:39:00.248886+00:00"
+  },
+  "https://en.nia.gov.cn/n147428/n147508/index_165128_1.html": {
+    "sha256": "d180d5ffa90083536da0f7574d31d5bc8c2a340dc8471e42333d37e7b6a5a946",
+    "seen_at": "2026-09-25T05:39:01.127083+00:00"
+  },
+  "https://en.nia.gov.cn/n147428/n147508/index_165128_2.html": {
+    "sha256": "35f2209badaa0a1b90b6b1855467cbc661a11d6416ad822e743a121fe8b93c1e",
+    "seen_at": "2026-09-25T05:39:02.166244+00:00"
+  },
+  "https://en.nia.gov.cn/n147428/n147508/index_165128_3.html": {
+    "sha256": "9874a4e25aa7fb2d82a392c9dfc68ab07a093d20ade7c25a24c3c603b89fc6d4",
+    "seen_at": "2026-09-25T05:39:03.212579+00:00"
+  },
+  "https://en.nia.gov.cn/n147428/n147508/index_165128_4.html": {
+    "sha256": "ed5ce6b72afe8d66634f9ba832ff7ae89a0d3bed5259a07cbb003d657e007e14",
+    "seen_at": "2026-09-25T05:39:04.109568+00:00"
+  },
+  "https://en.nia.gov.cn/n147428/n147508/index_165128_5.html": {
+    "sha256": "a3e221f1d2ada1d06a8e6b442fbd7e175caaea45cd581a4dd6a005aa59420530",
+    "seen_at": "2026-09-25T05:39:05.171372+00:00"
+  },
+  "https://en.nia.gov.cn/n147428/n147508/index_165128_6.html": {
+    "sha256": "36db0392142ebc8cd761740abfe251acb5b20fb23b429ba516182c8fb36331d2",
+    "seen_at": "2026-09-25T05:39:06.303800+00:00"
+  },
+  "https://en.nia.gov.cn/n147428/n147508/index_165128_7.html": {
+    "sha256": "e01cc73efd900d47e68be89f242afb0680c1bf68b14a46950d31401b8773dfe1",
+    "seen_at": "2026-09-25T05:39:07.112831+00:00"
+  },
+  "https://en.nia.gov.cn/n147428/n147508/index_165128_8.html": {
+    "sha256": "cca91e8c20fa32c3c4fed6dcc24a78bb85479115b072c0293dee8259de33a51e",
+    "seen_at": "2026-09-25T05:39:09.255823+00:00"
+  },
+  "https://en.nia.gov.cn/n147428/n147508/index_165128_9.html": {
+    "sha256": "21834bc9dc78ea760ade81c66952dd0bb95f9a5bf9fbeba9f24b64a70eb72522",
+    "seen_at": "2026-09-25T05:39:09.875484+00:00"
+  },
+  "https://en.nia.gov.cn/n147428/n147508/index_165128_10.html": {
+    "sha256": "f6fffb7d9393138774febd0211e76ee2f329e8b78f7b2d35a713df76318df843",
+    "seen_at": "2026-09-25T05:39:10.583413+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-WorldSkills2026About/index.html": {
+    "sha256": "49f2857da10f681cb1199734526902f4e5839e5c0ee8034204ba95f867dc0747",
+    "seen_at": "2026-09-25T05:39:12.668336+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-WorldSkills2026Latest/index.html": {
+    "sha256": "19c2c148e679634ac3aefc99b9770e6c94484f986ea2759b0362edd3666c697f",
+    "seen_at": "2026-09-25T05:39:12.952800+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-WorldSkillsMultimedia/index.html": {
+    "sha256": "f5449f2e8dc837e42e9b35b84fce641be085e1705c2dd7145c1fbaf870d45911",
+    "seen_at": "2026-09-25T05:39:13.954914+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-ShanghaiSkills/index.html": {
+    "sha256": "bd3e6a6f7b9d51b0f20fc642b921b0e64a1d6c1523da7112a1d41d53fcce496c",
+    "seen_at": "2026-09-25T05:39:14.944549+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-WorldSkillsServicesGuides/index.html": {
+    "sha256": "9428d409dc7287d7c38c42b3ca306ed8e498f3d8ada5257d629bf78005e97b13",
+    "seen_at": "2026-09-25T05:39:15.946056+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-PaymentsInShanghai/index.html": {
+    "sha256": "91fa44a2adc5109bbc6a5679ef1e0822e1b2c533defbb705d49c5d50d0e5be2a",
+    "seen_at": "2026-09-25T05:39:17.967931+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-GuideforForeignTourists/index.html": {
+    "sha256": "ff87c7638eac862b586007bae63491527cc2e69700e7d5bcef54d555cb6b16d6",
+    "seen_at": "2026-09-25T05:39:18.960917+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-TaxRefundandDutyFree/index.html": {
+    "sha256": "32d6a25df29468d3544ecf5426260759b5eacf8f71f6688da8f10860c493ceb3",
+    "seen_at": "2026-09-25T05:39:19.961412+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-NewsAndHighlights-2026ShanghaiSummer/index.html": {
+    "sha256": "1399b1fb98169767c21628541bc2fc7712c9b56e6a7481c0d311e165a1c33a04",
+    "seen_at": "2026-09-25T05:39:21.351329+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-BrandPopups-2026ShanghaiSummer/index.html": {
+    "sha256": "16b638bbe95228916aee5d0a42cfce3b042d95a98ef80fc3061089b945945f79",
+    "seen_at": "2026-09-25T05:39:21.951840+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Performances-2026ShanghaiSummer/index.html": {
+    "sha256": "b0aabcee1fb8ecf78bd3d99314696fe99188bae419b9ca9b7fa5aa720f68fb6a",
+    "seen_at": "2026-09-25T05:39:23.953562+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-StreetMarkets-2026ShanghaiSummer/index.html": {
+    "sha256": "597afc451997391c51cd02c9761320e7ac75704f867844e072d33875a1254b1c",
+    "seen_at": "2026-09-25T05:39:24.953696+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-NightExperiences-2026ShanghaiSummer/index.html": {
+    "sha256": "3f2079a9f498ceed5e084b4667ffca2410bc769b7eae15c32b07ee2cbba763bb",
+    "seen_at": "2026-09-25T05:39:25.957245+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Sports-2026ShanghaiSummer/index.html": {
+    "sha256": "9cae4a7bc135b5be057052c104c7f74a39d56dd9f072291bfc3a0db131d41b9f",
+    "seen_at": "2026-09-25T05:39:26.962899+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-ChildrensEducation/index.html": {
+    "sha256": "fde0719f3641b8936687ba302c98520d73fcc73f00b6cb681f1c4390293fd625",
+    "seen_at": "2026-09-25T05:39:31.977684+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Editorspick-DoBusiness/index.html": {
+    "sha256": "596a9f4016ef9201e80194d156567bdaa3687ba1fde5b0cc0a3d39ea09784ebb",
+    "seen_at": "2026-09-25T05:39:32.974851+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-ShanghaiinNumbers/index.html": {
+    "sha256": "4ae335b58c8bb48b84a3b175884fe18035156777671ffe22eb9dca8a73a51ea9",
+    "seen_at": "2026-09-25T05:39:33.968304+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-KeyIndustries/index.html": {
+    "sha256": "d1614c6e3bedfe4db2a1ec80a69e89ae19690457c498215e82db9f94b59c4a1f",
+    "seen_at": "2026-09-25T05:39:34.981305+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-AdministrativeDistricts/index.html": {
+    "sha256": "1f343b38b719568832a0885a0fe3e692abff8fe09c1cf6492874ba24bfceede1",
+    "seen_at": "2026-09-25T05:39:35.974521+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-NationalDevelopmentZone/index.html": {
+    "sha256": "975e58c022f4e3779771c7765315eeba9d4bdc28dde1032d98b7aaf6da2ee0f2",
+    "seen_at": "2026-09-25T05:39:36.970095+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-InvestmentCalendar/index.html": {
+    "sha256": "575ffbae5b7325220da36f8e83a6ccee07b34b8f9fb75f014ed32778b52b692c",
+    "seen_at": "2026-09-25T05:39:37.959954+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-BusinessEnvironment/index.html": {
+    "sha256": "ed8d06014cd6d6df669d667d7b2682863b42d47381a7e38e3c5c0c693de33b34",
+    "seen_at": "2026-09-25T05:39:38.984675+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-PolicyInsights/index.html": {
+    "sha256": "c1f8959d3f40705862e286ec1dc95f5843f6e19078f40ddc8a94f35dc0bea10e",
+    "seen_at": "2026-09-25T05:39:40.010465+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-EstablishaCompany/index.html": {
+    "sha256": "b3c40ddad67e5ff5216dc2e24ed7464f1d14c618b93d1a615053e512bdd04117",
+    "seen_at": "2026-09-25T05:39:40.985546+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-SetupRHQ/index.html": {
+    "sha256": "3c2f04df99c66d40be8a379f7c8da2d2d9b4170082c30eb376467f27af2a219b",
+    "seen_at": "2026-09-25T05:39:41.961009+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-SetupR&DCenter/index.html": {
+    "sha256": "5478e2862d1805f70e8fb70aea30e7530e89c9718082dda1f5266d8d1480c65f",
+    "seen_at": "2026-09-25T05:39:42.962338+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-ManageNGOs/index.html": {
+    "sha256": "1af1dc1c47f2f185ef78f0bdac29af114335f02fdfcc5116c2ad193fec59b978",
+    "seen_at": "2026-09-25T05:39:43.971536+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-SiteSelection/index.html": {
+    "sha256": "510b5384d4b4e2391257c29fe1b3680c44222b2bd4e175440d8c5522a4c2f3e9",
+    "seen_at": "2026-09-25T05:39:44.969736+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-WorkforceManagement/index.html": {
+    "sha256": "37a954bceb4f8591d7ff0148f2bfe1aefd4e638f51a71d436101b59a7a371f3b",
+    "seen_at": "2026-09-25T05:39:45.974871+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Taxation/index.html": {
+    "sha256": "8fed30f5a947b4da102de5c95e02a8613350bf9e3bb1b96a455b43aa3f68b9fd",
+    "seen_at": "2026-09-25T05:39:46.976103+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-InternationalTrade/index.html": {
+    "sha256": "77e0785151ff1dcfe8e625586cb765bfbf54170efb1142eec39af6bf231f4a01",
+    "seen_at": "2026-09-25T05:39:47.988636+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-FinancialServices/index.html": {
+    "sha256": "0b894e300ad821a44fb230d29c23393798ad2374f2f899a3d5f3b84c0303b2db",
+    "seen_at": "2026-09-25T05:39:48.998760+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-IPRProtection/index.html": {
+    "sha256": "e363cd42b62111170083f9996078dba93097e43e906423e834ed6938336c28ca",
+    "seen_at": "2026-09-25T05:39:49.985566+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Guides/index.html": {
+    "sha256": "786a019b9de723ecaaad41d12752aed1398def5cb45aa018cdc9f960b765c0d4",
+    "seen_at": "2026-09-25T05:39:50.978082+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-SustainabilityESG/index.html": {
+    "sha256": "9cd94af9b70a4ca5882acd2bb60090893222e6018ebf828c02ff278255c604ae",
+    "seen_at": "2026-09-25T05:39:51.969074+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-OfficialServicesHubs/index.html": {
+    "sha256": "f9cb0fcb3c438cea6e4a3d24b409ba02b92e65c44ab4253a7d22cea37c487e0b",
+    "seen_at": "2026-09-25T05:39:52.992768+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-LegalServices/index.html": {
+    "sha256": "bbb297916668611fa2204a3388085bacc188b54b6fa9e7a8c9655014418ce8c2",
+    "seen_at": "2026-09-25T05:39:54.013773+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-SuccessStories/index.html": {
+    "sha256": "eed7282ae9a1b8fe8654faadb618942b913c0ae5ff9fa9de6449f152e6cf644b",
+    "seen_at": "2026-09-25T05:39:55.013898+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Fitness/index.html": {
+    "sha256": "56abcaf107d13abc0aa5f9fb8f8bb2471f4c69510cd017cbe42e979cb4b5c658",
+    "seen_at": "2026-09-25T05:39:57.003634+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-wisEditor'spick/index.html": {
+    "sha256": "cdce54f8d143ff6031ff633e128e6d6da95119424676a0c7bd31a4ae83a68d14",
+    "seen_at": "2026-09-25T05:39:58.014464+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-PaidLeave/index.html": {
+    "sha256": "94bd2256ea39bd1282184ef6781d88ef4dcaa74e8afc5ef10f60a74eca2c1823",
+    "seen_at": "2026-09-25T05:39:58.994583+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-LaborLaw/index.html": {
+    "sha256": "c571c946b050fa9c72e700b3c35c5e001a65c2c63d03c44bb255a8d672075705",
+    "seen_at": "2026-09-25T05:40:00.001686+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-JobOpportunities/index.html": {
+    "sha256": "92bc78140cc9c7b42e5a285ca6c664561d5ac6cd480ecfa794f4c21ab074314d",
+    "seen_at": "2026-09-25T05:40:00.987389+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-ExpatStories-WorkinShanghai/index.html": {
+    "sha256": "efdf93d36c73ac9daaf2b2886fdd6affb631d3742a86fb1da62c330dbfe6f3b2",
+    "seen_at": "2026-09-25T05:40:01.988869+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-FamilyFun-travelinshanghai/index.html": {
+    "sha256": "d7dfa244ff38a70dfa2f3fee97c6ba65646a4df488b94974804e2a9fef83314b",
+    "seen_at": "2026-09-25T05:40:05.006399+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-SeasonalTreats-travelinshanghai/index.html": {
+    "sha256": "4d91b85077c6ec9246fb702b3a9bc8c73f0bc580f13e8ef1f724a65259f69eee",
+    "seen_at": "2026-09-25T05:40:05.997303+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-ClosetoNature-travelinshanghai/index.html": {
+    "sha256": "0b655197c1d3bdb5a1768eff0c6356a37502dbb5a07de8aa62d56b043db956c8",
+    "seen_at": "2026-09-25T05:40:07.005858+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-UniqueExperience-travelinshanghai/index.html": {
+    "sha256": "72201808f04448eb408af6640c5fe72a7acc20756a9e54a2b9f4f4f5670a6535",
+    "seen_at": "2026-09-25T05:40:08.011272+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-InDepthTourof16Districts/index.html": {
+    "sha256": "96c7537f7f1c75700639d0822ee8566e2e0db724c711deb182b28e9551864ddb",
+    "seen_at": "2026-09-25T05:40:09.006000+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-240HourVisaFreeTransit/index.html": {
+    "sha256": "0182d7e32d2115e6f9c42e5bfaed9daed13c99b0e5d6d2d9af628bb236fa27b2",
+    "seen_at": "2026-09-25T05:40:10.003895+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-28thSIFF&31stShanghaiTVFestival/index.html": {
+    "sha256": "e0ca0db6b4e033c6bcf1b91285fb3a36f456dc12f5334bef52a971ced70e0b37",
+    "seen_at": "2026-09-25T05:40:11.010022+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-YearOfTheHorseFestivalGuide/index.html": {
+    "sha256": "eec2dada08310df4dcd90ee80b4f5cf14d96f87ab8854b6f37f6c021603844c1",
+    "seen_at": "2026-09-25T05:40:12.355726+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-EventsCalendar/index.html": {
+    "sha256": "c1a70810b4806f005cdfe3191ed403a9142b8131ef70990901e4ae060ffaa9b4",
+    "seen_at": "2026-09-25T05:40:13.011227+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Restaurants/index.html": {
+    "sha256": "48bf12a682cbb5be04601da8af03bc7c479c862dce917d47bca4a54d4030d570",
+    "seen_at": "2026-09-25T05:40:16.013582+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-CityTour/index.html": {
+    "sha256": "e5f74ac3d8182b97a67ae78e96a2936017100700bb7605fd8fba2c14758a73d5",
+    "seen_at": "2026-09-25T05:40:17.980985+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-CultureHeritage/index.html": {
+    "sha256": "6246a86b15b051ec476978367bc26fdb12ff392fcb234ff99d7793d87b829cb0",
+    "seen_at": "2026-09-25T05:40:18.986915+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Souvenir/index.html": {
+    "sha256": "2be250cba42c992c0e573b4b57483a9a14e8b88475f6b3f0bc4e8b0ad5ae7ad1",
+    "seen_at": "2026-09-25T05:40:19.977815+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-FestivalsCelebrations/index.html": {
+    "sha256": "e0faf864c06dd2b95316b01556c7a7770c84f12d95e52615820b5030f43ee42a",
+    "seen_at": "2026-09-25T05:40:21.977351+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-ArtExhibitions/index.html": {
+    "sha256": "84464bd57ce03c75710c72e6f145f7e8625745e827f9636f68c5d001bf303bfb",
+    "seen_at": "2026-09-25T05:40:23.018138+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-CulturalPerformances/index.html": {
+    "sha256": "75b6a5c33043f652a3d29e7e3978ceb48b021d3150cd3482c9b4020908f6c569",
+    "seen_at": "2026-09-25T05:40:24.012510+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-SportsEvents/index.html": {
+    "sha256": "b1f2b274ea5f1712ff98c20b8a131b128108b20e378366e09c7b2dd975fc63ea",
+    "seen_at": "2026-09-25T05:40:25.641819+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-FAQs-TravelinShanghai/index.html": {
+    "sha256": "d9343cf812bbcc3025bc90a4dffaf39d4b02989d4d4208cf82819629df108362",
+    "seen_at": "2026-09-25T05:40:25.985905+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Editor'sPick-StudyinShanghai/index.html": {
+    "sha256": "77e058b87cebdbbda8d79441cc63c821d292597b1e29fcb8b2a13cc7abc497b9",
+    "seen_at": "2026-09-25T05:40:26.987078+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Choices/index.html": {
+    "sha256": "55bc6f052af187dc91560b7ad32f036faadc38e6f32bdd949fbedf16029887a2",
+    "seen_at": "2026-09-25T05:40:27.987859+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-ShorttermCourses/index.html": {
+    "sha256": "4294d6fce32405a426bdd36bd1e4c728dfd84b2291c317184bf7692184e2aaa4",
+    "seen_at": "2026-09-25T05:40:28.985636+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-StudentStories/index.html": {
+    "sha256": "b59e042c72a088718756acbc27a71b9bc960b154c74e4ac66075dacf778b779a",
+    "seen_at": "2026-09-25T05:40:29.977638+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-EditorsPick-ShopinShanghai/index.html": {
+    "sha256": "d3f36f32e8cb9a712ee3f18cc75be5c1a8af48862a0f98702306aced2d4cf88d",
+    "seen_at": "2026-09-25T05:40:31.995294+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-LatestEvents/index.html": {
+    "sha256": "b061c42eafd9c16740bd437f98d4043bb8416ec134212d7c1e69164cd9a774d9",
+    "seen_at": "2026-09-25T05:40:33.988827+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-MajorConsumerEvents/index.html": {
+    "sha256": "53b91db3d11d1a4c4d7166213b1c4940b15ecad55f7f1064a77ba9e353be35a7",
+    "seen_at": "2026-09-25T05:40:34.982399+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-UpcomingExpos/index.html": {
+    "sha256": "1a0af811139ee151571c2337da62218f3d1f3d8c1817c829a234fa5af39f558f",
+    "seen_at": "2026-09-25T05:40:36.989741+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-ExpoHighlights/index.html": {
+    "sha256": "6187d2fe42c49f5fc97f17e267e431e42a37d41ee0a2ae84efc3e519b6df423b",
+    "seen_at": "2026-09-25T05:40:37.998392+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-FirstStores/index.html": {
+    "sha256": "70eee97ea6754c16e3e200e49b8637001225b942e2cdb1c104a4ec3e7e6452d6",
+    "seen_at": "2026-09-25T05:40:39.996177+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-TrendyStores/index.html": {
+    "sha256": "244ed711ca60f92f15cc0a9524de40fd765546608fda45914a62684ff69895d0",
+    "seen_at": "2026-09-25T05:40:41.005400+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-SpecialtyShoppingAreas/index.html": {
+    "sha256": "cd43fcefe7cb76e5e75c90b346aa670acb8a98e87cdc2112b3a2361454cdb805",
+    "seen_at": "2026-09-25T05:40:43.006522+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-ShopOnline-ShopinShanghai/index.html": {
+    "sha256": "587279518135748459ff5d0e9875b775c4a77eba26cbf06de7b437cf7addbad3",
+    "seen_at": "2026-09-25T05:40:45.001205+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Events/index.html": {
+    "sha256": "ca5139486c9fdde573c2ff40a9c2c2c055f931c250a2bc4e363f1199112fb081",
+    "seen_at": "2026-09-25T05:40:47.022855+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-FriendshipCitiesofShanghai/index.html": {
+    "sha256": "7b9527d3851434ead16ef37a15318ca20a3371ea4831b0e3db7e05c9267c8a7a",
+    "seen_at": "2026-09-25T05:40:47.981093+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-WAIC2026/index.html": {
+    "sha256": "6e882d65b0ac7179221a57f9a8641e9c0440a1081d3563965b261e1b2625e4b9",
+    "seen_at": "2026-09-25T05:40:49.018479+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-GlobalTasteinShanghai2026/index.html": {
+    "sha256": "9e6d6956114ab1de63527b7571b3ee789cc027b5b8990b387799646bc48a6240",
+    "seen_at": "2026-09-25T05:40:49.996104+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-ShanghaiHamburg40years/index.html": {
+    "sha256": "2fafe94478dfd00f9f0cc59539b04a7991cb7be8608271609ae25a2887b34ee7",
+    "seen_at": "2026-09-25T05:40:50.990522+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-2026TwoSessions/index.html": {
+    "sha256": "cce3c8a01f21296c926c09c844d45f21e47fc43da76961c0f0af9b6258ec7d58",
+    "seen_at": "2026-09-25T05:40:52.821355+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-ShanghaiGlobalTalentsInnovationandEntrepreneurshipCompetition/index.html": {
+    "sha256": "57861185e826fb610d59995321a040545eb6d9f566d1f79dcce82bad0a973789",
+    "seen_at": "2026-09-25T05:40:53.107166+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-IBLACShanghai2025/index.html": {
+    "sha256": "c96bd6be48062c19706efd96dd65deddd55f8fa759f2ac41ac7a3d0c557a9e9b",
+    "seen_at": "2026-09-25T05:40:54.127916+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-HonoraryCitizenshipMagnoliaGold/index.html": {
+    "sha256": "9e434a17d8a74a38d8ab06e165e10ee274a781231b38bbd453fcd0a4fa5731af",
+    "seen_at": "2026-09-25T05:40:55.108087+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-2025PujiangInnovationForum/index.html": {
+    "sha256": "686baa351fece14a42c3c787705d47a7be9fa343e1f5cb1b8ca7f31258afcb50",
+    "seen_at": "2026-09-25T05:40:56.120540+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-2025InclusionConference/index.html": {
+    "sha256": "27405762efa47dbfef84a8e90f23d2fafba20f608850d72ddf1929e73e56eef8",
+    "seen_at": "2026-09-25T05:40:57.118240+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-EasternHubIBCZ/": {
+    "sha256": "fc0ac3b0d42eb24930ecbba0a0470fda82443d412e3d14070cb442fade5e0e55",
+    "seen_at": "2026-09-25T05:40:58.107436+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-CIIE2025/index.html": {
+    "sha256": "db8df27079f4f047a050f58b333af59f30b0f1ac5505aca75fcbdb64ffcb4b8d",
+    "seen_at": "2026-09-25T05:40:59.118536+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-2025ShanghaiShoppingFestival/index.html": {
+    "sha256": "849b4c69dfae9a7a9cc1aaf0bfe0014904e048d774c99ebbc10af84d9f9a238e",
+    "seen_at": "2026-09-25T05:41:00.126403+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-2025WAIC/index.html": {
+    "sha256": "413a695b2fd5046d792f76436951bc6ee54390bd4b1bda8867884752d773d688",
+    "seen_at": "2026-09-25T05:41:02.118943+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-2025ShanghaiSummer/index.html": {
+    "sha256": "0d6f5184f0ee5c30bdee7079c4a1d9e72f2a709e5ae6797f932304959fb34536",
+    "seen_at": "2026-09-25T05:41:03.105750+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-2025LujiazuiForum/index.html": {
+    "sha256": "979dd6a46c096041b3ba8bfdb15272e916308d525025be1fcc35e63d58077d9a",
+    "seen_at": "2026-09-25T05:41:04.098257+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-27thSIFF/index.html": {
+    "sha256": "7c3d3d0213a0295835b82e78a2eb0288a314a35955cccc6f362f7f0127e72935",
+    "seen_at": "2026-09-25T05:41:05.093776+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-2025FriendshipCitiesForum/index.html": {
+    "sha256": "539e221fb1f79d9949c025d984912c0d0a52c2adb2d198494e3fcaee7a249d39",
+    "seen_at": "2026-09-25T05:41:06.113654+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-AutoShanghai2025/index.html": {
+    "sha256": "7c3015bf8e2e57f5de60c308e6078d6fe272a553f8665a3de7cb02e98b446b3f",
+    "seen_at": "2026-09-25T05:41:07.111377+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-InvestmentPromotionConference2025/index.html": {
+    "sha256": "ee433149713a97bc6d867c1d224932345ade8777117c336b1d1dea9de24f8ae0",
+    "seen_at": "2026-09-25T05:41:08.134649+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-2025twosessions/index.html": {
+    "sha256": "7a00da17fb3776f086e09e9512a34a652386432795de3b726144f0b5a148f3f6",
+    "seen_at": "2026-09-25T05:41:09.114796+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Q&A-TravelinShanghai/index.html": {
+    "sha256": "1cb4c5ad97ab11812e7047020316fe47202c04693d9ea37e23632201387e5471",
+    "seen_at": "2026-09-25T05:41:10.103527+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-SpringFestival2025/index.html": {
+    "sha256": "8ecf1d9367d642efa0cb2908a5a04f92cfcf2280d06520fcc4fab827ef3898b3",
+    "seen_at": "2026-09-25T05:41:11.104488+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-2025shanghaitwosessions/index.html": {
+    "sha256": "00a3861beaad64d8d676af6df3aaf3a87f853ded59c94db1679f191bf4254df0",
+    "seen_at": "2026-09-25T05:41:12.115707+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Shanghaimycity/index.html": {
+    "sha256": "45d7bbcb2f46de4566c891061436060c0ae428c1828c4f0dc4b54b258e18b17b",
+    "seen_at": "2026-09-25T05:41:13.130959+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-2024NationalDay/": {
+    "sha256": "feb2a8b14d02aa2a7ae5c871bd33af0bb3038464da425f197a19f076f94f0632",
+    "seen_at": "2026-09-25T05:41:14.116874+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-ShanghaiTourismFestival2024/index.html": {
+    "sha256": "40cd54339fc345d9cc0c857787aba686df1eab32550405451e9e2ef1afea91a3",
+    "seen_at": "2026-09-25T05:41:15.111132+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-IBLACShanghai2024/index.html": {
+    "sha256": "0c3f5b7c47776b02cfafd3c883f0cd3551d72e6fd79b1fbd4450659d21765db2",
+    "seen_at": "2026-09-25T05:41:16.137038+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-17thPujiangInnovationForum/index.html": {
+    "sha256": "938c4ee916fafd0a390cc4ea0df7cd197dd21e155e34e4a89fb2792efc143408",
+    "seen_at": "2026-09-25T05:41:17.120319+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-2024inclusion/index.html": {
+    "sha256": "ff4cbc39f783b6d70fad926229643b32dce891237f00196ba5dc84e2baa99889",
+    "seen_at": "2026-09-25T05:41:18.112572+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-2024focac/index.html": {
+    "sha256": "bfa94f901fdb6d6ab4aa3f353d8e55b494f7c691dfd9219574171061ff104e56",
+    "seen_at": "2026-09-25T05:41:19.089855+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-sicf/index.html": {
+    "sha256": "560252a6e235f92917f8073085da49665e805978f55e3c7d95c53e1117d185f7",
+    "seen_at": "2026-09-25T05:41:20.196108+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-StudyChinese/index.html": {
+    "sha256": "ca2ca4a2be6f16663dd8c54624ed92ea6a82e3a6a39374732c84d8e1e878ed26",
+    "seen_at": "2026-09-25T05:41:21.120924+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-VisaFreeTransit/index.html": {
+    "sha256": "c35d3f151ac2dff531d8e7ecac15913182cdaeb31cab5c86f88829af66d43855",
+    "seen_at": "2026-09-25T05:41:22.112819+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-PredepartureGuideForStudyingInChina/index.html": {
+    "sha256": "db251cdd23311b7fb5790a7b6415e4516f83469d37efba822b4c56c159e8adb0",
+    "seen_at": "2026-09-25T05:41:23.097409+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Paris2024/index.html": {
+    "sha256": "7e133e684ce91518d3d26c7d8623756b6e86e01191f110e1b0710e20d3a0ad45",
+    "seen_at": "2026-09-25T05:41:24.089388+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-CIIE2024/index.html": {
+    "sha256": "0ea754ba5ba83208d22c51236a5997168bf228fdf423deada961502f9640d208",
+    "seen_at": "2026-09-25T05:41:25.111084+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-2024waic/index.html": {
+    "sha256": "2c6d5959cbf653a976c606842cef0bd32a599def63c3131a9a1d8801e7a5de5d",
+    "seen_at": "2026-09-25T05:41:26.112665+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-ShanghaiSummer/index.html": {
+    "sha256": "48fa85b42db3ba42b3d505162532140988d32766f8cef13b40867652d5f99e00",
+    "seen_at": "2026-09-25T05:41:27.105548+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-ShanghaiSummerSchool/index.html": {
+    "sha256": "05b4749890fc98262aa80f7237e8b07c66df429db90924ef1a726476e5ee1ba6",
+    "seen_at": "2026-09-25T05:41:28.114488+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-OlympicQualifierSeriesShanghai/index.html": {
+    "sha256": "3d0044dda0577d85f7b187f2d38f066cde425774450d48c9d1c6dbe5b8891d32",
+    "seen_at": "2026-09-25T05:41:29.130451+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-ShanghaiShoppingFestival/index.html": {
+    "sha256": "ccb4dd83f3f19e8c33499299bd113410745d2f1f1238456f55790a936fde0b96",
+    "seen_at": "2026-09-25T05:41:30.115611+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-shanghailetsmeet/index.html": {
+    "sha256": "a7e1c5e0f0172f8a07c70ebe47090015b227cacae99e0583fe447b42438aa2d4",
+    "seen_at": "2026-09-25T05:41:31.114559+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-CompetitionsForIntlStudents/index.html": {
+    "sha256": "6db0aea445393b5c6197c340b8a16cd445c1b0fc02a972db5fa1f5cb75b06614",
+    "seen_at": "2026-09-25T05:41:32.100658+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-2024shanghaitwosessions-InFocus/index.html": {
+    "sha256": "161217cfd91371f8874088df4fc48567757644775acc14285190393bc8192afc",
+    "seen_at": "2026-09-25T05:41:33.108322+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-WorldDigitalEducationConference/index.html": {
+    "sha256": "a604cee49796b27bbbd6a7ca2db04ed7929c4ae89d47f30834e6ed0d1b5ee718",
+    "seen_at": "2026-09-25T05:41:35.097379+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-SpringFestival/index.html": {
+    "sha256": "0ff0af8aba7c47b930f5072c13c1cf7e8dda8f3900061784af1f56df4cb15fa7",
+    "seen_at": "2026-09-25T05:41:36.106189+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-EditorsPick-LivinginShanghai/index.html": {
+    "sha256": "6f307687505485d65111a4f57889f71ede955b353224db3c3ba9df197a13df9c",
+    "seen_at": "2026-09-25T05:41:37.119875+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-HotelBooking/index.html": {
+    "sha256": "cb1e6209e4eece08b490205c5fa04fbe5490ff85d4e3e142b8aa87d0a9c9b55a",
+    "seen_at": "2026-09-25T05:41:38.090657+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-CustomsImmigration/index.html": {
+    "sha256": "32deaf5cedc6fd9425ca4a89e01a11933cf454dbaa5a6dae56c8955cbe58f4c9",
+    "seen_at": "2026-09-25T05:41:39.097407+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-MobileAndInternet/index.html": {
+    "sha256": "166b3dfc96ee1b4d2892260e24b343104002fdd22199862a3f95d96e04d21c59",
+    "seen_at": "2026-09-25T05:41:40.101560+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Insurance/index.html": {
+    "sha256": "b22a63d24c8d71e9c36faec9a580fef9d522ff20e838f8b2db32b5daf00f45ea",
+    "seen_at": "2026-09-25T05:41:41.106475+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-LearnChinese/index.html": {
+    "sha256": "b4b9c3a68fa018b50d35b92594029bda1b12e11a1334e9b65cc9e30b3be58d59",
+    "seen_at": "2026-09-25T05:41:42.112789+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-PurchaseaHouse/index.html": {
+    "sha256": "e3bdecfc8b59468f0398172b1c05bb33c6178c3a9a5db65e63a01c4f24f926e8",
+    "seen_at": "2026-09-25T05:41:43.098393+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-IntlCommunities/index.html": {
+    "sha256": "8db2853c17e0a1f5be16dca3b247d94c1eb5d2913574cbf3de9e765dc5f97d47",
+    "seen_at": "2026-09-25T05:41:44.095601+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-HonoraryCitizenship/index.html": {
+    "sha256": "07f2f894a0a4208668d7d68febb21dd8d6210621742b37ae9fbc09e301cc34a5",
+    "seen_at": "2026-09-25T05:41:45.106951+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-ResidentChecklist/index.html": {
+    "sha256": "134261918f54215e2e22c52549c20de44142f55e9ff5dc6873f1e207978908d6",
+    "seen_at": "2026-09-25T05:41:47.121233+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-ElderlyServices/index.html": {
+    "sha256": "2946f5e022ac21d8561fc1ac379ef2da678f6246f749985900ab474f4a722127",
+    "seen_at": "2026-09-25T05:41:48.115691+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Tax/index.html": {
+    "sha256": "3e6f5be54980b2aa72ec2ed7389e6f92b293d796b48493a279c097510351635f",
+    "seen_at": "2026-09-25T05:41:49.111774+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-LawandJustice/index.html": {
+    "sha256": "0f579f20c0a77045d92d7a0a60d51bb07e3941066d33c166fffee5f3063b43a5",
+    "seen_at": "2026-09-25T05:41:50.120946+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-ExpatStories-LivinginShanghai/index.html": {
+    "sha256": "7ddc2ced5433de5b33464ea75af4daf743123811c99259c3d4d87a5e6f6a6564",
+    "seen_at": "2026-09-25T05:41:51.116976+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-FAQs-LivinginShanghai/index.html": {
+    "sha256": "1e4856eacff060581ee8abb87d66fec7260f570242e8d42a9eb90affdf1a9a96",
+    "seen_at": "2026-09-25T05:41:52.092751+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-LatestNews/index.html": {
+    "sha256": "ecde8c8a8cad7795bb81faca3b2bf868a633e619ba8d0afc7a8bc18f1a59e8c7",
+    "seen_at": "2026-09-25T05:41:53.104388+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-VisaLatest/index.html": {
+    "sha256": "eee19604698c4269f66808a8bf5db4127e2832ff4cca3db13eca785315ec181e",
+    "seen_at": "2026-09-25T05:41:54.106035+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Healthcare/index.html": {
+    "sha256": "e62debe3ce47dccd8e84f627b780c1545a9c34d0af9aa18d1f6518fbae0fbbe9",
+    "seen_at": "2026-09-25T05:41:55.093571+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-InnovationPolicies/index.html": {
+    "sha256": "433c9f275391897387f9054f0d81b87ebbcb1a937edd3388f1e1b6bb9d7b6f33",
+    "seen_at": "2026-09-25T05:41:57.116021+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-PatientStories/index.html": {
+    "sha256": "286ada86072674177bf98757663446caf57ea60f483192b74b42a35bec0786f9",
+    "seen_at": "2026-09-25T05:41:58.090509+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-ServiceGuide/index.html": {
+    "sha256": "eb31105d0135923bd76a12fd888537e1282a59a87d8d26402b71736914f77a4c",
+    "seen_at": "2026-09-25T05:41:59.114562+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Staple-travelinshanghai/index.html": {
+    "sha256": "8435e2c99025823cce6676a87157c28a15bb8876a755674f9b661772dcbb7b22",
+    "seen_at": "2026-09-25T05:42:04.131209+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Seasonal-travelinshanghai/index.html": {
+    "sha256": "8f0407109d94e7ba5324f4ca42fd52d961b220ae3fdda5f7197d3bab5154d328",
+    "seen_at": "2026-09-25T05:42:05.127135+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Homestyle-travelinshanghai/index.html": {
+    "sha256": "5be18ef2c86ac8f4c4526e08e2743c0cc61990aef502208855514c4c48f931eb",
+    "seen_at": "2026-09-25T05:42:06.105362+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Snack-travelinshanghai/index.html": {
+    "sha256": "b33f6a81ca8d9ab24f49183e5c99b7a68a024917acb9d762c6eff6c61f09594f",
+    "seen_at": "2026-09-25T05:42:07.115525+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-TimeHonored-travelinshanghai/index.html": {
+    "sha256": "20954afe9e62d10c7e7d24b0e81159368edb8e7c3302e86ec67ee6eb07de16a6",
+    "seen_at": "2026-09-25T05:42:08.107793+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-HongqiaoTalentServiceCenter/index.html": {
+    "sha256": "9a5c8bc103475a28b1193463920e84f73d352394e6453606b801d77b354bffdc",
+    "seen_at": "2026-09-25T05:42:11.147618+00:00"
+  },
+  "https://english.shanghai.gov.cn/en-Latest-TalentsinShanghai/index.html": {
+    "sha256": "2161b3552021313674c6ac47bc7f4426d56bbe690c663e1f69dfb84e49b14dee",
+    "seen_at": "2026-09-25T05:42:12.120237+00:00"
+  },
+  "https://www.gov.cn/zhengce/zuixin/ZUIXINZHENGCE.json": {
+    "sha256": "cd5f7bcc7f931ccc1352492f01d6a49fdf3fd24281ffcfb5d39caac8cd3ce2df",
+    "seen_at": "2026-09-25T05:42:20.277259+00:00"
+  }
+}

@@ -1,0 +1,4 @@
+
+> visit-china-ai-agent@6.2.0 voice:build
+> tsc -p voice-worker/tsconfig.json && node voice-worker/prepare.cjs
+

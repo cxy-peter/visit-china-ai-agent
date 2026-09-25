@@ -1,0 +1,225 @@
+{
+  "url": "https://visit-china-ai-agent-mtjpv8rxr-cxy-peters-projects.vercel.app",
+  "checks": [
+    {
+      "name": "V6.1 cloud reports configured DeepSeek",
+      "passed": true
+    },
+    {
+      "name": "API key in access field returns a specific actionable error",
+      "passed": true
+    },
+    {
+      "name": "admin login works",
+      "passed": true
+    },
+    {
+      "name": "durable trial code issued",
+      "passed": true
+    },
+    {
+      "name": "friendly trial code logs in",
+      "passed": true
+    },
+    {
+      "name": "real semantic intent 1",
+      "passed": true
+    },
+    {
+      "name": "grounded answer 1",
+      "passed": true
+    },
+    {
+      "name": "evaluation trace persisted 1",
+      "passed": true
+    },
+    {
+      "name": "metro transfer directly answered",
+      "passed": true
+    },
+    {
+      "name": "real semantic intent 2",
+      "passed": false
+    }
+  ],
+  "answers": [
+    {
+      "input": "落地PVG以后我想搭地铁到上海站，能直接列出换乘站吗？",
+      "language": "zh",
+      "answer": {
+        "intent": {
+          "kind": "metro",
+          "origin": "浦东机场",
+          "destination": "上海站",
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 2844,
+          "completion_tokens": 47,
+          "total_tokens": 2891,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 2716
+        },
+        "services": [],
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "sh-metro-map",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 90,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "text": "从浦东1号2号航站楼乘坐2号线（往蟠祥路·国家会计学院方向），到人民广场下车。 在人民广场换乘1号线（往富锦路方向），到上海火车站下车。 路线图和途经站在下方。",
+        "sourceIds": [
+          "sh-metro-map"
+        ],
+        "mode": "deepseek-tool",
+        "notice": "model-intent-verified-tool",
+        "tool": {
+          "kind": "metro",
+          "metro": {
+            "kind": "metro",
+            "origin": "浦东1号2号航站楼",
+            "destination": "上海火车站",
+            "via": null
+          },
+          "estimate": null,
+          "request": null,
+          "places": null
+        },
+        "routeVersion": "shanghai-metro-2026-09-25",
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 86
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 938
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "metro"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 494,
+            "candidates": 465,
+            "elapsedMs": 86,
+            "hits": [
+              {
+                "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                "sourceId": "verified-shanghai-rail-station",
+                "version": "26195dc7b3d7255a",
+                "score": 0.0253,
+                "coverage": 0.2
+              },
+              {
+                "id": "verified-pvg-taxi:cca2a96bbc4759cf:0",
+                "sourceId": "verified-pvg-taxi",
+                "version": "cca2a96bbc4759cf",
+                "score": 0.02487,
+                "coverage": 0.12
+              },
+              {
+                "id": "verified-pvg-rest-charging:3c747ba8fb743181:0",
+                "sourceId": "verified-pvg-rest-charging",
+                "version": "3c747ba8fb743181",
+                "score": 0.02412,
+                "coverage": 0.12
+              },
+              {
+                "id": "verified-pvg-taxi:cca2a96bbc4759cf:1",
+                "sourceId": "verified-pvg-taxi",
+                "version": "cca2a96bbc4759cf",
+                "score": 0.02412,
+                "coverage": 0.12
+              },
+              {
+                "id": "verified-hongqiao-airport-taxi:9ec5b44088d58128:0",
+                "sourceId": "verified-hongqiao-airport-taxi",
+                "version": "9ec5b44088d58128",
+                "score": 0.02105,
+                "coverage": 0.08
+              },
+              {
+                "id": "sh-hz-rail:17fdb729f60d1c76:0",
+                "sourceId": "sh-hz-rail",
+                "version": "17fdb729f60d1c76",
+                "score": 0.02065,
+                "coverage": 0.08
+              },
+              {
+                "id": "verified-hongqiao-rail-station:1c6991b2bad55c70:0",
+                "sourceId": "verified-hongqiao-rail-station",
+                "version": "1c6991b2bad55c70",
+                "score": 0.02033,
+                "coverage": 0.16
+              },
+              {
+                "id": "sh-marriott-city-centre:d95fbe4d18488db5:0",
+                "sourceId": "sh-marriott-city-centre",
+                "version": "d95fbe4d18488db5",
+                "score": 0.01856,
+                "coverage": 0.16
+              }
+            ]
+          },
+          "totalMs": 1028
+        },
+        "dataset": "evaluation",
+        "executionId": "c566b91d-f8b3-460a-b41a-71af63b79834",
+        "assessmentId": "b9d2e8ec-fe49-4745-8ffe-76a876761d85"
+      },
+      "error": null,
+      "elapsedSeconds": 4.6
+    },
+    {
+      "input": "I am at Shanghai South Railway Station. Can I use Alipay to pay for a metro ride?",
+      "language": "en",
+      "answer": {},
+      "error": "ANSWER_NUMBER",
+      "elapsedSeconds": 6.64
+    }
+  ],
+  "scope": "Small real DeepSeek sample, explicitly tagged evaluation. Separate from 20k offline cases."
+}

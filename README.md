@@ -1,3 +1,64 @@
+# Visit China AI V6.4 · 直接回答、服务分流与可追溯运营
+
+本轮统一解决反馈，加入20个可点问题、历史高铁时间筛选与相关产品入口，修复车站充电误触发铁路行程、付款咨询被路线工具覆盖。机场到站由DeepSeek结合正文解释；近期官方活动每日发现、限量读取与核验。详见[V6.4交付与限制](docs/V6_4_RELEASE.md)。
+
+**个人项目 · 产品与运营设计 · AI辅助实现。** 语音和文字共用对话与资料库，DeepSeek负责语义理解及有据回答；地铁路线、车费和来源校验由应用工具执行。Operations把用户反馈、相关上下文、问题分类、技能候选、自动验收、回放与人工发布连起来。
+
+- **20,000条中英文回归用例**：组合合成与公开资料改写，支持每轮不同问法、版本指纹和失败重放；不是20,000名用户、付费模型调用或模型准确率成绩。
+- **5,000个去重官方网页URL**：保留原1,114条正文抓取元数据，新增3,886条官方链接发现；未抓取、未核验正文不能进入事实回答。
+- **20条核对过的地点／服务记录**：6家酒店、5家餐饮、9条交通便民服务，10个公开商务电话，关联上海站、虹桥枢纽、人民广场和浦东机场。地址、电话、地图与官网直接出现在相关回答下方；未接实时房态、余票、价格或柜机库存。
+- **资料证据分达到60才可自动引用**，低于60待核验；仍检查城市、有效期、停用与版本状态。模型自评分单独显示，不是真实正确率。
+- **运营入口**：可选分享最多8轮脱敏上下文，定位事实、意图、流程等问题；管理员可总结、补资料、建技能候选、回放、发布或回滚。新增有期限和调用上限的 `VC-…` 体验码，区别于仅保存在服务端的 `sk-…` API密钥。
+- **每日活动发现与三天精选资料检查**：每日新增官方活动候选，每轮最多评估两篇正文，过期活动隐藏；每日调度检查是否到期，按72小时门槛发现新闻候选并轮转检查已收录来源，也支持手动更新；新标题不会自动成为已核实事实。
+
+- **新增5,000条评测问法**：50个主题的中英文组合改写，目标资料召回4,485/5,000；不是5,000条社交媒体原话。独立新轮12,000条Loop改善175条、退化0，完整旧20,000条回归通过；候选保留人工发布。
+
+[V6.1架构与运营使用说明](docs/V6_1_ARCHITECTURE.md) · [20,000条评测构成与限制](docs/V6_1_EVALUATION.md) · [5,000条索引、TenPayGo及新闻更新](docs/V6_1_SOURCE_RESEARCH.md) · [真实地点、电话和来源清单](docs/V6_1_VERIFIED_SERVICES.md)
+
+当前保留轻量执行图和站点关系，检索为 **BM25 + 稀疏TF-IDF + RRF + 确定性重排**；没有部署Neo4j，也未接入学习型embedding或模型权重训练。V6.1已发布：程序/接口299项、旧浏览器168项、本地新界面25项、合成语音18项、正式站浏览器16项通过；8类真实DeepSeek问题另有高铁端点补测。范围与具体结果见[发布验收报告](docs/V6_1_RELEASE.md)。
+
+下方为各版本交付历史；其中的索引数量、测试规模、连接与部署说明保留当时口径，当前行为以V6.4说明及最终验收记录为准。
+
+# V6: automatic RAG and an editable Operations Harness
+
+Private DeepSeek access now supports credential-document import and authenticated administrator connection. Reviewed sources are chunked and automatically retrieved with BM25, sparse TF-IDF, RRF and evidence-aware reranking. Operations adds bounded skill versions, automatic acceptance, rollback, execution traces and quality metrics with explicit denominators. Location-based hotel, power-bank, luggage, train and metro-ticket queries distinguish real sources from unconnected inventory.
+
+[Architecture, operating guide, data contracts, references and limitations](docs/V6_HARNESS_RAG_OPERATIONS.md). Existing metro, voice, source-review and concurrency safeguards are preserved; no Neo4j service or learned embedding provider is claimed.
+
+# V5.8: model intent, Shanghai metro routing and outcome feedback
+
+DeepSeek now identifies the current intent and route endpoints before read-only tools run. Shanghai metro routing uses a dated 418-station public network snapshot with bilingual maps, editable endpoints and via stations. Per-answer solved/unsolved feedback feeds the Operations quality dashboard and triage queue. [Scope, data provenance and verification](docs/V5_8_METRO_AND_FEEDBACK.md).
+
+# V5.7: durable Operations and a shared reviewed source library
+
+Operations now provides live/demo metrics, ordered product funnels, source submission and five-account publication review, automatic source-change checks, and workflow/prompt evaluation. Travel assistance starts from the user's specific need and uses the approved cloud library, bilingual metro diagrams and deterministic taxi/rail guidance. See [operation, setup, boundaries and references](docs/V5_7_OPERATIONS.md).
+
+# V5.6: deployed DeepSeek chat and metro routes
+
+The public site now has a private-access, stateless DeepSeek chat endpoint shared by voice and text. Live captions move into a larger conversation area; accidental voice fragments stay silent; Yu Garden metro diagrams and directional Shanghai train/flight examples appear below the relevant turn. See [setup, behavior and verification](docs/V5_6_CLOUD_CHAT.md). Historical release sections below describe their original scope.
+
+# V5.5: unified conversation and source library
+
+Search the original official-source catalog inside the active chat, attach references to text or voice turns, and open source details without losing the trip. Both views share one model status/consent control and the existing backend DeepSeek client. Public static mode stays explicit about its missing model backend. See [behavior, open-source references and verification](docs/V5_5_UNIFIED_WORKSPACE.md).
+
+# V5.4: chat-first travel companion
+
+Pastel message bubbles, full conversation context, top call controls, independent input/output languages, simulated hotel/flight/rail/restaurant cards, and a transparent taxi estimate. New chat clears the previous scenario and carries preferences only when requested. See [V5.4 behavior, verification and limits](docs/V5_4_CHAT.md).
+
+# V5.3: free local voice, visible transcripts and opening request
+
+Vosk now transcribes English/Chinese speech locally in the browser without a paid voice API. The microphone has a real level meter; live captions, both sides of the conversation and the first overall request stay visible. Optional browser memory restores the conversation on reload. See [setup, reference designs, verified behavior and limits](docs/V5_3_FREE_VOICE.md).
+
+The public static site supports this local voice path. LiveKit is optional and is not needed for it. Real human microphone quality remains unmeasured; bilingual synthetic PCM has been decoded with the actual WASM models.
+
+## V5.2: LiveKit integration and durable review workflow
+
+Incremental upgrade from V5.1: optional LiveKit WebRTC media worker, V4 official-source checks inside V5 cards, SQLite transactions and persistent sessions, and OIDC organization-login configuration. See [setup and precise limits](docs/V5_2_HANDOFF.md) and [resume boundaries](docs/V5_2_RESUME.md).
+
+**Real microphone, LiveKit-provider and organization SSO acceptance are still pending.** This is not a measured full-duplex release. SQLite supports processes on one persistent host, not multiple cloud hosts. That V5.2 deployment was a static preview; V5.6 adds cloud chat while the persistent review/SSO backend remains separate.
+
+The browser-voice fallback and original regression behavior below remain available. Node >= 22.13 is required.
+
 ## V5.1 release verification
 
 Continuous browser-call loop, speech/click shared state, unfinished transcript recovery, and five-distinct-account approvals are now verified. See [measured results](evidence/v5/release-report.json), [voice research](docs/V5_1_VOICE_RESEARCH.md), [Codex handoff](docs/V5_1_CODEX_HANDOFF.md), and [resume wording](docs/V5_1_RESUME.md). No real microphone, paid model or Vercel deployment is claimed.
@@ -68,3 +129,10 @@ Vercel构建配置提供静态前端；完整模型/审核后端当前运行于�
 `v5/` 为普通源码；`prompts/` 为从运行代码导出的提示词；`evidence/v5/` 存放实际开发测试。回归测试和浏览器中的模型/语音均用测试替身；真人效果独立验证。旧 `.bootstrap` 是历史失败传输，不是当前运行依赖。
 
 不包含Key、DCG、内部公司材料、真实旅客对话、录音、证件、reviewer注册表或字体文件。
+
+
+## V5.9: real places and source operations
+
+Shanghai station records and 19 sourced places share the library with the assistant. The sidebar follows the current destination, offers grounded nearby places and adds via stations. DeepSeek intent self-ratings and evidence scores are separate, with low-confidence review material in Operations. Admin source submissions publish directly with audit/rollback; government excerpts require fetched exact-text verification for automatic confirmation.
+
+The downloadable corpus contains 1,221 synthetic/source-adapted cases (184 source-adapted, 1,037 authored), plus 10 historical scenarios. These are local regressions, not 1,221 paid model calls or a measured model accuracy claim. See [V5.9 design and validation](docs/V5_9_DISCOVERY_AND_OPERATIONS.md).

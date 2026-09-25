@@ -1,0 +1,1045 @@
+{
+  "url": "https://visit-china-ai-agent-pel56rmpa-cxy-peters-projects.vercel.app",
+  "checks": [
+    {
+      "name": "admin login",
+      "passed": true
+    },
+    {
+      "name": "admin connect",
+      "passed": true
+    },
+    {
+      "name": "answer 1",
+      "passed": true
+    },
+    {
+      "name": "two tasks 1",
+      "passed": true
+    },
+    {
+      "name": "original station 1",
+      "passed": true
+    },
+    {
+      "name": "answer 2",
+      "passed": false
+    },
+    {
+      "name": "two tasks 2",
+      "passed": false
+    },
+    {
+      "name": "original station 2",
+      "passed": false
+    },
+    {
+      "name": "answer 3",
+      "passed": true
+    },
+    {
+      "name": "two tasks 3",
+      "passed": true
+    },
+    {
+      "name": "original station 3",
+      "passed": true
+    }
+  ],
+  "answers": [
+    {
+      "input": "上海火车站附近哪里查共享充电宝？另一个需求是从上海火车站去杭州，想比较二等座价格和出发时间。",
+      "answer": {
+        "mode": "deepseek-tasks",
+        "text": "1. 上海火车站附近哪里查共享充电宝？\n根据已保存资料，上海火车站位于静安区秣陵路，可接地铁1、3、4号线；但本站没有接入共享充电宝柜机的实时定位、剩余数量或价格，也没有确认火车站附近具体的租借点。一般指引建议在商场、餐厅、地铁站等公共场所寻找租借柜，扫码后先核对费用和归还规则再租用。若要确定附近可借可还的位置，请使用地图App或柜机运营商的小程序核实。另请注意，上海火车站与上海虹桥站是不同车站，请勿混淆。\n\n2. 从上海火车站去杭州，想比较二等座价格和出发时间。\n你指定的是上海火车站，已保留；下面收录的是上海虹桥的历史班次，只能作为换站备选，不能当作上海站出发。可以按二等座／一等座、价格和出发时段比较下方历史记录。记录对应2024年6月15日，不是今天的班次和报价。原文没有的到达时间或席别价格显示“未记录”。请补充实际乘车日期，再到12306按准确车站查票。",
+        "tasks": [
+          {
+            "text": "根据已保存资料，上海火车站位于静安区秣陵路，可接地铁1、3、4号线；但本站没有接入共享充电宝柜机的实时定位、剩余数量或价格，也没有确认火车站附近具体的租借点。一般指引建议在商场、餐厅、地铁站等公共场所寻找租借柜，扫码后先核对费用和归还规则再租用。若要确定附近可借可还的位置，请使用地图App或柜机运营商的小程序核实。另请注意，上海火车站与上海虹桥站是不同车站，请勿混淆。",
+            "sourceIds": [
+              "sh-power-bank",
+              "verified-shanghai-rail-station"
+            ],
+            "mode": "deepseek",
+            "notice": "saved-summaries",
+            "intent": {
+              "kind": "charging",
+              "origin": null,
+              "destination": "上海火车站",
+              "via": null,
+              "city": "Shanghai",
+              "roadKm": null
+            },
+            "intentProvider": "deepseek",
+            "usage": {
+              "prompt_tokens": 6184,
+              "completion_tokens": 2746,
+              "total_tokens": 8930
+            },
+            "services": [
+              {
+                "id": "service-charging",
+                "kind": "charging",
+                "title": "上海火车站 · 查询充电宝租借柜",
+                "description": "查询入口；此链接不证明该位置设有柜机。请在运营方核对位置、收费与可用量。",
+                "url": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%E7%81%AB%E8%BD%A6%E7%AB%99%20%E5%85%85%E7%94%B5%E5%AE%9D&city=上海&view=map",
+                "sourceId": "sh-power-bank",
+                "status": "provider-search",
+                "liveAvailability": false
+              },
+              {
+                "id": "guide-charging",
+                "kind": "charging",
+                "title": "官方使用与查询指引",
+                "description": "商场、餐厅、地铁站等公共场所可寻找共享充电宝租借柜。扫码后先核对费用和归还规则，再按页面操作租借。本站没有接入柜机定位、剩余数量或实时价格，请使用地图和柜机运营商核实附近可借、可还的位置。",
+                "url": "https://english.shanghai.gov.cn/en-MobileAndInternet/20260727/56b62a3a9d2f4ddaa8d77367c206b2ae.html",
+                "sourceId": "sh-power-bank",
+                "status": "official-guide",
+                "liveAvailability": false
+              }
+            ],
+            "confidence": {
+              "model": null,
+              "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+              "sources": [
+                {
+                  "id": "sh-power-bank",
+                  "score": 90,
+                  "level": "high",
+                  "requiresReview": false,
+                  "government": true,
+                  "reasons": [
+                    "已匹配政府域名",
+                    "有保存摘要",
+                    "摘要在复核周期内"
+                  ],
+                  "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+                },
+                {
+                  "id": "verified-shanghai-rail-station",
+                  "score": 90,
+                  "level": "high",
+                  "requiresReview": false,
+                  "government": true,
+                  "reasons": [
+                    "已匹配政府域名",
+                    "有保存摘要",
+                    "摘要在复核周期内"
+                  ],
+                  "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+                }
+              ],
+              "sourceScore": 90,
+              "requiresReview": false,
+              "needsClarification": false,
+              "reasons": [],
+              "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确"
+            },
+            "number": 1,
+            "request": "上海火车站附近哪里查共享充电宝？",
+            "execution": {
+              "stages": [
+                {
+                  "name": "retrieve",
+                  "status": "completed",
+                  "ms": 71
+                },
+                {
+                  "name": "intent",
+                  "status": "completed",
+                  "ms": 0
+                },
+                {
+                  "name": "semantic_retrieval",
+                  "status": "completed",
+                  "ms": 67
+                },
+                {
+                  "name": "tool_or_answer",
+                  "status": "completed",
+                  "kind": "charging"
+                },
+                {
+                  "name": "grounded_generation",
+                  "status": "completed",
+                  "reason": "EVIDENCE_ALIGNMENT",
+                  "ms": 12007
+                }
+              ],
+              "retrieval": {
+                "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+                "embedding": "none",
+                "reranker": "deterministic lexical/evidence reranking",
+                "corpusChunks": 532,
+                "candidates": 454,
+                "elapsedMs": 67,
+                "hits": [
+                  {
+                    "id": "sh-power-bank:cb0ac35360170622:0",
+                    "sourceId": "sh-power-bank",
+                    "version": "cb0ac35360170622",
+                    "score": 0.03922,
+                    "coverage": 0.5
+                  },
+                  {
+                    "id": "verified-hongqiao-p10-charging:d5012857ac09a5cc:0",
+                    "sourceId": "verified-hongqiao-p10-charging",
+                    "version": "d5012857ac09a5cc",
+                    "score": 0.03738,
+                    "coverage": 0.444
+                  },
+                  {
+                    "id": "station-15:6f80ee45a8a01e1d:0",
+                    "sourceId": "station-15",
+                    "version": "6f80ee45a8a01e1d",
+                    "score": 0.03408,
+                    "coverage": 0.333
+                  },
+                  {
+                    "id": "verified-pvg-rest-charging:3c747ba8fb743181:0",
+                    "sourceId": "verified-pvg-rest-charging",
+                    "version": "3c747ba8fb743181",
+                    "score": 0.03235,
+                    "coverage": 0.167
+                  },
+                  {
+                    "id": "verified-metro-lockers:ac7d654795dd78d2:0",
+                    "sourceId": "verified-metro-lockers",
+                    "version": "ac7d654795dd78d2",
+                    "score": 0.02632,
+                    "coverage": 0.333
+                  },
+                  {
+                    "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                    "sourceId": "verified-shanghai-rail-station",
+                    "version": "26195dc7b3d7255a",
+                    "score": 0.02574,
+                    "coverage": 0.333
+                  },
+                  {
+                    "id": "history-sh-hz-trains:5f222a63b6cce02e:0",
+                    "sourceId": "history-sh-hz-trains",
+                    "version": "5f222a63b6cce02e",
+                    "score": 0.02486,
+                    "coverage": 0.333
+                  },
+                  {
+                    "id": "verified-hongqiao-rail-station:1c6991b2bad55c70:0",
+                    "sourceId": "verified-hongqiao-rail-station",
+                    "version": "1c6991b2bad55c70",
+                    "score": 0.02249,
+                    "coverage": 0.278
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "intent": {
+              "kind": "rail",
+              "origin": "上海火车站",
+              "destination": "杭州",
+              "via": null,
+              "city": "Shanghai",
+              "roadKm": null
+            },
+            "intentProvider": "deepseek",
+            "usage": {},
+            "services": [
+              {
+                "id": "verified-rail-12306",
+                "kind": "rail",
+                "title": "铁路12306英文购票与证件指引",
+                "description": "12306英文站提供购票、改签、退票等服务；外国旅客可按规则使用有效护照购票。乘车使用购票时的有效证件，行程信息单不能作为车票。未接入本站实时余票、价格或下单。 线上官方服务；非实体门店 · 页面核对记录；营业、可用量和价格请向运营方确认。未接实时库存或预订接口。",
+                "url": "https://www.12306.cn/en/",
+                "sourceUrl": "https://www.12306.cn/en/faq.html",
+                "sourceId": "verified-rail-12306",
+                "status": "official-guide",
+                "address": "线上官方服务；非实体门店",
+                "phone": null,
+                "phoneExtension": null,
+                "phoneRole": null,
+                "station": null,
+                "stations": [],
+                "stationEvidence": [],
+                "checkedAt": "2026-09-25",
+                "liveAvailability": false
+              }
+            ],
+            "confidence": {
+              "model": null,
+              "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+              "sources": [
+                {
+                  "id": "rail-passport",
+                  "score": 85,
+                  "level": "high",
+                  "requiresReview": false,
+                  "government": false,
+                  "reasons": [
+                    "已匹配运营方域名",
+                    "有保存摘要",
+                    "摘要在复核周期内"
+                  ],
+                  "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+                },
+                {
+                  "id": "history-sh-hz-trains",
+                  "score": 60,
+                  "level": "medium",
+                  "requiresReview": false,
+                  "government": false,
+                  "reasons": [
+                    "非已核验政府/运营方域名",
+                    "有保存摘要",
+                    "摘要在复核周期内"
+                  ],
+                  "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+                }
+              ],
+              "sourceScore": 60,
+              "requiresReview": false,
+              "needsClarification": false,
+              "reasons": [],
+              "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确"
+            },
+            "text": "你指定的是上海火车站，已保留；下面收录的是上海虹桥的历史班次，只能作为换站备选，不能当作上海站出发。可以按二等座／一等座、价格和出发时段比较下方历史记录。记录对应2024年6月15日，不是今天的班次和报价。原文没有的到达时间或席别价格显示“未记录”。请补充实际乘车日期，再到12306按准确车站查票。",
+            "sourceIds": [
+              "history-sh-hz-trains",
+              "rail-passport"
+            ],
+            "mode": "deepseek-tool",
+            "notice": "model-intent-verified-tool",
+            "tool": {
+              "kind": "rail",
+              "metro": null,
+              "estimate": null,
+              "request": null,
+              "places": null
+            },
+            "routeVersion": null,
+            "number": 2,
+            "request": "从上海火车站去杭州，想比较二等座价格和出发时间。",
+            "execution": {
+              "stages": [
+                {
+                  "name": "retrieve",
+                  "status": "completed",
+                  "ms": 63
+                },
+                {
+                  "name": "intent",
+                  "status": "completed",
+                  "ms": 0
+                },
+                {
+                  "name": "semantic_retrieval",
+                  "status": "completed",
+                  "ms": 72
+                },
+                {
+                  "name": "tool_or_answer",
+                  "status": "completed",
+                  "kind": "rail"
+                }
+              ],
+              "retrieval": {
+                "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+                "embedding": "none",
+                "reranker": "deterministic lexical/evidence reranking",
+                "corpusChunks": 532,
+                "candidates": 454,
+                "elapsedMs": 72,
+                "hits": [
+                  {
+                    "id": "station-15:6f80ee45a8a01e1d:0",
+                    "sourceId": "station-15",
+                    "version": "6f80ee45a8a01e1d",
+                    "score": 0.03296,
+                    "coverage": 0.261
+                  },
+                  {
+                    "id": "history-sh-hz-trains:5f222a63b6cce02e:0",
+                    "sourceId": "history-sh-hz-trains",
+                    "version": "5f222a63b6cce02e",
+                    "score": 0.03197,
+                    "coverage": 0.565
+                  },
+                  {
+                    "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                    "sourceId": "verified-shanghai-rail-station",
+                    "version": "26195dc7b3d7255a",
+                    "score": 0.02896,
+                    "coverage": 0.391
+                  },
+                  {
+                    "id": "sh-hz-rail:17fdb729f60d1c76:0",
+                    "sourceId": "sh-hz-rail",
+                    "version": "17fdb729f60d1c76",
+                    "score": 0.0274,
+                    "coverage": 0.304
+                  },
+                  {
+                    "id": "verified-hongqiao-rail-station:1c6991b2bad55c70:0",
+                    "sourceId": "verified-hongqiao-rail-station",
+                    "version": "1c6991b2bad55c70",
+                    "score": 0.0271,
+                    "coverage": 0.348
+                  },
+                  {
+                    "id": "verified-metro-lockers:ac7d654795dd78d2:0",
+                    "sourceId": "verified-metro-lockers",
+                    "version": "ac7d654795dd78d2",
+                    "score": 0.0254,
+                    "coverage": 0.304
+                  },
+                  {
+                    "id": "sh-metro-map:6a1b43a40e1dfea9:0",
+                    "sourceId": "sh-metro-map",
+                    "version": "6a1b43a40e1dfea9",
+                    "score": 0.02369,
+                    "coverage": 0.261
+                  },
+                  {
+                    "id": "verified-hongqiao-indoor-navigation:d02a6972fdbdab0d:0",
+                    "sourceId": "verified-hongqiao-indoor-navigation",
+                    "version": "d02a6972fdbdab0d",
+                    "score": 0.02288,
+                    "coverage": 0.217
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "intent": {
+          "kind": "charging",
+          "origin": null,
+          "destination": "上海火车站",
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "sourceIds": [
+          "sh-power-bank",
+          "verified-shanghai-rail-station",
+          "history-sh-hz-trains"
+        ],
+        "usage": {
+          "prompt_tokens": 6184,
+          "completion_tokens": 2746,
+          "total_tokens": 8930
+        },
+        "confidence": {
+          "requiresReview": false,
+          "reasons": [],
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 96
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 21719
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 532,
+            "candidates": 462,
+            "elapsedMs": 96,
+            "hits": [
+              {
+                "id": "sh-power-bank:cb0ac35360170622:0",
+                "sourceId": "sh-power-bank",
+                "version": "cb0ac35360170622",
+                "score": 0.03474,
+                "coverage": 0.231
+              },
+              {
+                "id": "verified-hongqiao-p10-charging:d5012857ac09a5cc:0",
+                "sourceId": "verified-hongqiao-p10-charging",
+                "version": "d5012857ac09a5cc",
+                "score": 0.03297,
+                "coverage": 0.205
+              },
+              {
+                "id": "verified-pvg-rest-charging:3c747ba8fb743181:0",
+                "sourceId": "verified-pvg-rest-charging",
+                "version": "3c747ba8fb743181",
+                "score": 0.03124,
+                "coverage": 0.128
+              },
+              {
+                "id": "station-15:6f80ee45a8a01e1d:0",
+                "sourceId": "station-15",
+                "version": "6f80ee45a8a01e1d",
+                "score": 0.03057,
+                "coverage": 0.154
+              },
+              {
+                "id": "history-sh-hz-trains:5f222a63b6cce02e:0",
+                "sourceId": "history-sh-hz-trains",
+                "version": "5f222a63b6cce02e",
+                "score": 0.02811,
+                "coverage": 0.308
+              },
+              {
+                "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                "sourceId": "verified-shanghai-rail-station",
+                "version": "26195dc7b3d7255a",
+                "score": 0.0246,
+                "coverage": 0.205
+              },
+              {
+                "id": "sh-hz-rail:17fdb729f60d1c76:0",
+                "sourceId": "sh-hz-rail",
+                "version": "17fdb729f60d1c76",
+                "score": 0.02398,
+                "coverage": 0.154
+              },
+              {
+                "id": "verified-metro-lockers:ac7d654795dd78d2:0",
+                "sourceId": "verified-metro-lockers",
+                "version": "ac7d654795dd78d2",
+                "score": 0.02326,
+                "coverage": 0.179
+              }
+            ]
+          },
+          "totalMs": 33967
+        },
+        "modelRouting": {
+          "requested": "auto",
+          "selected": "pro",
+          "model": "deepseek-v4-pro",
+          "thinking": true,
+          "effort": "low",
+          "reason": "比较、条件或纠正",
+          "method": "bounded-complexity-rules"
+        },
+        "dataset": "evaluation",
+        "executionId": "c9459600-f479-4372-83bd-63cc1ad7cc02",
+        "assessmentId": "e6f0be2b-5f8c-40e1-a6ad-204a98cf8da9"
+      },
+      "error": null,
+      "seconds": 38.0
+    },
+    {
+      "input": "我有两件事要办，上海站想租块移动电源，然后准备去杭州，火车二等座挑便宜的。",
+      "answer": {},
+      "error": "ANSWER_NUMBER",
+      "seconds": 14.7
+    },
+    {
+      "input": "Could you handle these separately: a power bank near Shanghai Railway Station, and a train from that station to Hangzhou? Compare second-class fares.",
+      "answer": {
+        "mode": "deepseek-tasks",
+        "text": "1. Find a power bank rental near Shanghai Railway Station.\nNo saved evidence confirms a specific power bank rental cabinet at Shanghai Railway Station. General guidance suggests looking for shared power bank rental cabinets in nearby malls, restaurants, and metro stations. Use a map app or the cabinet operator to verify available rental and return points, and check fees and return rules before renting.\n\n2. Find train options from Shanghai Railway Station to Hangzhou and compare second-class fares.\nYour origin remains Shanghai Railway Station. Stored historical trains depart from Hongqiao and are alternatives requiring a station change. Compare the dated records below by class, fare and departure period. They refer to 2024-06-15, not today’s trains or prices. Unreported arrival times or fares remain unknown. Add your travel date and check the exact station pair on 12306.",
+        "tasks": [
+          {
+            "text": "No saved evidence confirms a specific power bank rental cabinet at Shanghai Railway Station. General guidance suggests looking for shared power bank rental cabinets in nearby malls, restaurants, and metro stations. Use a map app or the cabinet operator to verify available rental and return points, and check fees and return rules before renting.",
+            "sourceIds": [
+              "sh-power-bank",
+              "verified-shanghai-rail-station"
+            ],
+            "mode": "deepseek",
+            "notice": "saved-summaries",
+            "intent": {
+              "kind": "charging",
+              "origin": null,
+              "destination": "上海火车站",
+              "via": null,
+              "city": "Shanghai",
+              "roadKm": null
+            },
+            "intentProvider": "deepseek",
+            "usage": {
+              "prompt_tokens": 5581,
+              "completion_tokens": 2638,
+              "total_tokens": 8219
+            },
+            "services": [
+              {
+                "id": "service-charging",
+                "kind": "charging",
+                "title": "Search power-bank rentals around 上海火车站",
+                "description": "Search only; this link does not establish that a cabinet exists here. Confirm location, fees and availability with the operator.",
+                "url": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%E7%81%AB%E8%BD%A6%E7%AB%99%20%E5%85%85%E7%94%B5%E5%AE%9D&city=上海&view=map",
+                "sourceId": "sh-power-bank",
+                "status": "provider-search",
+                "liveAvailability": false
+              },
+              {
+                "id": "guide-charging",
+                "kind": "charging",
+                "title": "Official service guide",
+                "description": "Look for rental cabinets in malls, restaurants and metro stations. Check rental fees and return instructions before renting. This site has no live cabinet locations, stock or prices; verify nearby rental and return points with the operator.",
+                "url": "https://english.shanghai.gov.cn/en-MobileAndInternet/20260727/56b62a3a9d2f4ddaa8d77367c206b2ae.html",
+                "sourceId": "sh-power-bank",
+                "status": "official-guide",
+                "liveAvailability": false
+              }
+            ],
+            "confidence": {
+              "model": null,
+              "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+              "sources": [
+                {
+                  "id": "sh-power-bank",
+                  "score": 90,
+                  "level": "high",
+                  "requiresReview": false,
+                  "government": true,
+                  "reasons": [
+                    "已匹配政府域名",
+                    "有保存摘要",
+                    "摘要在复核周期内"
+                  ],
+                  "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+                },
+                {
+                  "id": "verified-shanghai-rail-station",
+                  "score": 90,
+                  "level": "high",
+                  "requiresReview": false,
+                  "government": true,
+                  "reasons": [
+                    "已匹配政府域名",
+                    "有保存摘要",
+                    "摘要在复核周期内"
+                  ],
+                  "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+                }
+              ],
+              "sourceScore": 90,
+              "requiresReview": false,
+              "needsClarification": false,
+              "reasons": [],
+              "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确"
+            },
+            "number": 1,
+            "request": "Find a power bank rental near Shanghai Railway Station.",
+            "execution": {
+              "stages": [
+                {
+                  "name": "retrieve",
+                  "status": "completed",
+                  "ms": 80
+                },
+                {
+                  "name": "intent",
+                  "status": "completed",
+                  "ms": 0
+                },
+                {
+                  "name": "semantic_retrieval",
+                  "status": "completed",
+                  "ms": 69
+                },
+                {
+                  "name": "tool_or_answer",
+                  "status": "completed",
+                  "kind": "charging"
+                },
+                {
+                  "name": "grounded_generation",
+                  "status": "completed",
+                  "reason": "EVIDENCE_ALIGNMENT",
+                  "ms": 5745
+                }
+              ],
+              "retrieval": {
+                "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+                "embedding": "none",
+                "reranker": "deterministic lexical/evidence reranking",
+                "corpusChunks": 532,
+                "candidates": 468,
+                "elapsedMs": 69,
+                "hits": [
+                  {
+                    "id": "verified-hongqiao-p10-charging:d5012857ac09a5cc:0",
+                    "sourceId": "verified-hongqiao-p10-charging",
+                    "version": "d5012857ac09a5cc",
+                    "score": 0.03918,
+                    "coverage": 0.556
+                  },
+                  {
+                    "id": "sh-power-bank:cb0ac35360170622:0",
+                    "sourceId": "sh-power-bank",
+                    "version": "cb0ac35360170622",
+                    "score": 0.03799,
+                    "coverage": 0.444
+                  },
+                  {
+                    "id": "station-15:6f80ee45a8a01e1d:0",
+                    "sourceId": "station-15",
+                    "version": "6f80ee45a8a01e1d",
+                    "score": 0.03698,
+                    "coverage": 0.5
+                  },
+                  {
+                    "id": "verified-pvg-rest-charging:3c747ba8fb743181:0",
+                    "sourceId": "verified-pvg-rest-charging",
+                    "version": "3c747ba8fb743181",
+                    "score": 0.03235,
+                    "coverage": 0.167
+                  },
+                  {
+                    "id": "verified-hongqiao-p10-charging:d5012857ac09a5cc:1",
+                    "sourceId": "verified-hongqiao-p10-charging",
+                    "version": "d5012857ac09a5cc",
+                    "score": 0.03091,
+                    "coverage": 0.167
+                  },
+                  {
+                    "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                    "sourceId": "verified-shanghai-rail-station",
+                    "version": "26195dc7b3d7255a",
+                    "score": 0.02835,
+                    "coverage": 0.5
+                  },
+                  {
+                    "id": "verified-metro-lockers:ac7d654795dd78d2:0",
+                    "sourceId": "verified-metro-lockers",
+                    "version": "ac7d654795dd78d2",
+                    "score": 0.02657,
+                    "coverage": 0.5
+                  },
+                  {
+                    "id": "verified-hongqiao-rail-station:1c6991b2bad55c70:0",
+                    "sourceId": "verified-hongqiao-rail-station",
+                    "version": "1c6991b2bad55c70",
+                    "score": 0.0254,
+                    "coverage": 0.444
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "intent": {
+              "kind": "rail",
+              "origin": "上海火车站",
+              "destination": "杭州",
+              "via": null,
+              "city": null,
+              "roadKm": null
+            },
+            "intentProvider": "deepseek",
+            "usage": {},
+            "services": [
+              {
+                "id": "verified-rail-12306",
+                "kind": "rail",
+                "title": "China Railway 12306 English ticket and ID guide",
+                "description": "The English 12306 site supports ticket purchase, changes and refunds. Eligible foreign passengers can use valid passports. Carry the ID used to buy the ticket; an itinerary sheet is not a ticket. This app has no live inventory, fare or ordering connection. Official online service, not a physical outlet · Reviewed public record. Confirm operation, availability and prices with the provider; no live inventory or booking API.",
+                "url": "https://www.12306.cn/en/",
+                "sourceUrl": "https://www.12306.cn/en/faq.html",
+                "sourceId": "verified-rail-12306",
+                "status": "official-guide",
+                "address": "Official online service, not a physical outlet",
+                "phone": null,
+                "phoneExtension": null,
+                "phoneRole": null,
+                "station": null,
+                "stations": [],
+                "stationEvidence": [],
+                "checkedAt": "2026-09-25",
+                "liveAvailability": false
+              }
+            ],
+            "confidence": {
+              "model": null,
+              "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+              "sources": [
+                {
+                  "id": "rail-passport",
+                  "score": 85,
+                  "level": "high",
+                  "requiresReview": false,
+                  "government": false,
+                  "reasons": [
+                    "已匹配运营方域名",
+                    "有保存摘要",
+                    "摘要在复核周期内"
+                  ],
+                  "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+                },
+                {
+                  "id": "history-sh-hz-trains",
+                  "score": 60,
+                  "level": "medium",
+                  "requiresReview": false,
+                  "government": false,
+                  "reasons": [
+                    "非已核验政府/运营方域名",
+                    "有保存摘要",
+                    "摘要在复核周期内"
+                  ],
+                  "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+                }
+              ],
+              "sourceScore": 60,
+              "requiresReview": false,
+              "needsClarification": false,
+              "reasons": [],
+              "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确"
+            },
+            "text": "Your origin remains Shanghai Railway Station. Stored historical trains depart from Hongqiao and are alternatives requiring a station change. Compare the dated records below by class, fare and departure period. They refer to 2024-06-15, not today’s trains or prices. Unreported arrival times or fares remain unknown. Add your travel date and check the exact station pair on 12306.",
+            "sourceIds": [
+              "history-sh-hz-trains",
+              "rail-passport"
+            ],
+            "mode": "deepseek-tool",
+            "notice": "model-intent-verified-tool",
+            "tool": {
+              "kind": "rail",
+              "metro": null,
+              "estimate": null,
+              "request": null,
+              "places": null
+            },
+            "routeVersion": null,
+            "number": 2,
+            "request": "Find train options from Shanghai Railway Station to Hangzhou and compare second-class fares.",
+            "execution": {
+              "stages": [
+                {
+                  "name": "retrieve",
+                  "status": "completed",
+                  "ms": 102
+                },
+                {
+                  "name": "intent",
+                  "status": "completed",
+                  "ms": 0
+                },
+                {
+                  "name": "semantic_retrieval",
+                  "status": "completed",
+                  "ms": 61
+                },
+                {
+                  "name": "tool_or_answer",
+                  "status": "completed",
+                  "kind": "rail"
+                }
+              ],
+              "retrieval": {
+                "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+                "embedding": "none",
+                "reranker": "deterministic lexical/evidence reranking",
+                "corpusChunks": 537,
+                "candidates": 506,
+                "elapsedMs": 61,
+                "hits": [
+                  {
+                    "id": "sh-hz-rail:17fdb729f60d1c76:0",
+                    "sourceId": "sh-hz-rail",
+                    "version": "17fdb729f60d1c76",
+                    "score": 0.03761,
+                    "coverage": 0.458
+                  },
+                  {
+                    "id": "station-15:6f80ee45a8a01e1d:0",
+                    "sourceId": "station-15",
+                    "version": "6f80ee45a8a01e1d",
+                    "score": 0.03595,
+                    "coverage": 0.417
+                  },
+                  {
+                    "id": "history-sh-hz-trains:5f222a63b6cce02e:0",
+                    "sourceId": "history-sh-hz-trains",
+                    "version": "5f222a63b6cce02e",
+                    "score": 0.03195,
+                    "coverage": 0.583
+                  },
+                  {
+                    "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                    "sourceId": "verified-shanghai-rail-station",
+                    "version": "26195dc7b3d7255a",
+                    "score": 0.0292,
+                    "coverage": 0.5
+                  },
+                  {
+                    "id": "sh-hz-rail:17fdb729f60d1c76:1",
+                    "sourceId": "sh-hz-rail",
+                    "version": "17fdb729f60d1c76",
+                    "score": 0.02801,
+                    "coverage": 0.083
+                  },
+                  {
+                    "id": "sh-metro-map:6a1b43a40e1dfea9:0",
+                    "sourceId": "sh-metro-map",
+                    "version": "6a1b43a40e1dfea9",
+                    "score": 0.02597,
+                    "coverage": 0.458
+                  },
+                  {
+                    "id": "verified-metro-lockers:ac7d654795dd78d2:0",
+                    "sourceId": "verified-metro-lockers",
+                    "version": "ac7d654795dd78d2",
+                    "score": 0.02555,
+                    "coverage": 0.375
+                  },
+                  {
+                    "id": "verified-hongqiao-rail-station:1c6991b2bad55c70:0",
+                    "sourceId": "verified-hongqiao-rail-station",
+                    "version": "1c6991b2bad55c70",
+                    "score": 0.02547,
+                    "coverage": 0.417
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "intent": {
+          "kind": "charging",
+          "origin": null,
+          "destination": "上海火车站",
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "sourceIds": [
+          "sh-power-bank",
+          "verified-shanghai-rail-station",
+          "history-sh-hz-trains"
+        ],
+        "usage": {
+          "prompt_tokens": 5581,
+          "completion_tokens": 2638,
+          "total_tokens": 8219
+        },
+        "confidence": {
+          "requiresReview": false,
+          "reasons": [],
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 82
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 24237
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 532,
+            "candidates": 505,
+            "elapsedMs": 82,
+            "hits": [
+              {
+                "id": "verified-hongqiao-p10-charging:d5012857ac09a5cc:0",
+                "sourceId": "verified-hongqiao-p10-charging",
+                "version": "d5012857ac09a5cc",
+                "score": 0.03647,
+                "coverage": 0.37
+              },
+              {
+                "id": "sh-power-bank:cb0ac35360170622:0",
+                "sourceId": "sh-power-bank",
+                "version": "cb0ac35360170622",
+                "score": 0.0346,
+                "coverage": 0.222
+              },
+              {
+                "id": "sh-hz-rail:17fdb729f60d1c76:0",
+                "sourceId": "sh-hz-rail",
+                "version": "17fdb729f60d1c76",
+                "score": 0.03337,
+                "coverage": 0.296
+              },
+              {
+                "id": "verified-pvg-rest-charging:3c747ba8fb743181:0",
+                "sourceId": "verified-pvg-rest-charging",
+                "version": "3c747ba8fb743181",
+                "score": 0.03231,
+                "coverage": 0.148
+              },
+              {
+                "id": "verified-hongqiao-p10-charging:d5012857ac09a5cc:1",
+                "sourceId": "verified-hongqiao-p10-charging",
+                "version": "d5012857ac09a5cc",
+                "score": 0.03156,
+                "coverage": 0.148
+              },
+              {
+                "id": "sh-hz-rail:17fdb729f60d1c76:1",
+                "sourceId": "sh-hz-rail",
+                "version": "17fdb729f60d1c76",
+                "score": 0.02932,
+                "coverage": 0.074
+              },
+              {
+                "id": "station-15:6f80ee45a8a01e1d:0",
+                "sourceId": "station-15",
+                "version": "6f80ee45a8a01e1d",
+                "score": 0.02797,
+                "coverage": 0.259
+              },
+              {
+                "id": "history-sh-hz-trains:5f222a63b6cce02e:0",
+                "sourceId": "history-sh-hz-trains",
+                "version": "5f222a63b6cce02e",
+                "score": 0.02588,
+                "coverage": 0.296
+              }
+            ]
+          },
+          "totalMs": 30217
+        },
+        "modelRouting": {
+          "requested": "auto",
+          "selected": "pro",
+          "model": "deepseek-v4-pro",
+          "thinking": true,
+          "effort": "low",
+          "reason": "比较、条件或纠正",
+          "method": "bounded-complexity-rules"
+        },
+        "dataset": "evaluation",
+        "executionId": "d0184d63-78df-4030-8201-a370d047287a",
+        "assessmentId": "eda31f88-c1fb-4742-990e-965975ba3e9a"
+      },
+      "error": null,
+      "seconds": 33.8
+    }
+  ]
+}

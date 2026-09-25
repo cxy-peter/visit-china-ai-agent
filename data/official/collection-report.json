@@ -1,22 +1,42 @@
 {
-  "started_at": "2026-09-24T17:17:59.524163+00:00",
-  "finished_at": "2026-09-24T17:38:00.233585+00:00",
-  "requested_target": 1200,
+  "started_at_utc": "2026-09-25T05:35:50.700900+00:00",
+  "finished_at_utc": "2026-09-25T05:42:20.544899+00:00",
+  "requested_target": 5000,
+  "unique_index_urls": 5000,
+  "target_met": true,
+  "preserved_prior_rows": 1114,
+  "new_observed_links": 3886,
   "unique_fetched_pages": 1114,
-  "target_met": false,
-  "minimum_1000_met": true,
+  "body_not_fetched": 3886,
   "reviewed_for_current_policy": 0,
   "by_city": {
     "Beijing": 514,
-    "Shanghai": 600
+    "China": 1475,
+    "Shanghai": 3011
+  },
+  "by_publisher": {
+    "english.beijing.gov.cn": 514,
+    "en.nia.gov.cn": 363,
+    "www.gov.cn": 1112,
+    "english.shanghai.gov.cn": 3011
   },
   "topic_counts_nonexclusive": {
-    "event_reference": 259,
-    "destination": 373,
-    "arrival_transport": 106,
-    "public_service": 537,
-    "payment_connectivity": 56
+    "event_reference": 614,
+    "destination": 723,
+    "arrival_transport": 204,
+    "public_service": 980,
+    "payment_connectivity": 131,
+    "government_news": 2762
   },
-  "records_sha256": "4e5a0f72cdb3309fc23a51eb81e6e8dc9125ed263866104ef423e6597550711e",
-  "count_definition": "One unique successful HTML article URL and unique extracted-body hash. Discovery lists, fragments, failed fetches and duplicate bodies excluded. Not all records are operational guides; destination and event references are separately tagged. Fetch != editorial validation."
+  "records_sha256": "c30a511c44ad6a7857ef55e3bd47d338d1d0339b3efdba367751aa69c89df94d",
+  "stop_reasons": [
+    {
+      "host": "english.beijing.gov.cn",
+      "kind": "host_stopped",
+      "reason": "robots unavailable or not robots: 403"
+    }
+  ],
+  "count_definition": "Unique official article URLs. Prior body-fetched metadata retained. New URLs were observed in official HTML/JSON; body_not_fetched rows are discovery leads only, never verified facts or current operational guidance. No generated article or pagination URL.",
+  "records_capture_sha256": "d96d2993937cd97d992b4c9fa13d81e5c8cf8569bff81828aceb37a8545a33b6",
+  "records_hash_normalization": "UTF-8 bytes with CRLF normalized to LF"
 }

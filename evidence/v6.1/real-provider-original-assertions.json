@@ -1,0 +1,1766 @@
+{
+  "url": "https://visit-china-ai-agent-ophgh70fz-cxy-peters-projects.vercel.app",
+  "checks": [
+    {
+      "name": "V6.1 cloud reports configured DeepSeek",
+      "passed": true
+    },
+    {
+      "name": "API key in access field returns a specific actionable error",
+      "passed": true
+    },
+    {
+      "name": "admin login works",
+      "passed": true
+    },
+    {
+      "name": "durable trial code issued",
+      "passed": true
+    },
+    {
+      "name": "friendly trial code logs in",
+      "passed": true
+    },
+    {
+      "name": "real semantic intent 1",
+      "passed": true
+    },
+    {
+      "name": "grounded answer 1",
+      "passed": true
+    },
+    {
+      "name": "evaluation trace persisted 1",
+      "passed": true
+    },
+    {
+      "name": "metro transfer directly answered",
+      "passed": true
+    },
+    {
+      "name": "real semantic intent 2",
+      "passed": true
+    },
+    {
+      "name": "grounded answer 2",
+      "passed": false
+    },
+    {
+      "name": "evaluation trace persisted 2",
+      "passed": true
+    },
+    {
+      "name": "English output retained",
+      "passed": true
+    },
+    {
+      "name": "real semantic intent 3",
+      "passed": true
+    },
+    {
+      "name": "grounded answer 3",
+      "passed": true
+    },
+    {
+      "name": "evaluation trace persisted 3",
+      "passed": true
+    },
+    {
+      "name": "real hotel cards have station-linked public contacts",
+      "passed": true
+    },
+    {
+      "name": "real semantic intent 4",
+      "passed": true
+    },
+    {
+      "name": "grounded answer 4",
+      "passed": true
+    },
+    {
+      "name": "evaluation trace persisted 4",
+      "passed": true
+    },
+    {
+      "name": "real semantic intent 5",
+      "passed": true
+    },
+    {
+      "name": "grounded answer 5",
+      "passed": true
+    },
+    {
+      "name": "evaluation trace persisted 5",
+      "passed": true
+    },
+    {
+      "name": "decimal taxi arithmetic preserved",
+      "passed": true
+    },
+    {
+      "name": "real semantic intent 6",
+      "passed": true
+    },
+    {
+      "name": "grounded answer 6",
+      "passed": true
+    },
+    {
+      "name": "evaluation trace persisted 6",
+      "passed": true
+    },
+    {
+      "name": "real semantic intent 7",
+      "passed": true
+    },
+    {
+      "name": "grounded answer 7",
+      "passed": true
+    },
+    {
+      "name": "evaluation trace persisted 7",
+      "passed": true
+    },
+    {
+      "name": "real semantic intent 8",
+      "passed": true
+    },
+    {
+      "name": "grounded answer 8",
+      "passed": true
+    },
+    {
+      "name": "evaluation trace persisted 8",
+      "passed": true
+    },
+    {
+      "name": "English output retained",
+      "passed": true
+    },
+    {
+      "name": "context issue persisted separately",
+      "passed": true
+    },
+    {
+      "name": "real model summarizes original issue",
+      "passed": true
+    },
+    {
+      "name": "real replay records exact issue and workflow versions",
+      "passed": true
+    },
+    {
+      "name": "all 20000 plus 10 historical scenarios pass on deployed backend",
+      "passed": true
+    },
+    {
+      "name": "full execution produces bounded dashboard payload",
+      "passed": true
+    },
+    {
+      "name": "Operations can request a fresh 120-case round",
+      "passed": true
+    },
+    {
+      "name": "revocation invalidates existing cookie",
+      "passed": true
+    }
+  ],
+  "answers": [
+    {
+      "input": "落地PVG以后我想搭地铁到上海站，能直接列出换乘站吗？",
+      "language": "zh",
+      "answer": {
+        "intent": {
+          "kind": "metro",
+          "origin": "浦东机场",
+          "destination": "上海站",
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 2844,
+          "completion_tokens": 47,
+          "total_tokens": 2891,
+          "prompt_tokens_details": {
+            "cached_tokens": 2688
+          },
+          "prompt_cache_hit_tokens": 2688,
+          "prompt_cache_miss_tokens": 156
+        },
+        "services": [],
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "sh-metro-map",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 90,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "text": "从浦东1号2号航站楼乘坐2号线（往蟠祥路·国家会计学院方向），到人民广场下车。 在人民广场换乘1号线（往富锦路方向），到上海火车站下车。 路线图和途经站在下方。",
+        "sourceIds": [
+          "sh-metro-map"
+        ],
+        "mode": "deepseek-tool",
+        "notice": "model-intent-verified-tool",
+        "tool": {
+          "kind": "metro",
+          "metro": {
+            "kind": "metro",
+            "origin": "浦东1号2号航站楼",
+            "destination": "上海火车站",
+            "via": null
+          },
+          "estimate": null,
+          "request": null,
+          "places": null
+        },
+        "routeVersion": "shanghai-metro-2026-09-25",
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 74
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 988
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "metro"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 494,
+            "candidates": 465,
+            "elapsedMs": 74,
+            "hits": [
+              {
+                "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                "sourceId": "verified-shanghai-rail-station",
+                "version": "26195dc7b3d7255a",
+                "score": 0.0253,
+                "coverage": 0.2
+              },
+              {
+                "id": "verified-pvg-taxi:cca2a96bbc4759cf:0",
+                "sourceId": "verified-pvg-taxi",
+                "version": "cca2a96bbc4759cf",
+                "score": 0.02487,
+                "coverage": 0.12
+              },
+              {
+                "id": "verified-pvg-rest-charging:3c747ba8fb743181:0",
+                "sourceId": "verified-pvg-rest-charging",
+                "version": "3c747ba8fb743181",
+                "score": 0.02412,
+                "coverage": 0.12
+              },
+              {
+                "id": "verified-pvg-taxi:cca2a96bbc4759cf:1",
+                "sourceId": "verified-pvg-taxi",
+                "version": "cca2a96bbc4759cf",
+                "score": 0.02412,
+                "coverage": 0.12
+              },
+              {
+                "id": "verified-hongqiao-airport-taxi:9ec5b44088d58128:0",
+                "sourceId": "verified-hongqiao-airport-taxi",
+                "version": "9ec5b44088d58128",
+                "score": 0.02105,
+                "coverage": 0.08
+              },
+              {
+                "id": "sh-hz-rail:17fdb729f60d1c76:0",
+                "sourceId": "sh-hz-rail",
+                "version": "17fdb729f60d1c76",
+                "score": 0.02065,
+                "coverage": 0.08
+              },
+              {
+                "id": "verified-hongqiao-rail-station:1c6991b2bad55c70:0",
+                "sourceId": "verified-hongqiao-rail-station",
+                "version": "1c6991b2bad55c70",
+                "score": 0.02033,
+                "coverage": 0.16
+              },
+              {
+                "id": "sh-marriott-city-centre:d95fbe4d18488db5:0",
+                "sourceId": "sh-marriott-city-centre",
+                "version": "d95fbe4d18488db5",
+                "score": 0.01856,
+                "coverage": 0.16
+              }
+            ]
+          },
+          "totalMs": 1066
+        },
+        "dataset": "evaluation",
+        "executionId": "b33b690a-48d6-4283-9763-546e4799fcb6",
+        "assessmentId": "3c8d1ac0-64d4-4a6d-abdc-5c6e1c45028a"
+      },
+      "error": null,
+      "elapsedSeconds": 4.65
+    },
+    {
+      "input": "I am at Shanghai South Railway Station. Can I use Alipay to pay for a metro ride?",
+      "language": "en",
+      "answer": {
+        "text": "Yes — Alipay can be used for Shanghai metro rides via its transit code (乘车码). At Shanghai South Railway Station you can ride metro lines 1, 3 and 15. Open Alipay, search for the Shanghai transit code (上海公共交通乘车码), activate it, and scan at the gate. If an entry or exit record is missing, Alipay's trip-completion flow can fix it. Note: current app screens and station staff take precedence if the interface has changed.",
+        "sourceIds": [
+          "station-4",
+          "news-shanghai-transit-code-guide"
+        ],
+        "mode": "deepseek",
+        "notice": "saved-summaries",
+        "intent": {
+          "kind": "metro_ticket",
+          "origin": null,
+          "destination": "上海南站",
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 2474,
+          "completion_tokens": 165,
+          "total_tokens": 2639,
+          "prompt_tokens_details": {
+            "cached_tokens": 2304
+          },
+          "prompt_cache_hit_tokens": 2304,
+          "prompt_cache_miss_tokens": 170
+        },
+        "services": [
+          {
+            "id": "service-metro_ticket",
+            "kind": "metro_ticket",
+            "title": "Shanghai Metro ticket guide",
+            "description": "Use Metro Daduhui or supported Alipay/WeChat transit services. Buy single-journey tickets at stations; they are valid on the purchase day and do not cover out-of-station transfers. Confirm distance-based fares with the operator.",
+            "url": "https://english.shanghai.gov.cn/en-Individuals-Transportation-PublicTransport/20260813/f257d5c373db4da3a8bde717b9f46b27.html",
+            "sourceId": "sh-metro-tickets",
+            "status": "official-guide",
+            "liveAvailability": false
+          }
+        ],
+        "confidence": {
+          "model": 0.9,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "station-4",
+              "score": 85,
+              "level": "high",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "已匹配运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内",
+                "静态站点快照，非实时运营"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "news-shanghai-transit-code-guide",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 85,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 84
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 1661
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "metro_ticket"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 494,
+            "candidates": 474,
+            "elapsedMs": 84,
+            "hits": [
+              {
+                "id": "station-4:4f78a395475a60e7:0",
+                "sourceId": "station-4",
+                "version": "4f78a395475a60e7",
+                "score": 0.03756,
+                "coverage": 0.5
+              },
+              {
+                "id": "news-nihao-china-shanghai-20260817:739f3f5d3d0ae667:0",
+                "sourceId": "news-nihao-china-shanghai-20260817",
+                "version": "739f3f5d3d0ae667",
+                "score": 0.02881,
+                "coverage": 0.444
+              },
+              {
+                "id": "verified-metro-lockers:ac7d654795dd78d2:1",
+                "sourceId": "verified-metro-lockers",
+                "version": "ac7d654795dd78d2",
+                "score": 0.02779,
+                "coverage": 0.556
+              },
+              {
+                "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                "sourceId": "verified-shanghai-rail-station",
+                "version": "26195dc7b3d7255a",
+                "score": 0.02752,
+                "coverage": 0.5
+              },
+              {
+                "id": "news-tenpaygo-20260924:19cb946f176278d7:1",
+                "sourceId": "news-tenpaygo-20260924",
+                "version": "19cb946f176278d7",
+                "score": 0.02707,
+                "coverage": 0.278
+              },
+              {
+                "id": "news-nihao-china-shanghai-20260817:739f3f5d3d0ae667:1",
+                "sourceId": "news-nihao-china-shanghai-20260817",
+                "version": "739f3f5d3d0ae667",
+                "score": 0.02567,
+                "coverage": 0.278
+              },
+              {
+                "id": "news-shanghai-transit-code-guide:439cf7737c70c2e9:1",
+                "sourceId": "news-shanghai-transit-code-guide",
+                "version": "439cf7737c70c2e9",
+                "score": 0.02527,
+                "coverage": 0.167
+              },
+              {
+                "id": "verified-rail-12306:b48813c5b2636fa9:0",
+                "sourceId": "verified-rail-12306",
+                "version": "b48813c5b2636fa9",
+                "score": 0.02488,
+                "coverage": 0.389
+              }
+            ]
+          },
+          "totalMs": 1748
+        },
+        "dataset": "evaluation",
+        "executionId": "2f432057-5998-4630-ab7c-372b6ce9eecd",
+        "assessmentId": "933fd110-5d79-4483-b9dd-c392bc6418c5"
+      },
+      "error": null,
+      "elapsedSeconds": 5.26
+    },
+    {
+      "input": "上海站附近想找一家真实酒店，给我公开地址和联系电话就好，不用报价。",
+      "language": "zh",
+      "answer": {
+        "text": "上海站附近可参考以下真实酒店（公开地址与总机，未含报价）：\n1. 上海浦西万怡酒店：静安区恒丰路338号，电话 +86 21 2215 3888。\n2. 上海静安铂尔曼酒店：静安区梅园路330号，电话 +86 21 6353 5555。\n以上为公开记录，营业与房态请向酒店确认。",
+        "sourceIds": [
+          "verified-courtyard-central",
+          "verified-pullman-jingan"
+        ],
+        "mode": "deepseek",
+        "notice": "saved-summaries",
+        "intent": {
+          "kind": "hotel",
+          "origin": null,
+          "destination": "上海站",
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 2973,
+          "completion_tokens": 162,
+          "total_tokens": 3135,
+          "prompt_tokens_details": {
+            "cached_tokens": 640
+          },
+          "prompt_cache_hit_tokens": 640,
+          "prompt_cache_miss_tokens": 2333
+        },
+        "services": [
+          {
+            "id": "verified-pullman-jingan",
+            "kind": "hotel",
+            "title": "上海静安铂尔曼酒店",
+            "description": "酒店官网列出上海火车站为可步行到达的邻近铁路站。 静安区梅园路330号 · +86 21 6353 5555 · 页面核对记录；营业、可用量和价格请向运营方确认。未接实时库存或预订接口。",
+            "url": "https://pullman.accor.com/en/hotels/shanghai/7598.html",
+            "sourceUrl": "https://pullman.accor.com/en/hotels/shanghai/7598.html",
+            "sourceId": "verified-pullman-jingan",
+            "status": "verified-place",
+            "address": "静安区梅园路330号",
+            "phone": "+86 21 6353 5555",
+            "phoneExtension": null,
+            "phoneRole": "hotel",
+            "station": "上海火车站",
+            "stations": [
+              "上海火车站"
+            ],
+            "stationEvidence": [
+              {
+                "station": "上海火车站",
+                "basis": "operator-nearby",
+                "descriptionZh": "运营方到达指南明确列出上海火车站可步行前往。",
+                "description": "The operator explicitly describes walking from Shanghai Railway Station.",
+                "sourceUrls": [
+                  "https://pullman.accor.com/en/hotels/shanghai/7598.html"
+                ]
+              }
+            ],
+            "checkedAt": "2026-09-25",
+            "liveAvailability": false
+          },
+          {
+            "id": "verified-courtyard-central",
+            "kind": "hotel",
+            "title": "上海浦西万怡酒店",
+            "description": "官网附近交通列出汉中路站和上海火车站。 静安区恒丰路338号 · +86 21 2215 3888 · 页面核对记录；营业、可用量和价格请向运营方确认。未接实时库存或预订接口。",
+            "url": "https://www.marriott.com/en-us/hotels/shapx-courtyard-shanghai-central/overview/",
+            "sourceUrl": "https://www.marriott.com/en-us/hotels/shapx-courtyard-shanghai-central/overview/",
+            "sourceId": "verified-courtyard-central",
+            "status": "verified-place",
+            "address": "静安区恒丰路338号",
+            "phone": "+86 21 2215 3888",
+            "phoneExtension": null,
+            "phoneRole": "hotel",
+            "station": "汉中路",
+            "stations": [
+              "汉中路",
+              "上海火车站"
+            ],
+            "stationEvidence": [
+              {
+                "station": "汉中路",
+                "basis": "operator-nearby",
+                "descriptionZh": "官网附近地铁站明确列出汉中路站。",
+                "description": "The nearby subway list names Hanzhong Road.",
+                "sourceUrls": [
+                  "https://www.marriott.com/en-us/hotels/shapx-courtyard-shanghai-central/overview/"
+                ]
+              },
+              {
+                "station": "上海火车站",
+                "basis": "operator-nearby",
+                "descriptionZh": "官网附近地铁及铁路站列出上海火车站。",
+                "description": "The nearby subway and rail lists name Shanghai Railway Station.",
+                "sourceUrls": [
+                  "https://www.marriott.com/en-us/hotels/shapx-courtyard-shanghai-central/overview/"
+                ]
+              }
+            ],
+            "checkedAt": "2026-09-25",
+            "liveAvailability": false
+          }
+        ],
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "verified-pullman-jingan",
+              "score": 85,
+              "level": "high",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "已匹配运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "verified-courtyard-central",
+              "score": 85,
+              "level": "high",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "已匹配运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 85,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 63
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 1484
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "hotel"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 494,
+            "candidates": 55,
+            "elapsedMs": 63,
+            "hits": [
+              {
+                "id": "sh-marriott-city-centre:d95fbe4d18488db5:0",
+                "sourceId": "sh-marriott-city-centre",
+                "version": "d95fbe4d18488db5",
+                "score": 0.02647,
+                "coverage": 0.214
+              },
+              {
+                "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                "sourceId": "verified-shanghai-rail-station",
+                "version": "26195dc7b3d7255a",
+                "score": 0.02243,
+                "coverage": 0.107
+              },
+              {
+                "id": "sh-hz-rail:17fdb729f60d1c76:0",
+                "sourceId": "sh-hz-rail",
+                "version": "17fdb729f60d1c76",
+                "score": 0.02166,
+                "coverage": 0.107
+              },
+              {
+                "id": "verified-courtyard-central:be2f9990c74f069c:0",
+                "sourceId": "verified-courtyard-central",
+                "version": "be2f9990c74f069c",
+                "score": 0.02,
+                "coverage": 0.321
+              },
+              {
+                "id": "verified-jw-tomorrow-square:1a36c6dd8670882b:0",
+                "sourceId": "verified-jw-tomorrow-square",
+                "version": "1a36c6dd8670882b",
+                "score": 0.01968,
+                "coverage": 0.321
+              },
+              {
+                "id": "verified-pullman-jingan:d1d198223d8f2b4d:0",
+                "sourceId": "verified-pullman-jingan",
+                "version": "d1d198223d8f2b4d",
+                "score": 0.01875,
+                "coverage": 0.286
+              },
+              {
+                "id": "verified-dazhong-airport:b95e335747df6dee:0",
+                "sourceId": "verified-dazhong-airport",
+                "version": "b95e335747df6dee",
+                "score": 0.01832,
+                "coverage": 0.286
+              },
+              {
+                "id": "verified-hyatt-place-hongqiao:8c0d9b56202f6d23:0",
+                "sourceId": "verified-hyatt-place-hongqiao",
+                "version": "8c0d9b56202f6d23",
+                "score": 0.01819,
+                "coverage": 0.286
+              }
+            ]
+          },
+          "totalMs": 1550
+        },
+        "dataset": "evaluation",
+        "executionId": "0c05fd2f-5c10-4530-a260-7f12f29d82aa",
+        "assessmentId": "47daa318-1a53-469a-9752-5ba2735e4fa4"
+      },
+      "error": null,
+      "elapsedSeconds": 4.99
+    },
+    {
+      "input": "上海火车站周边想吃顿饭，请提供已经核对过的餐厅。",
+      "language": "zh",
+      "answer": {
+        "intent": {
+          "kind": "restaurant",
+          "origin": null,
+          "destination": "上海火车站",
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 2773,
+          "completion_tokens": 151,
+          "total_tokens": 2924,
+          "prompt_tokens_details": {
+            "cached_tokens": 640
+          },
+          "prompt_cache_hit_tokens": 640,
+          "prompt_cache_miss_tokens": 2133
+        },
+        "services": [
+          {
+            "id": "verified-momo-cafe",
+            "kind": "restaurant",
+            "title": "MoMo Café（上海浦西万怡酒店）",
+            "description": "酒店官网收录的全天餐厅；菜单、营业与席位以餐厅确认结果为准。 静安区恒丰路338号，上海浦西万怡酒店内 · +86 21 2215 3888 转 6710 · 页面核对记录；营业、可用量和价格请向运营方确认。未接实时库存或预订接口。",
+            "url": "https://www.marriott.com/en-us/hotels/shapx-courtyard-shanghai-central/dining/",
+            "sourceUrl": "https://www.marriott.com/en-us/hotels/shapx-courtyard-shanghai-central/dining/",
+            "sourceId": "verified-momo-cafe",
+            "status": "verified-place",
+            "address": "静安区恒丰路338号，上海浦西万怡酒店内",
+            "phone": "+86 21 2215 3888",
+            "phoneExtension": "6710",
+            "phoneRole": "restaurant-extension",
+            "station": "汉中路",
+            "stations": [
+              "汉中路",
+              "上海火车站"
+            ],
+            "stationEvidence": [
+              {
+                "station": "汉中路",
+                "basis": "inside-verified-property",
+                "descriptionZh": "餐厅位于酒店内，酒店官网列出汉中路站。",
+                "description": "The restaurant is inside the hotel whose transport page lists Hanzhong Road.",
+                "sourceUrls": [
+                  "https://www.marriott.com/en-us/hotels/shapx-courtyard-shanghai-central/dining/",
+                  "https://www.marriott.com/en-us/hotels/shapx-courtyard-shanghai-central/overview/"
+                ]
+              },
+              {
+                "station": "上海火车站",
+                "basis": "inside-verified-property",
+                "descriptionZh": "餐厅位于酒店内，酒店官网列出上海火车站。",
+                "description": "The restaurant is inside the hotel whose transport page lists Shanghai Railway Station.",
+                "sourceUrls": [
+                  "https://www.marriott.com/en-us/hotels/shapx-courtyard-shanghai-central/dining/",
+                  "https://www.marriott.com/en-us/hotels/shapx-courtyard-shanghai-central/overview/"
+                ]
+              }
+            ],
+            "checkedAt": "2026-09-25",
+            "liveAvailability": false
+          }
+        ],
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "place-coffee",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "verified-momo-cafe",
+              "score": 85,
+              "level": "high",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "已匹配运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 85,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "text": "按上海火车站及邻近站点，可以考虑：MoMo Café（上海浦西万怡酒店）（上海火车站）；人民咖啡馆（四行仓库）（曲阜路）。下方和右侧可查看真实地址、来源并加入路线。步行距离及当前营业请打开地图核对。",
+        "sourceIds": [
+          "verified-momo-cafe",
+          "place-coffee"
+        ],
+        "mode": "deepseek-tool",
+        "notice": "model-intent-verified-tool",
+        "tool": {
+          "kind": "nearby",
+          "metro": null,
+          "estimate": null,
+          "request": null,
+          "places": [
+            "verified-momo-cafe",
+            "place-coffee"
+          ]
+        },
+        "routeVersion": null,
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 45
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 1405
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "restaurant"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 494,
+            "candidates": 450,
+            "elapsedMs": 45,
+            "hits": [
+              {
+                "id": "station-15:6f80ee45a8a01e1d:0",
+                "sourceId": "station-15",
+                "version": "6f80ee45a8a01e1d",
+                "score": 0.03394,
+                "coverage": 0.273
+              },
+              {
+                "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                "sourceId": "verified-shanghai-rail-station",
+                "version": "26195dc7b3d7255a",
+                "score": 0.02633,
+                "coverage": 0.318
+              },
+              {
+                "id": "verified-metro-lockers:ac7d654795dd78d2:0",
+                "sourceId": "verified-metro-lockers",
+                "version": "ac7d654795dd78d2",
+                "score": 0.02614,
+                "coverage": 0.318
+              },
+              {
+                "id": "sh-luggage-guide:30603d82ca13f40a:0",
+                "sourceId": "sh-luggage-guide",
+                "version": "30603d82ca13f40a",
+                "score": 0.02379,
+                "coverage": 0.182
+              },
+              {
+                "id": "verified-hongqiao-rail-station:1c6991b2bad55c70:0",
+                "sourceId": "verified-hongqiao-rail-station",
+                "version": "1c6991b2bad55c70",
+                "score": 0.02366,
+                "coverage": 0.273
+              },
+              {
+                "id": "sh-power-bank:cb0ac35360170622:0",
+                "sourceId": "sh-power-bank",
+                "version": "cb0ac35360170622",
+                "score": 0.02314,
+                "coverage": 0.182
+              },
+              {
+                "id": "verified-hongqiao-indoor-navigation:d02a6972fdbdab0d:0",
+                "sourceId": "verified-hongqiao-indoor-navigation",
+                "version": "d02a6972fdbdab0d",
+                "score": 0.02225,
+                "coverage": 0.227
+              },
+              {
+                "id": "sh-metro-map:6a1b43a40e1dfea9:0",
+                "sourceId": "sh-metro-map",
+                "version": "6a1b43a40e1dfea9",
+                "score": 0.02152,
+                "coverage": 0.273
+              }
+            ]
+          },
+          "totalMs": 1477
+        },
+        "dataset": "evaluation",
+        "executionId": "f2453753-d7fb-4f15-9f5b-2b5e7327113f",
+        "assessmentId": "e1896008-f171-4a93-a794-6a8f510bff75"
+      },
+      "error": null,
+      "elapsedSeconds": 4.87
+    },
+    {
+      "input": "地图显示上海市内这段打车38.5公里，白天基础费用怎么估？",
+      "language": "zh",
+      "answer": {
+        "intent": {
+          "kind": "taxi",
+          "origin": null,
+          "destination": null,
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": 38.5
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 2124,
+          "completion_tokens": 48,
+          "total_tokens": 2172,
+          "prompt_tokens_details": {
+            "cached_tokens": 640
+          },
+          "prompt_cache_hit_tokens": 640,
+          "prompt_cache_miss_tokens": 1484
+        },
+        "services": [
+          {
+            "id": "verified-pvg-taxi",
+            "kind": "taxi",
+            "title": "浦东机场官方出租车上车点",
+            "description": "按机场出租车指示前往对应航站楼排队点，并以现场标识为准。出租车排队点与网约车上车点不同。未提供实时报价或排队时间。 浦东机场T1到达12号门外；T2到达25号门外 · 页面核对记录；营业、可用量和价格请向运营方确认。未接实时库存或预订接口。",
+            "url": "https://english.shanghai.gov.cn/en-Transportation/20231214/649e06ea38f74aaeb573fa2debbe97d3.html",
+            "sourceUrl": "https://english.shanghai.gov.cn/en-Transportation/20231214/649e06ea38f74aaeb573fa2debbe97d3.html",
+            "sourceId": "verified-pvg-taxi",
+            "status": "official-guide",
+            "address": "浦东机场T1到达12号门外；T2到达25号门外",
+            "phone": null,
+            "phoneExtension": null,
+            "phoneRole": null,
+            "station": "浦东1号2号航站楼",
+            "stations": [
+              "浦东1号2号航站楼"
+            ],
+            "stationEvidence": [
+              {
+                "station": "浦东1号2号航站楼",
+                "basis": "official-facility-location",
+                "descriptionZh": "政府交通指南明确列出浦东机场T1/T2出租车到达门位置。",
+                "description": "The government transport guide names the taxi arrival gates at Pudong T1 and T2.",
+                "sourceUrls": [
+                  "https://english.shanghai.gov.cn/en-Transportation/20231214/649e06ea38f74aaeb573fa2debbe97d3.html"
+                ]
+              }
+            ],
+            "checkedAt": "2026-09-25",
+            "liveAvailability": false
+          },
+          {
+            "id": "verified-hongqiao-airport-taxi",
+            "kind": "taxi",
+            "title": "虹桥机场官方出租车上车点",
+            "description": "机场官网与政府交通指南均列出这两个上车点；按所到航站楼选择，并以现场标识为准。此条不是虹桥火车站出租车点。 虹桥机场T1到达层1号门外；T2到达层4号门外 · 页面核对记录；营业、可用量和价格请向运营方确认。未接实时库存或预订接口。",
+            "url": "https://www.shanghaiairport.com/enhq/czc/index.html",
+            "sourceUrl": "https://www.shanghaiairport.com/enhq/czc/index.html",
+            "sourceId": "verified-hongqiao-airport-taxi",
+            "status": "official-guide",
+            "address": "虹桥机场T1到达层1号门外；T2到达层4号门外",
+            "phone": null,
+            "phoneExtension": null,
+            "phoneRole": null,
+            "station": "虹桥1号航站楼",
+            "stations": [
+              "虹桥1号航站楼",
+              "虹桥2号航站楼"
+            ],
+            "stationEvidence": [
+              {
+                "station": "虹桥1号航站楼",
+                "basis": "official-facility-location",
+                "descriptionZh": "机场官网明确列出虹桥T1到达层1号门。",
+                "description": "The airport lists T1 Arrival Gate 1.",
+                "sourceUrls": [
+                  "https://www.shanghaiairport.com/enhq/czc/index.html"
+                ]
+              },
+              {
+                "station": "虹桥2号航站楼",
+                "basis": "official-facility-location",
+                "descriptionZh": "机场官网明确列出虹桥T2到达层4号门。",
+                "description": "The airport lists T2 Arrival Gate 4.",
+                "sourceUrls": [
+                  "https://www.shanghaiairport.com/enhq/czc/index.html"
+                ]
+              }
+            ],
+            "checkedAt": "2026-09-25",
+            "liveAvailability": false
+          }
+        ],
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "sh-taxi-tariff",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 90,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "text": "按你提供的 38.5 公里，普通车型日间非高峰单程基础估算约 ¥141.58，未含低速等候、夜间、高峰或其他附加费。实际以计价器为准；这不是网约车或携程报价。",
+        "sourceIds": [
+          "sh-taxi-tariff"
+        ],
+        "mode": "deepseek-tool",
+        "notice": "model-intent-verified-tool",
+        "tool": {
+          "kind": "taxi",
+          "metro": null,
+          "estimate": 141.58,
+          "request": {
+            "city": "Shanghai",
+            "km": 38.5
+          },
+          "places": null
+        },
+        "routeVersion": null,
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 37
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 1164
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "taxi"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 494,
+            "candidates": 5,
+            "elapsedMs": 37,
+            "hits": [
+              {
+                "id": "sh-taxi-tariff:cd94ac3262c533f3:0",
+                "sourceId": "sh-taxi-tariff",
+                "version": "cd94ac3262c533f3",
+                "score": 0.02702,
+                "coverage": 0.19
+              },
+              {
+                "id": "news-nihao-china-shanghai-20260817:739f3f5d3d0ae667:0",
+                "sourceId": "news-nihao-china-shanghai-20260817",
+                "version": "739f3f5d3d0ae667",
+                "score": 0.02556,
+                "coverage": 0.143
+              },
+              {
+                "id": "sh-power-bank:cb0ac35360170622:0",
+                "sourceId": "sh-power-bank",
+                "version": "cb0ac35360170622",
+                "score": 0.02536,
+                "coverage": 0.143
+              },
+              {
+                "id": "news-shanghai-transit-code-guide:439cf7737c70c2e9:0",
+                "sourceId": "news-shanghai-transit-code-guide",
+                "version": "439cf7737c70c2e9",
+                "score": 0.02418,
+                "coverage": 0.095
+              },
+              {
+                "id": "place-history:6c2d0e8f7b683e6a:0",
+                "sourceId": "place-history",
+                "version": "6c2d0e8f7b683e6a",
+                "score": 0.01749,
+                "coverage": 0.095
+              }
+            ]
+          },
+          "totalMs": 1204
+        },
+        "dataset": "evaluation",
+        "executionId": "dee2f8e1-eec9-4c22-93c5-e2a9aa86b1a6",
+        "assessmentId": "f3f0e5ec-05ce-4528-8614-b3093efc72a2"
+      },
+      "error": null,
+      "elapsedSeconds": 4.69
+    },
+    {
+      "input": "我要买苏州到杭州的城际火车票，别给我上海地铁路线。",
+      "language": "zh",
+      "answer": {
+        "intent": {
+          "kind": "rail",
+          "origin": "苏州",
+          "destination": "杭州",
+          "via": null,
+          "city": null,
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 2962,
+          "completion_tokens": 44,
+          "total_tokens": 3006,
+          "prompt_tokens_details": {
+            "cached_tokens": 640
+          },
+          "prompt_cache_hit_tokens": 640,
+          "prompt_cache_miss_tokens": 2322
+        },
+        "services": [
+          {
+            "id": "verified-rail-12306",
+            "kind": "rail",
+            "title": "铁路12306英文购票与证件指引",
+            "description": "12306英文站提供购票、改签、退票等服务；外国旅客可按规则使用有效护照购票。乘车使用购票时的有效证件，行程信息单不能作为车票。未接入本站实时余票、价格或下单。 线上官方服务；非实体门店 · 页面核对记录；营业、可用量和价格请向运营方确认。未接实时库存或预订接口。",
+            "url": "https://www.12306.cn/en/",
+            "sourceUrl": "https://www.12306.cn/en/faq.html",
+            "sourceId": "verified-rail-12306",
+            "status": "official-guide",
+            "address": "线上官方服务；非实体门店",
+            "phone": null,
+            "phoneExtension": null,
+            "phoneRole": null,
+            "station": null,
+            "stations": [],
+            "stationEvidence": [],
+            "checkedAt": "2026-09-25",
+            "liveAvailability": false
+          }
+        ],
+        "confidence": {
+          "model": 0.97,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "rail-passport",
+              "score": 85,
+              "level": "high",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "已匹配运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 85,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "text": "你想从哪一站到哪一站、哪天出发？下面是模拟方案；实际班次、票价和余票请查询12306。",
+        "sourceIds": [
+          "rail-passport"
+        ],
+        "mode": "deepseek-tool",
+        "notice": "model-intent-verified-tool",
+        "tool": {
+          "kind": "rail",
+          "metro": null,
+          "estimate": null,
+          "request": null,
+          "places": null
+        },
+        "routeVersion": null,
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 38
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 899
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "rail"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 494,
+            "candidates": 468,
+            "elapsedMs": 38,
+            "hits": [
+              {
+                "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                "sourceId": "verified-shanghai-rail-station",
+                "version": "26195dc7b3d7255a",
+                "score": 0.02844,
+                "coverage": 0.333
+              },
+              {
+                "id": "sh-hz-rail:17fdb729f60d1c76:0",
+                "sourceId": "sh-hz-rail",
+                "version": "17fdb729f60d1c76",
+                "score": 0.02726,
+                "coverage": 0.208
+              },
+              {
+                "id": "sh-metro-map:6a1b43a40e1dfea9:0",
+                "sourceId": "sh-metro-map",
+                "version": "6a1b43a40e1dfea9",
+                "score": 0.02641,
+                "coverage": 0.292
+              },
+              {
+                "id": "sh-metro-tickets:fd52c71eea672c0d:0",
+                "sourceId": "sh-metro-tickets",
+                "version": "fd52c71eea672c0d",
+                "score": 0.02619,
+                "coverage": 0.208
+              },
+              {
+                "id": "verified-rail-12306:b48813c5b2636fa9:0",
+                "sourceId": "verified-rail-12306",
+                "version": "b48813c5b2636fa9",
+                "score": 0.02619,
+                "coverage": 0.208
+              },
+              {
+                "id": "verified-metro-lockers:ac7d654795dd78d2:0",
+                "sourceId": "verified-metro-lockers",
+                "version": "ac7d654795dd78d2",
+                "score": 0.02546,
+                "coverage": 0.292
+              },
+              {
+                "id": "verified-hongqiao-rail-station:1c6991b2bad55c70:0",
+                "sourceId": "verified-hongqiao-rail-station",
+                "version": "1c6991b2bad55c70",
+                "score": 0.02525,
+                "coverage": 0.292
+              },
+              {
+                "id": "news-shanghai-transit-code-guide:439cf7737c70c2e9:0",
+                "sourceId": "news-shanghai-transit-code-guide",
+                "version": "439cf7737c70c2e9",
+                "score": 0.0215,
+                "coverage": 0.167
+              }
+            ]
+          },
+          "totalMs": 938
+        },
+        "dataset": "evaluation",
+        "executionId": "69dc7e39-d3e0-4b13-be56-56786abfe2f9",
+        "assessmentId": "289890bd-97c0-440a-9b81-76be4cb1a492"
+      },
+      "error": null,
+      "elapsedSeconds": 4.36
+    },
+    {
+      "input": "新出的tengopay来中国能帮我做什么？这是不是微信支付的应用？",
+      "language": "zh",
+      "answer": {
+        "text": "你说的“Tengopay”很可能是腾讯的 TenPayGo，它不是微信支付本身，而是腾讯面向来华访客推出的支付应用：可用支持的国际银行卡、Apple Pay 或部分境外钱包，在微信支付商户处付款，无需中国手机号或微信账号，并可查看交易记录。更多本地交通与生活服务在逐步推出，但不要默认它已支持上海地铁闸机、所有境外钱包或免手续费，具体卡种、资格、费率和城市服务以应用当前页面为准。若想用手机坐上海地铁公交，也可考虑上海公共交通乘车码（支付宝/微信入口开通，先乘车后付费）。",
+        "sourceIds": [
+          "news-tenpaygo-20260924",
+          "news-shanghai-transit-code-guide"
+        ],
+        "mode": "deepseek",
+        "notice": "saved-summaries",
+        "intent": {
+          "kind": "other",
+          "origin": null,
+          "destination": null,
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 1954,
+          "completion_tokens": 199,
+          "total_tokens": 2153,
+          "prompt_tokens_details": {
+            "cached_tokens": 640
+          },
+          "prompt_cache_hit_tokens": 640,
+          "prompt_cache_miss_tokens": 1314
+        },
+        "services": [],
+        "confidence": {
+          "model": 0.93,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "news-tenpaygo-20260924",
+              "score": 85,
+              "level": "high",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "已匹配运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "news-shanghai-transit-code-guide",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 85,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 36
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 1936
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "other"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 494,
+            "candidates": 4,
+            "elapsedMs": 36,
+            "hits": [
+              {
+                "id": "news-tenpaygo-20260924:19cb946f176278d7:0",
+                "sourceId": "news-tenpaygo-20260924",
+                "version": "19cb946f176278d7",
+                "score": 0.02828,
+                "coverage": 0.286
+              },
+              {
+                "id": "news-nihao-china-shanghai-20260817:739f3f5d3d0ae667:0",
+                "sourceId": "news-nihao-china-shanghai-20260817",
+                "version": "739f3f5d3d0ae667",
+                "score": 0.02597,
+                "coverage": 0.143
+              },
+              {
+                "id": "news-shanghai-transit-code-guide:439cf7737c70c2e9:0",
+                "sourceId": "news-shanghai-transit-code-guide",
+                "version": "439cf7737c70c2e9",
+                "score": 0.02556,
+                "coverage": 0.143
+              },
+              {
+                "id": "sh-metro-tickets:fd52c71eea672c0d:0",
+                "sourceId": "sh-metro-tickets",
+                "version": "fd52c71eea672c0d",
+                "score": 0.02456,
+                "coverage": 0.095
+              }
+            ]
+          },
+          "totalMs": 1972
+        },
+        "dataset": "evaluation",
+        "executionId": "c7458905-3a3e-413a-adbb-4b01d51e50f3",
+        "assessmentId": "637448a1-ff74-4d3e-a807-8954045e4ed5"
+      },
+      "error": null,
+      "elapsedSeconds": 5.47
+    },
+    {
+      "input": "虹桥枢纽有没有已公开介绍的充电设施？我想知道位置。",
+      "language": "en",
+      "answer": {
+        "text": "Yes. A government report confirms fixed phone-charging facilities in the P10 B1 ride-hailing waiting/pickup area at Hongqiao Railway Station. These are fixed charging points, not verified power-bank rental cabinets; outlet availability, fees and current working status should be checked on site. For indoor routing to station amenities, open SH MaaS / Suishenxing, go to Hub Connect, select Hongqiao Railway Station and choose Indoor Navigation.",
+        "sourceIds": [
+          "verified-hongqiao-p10-charging",
+          "verified-hongqiao-indoor-navigation"
+        ],
+        "mode": "deepseek",
+        "notice": "saved-summaries",
+        "intent": {
+          "kind": "charging",
+          "origin": null,
+          "destination": "虹桥枢纽",
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 3087,
+          "completion_tokens": 163,
+          "total_tokens": 3250,
+          "prompt_tokens_details": {
+            "cached_tokens": 640
+          },
+          "prompt_cache_hit_tokens": 640,
+          "prompt_cache_miss_tokens": 2447
+        },
+        "services": [
+          {
+            "id": "verified-hongqiao-p10-charging",
+            "kind": "charging",
+            "title": "Phone charging facilities at Hongqiao P10 ride-hailing waiting area",
+            "description": "A government report confirms phone charging facilities in the P10 B1 ride-hailing waiting area. These are fixed facilities, not verified power-bank rental cabinets; confirm connectors, fees and availability on site. Ride-hailing pickup and waiting area on B1 of Hongqiao P10 parking garage · Reviewed public record. Confirm operation, availability and prices with the provider; no live inventory or booking API.",
+            "url": "https://english.shanghai.gov.cn/en-Latest-WhatsNew/20260802/f314cad958d4426f832031a1c87fe1e9.html",
+            "sourceUrl": "https://english.shanghai.gov.cn/en-Latest-WhatsNew/20260802/f314cad958d4426f832031a1c87fe1e9.html",
+            "sourceId": "verified-hongqiao-p10-charging",
+            "status": "official-guide",
+            "address": "Ride-hailing pickup and waiting area on B1 of Hongqiao P10 parking garage",
+            "phone": null,
+            "phoneExtension": null,
+            "phoneRole": null,
+            "station": "虹桥火车站",
+            "stations": [
+              "虹桥火车站"
+            ],
+            "stationEvidence": [
+              {
+                "station": "虹桥火车站",
+                "basis": "official-facility-location",
+                "descriptionZh": "政府报道将P10地下一层上客区及充电设施归于虹桥火车站出站服务。",
+                "description": "The government report identifies P10 B1 pickup and charging facilities as part of Hongqiao Railway Station arrival services.",
+                "sourceUrls": [
+                  "https://english.shanghai.gov.cn/en-Latest-WhatsNew/20260802/f314cad958d4426f832031a1c87fe1e9.html"
+                ]
+              }
+            ],
+            "checkedAt": "2026-09-25",
+            "liveAvailability": false
+          },
+          {
+            "id": "service-charging",
+            "kind": "charging",
+            "title": "Search power-bank rentals around 虹桥火车站",
+            "description": "Search only; this link does not establish that a cabinet exists here. Confirm location, fees and availability with the operator.",
+            "url": "https://uri.amap.com/search?keyword=%E8%99%B9%E6%A1%A5%E7%81%AB%E8%BD%A6%E7%AB%99%20%E5%85%85%E7%94%B5%E5%AE%9D&city=上海&view=map",
+            "sourceId": "sh-power-bank",
+            "status": "provider-search",
+            "liveAvailability": false
+          },
+          {
+            "id": "guide-charging",
+            "kind": "charging",
+            "title": "Official service guide",
+            "description": "Look for rental cabinets in malls, restaurants and metro stations. Check rental fees and return instructions before renting. This site has no live cabinet locations, stock or prices; verify nearby rental and return points with the operator.",
+            "url": "https://english.shanghai.gov.cn/en-MobileAndInternet/20260727/56b62a3a9d2f4ddaa8d77367c206b2ae.html",
+            "sourceId": "sh-power-bank",
+            "status": "official-guide",
+            "liveAvailability": false
+          }
+        ],
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "verified-hongqiao-indoor-navigation",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "verified-hongqiao-p10-charging",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 90,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 45
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 1418
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "charging"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 494,
+            "candidates": 13,
+            "elapsedMs": 45,
+            "hits": [
+              {
+                "id": "verified-hongqiao-p10-charging:d5012857ac09a5cc:0",
+                "sourceId": "verified-hongqiao-p10-charging",
+                "version": "d5012857ac09a5cc",
+                "score": 0.02828,
+                "coverage": 0.286
+              },
+              {
+                "id": "verified-pvg-rest-charging:3c747ba8fb743181:0",
+                "sourceId": "verified-pvg-rest-charging",
+                "version": "3c747ba8fb743181",
+                "score": 0.0272,
+                "coverage": 0.238
+              },
+              {
+                "id": "sh-power-bank:cb0ac35360170622:0",
+                "sourceId": "sh-power-bank",
+                "version": "cb0ac35360170622",
+                "score": 0.02556,
+                "coverage": 0.143
+              },
+              {
+                "id": "verified-hongqiao-indoor-navigation:d02a6972fdbdab0d:0",
+                "sourceId": "verified-hongqiao-indoor-navigation",
+                "version": "d02a6972fdbdab0d",
+                "score": 0.02496,
+                "coverage": 0.143
+              },
+              {
+                "id": "sh-metro-map:6a1b43a40e1dfea9:0",
+                "sourceId": "sh-metro-map",
+                "version": "6a1b43a40e1dfea9",
+                "score": 0.02313,
+                "coverage": 0.095
+              },
+              {
+                "id": "verified-metro-lockers:ac7d654795dd78d2:0",
+                "sourceId": "verified-metro-lockers",
+                "version": "ac7d654795dd78d2",
+                "score": 0.02214,
+                "coverage": 0.095
+              },
+              {
+                "id": "verified-hyatt-place-hongqiao:8c0d9b56202f6d23:0",
+                "sourceId": "verified-hyatt-place-hongqiao",
+                "version": "8c0d9b56202f6d23",
+                "score": 0.01673,
+                "coverage": 0.143
+              },
+              {
+                "id": "verified-hyatt-kitchen:fccb407f8045ec0c:0",
+                "sourceId": "verified-hyatt-kitchen",
+                "version": "fccb407f8045ec0c",
+                "score": 0.01519,
+                "coverage": 0.095
+              }
+            ]
+          },
+          "totalMs": 1464
+        },
+        "dataset": "evaluation",
+        "executionId": "470254f0-23a2-4622-86f8-4962f6a535ff",
+        "assessmentId": "6c0774d4-48c4-4d4b-9dfd-94f2c865676f"
+      },
+      "error": null,
+      "elapsedSeconds": 4.94
+    }
+  ],
+  "scope": "Small real DeepSeek sample, explicitly tagged evaluation. Separate from 20k offline cases."
+}

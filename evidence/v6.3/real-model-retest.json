@@ -1,0 +1,2205 @@
+{
+  "url": "https://visit-china-ai-agent-1yg2mlvrl-cxy-peters-projects.vercel.app",
+  "checks": [
+    {
+      "name": "version 6.3",
+      "passed": true
+    },
+    {
+      "name": "admin login",
+      "passed": true
+    },
+    {
+      "name": "admin connect",
+      "passed": true
+    },
+    {
+      "name": "chat session persists",
+      "passed": true
+    },
+    {
+      "name": "real answer 1",
+      "passed": true
+    },
+    {
+      "name": "grounded 1",
+      "passed": true
+    },
+    {
+      "name": "charging and rail both retained",
+      "passed": true
+    },
+    {
+      "name": "Shanghai station not replaced",
+      "passed": true
+    },
+    {
+      "name": "real answer 2",
+      "passed": true
+    },
+    {
+      "name": "grounded 2",
+      "passed": true
+    },
+    {
+      "name": "intent 2",
+      "passed": true
+    },
+    {
+      "name": "real answer 3",
+      "passed": true
+    },
+    {
+      "name": "grounded 3",
+      "passed": true
+    },
+    {
+      "name": "intent 3",
+      "passed": true
+    },
+    {
+      "name": "real answer 4",
+      "passed": true
+    },
+    {
+      "name": "grounded 4",
+      "passed": true
+    },
+    {
+      "name": "intent 4",
+      "passed": true
+    },
+    {
+      "name": "district route has stops",
+      "passed": true
+    },
+    {
+      "name": "real answer 5",
+      "passed": true
+    },
+    {
+      "name": "grounded 5",
+      "passed": true
+    },
+    {
+      "name": "intent 5",
+      "passed": true
+    },
+    {
+      "name": "district route has stops",
+      "passed": true
+    },
+    {
+      "name": "real answer 6",
+      "passed": true
+    },
+    {
+      "name": "grounded 6",
+      "passed": true
+    },
+    {
+      "name": "intent 6",
+      "passed": true
+    },
+    {
+      "name": "district route has stops",
+      "passed": true
+    },
+    {
+      "name": "real answer 7",
+      "passed": true
+    },
+    {
+      "name": "grounded 7",
+      "passed": true
+    },
+    {
+      "name": "intent 7",
+      "passed": true
+    },
+    {
+      "name": "real answer 8",
+      "passed": true
+    },
+    {
+      "name": "grounded 8",
+      "passed": true
+    },
+    {
+      "name": "intent 8",
+      "passed": true
+    }
+  ],
+  "answers": [
+    {
+      "input": "上海火车站有什么充电宝吗？以及从火车站怎么去杭州？我想选二等座、价格便宜的。",
+      "answer": {
+        "mode": "deepseek-tasks",
+        "text": "1. 上海火车站有什么充电宝吗？\n根据现有资料，没有上海火车站站内充电宝租借柜的具体位置或剩余数量信息。一般指引提到商场、餐厅、地铁站等公共场所可能有共享充电宝柜机，但本站未接入实时柜机定位，无法确认上海火车站是否有可借的充电宝。建议您到站后查看站内指引，或使用地图、运营商小程序核实附近租借点。\n\n2. 从上海火车站怎么去杭州？我想选二等座、价格便宜的。\n你指定的是上海火车站，已保留；下面收录的是上海虹桥的历史班次，只能作为换站备选，不能当作上海站出发。可以按二等座／一等座、价格和出发时段比较下方历史记录。记录对应2024年6月15日，不是今天的班次和报价。原文没有的到达时间或席别价格显示“未记录”。请补充实际乘车日期，再到12306按准确车站查票。",
+        "tasks": [
+          {
+            "text": "根据现有资料，没有上海火车站站内充电宝租借柜的具体位置或剩余数量信息。一般指引提到商场、餐厅、地铁站等公共场所可能有共享充电宝柜机，但本站未接入实时柜机定位，无法确认上海火车站是否有可借的充电宝。建议您到站后查看站内指引，或使用地图、运营商小程序核实附近租借点。",
+            "sourceIds": [
+              "sh-power-bank"
+            ],
+            "mode": "deepseek",
+            "notice": "saved-summaries",
+            "intent": {
+              "kind": "charging",
+              "origin": null,
+              "destination": "上海火车站",
+              "via": null,
+              "city": "Shanghai",
+              "roadKm": null
+            },
+            "intentProvider": "deepseek",
+            "usage": {
+              "prompt_tokens": 6172,
+              "completion_tokens": 3064,
+              "total_tokens": 9236
+            },
+            "services": [
+              {
+                "id": "service-charging",
+                "kind": "charging",
+                "title": "上海火车站 · 查询充电宝租借柜",
+                "description": "查询入口；此链接不证明该位置设有柜机。请在运营方核对位置、收费与可用量。",
+                "url": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%E7%81%AB%E8%BD%A6%E7%AB%99%20%E5%85%85%E7%94%B5%E5%AE%9D&city=上海&view=map",
+                "sourceId": "sh-power-bank",
+                "status": "provider-search",
+                "liveAvailability": false
+              },
+              {
+                "id": "guide-charging",
+                "kind": "charging",
+                "title": "官方使用与查询指引",
+                "description": "商场、餐厅、地铁站等公共场所可寻找共享充电宝租借柜。扫码后先核对费用和归还规则，再按页面操作租借。本站没有接入柜机定位、剩余数量或实时价格，请使用地图和柜机运营商核实附近可借、可还的位置。",
+                "url": "https://english.shanghai.gov.cn/en-MobileAndInternet/20260727/56b62a3a9d2f4ddaa8d77367c206b2ae.html",
+                "sourceId": "sh-power-bank",
+                "status": "official-guide",
+                "liveAvailability": false
+              }
+            ],
+            "confidence": {
+              "model": null,
+              "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+              "sources": [
+                {
+                  "id": "sh-power-bank",
+                  "score": 90,
+                  "level": "high",
+                  "requiresReview": false,
+                  "government": true,
+                  "reasons": [
+                    "已匹配政府域名",
+                    "有保存摘要",
+                    "摘要在复核周期内"
+                  ],
+                  "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+                }
+              ],
+              "sourceScore": 90,
+              "requiresReview": false,
+              "needsClarification": false,
+              "reasons": [],
+              "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确"
+            },
+            "number": 1,
+            "request": "上海火车站有什么充电宝吗？",
+            "execution": {
+              "stages": [
+                {
+                  "name": "retrieve",
+                  "status": "completed",
+                  "ms": 86
+                },
+                {
+                  "name": "intent",
+                  "status": "completed",
+                  "ms": 0
+                },
+                {
+                  "name": "semantic_retrieval",
+                  "status": "completed",
+                  "ms": 94
+                },
+                {
+                  "name": "tool_or_answer",
+                  "status": "completed",
+                  "kind": "charging"
+                },
+                {
+                  "name": "grounded_generation",
+                  "status": "completed",
+                  "reason": "EVIDENCE_ALIGNMENT",
+                  "ms": 9612
+                }
+              ],
+              "retrieval": {
+                "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+                "embedding": "none",
+                "reranker": "deterministic lexical/evidence reranking",
+                "corpusChunks": 532,
+                "candidates": 448,
+                "elapsedMs": 94,
+                "hits": [
+                  {
+                    "id": "sh-power-bank:cb0ac35360170622:0",
+                    "sourceId": "sh-power-bank",
+                    "version": "cb0ac35360170622",
+                    "score": 0.03922,
+                    "coverage": 0.5
+                  },
+                  {
+                    "id": "verified-hongqiao-p10-charging:d5012857ac09a5cc:0",
+                    "sourceId": "verified-hongqiao-p10-charging",
+                    "version": "d5012857ac09a5cc",
+                    "score": 0.03828,
+                    "coverage": 0.5
+                  },
+                  {
+                    "id": "station-15:6f80ee45a8a01e1d:0",
+                    "sourceId": "station-15",
+                    "version": "6f80ee45a8a01e1d",
+                    "score": 0.03408,
+                    "coverage": 0.333
+                  },
+                  {
+                    "id": "verified-pvg-rest-charging:3c747ba8fb743181:0",
+                    "sourceId": "verified-pvg-rest-charging",
+                    "version": "3c747ba8fb743181",
+                    "score": 0.03235,
+                    "coverage": 0.167
+                  },
+                  {
+                    "id": "verified-metro-lockers:ac7d654795dd78d2:0",
+                    "sourceId": "verified-metro-lockers",
+                    "version": "ac7d654795dd78d2",
+                    "score": 0.02632,
+                    "coverage": 0.333
+                  },
+                  {
+                    "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                    "sourceId": "verified-shanghai-rail-station",
+                    "version": "26195dc7b3d7255a",
+                    "score": 0.02574,
+                    "coverage": 0.333
+                  },
+                  {
+                    "id": "history-sh-hz-trains:5f222a63b6cce02e:0",
+                    "sourceId": "history-sh-hz-trains",
+                    "version": "5f222a63b6cce02e",
+                    "score": 0.02502,
+                    "coverage": 0.333
+                  },
+                  {
+                    "id": "verified-hongqiao-rail-station:1c6991b2bad55c70:0",
+                    "sourceId": "verified-hongqiao-rail-station",
+                    "version": "1c6991b2bad55c70",
+                    "score": 0.02341,
+                    "coverage": 0.278
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "intent": {
+              "kind": "rail",
+              "origin": "上海火车站",
+              "destination": "杭州",
+              "via": null,
+              "city": "Shanghai",
+              "roadKm": null
+            },
+            "intentProvider": "deepseek",
+            "usage": {},
+            "services": [
+              {
+                "id": "verified-rail-12306",
+                "kind": "rail",
+                "title": "铁路12306英文购票与证件指引",
+                "description": "12306英文站提供购票、改签、退票等服务；外国旅客可按规则使用有效护照购票。乘车使用购票时的有效证件，行程信息单不能作为车票。未接入本站实时余票、价格或下单。 线上官方服务；非实体门店 · 页面核对记录；营业、可用量和价格请向运营方确认。未接实时库存或预订接口。",
+                "url": "https://www.12306.cn/en/",
+                "sourceUrl": "https://www.12306.cn/en/faq.html",
+                "sourceId": "verified-rail-12306",
+                "status": "official-guide",
+                "address": "线上官方服务；非实体门店",
+                "phone": null,
+                "phoneExtension": null,
+                "phoneRole": null,
+                "station": null,
+                "stations": [],
+                "stationEvidence": [],
+                "checkedAt": "2026-09-25",
+                "liveAvailability": false
+              }
+            ],
+            "confidence": {
+              "model": null,
+              "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+              "sources": [
+                {
+                  "id": "rail-passport",
+                  "score": 85,
+                  "level": "high",
+                  "requiresReview": false,
+                  "government": false,
+                  "reasons": [
+                    "已匹配运营方域名",
+                    "有保存摘要",
+                    "摘要在复核周期内"
+                  ],
+                  "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+                },
+                {
+                  "id": "history-sh-hz-trains",
+                  "score": 60,
+                  "level": "medium",
+                  "requiresReview": false,
+                  "government": false,
+                  "reasons": [
+                    "非已核验政府/运营方域名",
+                    "有保存摘要",
+                    "摘要在复核周期内"
+                  ],
+                  "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+                }
+              ],
+              "sourceScore": 60,
+              "requiresReview": false,
+              "needsClarification": false,
+              "reasons": [],
+              "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确"
+            },
+            "text": "你指定的是上海火车站，已保留；下面收录的是上海虹桥的历史班次，只能作为换站备选，不能当作上海站出发。可以按二等座／一等座、价格和出发时段比较下方历史记录。记录对应2024年6月15日，不是今天的班次和报价。原文没有的到达时间或席别价格显示“未记录”。请补充实际乘车日期，再到12306按准确车站查票。",
+            "sourceIds": [
+              "history-sh-hz-trains",
+              "rail-passport"
+            ],
+            "mode": "deepseek-tool",
+            "notice": "model-intent-verified-tool",
+            "tool": {
+              "kind": "rail",
+              "metro": null,
+              "estimate": null,
+              "request": null,
+              "places": null
+            },
+            "routeVersion": null,
+            "number": 2,
+            "request": "从上海火车站怎么去杭州？我想选二等座、价格便宜的。",
+            "execution": {
+              "stages": [
+                {
+                  "name": "retrieve",
+                  "status": "completed",
+                  "ms": 54
+                },
+                {
+                  "name": "intent",
+                  "status": "completed",
+                  "ms": 0
+                },
+                {
+                  "name": "semantic_retrieval",
+                  "status": "completed",
+                  "ms": 120
+                },
+                {
+                  "name": "tool_or_answer",
+                  "status": "completed",
+                  "kind": "rail"
+                }
+              ],
+              "retrieval": {
+                "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+                "embedding": "none",
+                "reranker": "deterministic lexical/evidence reranking",
+                "corpusChunks": 532,
+                "candidates": 449,
+                "elapsedMs": 120,
+                "hits": [
+                  {
+                    "id": "station-15:6f80ee45a8a01e1d:0",
+                    "sourceId": "station-15",
+                    "version": "6f80ee45a8a01e1d",
+                    "score": 0.03274,
+                    "coverage": 0.231
+                  },
+                  {
+                    "id": "history-sh-hz-trains:5f222a63b6cce02e:0",
+                    "sourceId": "history-sh-hz-trains",
+                    "version": "5f222a63b6cce02e",
+                    "score": 0.0306,
+                    "coverage": 0.462
+                  },
+                  {
+                    "id": "sh-hz-rail:17fdb729f60d1c76:0",
+                    "sourceId": "sh-hz-rail",
+                    "version": "17fdb729f60d1c76",
+                    "score": 0.02689,
+                    "coverage": 0.231
+                  },
+                  {
+                    "id": "verified-metro-lockers:ac7d654795dd78d2:0",
+                    "sourceId": "verified-metro-lockers",
+                    "version": "ac7d654795dd78d2",
+                    "score": 0.02574,
+                    "coverage": 0.269
+                  },
+                  {
+                    "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                    "sourceId": "verified-shanghai-rail-station",
+                    "version": "26195dc7b3d7255a",
+                    "score": 0.02536,
+                    "coverage": 0.269
+                  },
+                  {
+                    "id": "verified-hongqiao-rail-station:1c6991b2bad55c70:0",
+                    "sourceId": "verified-hongqiao-rail-station",
+                    "version": "1c6991b2bad55c70",
+                    "score": 0.02418,
+                    "coverage": 0.231
+                  },
+                  {
+                    "id": "verified-hongqiao-indoor-navigation:d02a6972fdbdab0d:0",
+                    "sourceId": "verified-hongqiao-indoor-navigation",
+                    "version": "d02a6972fdbdab0d",
+                    "score": 0.02324,
+                    "coverage": 0.192
+                  },
+                  {
+                    "id": "verified-hongqiao-p10-charging:d5012857ac09a5cc:0",
+                    "sourceId": "verified-hongqiao-p10-charging",
+                    "version": "d5012857ac09a5cc",
+                    "score": 0.02136,
+                    "coverage": 0.192
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "intent": {
+          "kind": "charging",
+          "origin": null,
+          "destination": "上海火车站",
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "sourceIds": [
+          "sh-power-bank",
+          "history-sh-hz-trains",
+          "rail-passport"
+        ],
+        "usage": {
+          "prompt_tokens": 6172,
+          "completion_tokens": 3064,
+          "total_tokens": 9236
+        },
+        "confidence": {
+          "requiresReview": false,
+          "reasons": [],
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 94
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 27819
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 532,
+            "candidates": 451,
+            "elapsedMs": 94,
+            "hits": [
+              {
+                "id": "verified-hongqiao-p10-charging:d5012857ac09a5cc:0",
+                "sourceId": "verified-hongqiao-p10-charging",
+                "version": "d5012857ac09a5cc",
+                "score": 0.03381,
+                "coverage": 0.258
+              },
+              {
+                "id": "sh-power-bank:cb0ac35360170622:0",
+                "sourceId": "sh-power-bank",
+                "version": "cb0ac35360170622",
+                "score": 0.03331,
+                "coverage": 0.194
+              },
+              {
+                "id": "station-15:6f80ee45a8a01e1d:0",
+                "sourceId": "station-15",
+                "version": "6f80ee45a8a01e1d",
+                "score": 0.03167,
+                "coverage": 0.194
+              },
+              {
+                "id": "verified-pvg-rest-charging:3c747ba8fb743181:0",
+                "sourceId": "verified-pvg-rest-charging",
+                "version": "3c747ba8fb743181",
+                "score": 0.03126,
+                "coverage": 0.129
+              },
+              {
+                "id": "history-sh-hz-trains:5f222a63b6cce02e:0",
+                "sourceId": "history-sh-hz-trains",
+                "version": "5f222a63b6cce02e",
+                "score": 0.02919,
+                "coverage": 0.355
+              },
+              {
+                "id": "verified-metro-lockers:ac7d654795dd78d2:0",
+                "sourceId": "verified-metro-lockers",
+                "version": "ac7d654795dd78d2",
+                "score": 0.02431,
+                "coverage": 0.226
+              },
+              {
+                "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                "sourceId": "verified-shanghai-rail-station",
+                "version": "26195dc7b3d7255a",
+                "score": 0.02396,
+                "coverage": 0.226
+              },
+              {
+                "id": "sh-hz-rail:17fdb729f60d1c76:0",
+                "sourceId": "sh-hz-rail",
+                "version": "17fdb729f60d1c76",
+                "score": 0.02355,
+                "coverage": 0.161
+              }
+            ]
+          },
+          "totalMs": 37710
+        },
+        "modelRouting": {
+          "requested": "auto",
+          "selected": "pro",
+          "model": "deepseek-v4-pro",
+          "thinking": true,
+          "effort": "low",
+          "reason": "多个需求，需要分项处理",
+          "method": "bounded-complexity-rules"
+        },
+        "dataset": "evaluation",
+        "executionId": "1444f6af-1f7b-4202-814a-8df8081d4cfb",
+        "assessmentId": "b6ad6ac3-3337-4b32-aa00-83634cedfc3b"
+      },
+      "error": null,
+      "seconds": 41.6
+    },
+    {
+      "input": "我没有告诉你余额，但我能用美国运通非接触银行卡直接乘上海地铁吗？",
+      "answer": {
+        "text": "可以用，但需满足条件。根据现有信息，上海地铁全网试点支持符合条件的美国运通非接触式银行卡直接拍卡过闸，无需另买票或绑定应用。具体条件包括：卡为兼容的非接触式芯片卡、已开通小额免密、且有足够可用额度/信用额度。您没有告知余额不影响基本支持结论，但实际交易需当时有足够可用额度。若过闸失败，请到车站服务中心或联系发卡行处理。",
+        "sourceIds": [
+          "sh-metro-jcb-contactless",
+          "sh-metro"
+        ],
+        "mode": "deepseek",
+        "notice": "saved-summaries",
+        "intent": {
+          "kind": "metro_ticket",
+          "origin": null,
+          "destination": null,
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 5974,
+          "completion_tokens": 1607,
+          "total_tokens": 7581
+        },
+        "services": [
+          {
+            "id": "service-metro_ticket",
+            "kind": "metro_ticket",
+            "title": "上海地铁购票与乘车",
+            "description": "地铁可使用 Metro 大都会或支付宝、微信中的乘车服务。单程票可在车站购买，当日有效；出站换乘不能沿用同一张单程票。票价按距离计算，以车站和官方查询结果为准。",
+            "url": "https://english.shanghai.gov.cn/en-Individuals-Transportation-PublicTransport/20260813/f257d5c373db4da3a8bde717b9f46b27.html",
+            "sourceId": "sh-metro-tickets",
+            "status": "official-guide",
+            "liveAvailability": false
+          }
+        ],
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "sh-metro",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "sh-metro-jcb-contactless",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 90,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 128
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 13436
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 53
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "metro_ticket"
+            },
+            {
+              "name": "grounded_generation",
+              "status": "completed",
+              "reason": "EVIDENCE_ALIGNMENT",
+              "ms": 8662
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 532,
+            "candidates": 459,
+            "elapsedMs": 53,
+            "hits": [
+              {
+                "id": "sh-metro-jcb-contactless:c5f466ebdc86174e:0",
+                "sourceId": "sh-metro-jcb-contactless",
+                "version": "c5f466ebdc86174e",
+                "score": 0.02935,
+                "coverage": 0.367
+              },
+              {
+                "id": "sh-metro:8bafe358a25a4099:0",
+                "sourceId": "sh-metro",
+                "version": "8bafe358a25a4099",
+                "score": 0.02758,
+                "coverage": 0.267
+              },
+              {
+                "id": "operator-jcb-shanghai-contactless:3d017fc410ef1656:0",
+                "sourceId": "operator-jcb-shanghai-contactless",
+                "version": "3d017fc410ef1656",
+                "score": 0.02671,
+                "coverage": 0.233
+              },
+              {
+                "id": "news-tenpaygo-20260924:19cb946f176278d7:0",
+                "sourceId": "news-tenpaygo-20260924",
+                "version": "19cb946f176278d7",
+                "score": 0.02587,
+                "coverage": 0.2
+              },
+              {
+                "id": "sh-marriott-city-centre:d95fbe4d18488db5:0",
+                "sourceId": "sh-marriott-city-centre",
+                "version": "d95fbe4d18488db5",
+                "score": 0.02465,
+                "coverage": 0.133
+              },
+              {
+                "id": "sh-metro-map:6a1b43a40e1dfea9:0",
+                "sourceId": "sh-metro-map",
+                "version": "6a1b43a40e1dfea9",
+                "score": 0.0241,
+                "coverage": 0.133
+              },
+              {
+                "id": "verified-metro-lockers:ac7d654795dd78d2:0",
+                "sourceId": "verified-metro-lockers",
+                "version": "ac7d654795dd78d2",
+                "score": 0.02357,
+                "coverage": 0.133
+              },
+              {
+                "id": "sh-power-bank:cb0ac35360170622:0",
+                "sourceId": "sh-power-bank",
+                "version": "cb0ac35360170622",
+                "score": 0.02307,
+                "coverage": 0.133
+              }
+            ]
+          },
+          "totalMs": 22281
+        },
+        "modelRouting": {
+          "requested": "auto",
+          "selected": "pro",
+          "model": "deepseek-v4-pro",
+          "thinking": true,
+          "effort": "low",
+          "reason": "需要区分适用条件",
+          "method": "bounded-complexity-rules"
+        },
+        "dataset": "evaluation",
+        "executionId": "936b3ca1-d04b-4331-8a68-782bacc98723",
+        "assessmentId": "d183fa57-79ce-42a0-860c-8bc6d5e1f8ab"
+      },
+      "error": null,
+      "seconds": 25.8
+    },
+    {
+      "input": "Can I use my contactless JCB card at Shanghai metro gates? I have not told you my credit limit.",
+      "answer": {
+        "text": "Yes — JCB brand-level support for direct contactless gate tapping on Shanghai Metro is published. Shanghai extended bank-card tap-to-ride to the rail network (including suburban lines) from June 28, 2025, and JCB's June 30, 2025 announcement confirms contactless-card payment at subway gates or designated readers in Shanghai and Beijing, including airport routes, without buying a ticket first.\n\nConditions to check on your own card:\n- It must be an eligible JCB contactless chip card usable in China; Type-B chips and cards without ODA are excluded.\n- Small-amount PIN-free payment must be enabled, and sufficient balance or available credit is needed.\n- No separate metro activation is required.\n\nYour not stating a credit limit does not mean JCB is unsupported — brand acceptance and whether one specific card will transact are two different questions. If entry fails, you can switch to a transit code; if exit fails after entering, go to the station service center.\n\nNote this is direct gate tapping, not the same as buying a ticket first or binding the card in an app. These are saved summaries, not live verification; network counts in the announcements are historical, and not every JCB card or mobile wallet is guaranteed to work.",
+        "sourceIds": [
+          "sh-metro-jcb-contactless",
+          "operator-jcb-shanghai-contactless",
+          "sh-metro"
+        ],
+        "mode": "deepseek",
+        "notice": "saved-summaries",
+        "intent": {
+          "kind": "metro_ticket",
+          "origin": null,
+          "destination": null,
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 5424,
+          "completion_tokens": 624,
+          "total_tokens": 6048
+        },
+        "services": [
+          {
+            "id": "service-metro_ticket",
+            "kind": "metro_ticket",
+            "title": "Shanghai Metro ticket guide",
+            "description": "Use Metro Daduhui or supported Alipay/WeChat transit services. Buy single-journey tickets at stations; they are valid on the purchase day and do not cover out-of-station transfers. Confirm distance-based fares with the operator.",
+            "url": "https://english.shanghai.gov.cn/en-Individuals-Transportation-PublicTransport/20260813/f257d5c373db4da3a8bde717b9f46b27.html",
+            "sourceId": "sh-metro-tickets",
+            "status": "official-guide",
+            "liveAvailability": false
+          }
+        ],
+        "confidence": {
+          "model": 0.93,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "sh-metro",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "sh-metro-jcb-contactless",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "operator-jcb-shanghai-contactless",
+              "score": 85,
+              "level": "high",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "已匹配运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 85,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 109
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 1965
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 73
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "metro_ticket"
+            },
+            {
+              "name": "grounded_generation",
+              "status": "completed",
+              "reason": "EVIDENCE_ALIGNMENT",
+              "ms": 1916
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 532,
+            "candidates": 487,
+            "elapsedMs": 73,
+            "hits": [
+              {
+                "id": "operator-jcb-shanghai-contactless:3d017fc410ef1656:0",
+                "sourceId": "operator-jcb-shanghai-contactless",
+                "version": "3d017fc410ef1656",
+                "score": 0.03773,
+                "coverage": 0.429
+              },
+              {
+                "id": "sh-metro-jcb-contactless:c5f466ebdc86174e:0",
+                "sourceId": "sh-metro-jcb-contactless",
+                "version": "c5f466ebdc86174e",
+                "score": 0.03569,
+                "coverage": 0.429
+              },
+              {
+                "id": "sh-metro-jcb-contactless:c5f466ebdc86174e:1",
+                "sourceId": "sh-metro-jcb-contactless",
+                "version": "c5f466ebdc86174e",
+                "score": 0.03529,
+                "coverage": 0.333
+              },
+              {
+                "id": "operator-jcb-shanghai-contactless:3d017fc410ef1656:1",
+                "sourceId": "operator-jcb-shanghai-contactless",
+                "version": "3d017fc410ef1656",
+                "score": 0.03327,
+                "coverage": 0.19
+              },
+              {
+                "id": "sh-metro:8bafe358a25a4099:0",
+                "sourceId": "sh-metro",
+                "version": "8bafe358a25a4099",
+                "score": 0.02921,
+                "coverage": 0.429
+              },
+              {
+                "id": "news-tenpaygo-20260924:19cb946f176278d7:1",
+                "sourceId": "news-tenpaygo-20260924",
+                "version": "19cb946f176278d7",
+                "score": 0.02502,
+                "coverage": 0.286
+              },
+              {
+                "id": "news-nihao-china-shanghai-20260817:739f3f5d3d0ae667:1",
+                "sourceId": "news-nihao-china-shanghai-20260817",
+                "version": "739f3f5d3d0ae667",
+                "score": 0.02444,
+                "coverage": 0.238
+              },
+              {
+                "id": "verified-hongqiao-airport-taxi:9ec5b44088d58128:1",
+                "sourceId": "verified-hongqiao-airport-taxi",
+                "version": "9ec5b44088d58128",
+                "score": 0.02439,
+                "coverage": 0.143
+              }
+            ]
+          },
+          "totalMs": 4066
+        },
+        "modelRouting": {
+          "requested": "flash",
+          "selected": "flash",
+          "model": "deepseek-flash",
+          "thinking": false,
+          "effort": "none",
+          "reason": "由你手动选择",
+          "method": "manual"
+        },
+        "dataset": "evaluation",
+        "executionId": "8cb7bb68-a91e-492e-a214-9a3e4d2c9abf",
+        "assessmentId": "b621345d-cb6e-470f-b750-03bb0b8da5be"
+      },
+      "error": null,
+      "seconds": 7.5
+    },
+    {
+      "input": "给我一条杨浦区旅游路线，十点出发，按顺序排出来。",
+      "answer": {
+        "intent": {
+          "kind": "itinerary",
+          "origin": null,
+          "destination": "杨浦区",
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null,
+          "theme": "yangpu",
+          "startTime": "10:00",
+          "days": 1,
+          "includeFood": true,
+          "includeHotel": false
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 2834,
+          "completion_tokens": 1557,
+          "total_tokens": 4391,
+          "prompt_tokens_details": {
+            "cached_tokens": 1280
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1378
+          },
+          "prompt_cache_hit_tokens": 1280,
+          "prompt_cache_miss_tokens": 1554
+        },
+        "services": [],
+        "sourceIds": [
+          "district-yangpu"
+        ],
+        "text": "已按地理片区把路线排好了。杨浦区 · 分区漫游。依据政府公开地点记录编排；日期、时段和出发位置可继续调整。没有沿用历史节庆活动。 建议到达时间、吃住候选和地图见下面；可以修改开始时间或导出行程。",
+        "mode": "deepseek-tool",
+        "notice": "model-intent-source-backed-itinerary",
+        "tool": {
+          "kind": "itinerary",
+          "itinerary": {
+            "schemaVersion": 1,
+            "kind": "itinerary",
+            "theme": "yangpu",
+            "language": "zh",
+            "title": "杨浦区 · 分区漫游",
+            "scope": "依据政府公开地点记录编排；日期、时段和出发位置可继续调整。没有沿用历史节庆活动。",
+            "city": "Shanghai",
+            "startTime": "10:00",
+            "days": [
+              {
+                "day": 1,
+                "title": "杨浦区",
+                "stops": [
+                  {
+                    "id": "district-yangpu-0",
+                    "title": "杨浦滨江",
+                    "nameZh": "杨浦滨江",
+                    "nameEn": "Yangpu Riverside",
+                    "address": "上海市杨浦区 · 杨浦滨江（请用地图确认入口）",
+                    "description": "纳入本次可调整的分区行程；参观与移动时段为规划建议。",
+                    "station": null,
+                    "category": "sightseeing",
+                    "sourceIds": [
+                      "district-yangpu"
+                    ],
+                    "sourceUrls": [
+                      "https://english.shanghai.gov.cn/en-CityTour/20250427/b2eff944fe05497ea6424937b170b84c.html"
+                    ],
+                    "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E6%9D%A8%E6%B5%A6%E6%BB%A8%E6%B1%9F%20%E4%B8%8A%E6%B5%B7%E5%B8%82%E6%9D%A8%E6%B5%A6%E5%8C%BA%20%C2%B7%20%E6%9D%A8%E6%B5%A6%E6%BB%A8%E6%B1%9F%EF%BC%88%E8%AF%B7%E7%94%A8%E5%9C%B0%E5%9B%BE%E7%A1%AE%E8%AE%A4%E5%85%A5%E5%8F%A3%EF%BC%89&city=310000&view=map&src=visit-china",
+                    "url": "https://english.shanghai.gov.cn/en-CityTour/20250427/b2eff944fe05497ea6424937b170b84c.html",
+                    "phone": null,
+                    "phoneRole": null,
+                    "liveAvailability": false,
+                    "order": 1,
+                    "role": "visit",
+                    "plannedArrival": "10:00",
+                    "plannedDeparture": "11:30",
+                    "plannedDurationMinutes": 90,
+                    "transferBufferMinutes": 0,
+                    "timeBasis": "editorial-planning-allocation",
+                    "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+                  },
+                  {
+                    "id": "district-yangpu-1",
+                    "title": "世界技能博物馆",
+                    "nameZh": "世界技能博物馆",
+                    "nameEn": "WorldSkills Museum",
+                    "address": "上海市杨浦区 · 世界技能博物馆（请用地图确认入口）",
+                    "description": "纳入本次可调整的分区行程；参观与移动时段为规划建议。",
+                    "station": null,
+                    "category": "sightseeing",
+                    "sourceIds": [
+                      "district-yangpu"
+                    ],
+                    "sourceUrls": [
+                      "https://english.shanghai.gov.cn/en-CityTour/20250427/b2eff944fe05497ea6424937b170b84c.html"
+                    ],
+                    "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E4%B8%96%E7%95%8C%E6%8A%80%E8%83%BD%E5%8D%9A%E7%89%A9%E9%A6%86%20%E4%B8%8A%E6%B5%B7%E5%B8%82%E6%9D%A8%E6%B5%A6%E5%8C%BA%20%C2%B7%20%E4%B8%96%E7%95%8C%E6%8A%80%E8%83%BD%E5%8D%9A%E7%89%A9%E9%A6%86%EF%BC%88%E8%AF%B7%E7%94%A8%E5%9C%B0%E5%9B%BE%E7%A1%AE%E8%AE%A4%E5%85%A5%E5%8F%A3%EF%BC%89&city=310000&view=map&src=visit-china",
+                    "url": "https://english.shanghai.gov.cn/en-CityTour/20250427/b2eff944fe05497ea6424937b170b84c.html",
+                    "phone": null,
+                    "phoneRole": null,
+                    "liveAvailability": false,
+                    "order": 2,
+                    "role": "visit",
+                    "plannedArrival": "12:30",
+                    "plannedDeparture": "14:00",
+                    "plannedDurationMinutes": 90,
+                    "transferBufferMinutes": 60,
+                    "timeBasis": "editorial-planning-allocation",
+                    "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+                  }
+                ]
+              }
+            ],
+            "accommodations": [],
+            "sourceIds": [
+              "district-yangpu"
+            ],
+            "allSourceIds": [
+              "district-yangpu"
+            ],
+            "sources": [
+              {
+                "id": "district-yangpu",
+                "title": "杨浦区路线地点 / Yangpu route places",
+                "url": "https://english.shanghai.gov.cn/en-CityTour/20250427/b2eff944fe05497ea6424937b170b84c.html",
+                "reviewedAt": "2026-09-25",
+                "publishedAt": "2025-04-27"
+              }
+            ],
+            "missingSourceIds": [],
+            "status": "ready",
+            "timeBasis": "editorial-planning-allocation",
+            "liveAvailability": false,
+            "notes": [
+              "时间为可调整的行程建议，不是开馆时间、实时交通预测或已预约时段。",
+              "出发前核对开放、预约、天气与通行；餐饮和酒店不含实时房态、餐位、价格。",
+              "餐饮可围绕两个停留点搜索；当前尚未核对本区具体餐馆和酒店，不把其他区商户当作附近推荐。"
+            ]
+          }
+        },
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "district-yangpu",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 90,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 61
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 19248
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 49
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "itinerary"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 532,
+            "candidates": 24,
+            "elapsedMs": 49,
+            "hits": [
+              {
+                "id": "district-yangpu:4ae268ea14e46ba5:0",
+                "sourceId": "district-yangpu",
+                "version": "4ae268ea14e46ba5",
+                "score": 0.02129,
+                "coverage": 0.462
+              },
+              {
+                "id": "district-minhang:40e656a1dcca2e11:0",
+                "sourceId": "district-minhang",
+                "version": "40e656a1dcca2e11",
+                "score": 0.01774,
+                "coverage": 0.154
+              },
+              {
+                "id": "district-hongkou:1b54c34a68114e1e:0",
+                "sourceId": "district-hongkou",
+                "version": "1b54c34a68114e1e",
+                "score": 0.01761,
+                "coverage": 0.154
+              },
+              {
+                "id": "district-xuhui:4428beb86cce4740:0",
+                "sourceId": "district-xuhui",
+                "version": "4428beb86cce4740",
+                "score": 0.01708,
+                "coverage": 0.154
+              },
+              {
+                "id": "district-huangpu:4b68e73f90deb920:0",
+                "sourceId": "district-huangpu",
+                "version": "4b68e73f90deb920",
+                "score": 0.01699,
+                "coverage": 0.115
+              },
+              {
+                "id": "district-qingpu:bf72f602f5489d57:0",
+                "sourceId": "district-qingpu",
+                "version": "bf72f602f5489d57",
+                "score": 0.01637,
+                "coverage": 0.115
+              },
+              {
+                "id": "place-natural:7d442285cb6162f0:0",
+                "sourceId": "place-natural",
+                "version": "7d442285cb6162f0",
+                "score": 0.01605,
+                "coverage": 0.077
+              },
+              {
+                "id": "district-baoshan:7569656d1c862d8f:0",
+                "sourceId": "district-baoshan",
+                "version": "7569656d1c862d8f",
+                "score": 0.01602,
+                "coverage": 0.115
+              }
+            ]
+          },
+          "totalMs": 19361
+        },
+        "modelRouting": {
+          "requested": "auto",
+          "selected": "pro",
+          "model": "deepseek-v4-pro",
+          "thinking": true,
+          "effort": "low",
+          "reason": "多地点或主题行程",
+          "method": "bounded-complexity-rules"
+        },
+        "dataset": "evaluation",
+        "executionId": "10e818b6-a55a-483b-b201-dd57d95858ff",
+        "assessmentId": "40ef1ad3-9d5f-413f-a2b8-980dbe04510e"
+      },
+      "error": null,
+      "seconds": 23.3
+    },
+    {
+      "input": "青浦区一天慢游，想要可以导出的路线。",
+      "answer": {
+        "intent": {
+          "kind": "itinerary",
+          "origin": null,
+          "destination": null,
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null,
+          "theme": "qingpu",
+          "startTime": null,
+          "days": 1,
+          "includeFood": true,
+          "includeHotel": true
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 1981,
+          "completion_tokens": 928,
+          "total_tokens": 2909,
+          "prompt_tokens_details": {
+            "cached_tokens": 1280
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 733
+          },
+          "prompt_cache_hit_tokens": 1280,
+          "prompt_cache_miss_tokens": 701
+        },
+        "services": [],
+        "sourceIds": [
+          "district-qingpu"
+        ],
+        "text": "已按地理片区把路线排好了。青浦区 · 分区漫游。依据政府公开地点记录编排；日期、时段和出发位置可继续调整。没有沿用历史节庆活动。 建议到达时间、吃住候选和地图见下面；可以修改开始时间或导出行程。",
+        "mode": "deepseek-tool",
+        "notice": "model-intent-source-backed-itinerary",
+        "tool": {
+          "kind": "itinerary",
+          "itinerary": {
+            "schemaVersion": 1,
+            "kind": "itinerary",
+            "theme": "qingpu",
+            "language": "zh",
+            "title": "青浦区 · 分区漫游",
+            "scope": "依据政府公开地点记录编排；日期、时段和出发位置可继续调整。没有沿用历史节庆活动。",
+            "city": "Shanghai",
+            "startTime": "09:30",
+            "days": [
+              {
+                "day": 1,
+                "title": "青浦区",
+                "stops": [
+                  {
+                    "id": "district-qingpu-0",
+                    "title": "元荡桥",
+                    "nameZh": "元荡桥",
+                    "nameEn": "Yuandang Bridge",
+                    "address": "上海市青浦区 · 元荡桥（请用地图确认入口）",
+                    "description": "纳入本次可调整的分区行程；参观与移动时段为规划建议。",
+                    "station": null,
+                    "category": "sightseeing",
+                    "sourceIds": [
+                      "district-qingpu"
+                    ],
+                    "sourceUrls": [
+                      "https://english.shanghai.gov.cn/en-CityTour/20250427/b2eff944fe05497ea6424937b170b84c.html"
+                    ],
+                    "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E5%85%83%E8%8D%A1%E6%A1%A5%20%E4%B8%8A%E6%B5%B7%E5%B8%82%E9%9D%92%E6%B5%A6%E5%8C%BA%20%C2%B7%20%E5%85%83%E8%8D%A1%E6%A1%A5%EF%BC%88%E8%AF%B7%E7%94%A8%E5%9C%B0%E5%9B%BE%E7%A1%AE%E8%AE%A4%E5%85%A5%E5%8F%A3%EF%BC%89&city=310000&view=map&src=visit-china",
+                    "url": "https://english.shanghai.gov.cn/en-CityTour/20250427/b2eff944fe05497ea6424937b170b84c.html",
+                    "phone": null,
+                    "phoneRole": null,
+                    "liveAvailability": false,
+                    "order": 1,
+                    "role": "visit",
+                    "plannedArrival": "09:30",
+                    "plannedDeparture": "11:00",
+                    "plannedDurationMinutes": 90,
+                    "transferBufferMinutes": 0,
+                    "timeBasis": "editorial-planning-allocation",
+                    "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+                  },
+                  {
+                    "id": "district-qingpu-1",
+                    "title": "金泽古镇",
+                    "nameZh": "金泽古镇",
+                    "nameEn": "Jinze Ancient Town",
+                    "address": "上海市青浦区 · 金泽古镇（请用地图确认入口）",
+                    "description": "纳入本次可调整的分区行程；参观与移动时段为规划建议。",
+                    "station": null,
+                    "category": "sightseeing",
+                    "sourceIds": [
+                      "district-qingpu"
+                    ],
+                    "sourceUrls": [
+                      "https://english.shanghai.gov.cn/en-CityTour/20250427/b2eff944fe05497ea6424937b170b84c.html"
+                    ],
+                    "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E9%87%91%E6%B3%BD%E5%8F%A4%E9%95%87%20%E4%B8%8A%E6%B5%B7%E5%B8%82%E9%9D%92%E6%B5%A6%E5%8C%BA%20%C2%B7%20%E9%87%91%E6%B3%BD%E5%8F%A4%E9%95%87%EF%BC%88%E8%AF%B7%E7%94%A8%E5%9C%B0%E5%9B%BE%E7%A1%AE%E8%AE%A4%E5%85%A5%E5%8F%A3%EF%BC%89&city=310000&view=map&src=visit-china",
+                    "url": "https://english.shanghai.gov.cn/en-CityTour/20250427/b2eff944fe05497ea6424937b170b84c.html",
+                    "phone": null,
+                    "phoneRole": null,
+                    "liveAvailability": false,
+                    "order": 2,
+                    "role": "visit",
+                    "plannedArrival": "12:00",
+                    "plannedDeparture": "13:30",
+                    "plannedDurationMinutes": 90,
+                    "transferBufferMinutes": 60,
+                    "timeBasis": "editorial-planning-allocation",
+                    "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+                  }
+                ]
+              }
+            ],
+            "accommodations": [],
+            "sourceIds": [
+              "district-qingpu"
+            ],
+            "allSourceIds": [
+              "district-qingpu"
+            ],
+            "sources": [
+              {
+                "id": "district-qingpu",
+                "title": "青浦区路线地点 / Qingpu route places",
+                "url": "https://english.shanghai.gov.cn/en-CityTour/20250427/b2eff944fe05497ea6424937b170b84c.html",
+                "reviewedAt": "2026-09-25",
+                "publishedAt": "2025-04-27"
+              }
+            ],
+            "missingSourceIds": [],
+            "status": "ready",
+            "timeBasis": "editorial-planning-allocation",
+            "liveAvailability": false,
+            "notes": [
+              "时间为可调整的行程建议，不是开馆时间、实时交通预测或已预约时段。",
+              "出发前核对开放、预约、天气与通行；餐饮和酒店不含实时房态、餐位、价格。",
+              "餐饮可围绕两个停留点搜索；当前尚未核对本区具体餐馆和酒店，不把其他区商户当作附近推荐。"
+            ]
+          }
+        },
+        "confidence": {
+          "model": 0.9,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "district-qingpu",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 90,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 42
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 11244
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 43
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "itinerary"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 532,
+            "candidates": 3,
+            "elapsedMs": 43,
+            "hits": [
+              {
+                "id": "district-qingpu:bf72f602f5489d57:0",
+                "sourceId": "district-qingpu",
+                "version": "bf72f602f5489d57",
+                "score": 0.02055,
+                "coverage": 0.381
+              },
+              {
+                "id": "district-huangpu:4b68e73f90deb920:0",
+                "sourceId": "district-huangpu",
+                "version": "4b68e73f90deb920",
+                "score": 0.01763,
+                "coverage": 0.095
+              },
+              {
+                "id": "district-yangpu:4ae268ea14e46ba5:0",
+                "sourceId": "district-yangpu",
+                "version": "4ae268ea14e46ba5",
+                "score": 0.01735,
+                "coverage": 0.095
+              }
+            ]
+          },
+          "totalMs": 11332
+        },
+        "modelRouting": {
+          "requested": "auto",
+          "selected": "pro",
+          "model": "deepseek-v4-pro",
+          "thinking": true,
+          "effort": "low",
+          "reason": "多地点或主题行程",
+          "method": "bounded-complexity-rules"
+        },
+        "dataset": "evaluation",
+        "executionId": "fe0c964a-a6c4-4094-aa0f-a32c95e4bff2",
+        "assessmentId": "518f7fc3-d597-4334-ae51-f0b9c80701d5"
+      },
+      "error": null,
+      "seconds": 15.2
+    },
+    {
+      "input": "崇明区想玩一天，帮我规划。",
+      "answer": {
+        "intent": {
+          "kind": "itinerary",
+          "origin": null,
+          "destination": null,
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null,
+          "theme": "chongming",
+          "startTime": null,
+          "days": 1,
+          "includeFood": true,
+          "includeHotel": true
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 1644,
+          "completion_tokens": 1160,
+          "total_tokens": 2804,
+          "prompt_tokens_details": {
+            "cached_tokens": 1280
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1017
+          },
+          "prompt_cache_hit_tokens": 1280,
+          "prompt_cache_miss_tokens": 364
+        },
+        "services": [],
+        "sourceIds": [
+          "district-chongming"
+        ],
+        "text": "已按地理片区把路线排好了。崇明区 · 分区漫游。依据政府公开地点记录编排；日期、时段和出发位置可继续调整。没有沿用历史节庆活动。 建议到达时间、吃住候选和地图见下面；可以修改开始时间或导出行程。",
+        "mode": "deepseek-tool",
+        "notice": "model-intent-source-backed-itinerary",
+        "tool": {
+          "kind": "itinerary",
+          "itinerary": {
+            "schemaVersion": 1,
+            "kind": "itinerary",
+            "theme": "chongming",
+            "language": "zh",
+            "title": "崇明区 · 分区漫游",
+            "scope": "依据政府公开地点记录编排；日期、时段和出发位置可继续调整。没有沿用历史节庆活动。",
+            "city": "Shanghai",
+            "startTime": "09:30",
+            "days": [
+              {
+                "day": 1,
+                "title": "崇明区",
+                "stops": [
+                  {
+                    "id": "district-chongming-0",
+                    "title": "西沙明珠湖景区",
+                    "nameZh": "西沙明珠湖景区",
+                    "nameEn": "Xisha Mingzhu Lake",
+                    "address": "上海市崇明区 · 西沙明珠湖景区（请用地图确认入口）",
+                    "description": "纳入本次可调整的分区行程；参观与移动时段为规划建议。",
+                    "station": null,
+                    "category": "sightseeing",
+                    "sourceIds": [
+                      "district-chongming"
+                    ],
+                    "sourceUrls": [
+                      "https://english.shanghai.gov.cn/en-CityTour/20250427/b2eff944fe05497ea6424937b170b84c.html"
+                    ],
+                    "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E8%A5%BF%E6%B2%99%E6%98%8E%E7%8F%A0%E6%B9%96%E6%99%AF%E5%8C%BA%20%E4%B8%8A%E6%B5%B7%E5%B8%82%E5%B4%87%E6%98%8E%E5%8C%BA%20%C2%B7%20%E8%A5%BF%E6%B2%99%E6%98%8E%E7%8F%A0%E6%B9%96%E6%99%AF%E5%8C%BA%EF%BC%88%E8%AF%B7%E7%94%A8%E5%9C%B0%E5%9B%BE%E7%A1%AE%E8%AE%A4%E5%85%A5%E5%8F%A3%EF%BC%89&city=310000&view=map&src=visit-china",
+                    "url": "https://english.shanghai.gov.cn/en-CityTour/20250427/b2eff944fe05497ea6424937b170b84c.html",
+                    "phone": null,
+                    "phoneRole": null,
+                    "liveAvailability": false,
+                    "order": 1,
+                    "role": "visit",
+                    "plannedArrival": "09:30",
+                    "plannedDeparture": "11:00",
+                    "plannedDurationMinutes": 90,
+                    "transferBufferMinutes": 0,
+                    "timeBasis": "editorial-planning-allocation",
+                    "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+                  },
+                  {
+                    "id": "district-chongming-1",
+                    "title": "漫屿水营地",
+                    "nameZh": "漫屿水营地",
+                    "nameEn": "Manyu Water Camp",
+                    "address": "上海市崇明区 · 漫屿水营地（请用地图确认入口）",
+                    "description": "纳入本次可调整的分区行程；参观与移动时段为规划建议。",
+                    "station": null,
+                    "category": "sightseeing",
+                    "sourceIds": [
+                      "district-chongming"
+                    ],
+                    "sourceUrls": [
+                      "https://english.shanghai.gov.cn/en-CityTour/20250427/b2eff944fe05497ea6424937b170b84c.html"
+                    ],
+                    "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E6%BC%AB%E5%B1%BF%E6%B0%B4%E8%90%A5%E5%9C%B0%20%E4%B8%8A%E6%B5%B7%E5%B8%82%E5%B4%87%E6%98%8E%E5%8C%BA%20%C2%B7%20%E6%BC%AB%E5%B1%BF%E6%B0%B4%E8%90%A5%E5%9C%B0%EF%BC%88%E8%AF%B7%E7%94%A8%E5%9C%B0%E5%9B%BE%E7%A1%AE%E8%AE%A4%E5%85%A5%E5%8F%A3%EF%BC%89&city=310000&view=map&src=visit-china",
+                    "url": "https://english.shanghai.gov.cn/en-CityTour/20250427/b2eff944fe05497ea6424937b170b84c.html",
+                    "phone": null,
+                    "phoneRole": null,
+                    "liveAvailability": false,
+                    "order": 2,
+                    "role": "visit",
+                    "plannedArrival": "12:00",
+                    "plannedDeparture": "13:30",
+                    "plannedDurationMinutes": 90,
+                    "transferBufferMinutes": 60,
+                    "timeBasis": "editorial-planning-allocation",
+                    "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+                  }
+                ]
+              }
+            ],
+            "accommodations": [],
+            "sourceIds": [
+              "district-chongming"
+            ],
+            "allSourceIds": [
+              "district-chongming"
+            ],
+            "sources": [
+              {
+                "id": "district-chongming",
+                "title": "崇明区路线地点 / Chongming route places",
+                "url": "https://english.shanghai.gov.cn/en-CityTour/20250427/b2eff944fe05497ea6424937b170b84c.html",
+                "reviewedAt": "2026-09-25",
+                "publishedAt": "2025-04-27"
+              }
+            ],
+            "missingSourceIds": [],
+            "status": "ready",
+            "timeBasis": "editorial-planning-allocation",
+            "liveAvailability": false,
+            "notes": [
+              "时间为可调整的行程建议，不是开馆时间、实时交通预测或已预约时段。",
+              "出发前核对开放、预约、天气与通行；餐饮和酒店不含实时房态、餐位、价格。",
+              "餐饮可围绕两个停留点搜索；当前尚未核对本区具体餐馆和酒店，不把其他区商户当作附近推荐。"
+            ]
+          }
+        },
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "district-chongming",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 90,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 48
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 14392
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 44
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "itinerary"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 532,
+            "candidates": 1,
+            "elapsedMs": 44,
+            "hits": [
+              {
+                "id": "district-chongming:ade2229905247942:0",
+                "sourceId": "district-chongming",
+                "version": "ade2229905247942",
+                "score": 0.02247,
+                "coverage": 0.591
+              }
+            ]
+          },
+          "totalMs": 14484
+        },
+        "modelRouting": {
+          "requested": "pro",
+          "selected": "pro",
+          "model": "deepseek-v4-pro",
+          "thinking": true,
+          "effort": "low",
+          "reason": "由你手动选择",
+          "method": "manual"
+        },
+        "dataset": "evaluation",
+        "executionId": "2bb87621-985b-44dc-8b7c-d9b0b0c8cdf7",
+        "assessmentId": "f7b0f62d-3b3c-4f9a-a18d-8d293c480c01"
+      },
+      "error": null,
+      "seconds": 18.5
+    },
+    {
+      "input": "上海虹桥到杭州东想比较二等座便宜的票，最好上午出发，可以用历史记录。",
+      "answer": {
+        "intent": {
+          "kind": "rail",
+          "origin": "上海虹桥",
+          "destination": "杭州东",
+          "via": null,
+          "city": null,
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 3651,
+          "completion_tokens": 1061,
+          "total_tokens": 4712,
+          "prompt_tokens_details": {
+            "cached_tokens": 1280
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 821
+          },
+          "prompt_cache_hit_tokens": 1280,
+          "prompt_cache_miss_tokens": 2371
+        },
+        "services": [
+          {
+            "id": "verified-rail-12306",
+            "kind": "rail",
+            "title": "铁路12306英文购票与证件指引",
+            "description": "12306英文站提供购票、改签、退票等服务；外国旅客可按规则使用有效护照购票。乘车使用购票时的有效证件，行程信息单不能作为车票。未接入本站实时余票、价格或下单。 线上官方服务；非实体门店 · 页面核对记录；营业、可用量和价格请向运营方确认。未接实时库存或预订接口。",
+            "url": "https://www.12306.cn/en/",
+            "sourceUrl": "https://www.12306.cn/en/faq.html",
+            "sourceId": "verified-rail-12306",
+            "status": "official-guide",
+            "address": "线上官方服务；非实体门店",
+            "phone": null,
+            "phoneExtension": null,
+            "phoneRole": null,
+            "station": null,
+            "stations": [],
+            "stationEvidence": [],
+            "checkedAt": "2026-09-25",
+            "liveAvailability": false
+          }
+        ],
+        "confidence": {
+          "model": 0.9,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "rail-passport",
+              "score": 85,
+              "level": "high",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "已匹配运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "history-sh-hz-trains",
+              "score": 60,
+              "level": "medium",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "非已核验政府/运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 60,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "text": "可以按二等座／一等座、价格和出发时段比较下方历史记录。记录对应2024年6月15日，不是今天的班次和报价。原文没有的到达时间或席别价格显示“未记录”。请补充实际乘车日期，再到12306按准确车站查票。",
+        "sourceIds": [
+          "history-sh-hz-trains",
+          "rail-passport"
+        ],
+        "mode": "deepseek-tool",
+        "notice": "model-intent-verified-tool",
+        "tool": {
+          "kind": "rail",
+          "metro": null,
+          "estimate": null,
+          "request": null,
+          "places": null
+        },
+        "routeVersion": null,
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 46
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 12223
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 43
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "rail"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 537,
+            "candidates": 42,
+            "elapsedMs": 43,
+            "hits": [
+              {
+                "id": "history-sh-hz-trains:5f222a63b6cce02e:0",
+                "sourceId": "history-sh-hz-trains",
+                "version": "5f222a63b6cce02e",
+                "score": 0.03042,
+                "coverage": 0.448
+              },
+              {
+                "id": "sh-hz-rail:17fdb729f60d1c76:0",
+                "sourceId": "sh-hz-rail",
+                "version": "17fdb729f60d1c76",
+                "score": 0.02769,
+                "coverage": 0.276
+              },
+              {
+                "id": "verified-hongqiao-rail-station:1c6991b2bad55c70:0",
+                "sourceId": "verified-hongqiao-rail-station",
+                "version": "1c6991b2bad55c70",
+                "score": 0.02637,
+                "coverage": 0.207
+              },
+              {
+                "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                "sourceId": "verified-shanghai-rail-station",
+                "version": "26195dc7b3d7255a",
+                "score": 0.02596,
+                "coverage": 0.207
+              },
+              {
+                "id": "history-airport-season:9ac7db13bc323924:0",
+                "sourceId": "history-airport-season",
+                "version": "9ac7db13bc323924",
+                "score": 0.02434,
+                "coverage": 0.138
+              },
+              {
+                "id": "history-airport-link:ad016dd0995915ef:0",
+                "sourceId": "history-airport-link",
+                "version": "ad016dd0995915ef",
+                "score": 0.02415,
+                "coverage": 0.138
+              },
+              {
+                "id": "sh-metro-map:6a1b43a40e1dfea9:0",
+                "sourceId": "sh-metro-map",
+                "version": "6a1b43a40e1dfea9",
+                "score": 0.02321,
+                "coverage": 0.103
+              },
+              {
+                "id": "verified-hongqiao-airport-taxi:9ec5b44088d58128:0",
+                "sourceId": "verified-hongqiao-airport-taxi",
+                "version": "9ec5b44088d58128",
+                "score": 0.0217,
+                "coverage": 0.069
+              }
+            ]
+          },
+          "totalMs": 12313
+        },
+        "modelRouting": {
+          "requested": "pro",
+          "selected": "pro",
+          "model": "deepseek-v4-pro",
+          "thinking": true,
+          "effort": "low",
+          "reason": "由你手动选择",
+          "method": "manual"
+        },
+        "dataset": "evaluation",
+        "executionId": "8094e109-67e1-45d1-843e-ffe314f15ce8",
+        "assessmentId": "0a64ca75-7b33-4816-aacc-e3483cd326a9"
+      },
+      "error": null,
+      "seconds": 15.9
+    },
+    {
+      "input": "想了解上海的浦东和虹桥机场有哪些真实航线资料，不用模拟票价。",
+      "answer": {
+        "text": "关于浦东（PVG）和虹桥（SHA）的真实航线资料，目前保存的摘要里只有一份历史航季记录可用：机场集团记录的2025年3月30日至10月25日夏秋航季，浦东日均计划航班1694架次、虹桥784架次，计划加密至武汉、福州、厦门、成都等国内航线。这是当时的机场与航线规划记录，不能证明今天的班次、航站楼、票价或余位，也不构成完整航线清单。\n\n其余已保存摘要涉及机场联络线（2024年12月26日开通公告：虹桥2号航站楼站至浦东1号2号航站楼站，票价26元、约40分钟，初期两端首班06:00、末班22:00，属市域线而非航班）、浦东与虹桥的官方出租车上车点、浦东T1/T2过夜休息区充电设施、浦东到达区服务，以及上海虹桥站（国铁）和沪杭高铁浮动票价，均不含具体航线明细。\n\n因此，具体航线、航司与航班号需要以机场或航司的当天查询为准；保存摘要未提供实时航线表，我无法据此列出真实航线清单。若你告诉我关注的具体城市对（例如上海至某地）或想按国内/国际区分，我可以帮你梳理需要核对的信息项。",
+        "sourceIds": [
+          "history-airport-season",
+          "history-airport-link",
+          "verified-hongqiao-rail-station"
+        ],
+        "mode": "deepseek",
+        "notice": "saved-summaries",
+        "intent": {
+          "kind": "flight",
+          "origin": null,
+          "destination": null,
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 6472,
+          "completion_tokens": 561,
+          "total_tokens": 7033
+        },
+        "services": [],
+        "confidence": {
+          "model": 0.72,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "verified-hongqiao-rail-station",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "history-airport-season",
+              "score": 60,
+              "level": "medium",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "非已核验政府/运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "history-airport-link",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 60,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [
+            "模型意图自评偏低"
+          ],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 51
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 1884
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 48
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "flight"
+            },
+            {
+              "name": "grounded_generation",
+              "status": "completed",
+              "reason": "EVIDENCE_ALIGNMENT",
+              "ms": 2379
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 532,
+            "candidates": 29,
+            "elapsedMs": 48,
+            "hits": [
+              {
+                "id": "history-airport-season:9ac7db13bc323924:0",
+                "sourceId": "history-airport-season",
+                "version": "9ac7db13bc323924",
+                "score": 0.0286,
+                "coverage": 0.31
+              },
+              {
+                "id": "history-airport-link:ad016dd0995915ef:0",
+                "sourceId": "history-airport-link",
+                "version": "ad016dd0995915ef",
+                "score": 0.02476,
+                "coverage": 0.172
+              },
+              {
+                "id": "verified-pvg-taxi:cca2a96bbc4759cf:0",
+                "sourceId": "verified-pvg-taxi",
+                "version": "cca2a96bbc4759cf",
+                "score": 0.02447,
+                "coverage": 0.103
+              },
+              {
+                "id": "verified-pvg-taxi:cca2a96bbc4759cf:1",
+                "sourceId": "verified-pvg-taxi",
+                "version": "cca2a96bbc4759cf",
+                "score": 0.02323,
+                "coverage": 0.103
+              },
+              {
+                "id": "verified-pvg-rest-charging:3c747ba8fb743181:0",
+                "sourceId": "verified-pvg-rest-charging",
+                "version": "3c747ba8fb743181",
+                "score": 0.02321,
+                "coverage": 0.103
+              },
+              {
+                "id": "verified-hongqiao-airport-taxi:9ec5b44088d58128:0",
+                "sourceId": "verified-hongqiao-airport-taxi",
+                "version": "9ec5b44088d58128",
+                "score": 0.02321,
+                "coverage": 0.103
+              },
+              {
+                "id": "sh-hz-rail:17fdb729f60d1c76:0",
+                "sourceId": "sh-hz-rail",
+                "version": "17fdb729f60d1c76",
+                "score": 0.02279,
+                "coverage": 0.138
+              },
+              {
+                "id": "verified-hongqiao-rail-station:1c6991b2bad55c70:0",
+                "sourceId": "verified-hongqiao-rail-station",
+                "version": "1c6991b2bad55c70",
+                "score": 0.02162,
+                "coverage": 0.103
+              }
+            ]
+          },
+          "totalMs": 4366
+        },
+        "sourceAcquisition": {
+          "sourceId": "off-d0c800999763b86b",
+          "score": 0,
+          "eligible": false
+        },
+        "modelRouting": {
+          "requested": "flash",
+          "selected": "flash",
+          "model": "deepseek-flash",
+          "thinking": false,
+          "effort": "none",
+          "reason": "由你手动选择",
+          "method": "manual"
+        },
+        "dataset": "evaluation",
+        "executionId": "e4b2e6dd-ca99-425e-9832-0eb305bc73be",
+        "assessmentId": "4b3c54c8-47c7-4dfa-ac60-28def5a94f1c"
+      },
+      "error": null,
+      "seconds": 14.8
+    }
+  ],
+  "scope": "Actual DeepSeek requests, evaluation dataset, admin connection; not microphone or live booking inventory."
+}

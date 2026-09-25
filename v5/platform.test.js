@@ -1,0 +1,94 @@
+'use strict';
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),os=require('node:os'),path=require('node:path'),crypto=require('node:crypto');
+const {spawn}=require('node:child_process');
+const {Storage}=require('./storage'),G=require('./governance'),E=require('./engine'),{createApp}=require('./server'),{createRealtime}=require('./realtime-server'),{createIdentity,identity}=require('./identity'),{TokenVerifier}=require('livekit-server-sdk');
+const {Call}=require('./realtime');
+function directory(t){return fs.mkdtempSync(path.join(os.tmpdir(),'vc52-'));}
+function remove(dir){if(!path.resolve(dir).startsWith(path.resolve(os.tmpdir())+path.sep))throw Error('UNSAFE_TEST_PATH');fs.rmSync(dir,{recursive:true,force:true});}
+function storage(t){const dir=directory(t),db=new Storage(dir);t.after(()=>{db.close();remove(dir);});return {dir,db};}
+async function server(t,extra={}){
+ const dir=directory(t),app=createApp({runtimeDir:dir,env:{ADMIN_PASSWORD:'test-admin',...extra.env},...extra});await new Promise(r=>app.server.listen(0,'127.0.0.1',r));
+ t.after(async()=>{app.server.closeAllConnections();await new Promise(r=>app.server.close(r));remove(dir);});
+ const url='http://127.0.0.1:'+app.server.address().port;
+ function client(){let cookie='';return async(p,b)=>{const r=await fetch(url+'/api/v5/'+p,{method:b===undefined?'GET':'POST',headers:{cookie,...(b===undefined?{}:{'Content-Type':'application/json'})},body:b===undefined?undefined:JSON.stringify(b),redirect:'manual'});if(r.headers.get('set-cookie'))cookie=r.headers.get('set-cookie').split(';')[0];return {status:r.status,body:await r.json()};};}
+ return {app,client,url,dir};
+}
+test('legacy JSON migrates once, survives reopening, and is left intact',t=>{
+ const dir=directory(t);t.after(()=>remove(dir));const legacy=G.newStore();legacy.counter=7;legacy.active.version='wf-7';const file=path.join(dir,'governance-v5.json');fs.writeFileSync(file,JSON.stringify(legacy));
+ let db=new Storage(dir);assert.equal(db.readGovernance().active.version,'wf-7');db.close();fs.writeFileSync(file,JSON.stringify(G.newStore()));db=new Storage(dir);assert.equal(db.readGovernance().active.version,'wf-7');db.close();assert.ok(fs.existsSync(file));
+});
+test('concurrent fifth approvals in separate Node processes publish once',async t=>{
+ const {db,dir}=storage(t),reviewers=new Set(['r1','r2','r3','r4','r5','r6']);
+ const row=db.mutate('author','create',{},s=>{const c=G.candidate(s,'author',G.template(s,'too_long'),'test');G.evaluate(s,c.id,'author');for(let i=1;i<5;i++)G.vote(s,c.id,'r'+i,'approve',c.hash,reviewers);return c;});
+ const source=`const {Storage}=require('./v5/storage'),G=require('./v5/governance');const d=new Storage(process.argv[1]);try{d.mutate(process.argv[2],'vote',{},s=>G.vote(s,process.argv[3],process.argv[2],'approve',process.argv[4],new Set(['r1','r2','r3','r4','r5','r6'])));process.stdout.write('published');}catch(e){process.stdout.write(e.message);}finally{d.close();}`;
+ const run=actor=>new Promise((resolve,reject)=>{const p=spawn(process.execPath,['-e',source,dir,actor,row.id,row.hash],{cwd:path.join(__dirname,'..'),windowsHide:true});let out='';p.stdout.on('data',x=>out+=x);p.on('error',reject);p.on('exit',code=>code?reject(Error('child '+code)):resolve(out));});
+ const results=await Promise.all([run('r5'),run('r6')]);assert.deepEqual(results.sort(),['NOT_IN_REVIEW','published'].sort());
+ assert.equal(db.readGovernance().counter,2);assert.equal(db.readGovernance().audit.filter(x=>x.type==='published_after_five_distinct_approvals').length,1);
+ assert.equal(db.db.prepare('SELECT count(*) AS n FROM votes').get().n,5);
+});
+test('idempotent governance retry and failed transaction do not duplicate audit',t=>{
+ const {db}=storage(t);const a=db.mutate('author','same',{a:1},s=>G.candidate(s,'author',G.configOf(E.BASE),'one'));
+ assert.deepEqual(db.mutate('author','same',{a:1},()=>{throw Error('unreachable');}),a);
+ assert.throws(()=>db.mutate('author','same',{a:2},()=>{}),/CONFLICT/);
+ assert.throws(()=>db.mutate('author','bad',{},s=>{s.counter=999;throw Error('rollback');}));assert.equal(db.readGovernance().counter,1);
+});
+test('database unique constraint prevents duplicate reviewer rows',t=>{const {db}=storage(t);db.db.prepare('INSERT INTO votes VALUES(?,?,?,?)').run('c','h','r','approve');assert.throws(()=>db.db.prepare('INSERT INTO votes VALUES(?,?,?,?)').run('c','different','r','approve'),/UNIQUE/);});
+test('session and idempotency state survive a second backend instance',async t=>{
+ const {app,client,dir}=await server(t),c=client();await c('begin',{});await c('turn',{requestId:'one',expectedRevision:0,event:{type:'text',text:'Shanghai'}});
+ const row=app.db.db.prepare('SELECT id FROM sessions').get(),other=new Storage(dir);assert.equal(other.readSession(row.id).state.facts.city,'Shanghai');assert.equal(other.readSession(row.id).requests[0][0],'one');other.close();
+});
+test('late request with a rotated cookie cannot replace an authenticated browser session',async t=>{
+ const {url}=await server(t),initial=await fetch(url+'/api/v5/status');const oldCookie=initial.headers.get('set-cookie').split(';')[0];
+ const login=await fetch(url+'/api/v5/login',{method:'POST',headers:{cookie:oldCookie,'Content-Type':'application/json'},body:JSON.stringify({username:'admin',password:'test-admin'})});
+ const currentCookie=login.headers.get('set-cookie').split(';')[0];assert.notEqual(currentCookie,oldCookie);
+ const late=await fetch(url+'/api/v5/end',{method:'POST',headers:{cookie:oldCookie,'Content-Type':'application/json'},body:'{}'});
+ assert.equal(late.headers.get('set-cookie'),null);assert.equal((await late.json()).error,'SESSION_EXPIRED');
+ const status=await fetch(url+'/api/v5/status',{headers:{cookie:currentCookie}});assert.equal((await status.json()).actor,'admin');
+});
+test('begin resume pins workflow; new call after hangup picks new version',async t=>{
+ const {app,client}=await server(t),c=client();await c('begin',{});app.db.mutate('test','version-change',{},s=>{s.active.version='wf-2';s.counter=2;return {};});
+ assert.equal((await c('begin',{})).body.state.policy.version,'wf-1');await c('end',{});assert.equal((await c('begin',{})).body.state.policy.version,'wf-2');
+});
+test('new chat resets all scenario data and only keeps explicitly supplied preferences',async t=>{
+ const {client}=await server(t),c=client();await c('status');await c('turn',{requestId:'trip',expectedRevision:0,event:{type:'text',text:'Shanghai, I need a hotel'}});
+ const next=await c('begin',{reset:true,language:'zh',outputLanguage:'zh',preferences:{budget:'economy'}});
+ assert.equal(next.body.state.history.length,0);assert.deepEqual(next.body.state.facts,{});assert.deepEqual(next.body.state.tasks,[]);assert.equal(next.body.state.initialRequest,null);assert.equal(next.body.state.preferences.budget,'economy');assert.equal(next.body.state.outputLanguage,'zh');
+ const clear=await c('begin',{reset:true});assert.deepEqual(clear.body.state.preferences,{});
+});
+test('language and preference events use revision guards without granting model facts authority',async t=>{
+ const {client}=await server(t),c=client();await c('status');const lang=await c('turn',{requestId:'lang',expectedRevision:0,event:{type:'language',language:'en'}});assert.equal(lang.status,200);
+ const prefs=await c('turn',{requestId:'prefs',expectedRevision:1,event:{type:'preferences',preferences:{diet:'vegetarian'}}});assert.equal(prefs.status,200);assert.equal(prefs.body.state.preferences.diet,'vegetarian');assert.equal(prefs.body.state.history.length,0);
+ assert.equal((await c('turn',{requestId:'bad',expectedRevision:2,event:{type:'preferences',preferences:{hotel:'booked'}}})).status,400);
+});
+test('Boston trip cannot retrieve China-only rail guidance',async t=>{
+ const {client}=await server(t),c=client();await c('status');await c('turn',{requestId:'boston',expectedRevision:0,event:{type:'text',text:'New York to Boston by train'}});const out=await c('guide',{task:'rail',revision:1,live:false});assert.equal(out.status,400);assert.equal(out.body.error,'CITY_SOURCE_UNAVAILABLE');
+});
+test('context viewing cannot mutate facts, revision or produce new speech',async t=>{const {client}=await server(t),c=client();const out=await c('turn',{requestId:'view',expectedRevision:0,event:{type:'context',view:'rail',facts:{city:'Beijing'}}});assert.equal(out.status,200);assert.equal(out.body.state.revision,0);assert.deepEqual(out.body.state.facts,{});assert.equal(out.body.reply,null);});
+test('same event ID with different input is rejected',async t=>{const {client}=await server(t),c=client();const b={requestId:'x',expectedRevision:0,event:{type:'text',text:'Shanghai'}};await c('turn',b);assert.equal((await c('turn',{...b,event:{type:'text',text:'Beijing'}})).status,409);});
+test('V5 guide retrieves official text and distinguishes cached responses',async t=>{
+ let requests=0;const {client}=await server(t,{fetch:async url=>{requests++;return new Response(String(url).endsWith('/robots.txt')?'User-agent: *\nAllow: /':'<article>'+('Shanghai metro official guidance for visitors. ').repeat(20)+'</article>',{headers:{'Content-Type':'text/html'}});}}),c=client();
+ await c('turn',{requestId:'x',expectedRevision:0,event:{type:'text',text:'Shanghai metro'}});
+ const a=(await c('guide',{revision:1,task:'metro',live:true})).body,b=(await c('guide',{revision:1,task:'metro',live:true})).body;
+ assert.ok(requests>0);assert.ok(a.node.evidence.every(x=>x.checkedAt));assert.ok(b.node.evidence.some(x=>x.cacheHit));assert.equal(a.inventoryVerified,false);
+});
+test('low battery blocks both retrieval and model calls on V5 cards',async t=>{let calls=0;const {client}=await server(t,{fetch:async()=>{calls++;throw Error('should not call');}}),c=client();await c('turn',{requestId:'x',expectedRevision:0,event:{type:'text',text:'Shanghai battery 3%'}});const out=await c('guide',{revision:1,task:'power',live:true,modelConsent:true});assert.equal(out.body.networkMode,'context-limited');assert.equal(calls,0);});
+test('unknown city cannot inherit a Shanghai source preset',async t=>{const {client}=await server(t),c=client();const out=await c('guide',{revision:0,task:'metro'});assert.ok(out.body.node.evidence.every(e=>!e.city||e.city==='China'));});
+test('in-flight guide is invalidated by destination correction',async t=>{let release,entered;const ready=new Promise(r=>entered=r),hold=new Promise(r=>release=r);const {client}=await server(t,{fetch:async()=>{entered();await hold;return new Response('User-agent: *\nDisallow: /');}}),c=client();await c('turn',{requestId:'x',expectedRevision:0,event:{type:'text',text:'Shanghai metro'}});const pending=c('guide',{revision:1,task:'metro',live:true});await ready;await c('turn',{requestId:'y',expectedRevision:1,event:{type:'text',text:'Actually Beijing'}});release();assert.equal((await pending).status,409);});
+test('OIDC identities use issuer and immutable subject, and insecure configuration fails',()=>{assert.notEqual(identity('https://a','same'),identity('https://b','same'));assert.notEqual(identity('https://a','one'),identity('https://a','two'));assert.throws(()=>createIdentity({OIDC_ISSUER:'http://bad',OIDC_CLIENT_ID:'a',OIDC_REDIRECT_URI:'https://app/callback'}),/HTTPS/);});
+test('SSO mode disables demo login and legacy credential bypass',async t=>{const auth={enabled:true,reviewers:new Set(),admins:new Set()};const {client,url}=await server(t,{identity:auth});assert.equal((await client()('login',{username:'admin',password:'demo2026'})).status,403);const r=await fetch(url+'/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:'admin',password:'demo2026'})});assert.equal(r.status,403);});
+test('unconfigured LiveKit is explicit and never returns a fabricated token',async t=>{const {client}=await server(t),c=client();assert.equal((await c('status')).body.voice.configured,false);assert.equal((await c('voice/token',{consent:true})).body.error,'LIVEKIT_NOT_CONFIGURED');});
+function media(t){const {db}=storage(t),env={LIVEKIT_URL:'wss://test.livekit.cloud',LIVEKIT_API_KEY:'testkey',LIVEKIT_API_SECRET:'test-secret-that-is-long-enough-32'};const dispatched=[];const rt=createRealtime({db,env,rooms:{createRoom:async()=>{},deleteRoom:async()=>{}},dispatch:{createDispatch:async(room,name,opts)=>dispatched.push({room,name,...opts})}});const s={id:'session',actor:'admin',until:Date.now()+100000,state:E.state(),requestIds:new Map(),callId:'call-one',callActive:true};db.writeSession(s);return {db,rt,s,env,dispatched};}
+test('LiveKit token requires consent and authenticated cost authorization',async t=>{const {rt,s}=media(t);await assert.rejects(rt.token(s,{}),/CONSENT/);s.actor=null;await assert.rejects(rt.token(s,{consent:true}),/ACCESS/);});
+test('LiveKit grant is room-scoped, microphone-only, short lived and carries no backend cookie',async t=>{const {rt,s,env}=media(t),out=await rt.token(s,{consent:true}),decoded=await new TokenVerifier(env.LIVEKIT_API_KEY,env.LIVEKIT_API_SECRET).verify(out.token);assert.equal(decoded.video.room,out.room);assert.deepEqual(decoded.video.canPublishSources,['microphone']);assert.ok(decoded.exp-Math.floor(Date.now()/1000)<=120);assert.ok(!JSON.stringify(out).includes(env.LIVEKIT_API_SECRET));assert.equal(decoded.roomConfig,undefined);assert.ok(!JSON.stringify(decoded).includes('secretHash'));});
+async function bridgeFixture(t){const m=media(t);await m.rt.token(m.s,{consent:true});const meta=JSON.parse(m.dispatched[0].metadata);return {...m,meta,send:b=>m.rt.bridge({room:meta.room,...b},'Bearer '+meta.secret)};}
+test('voice event commits once; stale speech becomes editable draft',async t=>{const {send,db,s}=await bridgeFixture(t),b={type:'speech.final',event_id:'one',base_revision:0,text:'Shanghai'};assert.equal(send(b).revision,1);assert.equal(send(b).revision,1);const state=db.readSession(s.id);state.requestIds=new Map(state.requests);db.changeSession(state,()=>state.state=E.apply(state.state,{type:'text',text:'Actually Beijing'}));const stale=send({type:'speech.final',event_id:'two',base_revision:1,text:'I want a hotel'});assert.equal(stale.type,'speech.draft');assert.equal(stale.state.facts.city,'Beijing');assert.equal(stale.revision,2);});
+test('worker cannot submit interim, invented facts, or events after hangup',async t=>{const {send,db,s}=await bridgeFixture(t);assert.throws(()=>send({type:'speech.interim',text:'Shanghai'}),/EVENT/);assert.throws(()=>send({type:'state.patch',facts:{city:'Shanghai'}}),/EVENT/);const row=db.readSession(s.id);row.media.ended=true;db.writeSession(row);assert.throws(()=>send({type:'snapshot'}),/AUTH/);});
+test('room secrets cannot authorize a different room',async t=>{const {rt,meta}=await bridgeFixture(t);assert.throws(()=>rt.bridge({type:'snapshot',room:'another-room'},'Bearer '+meta.secret),/AUTH/);});
+function fakeRoom(){const rooms=[];class Room{constructor(){this.events={};this.remoteParticipants=new Map();this.localParticipant={trackPublications:new Map(),setMicrophoneEnabled:async()=>{},performRpc:async()=>{}};rooms.push(this);}on(k,cb){this.events[k]=cb;}startAudio(){return Promise.resolve();}async connect(){this.connected=true;}async disconnect(){this.disconnected=true;}}const events={TrackSubscribed:'track',TrackUnsubscribed:'untrack',DataReceived:'data',Reconnecting:'reconnecting',Reconnected:'reconnected',Disconnected:'disconnected'};return {rooms,SDK:{Room,RoomEvent:events,ParticipantKind:{AGENT:4}}};}
+test('hangup while token is pending prevents late media connection',async()=>{const {rooms,SDK}=fakeRoom();let release;const pending=new Promise(r=>release=r);const c=new Call({SDK,api:()=>pending});const start=c.start({consent:true});c.stop();release({url:'wss://example',token:'test'});await start;assert.equal(rooms[0].connected,undefined);assert.equal(c.active,false);});
+test('media ignores forged client data and stale callbacks after stop',async()=>{const {rooms,SDK}=fakeRoom(),packets=[];const c=new Call({SDK,api:async()=>({url:'wss://example',token:'test'}),onPacket:p=>packets.push(p)});await c.start({consent:true});const receive=rooms[0].events.data,bytes=new TextEncoder().encode(JSON.stringify({state:{},revision:1}));receive(bytes,{identity:'evil',kind:0},null,'travel.state');assert.equal(packets.length,0);c.stop();receive(bytes,{identity:'agent',kind:4},null,'travel.state');assert.equal(packets.length,0);});
+test('browser speech after hangup and input from a replaced call cannot commit',async t=>{const {client}=await server(t),c=client(),start=(await c('begin',{})).body;await c('end',{});const b={requestId:'late',session_id:start.session_id,expectedRevision:0,event:{type:'text',channel:'voice',text:'Shanghai'}};assert.equal((await c('turn',b)).body.error,'CALL_ENDED');await c('begin',{reset:true});assert.equal((await c('turn',{...b,event:{type:'choice',id:'city-sh'}})).body.error,'STALE_SESSION');assert.equal((await c('status')).body.state.revision,0);});
+test('persisted request counter still enforces rate limiting',async t=>{const {client}=await server(t),c=client();let out;for(let i=0;i<181;i++)out=await c('status');assert.equal(out.status,429);});
+test('SSO also blocks legacy login under the V4 prefix',async t=>{const {url}=await server(t,{identity:{enabled:true,reviewers:new Set(),admins:new Set()}});const out=await fetch(url+'/v4/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});assert.equal(out.status,403);});
+
+test('all script entries in the page are served by the Node deployment',async t=>{const {url}=await server(t);const html=await(await fetch(url)).text();for(const name of [...html.matchAll(/<script src="([^"]+)"/g)].map(m=>m[1])){const res=await fetch(url+'/'+name);assert.equal(res.status,200,name);assert.match(res.headers.get('content-type'),/javascript/,name);}});

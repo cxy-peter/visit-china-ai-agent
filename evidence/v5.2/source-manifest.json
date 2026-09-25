@@ -1,0 +1,32 @@
+{
+  "normalization": "SHA-256 after CRLF is normalized to LF",
+  "files": {
+    "prompts/CODEX_NEXT_TASK_V5_1.md": "5068a62ec7a9c902912e70d99be0839c64f084e3bf6523be3bee0c0d5877e76a",
+    "prompts/V5_EXTRACTION.txt": "74b3616f17fbf0cd38677c76bcf0c45226081e20f42b9fa52829e81c53e5dd0f",
+    "prompts/V5_NODE_GENERATION.txt": "e96b18da48d96a0c5e1992138ac5c8324ec9634a830a42cace69df30971afd5b",
+    "prompts/V5_WORKFLOW_CANDIDATE.txt": "df8946a71c721b58ca623b5f5acc3b06a2771ee99362d68d550c2e8c5df9af70",
+    "v5/app.js": "9580f07bfab0233c25f15a37b853503bd392975825da8fb2c8218e6394182e47",
+    "v5/browser_test.py": "cd0e3092547bc3e57d1388cb3c1a345cea3bf7a370c74a08133385b7c71185d5",
+    "v5/build.js": "9dea3962086961eaa6ea31d8b7b90aa4ecfe9bc42ce6003cbe18c7658fb8e70a",
+    "v5/concurrency.test.js": "1724e03317520640c90240355b661799e063147ef301ce44496c315db83e57c7",
+    "v5/engine.js": "5304ae8f06467fe3ebdd485ca42ea982911fc3dfbcacc1565be71817ff3463ed",
+    "v5/governance.js": "938e8478ee789813cafe9725c24baba9dd4498754feba5bdc5a7dc41c087ebcd",
+    "v5/guides.js": "a8687799d6141462fb5eff52549714e6200f432ebb1484c21f00c014a1774410",
+    "v5/identity.js": "3e549c6b504d63717c51e389a3f5e0227dba600253d7d59e09cbb9d6d8184eef",
+    "v5/index.html": "c3d7b3948457ec27349ddaa1af930a348f310547956d93eb27fa283c2cb8b789",
+    "v5/ops.js": "db7d99ce13866b022d40ef2a056a09ae6a1bbdbbf886fd30854cc705ccc5c015",
+    "v5/platform.test.js": "2533ce710ffd6c207ce29631e4ae68706d5b6726ce30757b2b145d0fe0328c64",
+    "v5/provision.js": "0b3a0b27c95a9cfe4e5d184335a30775523f2b8eaa5704ee89ff013b21102fa1",
+    "v5/realtime-server.js": "e77ca29c4f30ebddc749bcc2bde4a8972e167d96df6697c63cf70ba2145532a0",
+    "v5/realtime.js": "46c286de9f323d185f4f482e05ee8b8fcb16b4d523586bd3a5f917e203154ef1",
+    "v5/server.js": "5c310c5f94781f9043a48ad34eed12ff68e3884a14b6d8c946491e92e1855560",
+    "v5/storage.js": "615ec833e21ca571419c5f9b24f46aa2cdd6dbf0a162b307f4d85b16ee4f32d8",
+    "v5/style.css": "56837c5e3a6ce63199f4e9a22671902fe45ae07a6c5ceb863f0480419decfb7a",
+    "v5/tests.js": "64b196b0407237b4c8c2e74415bc95e28a19f4501bf9ed540ce57711db8b2fdc",
+    "v5/voice.js": "f2403c0035c4b164fe072eb695c736235581ae69dcf7ed0b1180c5ef8feb6913",
+    "voice-worker/agent.ts": "8af20d2eb174e7ad3311e86160f7b2d667df2a66c536897754180fd13fd86f90",
+    "voice-worker/package.json": "89c47db7851f89caec72da4f215ebc21cf1e294aeef3b45d2583562d846ab035",
+    "voice-worker/prepare.cjs": "8e12b302e457e2e1b6e1fa2cbe61a7cddab8ac440d6e0f96e1bbf76e22dcef21",
+    "voice-worker/tsconfig.json": "52c5716a020b981a865b607d67952ac3b63193f2975c2000403fb1186d5414fd"
+  }
+}

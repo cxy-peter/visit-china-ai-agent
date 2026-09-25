@@ -1,0 +1,496 @@
+{
+  "url": "https://visit-china-ai-agent.vercel.app",
+  "checks": [
+    {
+      "name": "public site serves V6.1",
+      "passed": true
+    },
+    {
+      "name": "public artifact is verified commit",
+      "passed": true
+    },
+    {
+      "name": "production admin login",
+      "passed": true
+    },
+    {
+      "name": "owner trial issued without returning stored hash",
+      "passed": true
+    },
+    {
+      "name": "public operations metrics table",
+      "passed": true
+    },
+    {
+      "name": "context issue panel available",
+      "passed": true
+    },
+    {
+      "name": "issued owner code connects in real browser",
+      "passed": true
+    },
+    {
+      "name": "browser real model metro",
+      "passed": true
+    },
+    {
+      "name": "bilingual route diagram shown in conversation",
+      "passed": true
+    },
+    {
+      "name": "browser real model hotel",
+      "passed": true
+    },
+    {
+      "name": "actual contact cards shown below answer",
+      "passed": true
+    },
+    {
+      "name": "library index 5000 and no manual conversation-insertion",
+      "passed": true
+    },
+    {
+      "name": "new payment news available in public library",
+      "passed": true
+    },
+    {
+      "name": "mobile no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "no uncaught production page error",
+      "passed": true
+    },
+    {
+      "name": "durable usage reflects both real browser turns",
+      "passed": true
+    }
+  ],
+  "answers": [
+    {
+      "input": "落地浦东机场以后，我全程坐地铁去上海火车站，哪一站换乘？",
+      "answer": {
+        "intent": {
+          "kind": "metro",
+          "origin": "浦东机场",
+          "destination": "上海火车站",
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 2759,
+          "completion_tokens": 47,
+          "total_tokens": 2806,
+          "prompt_tokens_details": {
+            "cached_tokens": 640
+          },
+          "prompt_cache_hit_tokens": 640,
+          "prompt_cache_miss_tokens": 2119
+        },
+        "services": [],
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "sh-metro-map",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 90,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "text": "从浦东1号2号航站楼乘坐2号线（往蟠祥路·国家会计学院方向），到人民广场下车。 在人民广场换乘1号线（往富锦路方向），到上海火车站下车。 路线图和途经站在下方。",
+        "sourceIds": [
+          "sh-metro-map"
+        ],
+        "mode": "deepseek-tool",
+        "notice": "model-intent-verified-tool",
+        "tool": {
+          "kind": "metro",
+          "metro": {
+            "kind": "metro",
+            "origin": "浦东1号2号航站楼",
+            "destination": "上海火车站",
+            "via": null
+          },
+          "estimate": null,
+          "request": null,
+          "places": null
+        },
+        "routeVersion": "shanghai-metro-2026-09-25",
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 101
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 905
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "metro"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 494,
+            "candidates": 475,
+            "elapsedMs": 101,
+            "hits": [
+              {
+                "id": "station-15:6f80ee45a8a01e1d:0",
+                "sourceId": "station-15",
+                "version": "6f80ee45a8a01e1d",
+                "score": 0.03427,
+                "coverage": 0.36
+              },
+              {
+                "id": "verified-pvg-taxi:cca2a96bbc4759cf:0",
+                "sourceId": "verified-pvg-taxi",
+                "version": "cca2a96bbc4759cf",
+                "score": 0.02487,
+                "coverage": 0.12
+              },
+              {
+                "id": "verified-metro-lockers:ac7d654795dd78d2:0",
+                "sourceId": "verified-metro-lockers",
+                "version": "ac7d654795dd78d2",
+                "score": 0.02473,
+                "coverage": 0.32
+              },
+              {
+                "id": "verified-pvg-rest-charging:3c747ba8fb743181:0",
+                "sourceId": "verified-pvg-rest-charging",
+                "version": "3c747ba8fb743181",
+                "score": 0.02412,
+                "coverage": 0.12
+              },
+              {
+                "id": "verified-pvg-taxi:cca2a96bbc4759cf:1",
+                "sourceId": "verified-pvg-taxi",
+                "version": "cca2a96bbc4759cf",
+                "score": 0.02394,
+                "coverage": 0.12
+              },
+              {
+                "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                "sourceId": "verified-shanghai-rail-station",
+                "version": "26195dc7b3d7255a",
+                "score": 0.02355,
+                "coverage": 0.32
+              },
+              {
+                "id": "pvg-arrival:5985bdc9e0cddcd4:0",
+                "sourceId": "pvg-arrival",
+                "version": "5985bdc9e0cddcd4",
+                "score": 0.02141,
+                "coverage": 0.12
+              },
+              {
+                "id": "verified-hongqiao-airport-taxi:9ec5b44088d58128:0",
+                "sourceId": "verified-hongqiao-airport-taxi",
+                "version": "9ec5b44088d58128",
+                "score": 0.02045,
+                "coverage": 0.2
+              }
+            ]
+          },
+          "totalMs": 1010
+        },
+        "dataset": "evaluation",
+        "executionId": "e956a5e2-7ab3-40d9-b0cb-e43a7aec1adc",
+        "assessmentId": "46ae066d-e933-42db-81a4-642f7e1002d0"
+      },
+      "error": null
+    },
+    {
+      "input": "到了上海火车站以后住哪里方便？请给我已核对酒店的地址和公开电话。",
+      "answer": {
+        "text": "上海火车站附近已核对的酒店：\n1. 上海浦西万怡酒店（静安区恒丰路338号），公开电话 +86 21 2215 3888；官网附近交通列出汉中路站和上海火车站。\n2. 上海静安铂尔曼酒店（静安区梅园路330号），公开电话 +86 21 6353 5555；官网列出上海火车站为可步行到达的邻近铁路站。\n3. 上海雅居乐万豪侯爵酒店（黄浦区西藏中路555号），官网列出附近人民广场地铁站（1、2、8号线），距上海火车站需再乘地铁。\n以上为公开核对记录，未接实时房价与房态，请向酒店确认营业、价格与可订情况。",
+        "sourceIds": [
+          "verified-courtyard-central",
+          "verified-pullman-jingan",
+          "sh-marriott-city-centre"
+        ],
+        "mode": "deepseek",
+        "notice": "saved-summaries",
+        "intent": {
+          "kind": "hotel",
+          "origin": null,
+          "destination": "上海火车站",
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 3036,
+          "completion_tokens": 243,
+          "total_tokens": 3279,
+          "prompt_tokens_details": {
+            "cached_tokens": 640
+          },
+          "prompt_cache_hit_tokens": 640,
+          "prompt_cache_miss_tokens": 2396
+        },
+        "services": [
+          {
+            "id": "verified-pullman-jingan",
+            "kind": "hotel",
+            "title": "上海静安铂尔曼酒店",
+            "description": "酒店官网列出上海火车站为可步行到达的邻近铁路站。 静安区梅园路330号 · +86 21 6353 5555 · 页面核对记录；营业、可用量和价格请向运营方确认。未接实时库存或预订接口。",
+            "url": "https://pullman.accor.com/en/hotels/shanghai/7598.html",
+            "sourceUrl": "https://pullman.accor.com/en/hotels/shanghai/7598.html",
+            "sourceId": "verified-pullman-jingan",
+            "status": "verified-place",
+            "address": "静安区梅园路330号",
+            "phone": "+86 21 6353 5555",
+            "phoneExtension": null,
+            "phoneRole": "hotel",
+            "station": "上海火车站",
+            "stations": [
+              "上海火车站"
+            ],
+            "stationEvidence": [
+              {
+                "station": "上海火车站",
+                "basis": "operator-nearby",
+                "descriptionZh": "运营方到达指南明确列出上海火车站可步行前往。",
+                "description": "The operator explicitly describes walking from Shanghai Railway Station.",
+                "sourceUrls": [
+                  "https://pullman.accor.com/en/hotels/shanghai/7598.html"
+                ]
+              }
+            ],
+            "checkedAt": "2026-09-25",
+            "liveAvailability": false
+          },
+          {
+            "id": "verified-courtyard-central",
+            "kind": "hotel",
+            "title": "上海浦西万怡酒店",
+            "description": "官网附近交通列出汉中路站和上海火车站。 静安区恒丰路338号 · +86 21 2215 3888 · 页面核对记录；营业、可用量和价格请向运营方确认。未接实时库存或预订接口。",
+            "url": "https://www.marriott.com/en-us/hotels/shapx-courtyard-shanghai-central/overview/",
+            "sourceUrl": "https://www.marriott.com/en-us/hotels/shapx-courtyard-shanghai-central/overview/",
+            "sourceId": "verified-courtyard-central",
+            "status": "verified-place",
+            "address": "静安区恒丰路338号",
+            "phone": "+86 21 2215 3888",
+            "phoneExtension": null,
+            "phoneRole": "hotel",
+            "station": "汉中路",
+            "stations": [
+              "汉中路",
+              "上海火车站"
+            ],
+            "stationEvidence": [
+              {
+                "station": "汉中路",
+                "basis": "operator-nearby",
+                "descriptionZh": "官网附近地铁站明确列出汉中路站。",
+                "description": "The nearby subway list names Hanzhong Road.",
+                "sourceUrls": [
+                  "https://www.marriott.com/en-us/hotels/shapx-courtyard-shanghai-central/overview/"
+                ]
+              },
+              {
+                "station": "上海火车站",
+                "basis": "operator-nearby",
+                "descriptionZh": "官网附近地铁及铁路站列出上海火车站。",
+                "description": "The nearby subway and rail lists name Shanghai Railway Station.",
+                "sourceUrls": [
+                  "https://www.marriott.com/en-us/hotels/shapx-courtyard-shanghai-central/overview/"
+                ]
+              }
+            ],
+            "checkedAt": "2026-09-25",
+            "liveAvailability": false
+          }
+        ],
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "sh-marriott-city-centre",
+              "score": 85,
+              "level": "high",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "已匹配运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "verified-pullman-jingan",
+              "score": 85,
+              "level": "high",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "已匹配运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "verified-courtyard-central",
+              "score": 85,
+              "level": "high",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "已匹配运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 85,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 86
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 1432
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "hotel"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 494,
+            "candidates": 458,
+            "elapsedMs": 86,
+            "hits": [
+              {
+                "id": "station-15:6f80ee45a8a01e1d:0",
+                "sourceId": "station-15",
+                "version": "6f80ee45a8a01e1d",
+                "score": 0.03111,
+                "coverage": 0.226
+              },
+              {
+                "id": "sh-marriott-city-centre:d95fbe4d18488db5:0",
+                "sourceId": "sh-marriott-city-centre",
+                "version": "d95fbe4d18488db5",
+                "score": 0.02334,
+                "coverage": 0.129
+              },
+              {
+                "id": "verified-metro-lockers:ac7d654795dd78d2:0",
+                "sourceId": "verified-metro-lockers",
+                "version": "ac7d654795dd78d2",
+                "score": 0.02333,
+                "coverage": 0.258
+              },
+              {
+                "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                "sourceId": "verified-shanghai-rail-station",
+                "version": "26195dc7b3d7255a",
+                "score": 0.02333,
+                "coverage": 0.258
+              },
+              {
+                "id": "verified-hongqiao-rail-station:1c6991b2bad55c70:0",
+                "sourceId": "verified-hongqiao-rail-station",
+                "version": "1c6991b2bad55c70",
+                "score": 0.02207,
+                "coverage": 0.226
+              },
+              {
+                "id": "verified-hongqiao-indoor-navigation:d02a6972fdbdab0d:0",
+                "sourceId": "verified-hongqiao-indoor-navigation",
+                "version": "d02a6972fdbdab0d",
+                "score": 0.02131,
+                "coverage": 0.194
+              },
+              {
+                "id": "verified-courtyard-central:be2f9990c74f069c:0",
+                "sourceId": "verified-courtyard-central",
+                "version": "be2f9990c74f069c",
+                "score": 0.02044,
+                "coverage": 0.387
+              },
+              {
+                "id": "verified-pullman-jingan:d1d198223d8f2b4d:0",
+                "sourceId": "verified-pullman-jingan",
+                "version": "d1d198223d8f2b4d",
+                "score": 0.02011,
+                "coverage": 0.387
+              }
+            ]
+          },
+          "totalMs": 1522
+        },
+        "dataset": "evaluation",
+        "executionId": "9dc56695-3210-4bb2-b994-c9f566927c55",
+        "assessmentId": "6de17a31-e119-489e-b0ef-5800e5ba74f3"
+      },
+      "error": null
+    }
+  ],
+  "pageErrors": []
+}
