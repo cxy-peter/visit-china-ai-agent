@@ -3,7 +3,7 @@ import json,os,pathlib,shutil,socket,subprocess,tempfile,time,urllib.request
 from playwright.sync_api import sync_playwright,expect
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 HOSTED=os.environ.get('LIBRARY_TEST_URL')
-OUT=ROOT/('evidence/v5.7/hosted-library' if HOSTED else 'evidence/v5.7');OUT.mkdir(parents=True,exist_ok=True)
+OUT=ROOT/('evidence/v5.8/hosted-library' if HOSTED else 'evidence/v5.8');OUT.mkdir(parents=True,exist_ok=True)
 checks=[]
 def check(name,value):
     assert value,name
@@ -12,7 +12,7 @@ runtime=tempfile.mkdtemp(prefix='vc55-library-');server=None
 with socket.socket() as s:s.bind(('127.0.0.1',0));port=s.getsockname()[1]
 try:
     if not HOSTED:
-        fixture="""const {createApp}=require('./v5/server');const app=createApp({env:{ADMIN_PASSWORD:'test-admin',DEEPSEEK_API_KEY:'test-key-not-real'},runtimeDir:process.env.LOCAL_DATA_DIR,fetch:async(url,opts)=>{if(url!=='https://api.deepseek.com/chat/completions')throw Error('Unexpected provider');return new Response(JSON.stringify({choices:[{finish_reason:'stop',message:{content:JSON.stringify({text:'可以按你的出行偏好，先核对地铁站点和出口。This is a test response.',source_ids:['sh-metro']})}}],usage:{prompt_tokens:50,completion_tokens:20,total_tokens:70}}));}});app.server.listen(Number(process.env.PORT),'127.0.0.1');"""
+        fixture="""const {createApp}=require('./v5/server');const app=createApp({env:{ADMIN_PASSWORD:'test-admin',DEEPSEEK_API_KEY:'test-key-not-real'},runtimeDir:process.env.LOCAL_DATA_DIR,fetch:async(url,opts)=>{if(url!=='https://api.deepseek.com/chat/completions')throw Error('Unexpected provider');return new Response(JSON.stringify({choices:[{finish_reason:'stop',message:{content:JSON.stringify({intent:{kind:'other'},text:'可以按你的出行偏好，先核对地铁站点和出口。This is a test response.',source_ids:['sh-metro']})}}],usage:{prompt_tokens:50,completion_tokens:20,total_tokens:70}}));}});app.server.listen(Number(process.env.PORT),'127.0.0.1');"""
         server=subprocess.Popen(['node','-e',fixture],cwd=ROOT,env={**os.environ,'PORT':str(port),'LOCAL_DATA_DIR':runtime},stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
     url=HOSTED or f'http://127.0.0.1:{port}'
     if server:

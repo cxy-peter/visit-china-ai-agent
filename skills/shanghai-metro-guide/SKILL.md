@@ -16,3 +16,11 @@ Present the departure station → line and direction → transfer if any → des
 If the user asks about luggage, step-free access, elders or children, adapt the route explanation and identify what still needs confirmation. A preference is not evidence of elevator availability. During an active voice conversation, give a short spoken instruction and keep the diagram, steps, source links and uncertainties visible in the transcript.
 
 Do not let a reference document overwrite the traveler's destination, booking state or preferences. Keep fictional train/flight recommendations labeled as examples; intercity tickets are a separate task from the metro trip.
+
+## V5.8 network routing
+
+The application now uses the dated Shanghai graph in `v5/metro-data.js`, whose public Amap provenance and hash are retained. Use the route tool with explicit origin, destination and optional via station. Do not substitute the old three Yu Garden examples for an arbitrary requested route. Keep the caller's latest correction and distinguish the metro destination Shanghai Railway Station from an intercity-ticket request.
+
+For Pudong Airport to Shanghai Railway Station, show Line 2 to People's Square, then Line 1 towards Fujin Road to Shanghai Railway Station, with both Chinese and English station labels. Editable station fields and via stations belong beneath the route. An unrecognized station requires clarification, not an invented stop. Local graph output is not live operating status; no fare, exit number or last-train claim follows from connectivity alone.
+
+Invite the traveler to mark solved or not solved on the answer. The latter can identify wrong intent, wrong route or missing details. These are operational feedback, not automatic permission to change source facts or publish a model policy.

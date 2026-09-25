@@ -27,7 +27,7 @@ function createCloudChat({env=process.env,fetcher=fetch,now=()=>Date.now()}={}){
    if(!model.status().configured)return json(res,503,{error:'DEEPSEEK_KEY_MISSING'});
    if(!Number.isSafeInteger(b.revision)||b.revision<1||!b.memory||!Array.isArray(b.memory.history)||!b.memory.history.length)throw Error('CONVERSATION_REQUIRED');
    const state=E.restoreMemory({...b.memory,history:b.memory.history.slice(-12)});state.revision=b.revision;state.history.at(-1).revision=b.revision;
-   const last=state.history.at(-1);if(last.channel==='voice'&&!E.speechDecision(last.text,state).accepted)return json(res,200,{mode:'ignored',revision:b.revision});
+   const last=state.history.at(-1);if(last.channel==='voice'&&!E.speechDecision(last.text,state,true).accepted)return json(res,200,{mode:'ignored',revision:b.revision});
    if(E.reply(state).urgent||['poor','offline'].includes(state.facts.network))return json(res,200,{mode:'context-limited',revision:b.revision});
    // Secondary per-instance throttle, not a durable global billing limit. Access is private.
    if(now()-budget.at>3600000)budget={at:now(),calls:0};if(++budget.calls>Math.min(120,Number(env.MAX_MODEL_CALLS_PER_HOUR||30)))return json(res,429,{error:'MODEL_BUDGET'});

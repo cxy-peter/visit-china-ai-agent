@@ -1,7 +1,7 @@
 import json,pathlib,os,time,tempfile,subprocess,socket,hashlib,shutil,urllib.request
 from playwright.sync_api import sync_playwright,expect
 BASE=pathlib.Path(__file__).resolve().parents[1]
-OUT=BASE/'evidence/v5.7';OUT.mkdir(parents=True,exist_ok=True)
+OUT=BASE/'evidence/v5.8';OUT.mkdir(parents=True,exist_ok=True)
 accounts={name:'local-test-password' for name in ['admin','reviewer1','reviewer2','reviewer3','reviewer4','reviewer5']}
 users={name:{'role':'admin' if name=='admin' else 'reviewer','salt':'test-salt','hash':hashlib.scrypt(password.encode(),salt=b'test-salt',n=16384,r=8,p=1,dklen=32).hex()} for name,password in accounts.items()}
 with socket.socket() as sock:sock.bind(('127.0.0.1',0));port=sock.getsockname()[1]
@@ -39,8 +39,8 @@ try:
   check('taxi estimate includes query products',page.locator('.utterance.companion').last.locator('a[href="https://car.ctrip.com/"]').count()==1)
   page.locator('[data-taxi-km="25"]').click();expect(page.locator('#taxi-result')).to_contain_text('86.90');page.locator('#taxi-close').click()
   send('从虹桥火车站坐地铁到豫园')
-  expect(page.locator('.metro-map')).to_be_visible();expect(page.locator('.metro-map')).to_contain_text('Hongqiao Railway Station');expect(page.locator('.metro-map')).to_contain_text('虹桥火车站');expect(page.locator('.metro-map')).to_contain_text('Yuyuan Garden station')
-  check('route diagram labels line and endpoints in both languages',page.locator('.metro-map').get_attribute('aria-label').find('Yu Garden')>=0)
+  expect(page.locator('.metro-map')).to_be_visible();expect(page.locator('.metro-map')).to_contain_text('Hongqiao Railway Station');expect(page.locator('.metro-map')).to_contain_text('虹桥火车站');expect(page.locator('.metro-map')).to_contain_text('Yuyuan Garden')
+  check('route diagram labels line and endpoints in both languages',page.locator('.metro-map').get_attribute('aria-label').find('Yuyuan Garden')>=0)
   page.locator('.metro-card').scroll_into_view_if_needed();page.screenshot(path=str(OUT/'V5_7_中英文地铁与对话.png'))
   page.locator('#output-language').select_option('en');send('Metro from Lujiazui to Yuyuan Garden');expect(page.locator('.metro-map').last).to_contain_text('Line 14')
   check('fixed English output preserved',page.evaluate('TravelApp.getState().language')=='en')

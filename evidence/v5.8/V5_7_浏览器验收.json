@@ -1,0 +1,90 @@
+{
+  "url": "http://127.0.0.1:55985",
+  "checks": [
+    {
+      "name": "needs-first greeting has no flight/hotel questionnaire",
+      "passed": true
+    },
+    {
+      "name": "rail reference is automatically attached",
+      "passed": true
+    },
+    {
+      "name": "missing road distance produces no invented fare",
+      "passed": true
+    },
+    {
+      "name": "taxi estimate includes query products",
+      "passed": true
+    },
+    {
+      "name": "route diagram labels line and endpoints in both languages",
+      "passed": true
+    },
+    {
+      "name": "fixed English output preserved",
+      "passed": true
+    },
+    {
+      "name": "new conversation drops old scenario",
+      "passed": true
+    },
+    {
+      "name": "new tariff is searchable in original library UI",
+      "passed": true
+    },
+    {
+      "name": "admin cloud login works",
+      "passed": true
+    },
+    {
+      "name": "synthetic CTR matches known fixture",
+      "passed": true
+    },
+    {
+      "name": "source refresh and proposals accessible",
+      "passed": true
+    },
+    {
+      "name": "simulated scenario evaluation persisted",
+      "passed": true
+    },
+    {
+      "name": "admin cannot self-approve source in UI",
+      "passed": true
+    },
+    {
+      "name": "reviewer1 alone cannot publish",
+      "passed": true
+    },
+    {
+      "name": "reviewer2 alone cannot publish",
+      "passed": true
+    },
+    {
+      "name": "reviewer3 alone cannot publish",
+      "passed": true
+    },
+    {
+      "name": "reviewer4 alone cannot publish",
+      "passed": true
+    },
+    {
+      "name": "five separate signed accounts publish exact source revision",
+      "passed": true
+    },
+    {
+      "name": "admin rollback succeeds",
+      "passed": true
+    },
+    {
+      "name": "mobile page has no horizontal body overflow",
+      "passed": true
+    },
+    {
+      "name": "browser has no uncaught errors",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

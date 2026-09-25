@@ -8,7 +8,7 @@ async function fixture(t,options={}){
  let time=Date.now(),cookie='',calls=[];
  const handler=createCloudChat({env:{DEEPSEEK_API_KEY:'fixture-key-not-real',TRAVEL_CHAT_ACCESS_CODE:code,...options.env},now:()=>time,fetcher:async(url,init)=>{
   calls.push({url,request:JSON.parse(init.body)});if(options.error)return new Response('do not expose this provider body',{status:options.error});
-  return new Response(JSON.stringify({choices:[{finish_reason:'stop',message:{content:JSON.stringify({text:'可以按你的偏好，安排轻松的行程。',source_ids:[]})}}],usage:{prompt_tokens:30,completion_tokens:10,total_tokens:40}}));
+  return new Response(JSON.stringify({choices:[{finish_reason:'stop',message:{content:JSON.stringify({intent:{kind:'other'},text:'可以按你的偏好，安排轻松的行程。',source_ids:[]})}}],usage:{prompt_tokens:30,completion_tokens:10,total_tokens:40}}));
  }});
  const server=http.createServer(handler);await new Promise(r=>server.listen(0,'127.0.0.1',r));
  t.after(async()=>{server.closeAllConnections();await new Promise(r=>server.close(r));});
@@ -37,10 +37,10 @@ test('cloud ignores voice noise without billing and expires signed sessions',asy
  const f=await fixture(t);await f.login();assert.equal((await f.request(answer(state('啊','voice')))).body.mode,'ignored');assert.equal(f.calls.length,0);
  f.expire();assert.equal((await f.request()).body.authorized,false);assert.equal((await f.request(answer(state('Shanghai')))).status,401);
 });
-test('cloud preserves low-power, evidence gaps and fixed fare rules without model requests',async t=>{
+test('cloud preserves low-power and evidence gaps while asking the model to identify normal requests',async t=>{
  const f=await fixture(t);await f.login();
- for(const text of ['Shanghai battery 3%','去上海的签证条件','上海打车多少钱']){const out=await f.request(answer(state(text)));assert.equal(out.status,200);assert.notEqual(out.body.answer?.mode,'deepseek');}
- assert.equal(f.calls.length,0);
+ for(const text of ['Shanghai battery 3%','去上海的签证条件']){const out=await f.request(answer(state(text)));assert.equal(out.status,200);assert.notEqual(out.body.answer?.mode,'deepseek');}
+ assert.equal(f.calls.length,1);
 });
 test('cloud missing key, provider failure and secondary budget are visible without leaking upstream data',async t=>{
  const missing=await fixture(t,{env:{DEEPSEEK_API_KEY:''}});await missing.login();assert.equal((await missing.request(answer(state('Shanghai')))).body.error,'DEEPSEEK_KEY_MISSING');

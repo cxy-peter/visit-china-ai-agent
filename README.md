@@ -1,3 +1,7 @@
+# V5.8: model intent, Shanghai metro routing and outcome feedback
+
+DeepSeek now identifies the current intent and route endpoints before read-only tools run. Shanghai metro routing uses a dated 418-station public network snapshot with bilingual maps, editable endpoints and via stations. Per-answer solved/unsolved feedback feeds the Operations quality dashboard and triage queue. [Scope, data provenance and verification](docs/V5_8_METRO_AND_FEEDBACK.md).
+
 # V5.7: durable Operations and a shared reviewed source library
 
 Operations now provides live/demo metrics, ordered product funnels, source submission and five-account publication review, automatic source-change checks, and workflow/prompt evaluation. Travel assistance starts from the user's specific need and uses the approved cloud library, bilingual metro diagrams and deterministic taxi/rail guidance. See [operation, setup, boundaries and references](docs/V5_7_OPERATIONS.md).
