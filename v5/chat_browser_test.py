@@ -2,7 +2,7 @@
 import json, os, pathlib, shutil, socket, subprocess, tempfile, time, urllib.request
 from playwright.sync_api import sync_playwright, expect
 ROOT=pathlib.Path(__file__).resolve().parents[1]
-OUT=ROOT/('evidence/v5.6/hosted' if os.environ.get('CHAT_TEST_URL') else 'evidence/v5.6');OUT.mkdir(parents=True,exist_ok=True)
+OUT=ROOT/('evidence/v5.7/hosted' if os.environ.get('CHAT_TEST_URL') else 'evidence/v5.7');OUT.mkdir(parents=True,exist_ok=True)
 with socket.socket() as s:s.bind(('127.0.0.1',0));port=s.getsockname()[1]
 runtime=tempfile.mkdtemp(prefix='vc54-chat-');server=None;checks=[]
 def check(name,result):
@@ -38,7 +38,7 @@ try:
         page.locator('#output-language').select_option('zh');send('在上海打车20公里大概多少钱？')
         page.locator('[data-taxi-km="20"]').click();expect(page.locator('#taxi-result')).to_contain_text('66.65')
         check('spoken-distance pattern pre-fills fare form',page.locator('#taxi-km').input_value()=='20' and page.locator('#taxi-city').input_value()=='Shanghai')
-        check('fare estimate exposes official source and scope','jtw.sh.gov.cn' in page.locator('#taxi-result a').get_attribute('href') and '日间' in page.locator('#taxi-scope').inner_text())
+        check('fare estimate exposes official source and scope','jtw.sh.gov.cn' in page.locator('#taxi-result a[href*="jtw.sh.gov.cn"]').get_attribute('href') and '日间' in page.locator('#taxi-scope').inner_text())
         page.screenshot(path=str(OUT/'taxi-estimate.png'))
         page.locator('#taxi-close').click()
         page.locator('#new-chat-top').click();expect(page.locator('#transcript .user')).to_have_count(0)

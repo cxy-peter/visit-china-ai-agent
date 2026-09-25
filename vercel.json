@@ -35,6 +35,18 @@
   "functions": {
     "api/chat.js": {
       "maxDuration": 60
+    },
+    "api/ops.js": {
+      "maxDuration": 240
+    },
+    "api/source-refresh.js": {
+      "maxDuration": 240
     }
-  }
+  },
+  "crons": [
+    {
+      "path": "/api/source-refresh",
+      "schedule": "0 6 * * *"
+    }
+  ]
 }

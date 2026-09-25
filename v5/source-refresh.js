@@ -1,0 +1,26 @@
+'use strict';
+const crypto=require('node:crypto'),G=require('./governance'),O=require('./operations'),{htmlText,robotsAllowed}=require('../v4/server');
+const HOSTS=new Set(['english.shanghai.gov.cn','www.shanghai.gov.cn','jtw.sh.gov.cn','english.beijing.gov.cn','jtw.beijing.gov.cn','www.12306.cn','mobile.12306.cn','kyfw.12306.cn','service.shmetro.com','posts.tenpay.com','play.google.com']);
+async function limited(r){let size=0,parts=[];for await(const chunk of r.body){size+=chunk.length;if(size>1500000)throw Error('SOURCE_TOO_LARGE');parts.push(chunk);}return Buffer.concat(parts).toString('utf8');}
+function checker(fetcher=fetch){const robots=new Map(),hosts=new Map();return async source=>{
+ const at=new Date().toISOString();try{const u=new URL(source.url);if(u.protocol!=='https:'||u.port||u.username||u.password||!HOSTS.has(u.hostname))throw Error('MANUAL_CONNECTOR_REQUIRED');
+  let policy=robots.get(u.origin);if(!policy){policy=(async()=>{const r=await fetcher(u.origin+'/robots.txt',{redirect:'error',signal:AbortSignal.timeout(6000),headers:{'User-Agent':'VisitChinaResearch/5.7'}});if([404,410].includes(r.status))return '';if(!r.ok)throw Error('ROBOTS_UNAVAILABLE');const text=await limited(r);if(!/user-agent/i.test(text))throw Error('ROBOTS_UNAVAILABLE');return text;})();robots.set(u.origin,policy);}
+  const rule=robotsAllowed(await policy,u.href);if(!rule.allowed)throw Error('ROBOTS_DISALLOWED');if(rule.delay>5)throw Error('CRAWL_DELAY_REQUIRES_MANUAL');const previous=hosts.get(u.hostname)||Promise.resolve();const slot=previous.catch(()=>{}).then(()=>new Promise(r=>setTimeout(r,Math.max(1000,rule.delay*1000))));hosts.set(u.hostname,slot);await slot;
+  let target=u.href,response;for(let n=0;n<4;n++){response=await fetcher(target,{redirect:'manual',signal:AbortSignal.timeout(7000),headers:{'User-Agent':'VisitChinaResearch/5.7'}});if(![301,302,303,307,308].includes(response.status))break;const next=new URL(response.headers.get('location'),target);if(next.protocol!=='https:'||next.hostname!==u.hostname)throw Error('SOURCE_REDIRECT');target=next.href;}
+  if(!response.ok)throw Error('SOURCE_HTTP_'+response.status);if(!/html|text\/plain/.test(response.headers.get('content-type')||''))throw Error('SOURCE_FORMAT');const content=htmlText(await limited(response));if(content.length<100||/access denied|captcha|verify you are human|just a moment/i.test(content.slice(0,600)))throw Error('SOURCE_UNREADABLE');
+  return{id:source.id,at,status:'fetched',hash:crypto.createHash('sha256').update(content).digest('hex'),excerpt:content.slice(0,600),baseSourceHash:G.digest(source)};
+ }catch(e){return{id:source.id,at,status:'unavailable',error:/^[A-Z_0-9]+$/.test(e.message)?e.message:'SOURCE_UNAVAILABLE',baseSourceHash:G.digest(source)};}
+};}
+async function refresh(store,{manual=false,actor='scheduler',now=Date.now(),fetcher=fetch,check=checker(fetcher)}={}){
+ const lease=crypto.randomUUID();const sources=await store.mutate(s=>{if(s.refresh.leaseUntil>now)throw Error('REFRESH_BUSY');if(!manual&&s.refresh.nextDueAt&&Date.parse(s.refresh.nextDueAt)>now)return null;if(manual&&s.refresh.lastStartedAt&&now-Date.parse(s.refresh.lastStartedAt)<60000)throw Error('REFRESH_COOLDOWN');s.refresh={...s.refresh,lease,leaseUntil:now+240000,lastStartedAt:new Date(now).toISOString()};return s.sources.filter(r=>r.active!==false).slice(0,30);});
+ if(!sources)return{skipped:true};const results=[];
+ try{for(let start=0;start<sources.length;start+=3)results.push(...await Promise.all(sources.slice(start,start+3).map(check)));
+  return await store.mutate(s=>{if(s.refresh.lease!==lease)throw Error('REFRESH_LEASE_EXPIRED');let changed=0;for(const result of results){const previous=s.checks.find(c=>c.id===result.id),source=s.sources.find(r=>r.id===result.id);if(!source||G.digest(source)!==result.baseSourceHash)continue;
+    if(result.hash&&previous?.hash&&previous.hash!==result.hash){result.status='changed';changed++;if(!s.proposals.some(p=>p.sourceId===source.id&&['review','blocked'].includes(p.status))){const p=O.propose(s,'source-monitor',{sourceId:source.id,record:{...source,sourceType:source.sourceType||'official',summary:source.summary||'',summaryZh:source.summaryZh||source.summary||''}});p.contentChange={requiresEdit:true,previousHash:previous.hash,newHash:result.hash,excerpt:result.excerpt,notice:'原文变化；原摘要尚未随之确认。请编辑并核对后审核。'};}}
+    else if(previous?.status==='changed'&&previous.baseSourceHash===result.baseSourceHash)result.status='changed';
+    if(!result.hash&&previous?.hash)result.hash=previous.hash;
+    s.checks=s.checks.filter(c=>c.id!==result.id);s.checks.push(result);
+   }s.refresh={lease:null,leaseUntil:0,lastStartedAt:s.refresh.lastStartedAt,lastCompletedAt:new Date(now).toISOString(),nextDueAt:new Date(now+3*86400000).toISOString(),checked:results.length,changed,failed:results.filter(r=>r.status==='unavailable').length};O.log(s,'sources_refreshed',actor,{...s.refresh});return{refresh:s.refresh,results};});
+ }catch(e){await store.mutate(s=>{if(s.refresh.lease===lease)s.refresh.leaseUntil=0;});throw e;}
+}
+module.exports={checker,refresh,HOSTS};

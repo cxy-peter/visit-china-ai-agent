@@ -15,7 +15,7 @@ function taxi(input){const t=tariffs[input.city];if(!t)throw Error('CITY_REQUIRE
 }
 function taxiRequest(text,city){if(!/taxi|cab\b|打车|出租车|车费|公里|kilomet|\bkm\b/i.test(text))return null;const m=text.match(/(\d+(?:\.\d+)?)\s*(?:公里|千米|km\b|kilomet(?:er|re)s?)/i);return{city:/上海|shanghai/i.test(text)?'Shanghai':/北京|beijing/i.test(text)?'Beijing':city||'',km:m?Number(m[1]):null};}
 const cities={shanghai:['上海虹桥','Shanghai Hongqiao','上海','Shanghai'],beijing:['北京南','Beijing South','北京','Beijing'],hangzhou:['杭州东','Hangzhou East','杭州','Hangzhou'],nanjing:['南京南','Nanjing South','南京','Nanjing'],guangzhou:['广州南','Guangzhou South','广州','Guangzhou']};
-function routeRequest(text){const source=String(text||'');const match=source.match(/(?:从|from\s+)(.+?)(?:到|去|飞往|\s+to\s+)(.+?)(?:的|，|,|[。？！]|$)/i);if(!match)return null;const resolve=v=>Object.keys(cities).find(k=>v.toLowerCase().includes(k)||v.includes(cities[k][2]));const from=resolve(match[1]),to=resolve(match[2]);return from&&to&&from!==to?{from,to}:null;}
+function routeRequest(text){const source=String(text||'');const match=source.match(/(?:从|from\s+)?(.+?)(?:到|去|飞往|\s+to\s+)(.+?)(?:的|，|,|[。？！]|$)/i);if(!match)return null;const resolve=v=>Object.keys(cities).find(k=>v.toLowerCase().includes(k)||v.includes(cities[k][2]));const from=resolve(match[1]),to=resolve(match[2]);return from&&to&&from!==to?{from,to}:null;}
 function transportExamples(h,language,kind,common){const zh=language==='zh',tr=(a,b)=>zh?a:b,request=routeRequest(h.text);
  if(kind==='flight'){
   const pair=request?[[request.from,request.to]]:[['beijing','shanghai'],['guangzhou','shanghai']];

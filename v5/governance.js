@@ -7,13 +7,13 @@ const digest=value=>crypto.createHash('sha256').update(canonical(value)).digest(
 const now=()=>new Date().toISOString();
 function validateConfig(x){
  if(!x||typeof x!=='object'||Array.isArray(x))throw Error('CONFIG_OBJECT');
- const keys=['maxSpokenChars','questionOrder','proactiveExtensions','promptSuffix'];
+ const keys=['maxSpokenChars','questionOrder','proactiveExtensions','promptSuffix','needsFirst'];
  if(Object.keys(x).some(k=>!keys.includes(k)))throw Error('UNSAFE_CONFIG_FIELD');
  if(!Number.isInteger(x.maxSpokenChars)||x.maxSpokenChars<100||x.maxSpokenChars>360)throw Error('SPEECH_LENGTH');
  if(!Array.isArray(x.questionOrder)||x.questionOrder.length!==5||new Set(x.questionOrder).size!==5||x.questionOrder.some(k=>!E.BASE.questionOrder.includes(k)))throw Error('QUESTION_ORDER');
  if(typeof x.proactiveExtensions!=='boolean')throw Error('EXTENSION_FLAG');
  if(typeof x.promptSuffix!=='string'||x.promptSuffix.length>450||/https?:|<|>|ignore.{0,25}(instruction|safety|policy)|bypass|override|api.?key|password|验证码|忽略.*规则/i.test(x.promptSuffix))throw Error('UNSAFE_PROMPT');
- return clone(x);
+ if(x.needsFirst!==undefined&&typeof x.needsFirst!=='boolean')throw Error('NEEDS_FIRST_VALUE');return clone(x);
 }
 function configOf(p){const {version,...config}=p;return validateConfig(config);}
 function newStore(){return{schema:5,active:{...clone(E.BASE)},counter:1,candidates:[],feedback:[],audit:[]};}
@@ -27,7 +27,7 @@ function evaluateConfig(config){config=validateConfig(config);const policy={vers
  const apply=arr=>arr.reduce((s,text)=>E.apply(s,{type:'text',text}),E.state(policy));
  test('known facts are retained',()=>{const s=apply(['My flight to Shanghai is booked.','I am travelling with my parents.']);return s.facts.city==='Shanghai'&&s.facts.flight==='booked'&&s.facts.party==='with parents';});
  test('negative hotel does not become a booking',()=>apply(['I booked my flight to Shanghai but have not booked my hotel.']).facts.hotel==='not_booked');
- test('click during audio uses normal state transition',()=>{let s=E.state(policy);s=E.apply(s,{type:'choice',id:'city-sh',channel:'click'});return s.facts.city==='Shanghai'&&s.revision===1;});
+ test('click during audio uses normal state transition',()=>{let s=config.needsFirst?apply(['Battery 3%.']):E.state(policy);s=E.apply(s,{type:'choice',id:config.needsFirst?'power-restored':'city-sh',channel:'click'});return config.needsFirst?s.facts.battery===60:s.facts.city==='Shanghai'&&s.revision===1;});
  test('low power suppresses extensions',()=>{const r=E.reply(apply(['Shanghai. My hotel is booked. Battery 3%.']));return r.urgent&&r.suggestions.length===0;});
  test('offline is not a power-bank recommendation',()=>E.reply(apply(['Shanghai, no internet, battery 80%.'])).question==='connection');
  test('confirmed task list invalidated by changes',()=>{let s=apply(['Shanghai']);s=E.apply(s,{type:'confirm'});s=E.apply(s,{type:'text',text:'Actually Beijing'});return s.confirmedRevision===null;});

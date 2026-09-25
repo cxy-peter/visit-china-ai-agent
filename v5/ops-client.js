@@ -1,0 +1,17 @@
+/* Source sync and small anonymous analytics batches; never send chat text or audio. */
+(function(){'use strict';
+const uid=()=>crypto.randomUUID(),seen=new Set();let chat=uid(),ready=false,queue=[],timer=null,sending=false,observer=null,started=false;
+function event(type,kind='other',item=''){if(!ready)return;queue.push({id:uid(),chat,type,kind,item,at:Date.now()});if(queue.length>60)queue.shift();clearTimeout(timer);timer=setTimeout(flush,3500);}
+async function flush(){if(sending||!queue.length)return;sending=true;const batch=queue.slice(0,30);try{const r=await fetch('/api/ops',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'events',events:batch}),keepalive:true});if(r.ok)queue.splice(0,batch.length);}catch(_){}finally{sending=false;if(queue.length)timer=setTimeout(flush,12000);}}
+function start(){if(started)return;started=true;event('chat_started');}
+function turn(){start();const s=TravelApp.getState(),h=s.history.at(-1);if(h&&['text','voice','click'].includes(h.channel))event('user_message',TravelIntent.analyze(h.text,h.context?.city,h.language).kind);}
+function fresh(){chat=uid();seen.clear();started=false;start();}
+function observe(){if(!ready||!('IntersectionObserver'in window))return;if(!observer)observer=new IntersectionObserver(entries=>{for(const e of entries){if(!e.isIntersecting||e.intersectionRatio<.5)continue;const n=e.target,key=n.dataset.metricKind+':'+n.dataset.metricItem;if(!seen.has(key)){seen.add(key);start();event('offer_view',n.dataset.metricKind,n.dataset.metricItem);}observer.unobserve(n);}},{threshold:.5});for(const n of document.querySelectorAll('[data-metric-kind][data-metric-item]'))observer.observe(n);}
+async function sync(){try{const r=await fetch('/api/ops?view=library');if(!r.ok)throw Error('SOURCE_SYNC');const out=await r.json();TravelLibrary.merge(out.records);TravelApp.applyPolicy(out.policy);TravelApp.refresh();ready=true;start();const label=document.getElementById('library-refresh-status');if(label)label.textContent='每三天检查精选资料 · 上次 '+(out.refresh.lastCompletedAt?new Date(out.refresh.lastCompletedAt).toLocaleString():'尚未运行')+' · 原文变化需复核';TravelLibraryUI.render();observe();return out;}catch(_){const label=document.getElementById('library-refresh-status');if(label)label.textContent='自动更新暂不可用；显示本机保存资料。';}}
+document.addEventListener('click',e=>{const link=e.target.closest('[data-product-kind]');if(link){start();const item=link.dataset.productItem,kind=link.dataset.productKind,key=kind+':'+item;if(!seen.has(key)){seen.add(key);event('offer_view',kind,item);}event('product_click',kind,item);}if(e.target.closest('[data-source-detail]'))event('source_open');});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)flush();});
+const intro=document.querySelector('.library-intro');intro.insertAdjacentHTML('beforeend','<div class="library-maintenance"><span id="library-refresh-status">正在同步审核后的资料…</span><div><button id="library-submit" class="outline">＋ 添加资料</button><button id="library-refresh" class="light">手动更新 / 管理</button></div></div>');
+document.getElementById('library-submit').onclick=()=>CloudOps.sourceForm();document.getElementById('library-refresh').onclick=()=>CloudOps.open('sources');
+window.TravelOpsClient={sync,event,turn,fresh,observe,sourceUsed:(ids,rev)=>{const key='source:'+rev;if(ids.length&&!seen.has(key)){seen.add(key);event('source_used','other',ids.join('.').slice(0,100));}},flush};
+sync();
+})();

@@ -1,3 +1,7 @@
+# V5.7: durable Operations and a shared reviewed source library
+
+Operations now provides live/demo metrics, ordered product funnels, source submission and five-account publication review, automatic source-change checks, and workflow/prompt evaluation. Travel assistance starts from the user's specific need and uses the approved cloud library, bilingual metro diagrams and deterministic taxi/rail guidance. See [operation, setup, boundaries and references](docs/V5_7_OPERATIONS.md).
+
 # V5.6: deployed DeepSeek chat and metro routes
 
 The public site now has a private-access, stateless DeepSeek chat endpoint shared by voice and text. Live captions move into a larger conversation area; accidental voice fragments stay silent; Yu Garden metro diagrams and directional Shanghai train/flight examples appear below the relevant turn. See [setup, behavior and verification](docs/V5_6_CLOUD_CHAT.md). Historical release sections below describe their original scope.

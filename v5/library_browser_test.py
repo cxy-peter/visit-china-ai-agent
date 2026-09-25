@@ -3,7 +3,7 @@ import json,os,pathlib,shutil,socket,subprocess,tempfile,time,urllib.request
 from playwright.sync_api import sync_playwright,expect
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 HOSTED=os.environ.get('LIBRARY_TEST_URL')
-OUT=ROOT/('evidence/v5.6/hosted-library' if HOSTED else 'evidence/v5.6');OUT.mkdir(parents=True,exist_ok=True)
+OUT=ROOT/('evidence/v5.7/hosted-library' if HOSTED else 'evidence/v5.7');OUT.mkdir(parents=True,exist_ok=True)
 checks=[]
 def check(name,value):
     assert value,name

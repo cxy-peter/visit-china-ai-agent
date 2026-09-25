@@ -11,7 +11,7 @@ function createCloudChat({env=process.env,fetcher=fetch,now=()=>Date.now()}={}){
  async function body(req){if(!String(req.headers['content-type']).startsWith('application/json'))throw Error('JSON_REQUIRED');if(req.body!==undefined){const text=typeof req.body==='string'?req.body:JSON.stringify(req.body);if(Buffer.byteLength(text)>96000)throw Error('BODY_TOO_LARGE');return JSON.parse(text);}let size=0,parts=[];for await(const p of req){size+=p.length;if(size>96000)throw Error('BODY_TOO_LARGE');parts.push(p);}return JSON.parse(Buffer.concat(parts).toString());}
  return async(req,res)=>{
   try{
-   if(req.method==='GET')return json(res,200,{backend:'vercel-chat',version:E.VERSION,configured:model.status().configured,accessReady:access.length>=24,authorized:authorized(req),model:env.DEEPSEEK_MODEL||'deepseek-flash',persistence:'browser conversation; no cloud archive or governance database'});
+   if(req.method==='GET')return json(res,200,{backend:'vercel-chat',version:E.VERSION,configured:model.status().configured,accessReady:access.length>=24,authorized:authorized(req),model:env.DEEPSEEK_MODEL||'deepseek-flash',persistence:'browser conversation; private durable operations and approved source library'});
    if(req.method!=='POST')return json(res,405,{error:'METHOD_NOT_ALLOWED'});
    if(req.headers.origin&&new URL(req.headers.origin).host!==req.headers.host)throw Error('ORIGIN_NOT_ALLOWED');
    const b=await body(req);if(!b||typeof b!=='object'||Array.isArray(b))throw Error('BODY_OBJECT');
@@ -32,7 +32,7 @@ function createCloudChat({env=process.env,fetcher=fetch,now=()=>Date.now()}={}){
    // Secondary per-instance throttle, not a durable global billing limit. Access is private.
    if(now()-budget.at>3600000)budget={at:now(),calls:0};if(++budget.calls>Math.min(120,Number(env.MAX_MODEL_CALLS_PER_HOUR||30)))return json(res,429,{error:'MODEL_BUDGET'});
    const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),28000);res.on('close',()=>{if(!res.writableEnded)controller.abort();});
-   try{const answer=await assist({state,model,signal:controller.signal});return json(res,200,{answer,revision:b.revision});}finally{clearTimeout(timer);}
+   try{let records=require('./library').records;if(env.BLOB_STORE_ID||env.BLOB_READ_WRITE_TOKEN||env.CLOUD_OPERATIONS==='1'){const stored=await require('./ops-store').createStore(env).read()||require('./operations').initial();records=require('./ops-api').catalog(stored);const version=b.policyVersion;const published=stored.governance.candidates.find(c=>c.publishedVersion===version&&c.status==='published');const previous=stored.governance.candidates.find(c=>c.previous?.version===version)?.previous;state.policy=published?{...published.config,version}:previous||stored.governance.active;}const answer=await assist({state,model,signal:controller.signal,records});return json(res,200,{answer,revision:b.revision});}finally{clearTimeout(timer);}
   }catch(e){const code=/^(?:JSON_REQUIRED|BODY_TOO_LARGE|BODY_OBJECT|ORIGIN_NOT_ALLOWED|ACTION_NOT_ALLOWED|MODEL_CONSENT_REQUIRED|CONVERSATION_REQUIRED|ANSWER_\w+|DEEPSEEK_HTTP_\d+|MODEL_OUTPUT_TRUNCATED)$/.test(e.message)?e.message:'CHAT_TEMPORARILY_UNAVAILABLE';return json(res,/REQUIRED|ORIGIN/.test(code)?403:/TOO_LARGE/.test(code)?413:/DEEPSEEK|TEMPORARILY/.test(code)?502:400,{error:code});}
  };
 }

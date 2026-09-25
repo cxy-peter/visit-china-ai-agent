@@ -1,7 +1,7 @@
 /* Shared deterministic state contract. Models propose facts; they never execute bookings. */
 (function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory();else root.TravelEngine=factory();})(typeof globalThis!=='undefined'?globalThis:this,function(){
 'use strict';
-const VERSION='5.6.0';
+const VERSION='5.7.0';
 const BASE={version:'wf-1',maxSpokenChars:220,questionOrder:['stage','flight','hotel','transfer','interests'],proactiveExtensions:true,promptSuffix:'Ask one useful question at a time. Accept a click as an answer. Never require listening to finish.'};
 const FIELDS={city:80,stage:['planning','arriving','exploring'],flight:['booked','not_booked','skip'],hotel:['booked','not_booked','skip'],transfer:['metro','taxi','driver','skip'],hotelName:120,area:100,interests:240,party:120,airport:12,terminal:8,zone:['public','restricted','baggage'],network:['online','poor','offline'],battery:'number'};
 const TASKS=['flight','hotel','transfer','explore','power','connection','metro','cash','payment','rail','luggage','help','restaurant'];
@@ -42,12 +42,13 @@ function parse(text,previous){const s=clean(text),p={},tasks=[];
  // A comma-separated request must not swallow an explicit booked status for
  // the following service (e.g. 需要酒店，机票已订).
  for(const [field,word]of [['flight','机票|飞机票'],['hotel','酒店|住宿']])if(new RegExp('(?:'+word+')(?:已经|早就|已)?(?:订好了|订好|订了|订妥|预订好了)|(?:'+word+')已订').test(s)){p[field]='booked';const i=tasks.indexOf(field);if(i>=0)tasks.splice(i,1);}
- if(/taxi|cab\b|打车|出租车|车费/i.test(s)){p.transfer='taxi';if(!tasks.includes('transfer'))tasks.push('transfer');}
+ if(/taxi|cab\b|打车|出租车|车费/i.test(s)){p.transfer='taxi';if(!tasks.includes('transfer'))tasks.push('transfer');if(/火车站|railway station|train station/i.test(s)&&!/火车票|高铁|坐火车|乘火车|train tickets?|take .{0,10}train/i.test(s)){const i=tasks.indexOf('rail');if(i>=0)tasks.splice(i,1);}}
  if(previous.lastQuestion==='interests'&&!p.interests&&s&&!/^skip|跳过|随便$/i.test(s))p.interests=clean(s,240);
  return{patch:p,tasks};}
 function speechDecision(text,s=state()){
  const t=clean(text,2000).replace(/[\s，。！？,.!?…]/g,'').toLowerCase();
  if(t.length<2)return{accepted:false,reason:'too-short'};
+ if(/^(?:t[12]|[12]号航站楼)$/i.test(t)&&s.facts?.airport)return{accepted:true,reason:'terminal-answer'};
  if(/^(?:嗯|啊|哦|呃|额|唉|诶|喂|哈|嘿|uh|um|hmm|ah|oh)+$/i.test(t)||/^(.)\1{2,}$/u.test(t))return{accepted:false,reason:'filler'};
  const context=['flight','hotel','confirm','issue','stage','transfer','interests'].includes(s.lastQuestion);
  if(/^(?:yes|no|ok|okay|confirm|done|好的|确认|可以|对的|不是|没有|还没|已订|订好了|跳过|稍后|稍后再说)$/i.test(t))return{accepted:context,reason:context?'context-answer':'no-context'};
@@ -79,6 +80,7 @@ function reply(s){const zh=s.language==='zh',f=s.facts,p=s.policy||BASE,tr=(a,b)
  const urgent=f.battery!==undefined&&f.battery<=5;
  if(urgent){question='power';say=tr('先保住电量。我暂停语音和图片，给你一张可以出示给现场工作人员的中文求助卡。','Let’s save your battery. I will pause audio and images and show a Chinese help card for staff.');options=[opt('power-restored','电量已恢复','Power restored',{battery:60}),opt('help-now','仍需要帮助','Still need help',{}, {tasks:['help']})];}
  else if(f.network==='offline'){question='connection';say=tr('先解决网络。你可以继续用这里的文字卡向现场人员求助；不会让你反复扫码或下载应用。','Let’s handle connectivity first. Use the text help card with staff; I won’t send you into another download or QR loop.');options=[opt('network-restored','网络已恢复','Back online',{network:'online'}),opt('need-help','找现场人员','Ask staff',{}, {tasks:['help']})];}
+ else if(p.needsFirst){question='needs';say=tr('你好，有什么具体需求？可以问地铁路线、车费、高铁，或直接说你的安排。','Hi! What specifically would you like help with? Ask about a metro route, taxi fare, train, or your plans.');if(s.history.length)say=tr('还有哪一项具体需求需要我帮你？我会按你的问题查资料和使用对应工具。','What else would you like help with? I will use the sources and tools relevant to your question.');options=[];}
  else if(s.currentIssue==='rail'){question='issue';say=tr('火车票示例已放在这轮对话下方。你打算从哪一站到哪一站、哪天出发？可先看示例，再补充实际行程。','Train examples are below this message. What are your departure and arrival stations, and travel date? You can browse the examples first.');options=[opt('issue-resolved','继续其他需求','Continue my other needs',{}, {clearIssue:true})];}
  else if(s.currentIssue){question='issue';const issue=s.currentIssue;say=tr('先处理：'+TITLES[issue][0]+'。相关行动卡和来源已经放在右边。你可以边看边说；需要先找现场人员协助吗？','Let’s handle '+TITLES[issue][1].toLowerCase()+' first. The action and source cards are ready beside this call. Need help from staff, or shall we return to your plan?');options=[opt('issue-help','找现场人员','Ask staff',{}, {tasks:['help'],clearIssue:true}),opt('issue-resolved','已解决，继续旅程','Resolved, continue',{}, {clearIssue:true})];}
  else if(!f.city){question='city';say=tr('你好！你想去哪里玩？已经出发了吗？可以直接说，也可以随时点选。','Hi! Where would you like to go, and have you started your trip? You can speak or choose on screen.');options=[opt('city-sh','上海','Shanghai',{city:'Shanghai'}),opt('city-bj','北京','Beijing',{city:'Beijing'})];}

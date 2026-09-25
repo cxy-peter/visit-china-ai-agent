@@ -4,7 +4,7 @@ Speech recognition/synthesis are controlled test doubles in BOTH modes. No real 
 import os, sys, json, time, pathlib, tempfile, subprocess, hashlib, urllib.request, shutil, socket
 from playwright.sync_api import sync_playwright, expect
 ROOT=pathlib.Path(__file__).resolve().parents[1]
-OUT=ROOT/'evidence/v5.6';OUT.mkdir(parents=True,exist_ok=True)
+OUT=ROOT/'evidence/v5.7';OUT.mkdir(parents=True,exist_ok=True)
 static='--static' in sys.argv
 checks=[]
 def check(name,value):
@@ -139,7 +139,7 @@ try:
         check('no uncaught browser exceptions',not errors)
         if not static:
             offline=browser.new_page(viewport={'width':1000,'height':900})
-            offline.route('**/api/v5/**',lambda route:route.fulfill(status=503,content_type='application/json',body='{"error":"NO_BACKEND"}'))
+            offline.route('**/api/**',lambda route:route.fulfill(status=503,content_type='application/json',body='{"error":"NO_BACKEND"}'))
             offline.goto(base_url);expect(offline.locator('#mode')).to_contain_text('浏览器体验')
             offline.locator('#message').fill('I want a trip to Shanghai with my parents. I need a hotel.');offline.locator('#send').click()
             offline.locator('#chat-settings-open').click();offline.locator('#remember').check();offline.locator('#shared-model-close').click()

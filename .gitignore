@@ -25,3 +25,4 @@ dist-worker/
 *.db
 reviewers.local.json
 .vercel
+.env*.local
