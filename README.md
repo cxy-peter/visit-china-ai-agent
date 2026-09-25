@@ -1,3 +1,11 @@
+# V5.2: LiveKit integration and durable review workflow
+
+Incremental upgrade from V5.1: optional LiveKit WebRTC media worker, V4 official-source checks inside V5 cards, SQLite transactions and persistent sessions, and OIDC organization-login configuration. See [setup and precise limits](docs/V5_2_HANDOFF.md) and [resume boundaries](docs/V5_2_RESUME.md).
+
+**Real microphone, LiveKit-provider and organization SSO acceptance are still pending.** This is not a measured full-duplex release. SQLite supports processes on one persistent host, not multiple cloud hosts. Vercel remains a static preview.
+
+The browser-voice fallback and original regression behavior below remain available. Node >= 22.13 is required.
+
 ## V5.1 release verification
 
 Continuous browser-call loop, speech/click shared state, unfinished transcript recovery, and five-distinct-account approvals are now verified. See [measured results](evidence/v5/release-report.json), [voice research](docs/V5_1_VOICE_RESEARCH.md), [Codex handoff](docs/V5_1_CODEX_HANDOFF.md), and [resume wording](docs/V5_1_RESUME.md). No real microphone, paid model or Vercel deployment is claimed.

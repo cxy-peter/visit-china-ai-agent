@@ -1,19 +1,34 @@
 {
   "name": "visit-china-ai-agent",
-  "version": "5.1.0",
+  "version": "5.2.0",
   "private": true,
   "description": "Call-first travel companion, shared speech/click state and five-reviewer release governance",
   "engines": {
-    "node": ">=22"
+    "node": ">=22.13"
   },
   "scripts": {
     "start": "node v5/server.js",
-    "test": "node --test v4/tests.js v5/tests.js v5/concurrency.test.js",
+    "test": "node --test v4/tests.js v5/tests.js v5/concurrency.test.js v5/platform.test.js",
     "build": "node v5/build.js",
     "evaluate": "node --test v5/tests.js",
     "start:v4": "node v4/server.js",
     "test:v5": "node --test v5/tests.js",
-    "reviewers:init": "node v5/provision.js"
+    "reviewers:init": "node v5/provision.js",
+    "voice:check": "tsc -p voice-worker/tsconfig.json --noEmit",
+    "voice:build": "tsc -p voice-worker/tsconfig.json && node voice-worker/prepare.cjs",
+    "voice:dev": "node --env-file-if-exists=.env dist-worker/agent.js dev",
+    "voice:start": "node --env-file-if-exists=.env dist-worker/agent.js start",
+    "voice:download": "node --env-file-if-exists=.env dist-worker/agent.js download-files"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "livekit-client": "2.22.3",
+    "livekit-server-sdk": "2.19.1",
+    "openid-client": "6.8.8"
+  },
+  "devDependencies": {
+    "@livekit/agents": "1.9.0",
+    "@types/node": "26.6.2",
+    "typescript": "7.0.2"
+  }
 }

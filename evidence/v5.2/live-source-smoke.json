@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-09-25T00:28:15.318Z",
+  "task": "metro",
+  "syntheticInput": true,
+  "mode": "source-summary",
+  "inventoryVerified": false,
+  "modelCalled": false,
+  "sources": [
+    {
+      "id": "sh-metro",
+      "url": "https://english.shanghai.gov.cn/en-Latest-WhatsNew/20250627/d8f21f2e7d3b45a5b03757e35039b806.html",
+      "liveStatus": "fetched",
+      "checkedAt": "2026-09-25T00:28:13.494Z",
+      "cacheHit": false,
+      "content_sha256": "8153ccaa6c1359b0ea4d16d25f1cda097c4a67b44a15da357b011714cd258a33"
+    }
+  ]
+}

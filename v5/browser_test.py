@@ -1,10 +1,10 @@
 """Real HTTP on CI; --static renders built HTML when local browser navigation is unavailable.
 Speech recognition/synthesis are controlled test doubles in BOTH modes. No real microphone.
 """
-import os, sys, json, time, pathlib, tempfile, subprocess, hashlib, urllib.request, shutil
+import os, sys, json, time, pathlib, tempfile, subprocess, hashlib, urllib.request, shutil, socket
 from playwright.sync_api import sync_playwright, expect
 ROOT=pathlib.Path(__file__).resolve().parents[1]
-OUT=ROOT/'evidence/v5';OUT.mkdir(parents=True,exist_ok=True)
+OUT=ROOT/'evidence/v5.2';OUT.mkdir(parents=True,exist_ok=True)
 static='--static' in sys.argv
 checks=[]
 def check(name,value):
@@ -21,17 +21,20 @@ window.__finish=()=>window.__spoken.at(-1)?.onend?.();
 window.__say=(text,final=true)=>{const r=window.__recognizers.at(-1);const result=Object.assign([{transcript:text}],{isFinal:final});r?.onresult?.({resultIndex:0,results:[result]});};
 """
 server=None;runtime=None
+with socket.socket() as sock:
+    sock.bind(('127.0.0.1',0));port=sock.getsockname()[1]
+base_url=f'http://127.0.0.1:{port}'
 if not static:
     runtime=tempfile.mkdtemp(prefix='vc5-browser-')
     users={}
     for i in range(1,6):
         salt=os.urandom(16).hex()
         users[f'reviewer{i}']={'salt':salt,'hash':hashlib.scrypt(f'test-review-{i}'.encode(),salt=salt.encode(),n=16384,r=8,p=1,dklen=32).hex()}
-    env={**os.environ,'PORT':'8798','ADMIN_PASSWORD':'test-admin','LOCAL_DATA_DIR':runtime,'REVIEWERS_JSON':json.dumps(users)}
+    env={**os.environ,'PORT':str(port),'ADMIN_PASSWORD':'test-admin','LOCAL_DATA_DIR':runtime,'REVIEWERS_JSON':json.dumps(users)}
     server=subprocess.Popen(['node','v5/server.js'],cwd=ROOT,env=env,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
     for _ in range(60):
         try:
-            urllib.request.urlopen('http://127.0.0.1:8798/api/v5/status',timeout=1);break
+            urllib.request.urlopen(base_url+'/api/v5/status',timeout=1);break
         except Exception:time.sleep(.2)
 try:
     with sync_playwright() as p:
@@ -43,9 +46,11 @@ try:
             page.set_content((ROOT/'dist/Visit_China_AI_V5_Demo.html').read_text(),wait_until='domcontentloaded')
         else:
             page.add_init_script(MOCK)
-            page.goto('http://127.0.0.1:8798',wait_until='networkidle')
+            page.goto(base_url,wait_until='networkidle')
             expect(page.locator('#mode')).to_contain_text('本机')
             check('browser connects to real Node backend','本机' in page.locator('#mode').inner_text())
+        check('LiveKit is honestly unavailable without configuration', page.locator('#voice-provider option[value=livekit]').evaluate('(el)=>el.disabled'))
+        check('LiveKit connection code is loaded', page.evaluate("typeof TravelRealtime.Call==='function'"))
         check('call entry visible',page.locator('#start-call').is_visible())
         page.screenshot(path=str(OUT/('static-desktop.png' if static else 'desktop.png')),full_page=True)
         page.locator('#start-call').click();page.locator('#consent-start').click()
@@ -120,7 +125,10 @@ try:
         browser.close()
 finally:
     if server:server.terminate();server.wait(timeout=10)
-    if runtime:shutil.rmtree(runtime,ignore_errors=True)
+    if runtime:
+        resolved=pathlib.Path(runtime).resolve()
+        assert resolved.parent==pathlib.Path(tempfile.gettempdir()).resolve() and resolved.name.startswith('vc5-browser-')
+        shutil.rmtree(resolved,ignore_errors=True)
 report={'passed':len(checks),'checks':checks,'scope':('Built standalone HTML rendered via set_content; no HTTP integration.' if static else 'Real Chromium -> Node HTTP. Five separate authenticated test accounts; NOT five real reviewers.')+' Speech APIs are synthetic test doubles, not microphone or spoken-audio validation. No paid model, booking, or provider inventory calls.'}
 (OUT/('static-browser-report.json' if static else 'browser-report.json')).write_text(json.dumps(report,ensure_ascii=False,indent=2))
 print(json.dumps({'browserChecksPassed':len(checks),'static':static}))

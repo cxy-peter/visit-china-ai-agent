@@ -17,3 +17,10 @@ DCG*
 *.mp3
 *.webm
 .DS_Store
+
+dist-worker/
+*.sqlite
+*.sqlite-*
+*.db
+reviewers.local.json
+.vercel

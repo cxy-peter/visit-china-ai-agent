@@ -1,7 +1,7 @@
 /* Shared deterministic state contract. Models propose facts; they never execute bookings. */
 (function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory();else root.TravelEngine=factory();})(typeof globalThis!=='undefined'?globalThis:this,function(){
 'use strict';
-const VERSION='5.0.0';
+const VERSION='5.2.0';
 const BASE={version:'wf-1',maxSpokenChars:220,questionOrder:['stage','flight','hotel','transfer','interests'],proactiveExtensions:true,promptSuffix:'Ask one useful question at a time. Accept a click as an answer. Never require listening to finish.'};
 const FIELDS={city:80,stage:['planning','arriving','exploring'],flight:['booked','not_booked','skip'],hotel:['booked','not_booked','skip'],transfer:['metro','taxi','driver','skip'],hotelName:120,area:100,interests:240,party:120,airport:12,terminal:8,zone:['public','restricted','baggage'],network:['online','poor','offline'],battery:'number'};
 const TASKS=['flight','hotel','transfer','explore','power','connection','metro','cash','payment','rail','luggage','help'];
