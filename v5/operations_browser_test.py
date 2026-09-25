@@ -1,7 +1,7 @@
 import json,pathlib,os,time,tempfile,subprocess,socket,hashlib,shutil,urllib.request
 from playwright.sync_api import sync_playwright,expect
 BASE=pathlib.Path(__file__).resolve().parents[1]
-OUT=BASE/'evidence/v5.8';OUT.mkdir(parents=True,exist_ok=True)
+OUT=BASE/'evidence/v5.9';OUT.mkdir(parents=True,exist_ok=True)
 accounts={name:'local-test-password' for name in ['admin','reviewer1','reviewer2','reviewer3','reviewer4','reviewer5']}
 users={name:{'role':'admin' if name=='admin' else 'reviewer','salt':'test-salt','hash':hashlib.scrypt(password.encode(),salt=b'test-salt',n=16384,r=8,p=1,dklen=32).hex()} for name,password in accounts.items()}
 with socket.socket() as sock:sock.bind(('127.0.0.1',0));port=sock.getsockname()[1]
@@ -54,20 +54,15 @@ try:
   page.screenshot(path=str(OUT/'V5_7_Operations_Dashboard.png'))
   page.locator('[data-ops-tab="sources"]').click();check('source refresh and proposals accessible',page.locator('#ops-refresh-sources').is_enabled())
   page.locator('[data-ops-tab="reviews"]').click();expect(page.locator('#ops-content')).to_contain_text('五个不同审核账号')
-  page.locator('[data-ops-tab="evaluation"]').click();page.locator('#ops-run-eval').click();expect(page.locator('#ops-content')).to_contain_text('10 / 10',timeout=30000)
+  page.locator('[data-ops-tab="evaluation"]').click();page.locator('#ops-run-eval').click();expect(page.locator('#ops-content')).to_contain_text('1226 / 1226',timeout=30000)
   check('simulated scenario evaluation persisted',page.locator('#ops-content').inner_text().find('上海到杭州的高铁')>=0)
   if URL.startswith('http://127.'):
    page.locator('[data-ops-tab="sources"]').click();page.locator('#ops-source-add').click()
    fields={'title':'QA 测试资料','url':'https://english.shanghai.gov.cn/test-review-fixture','publisher':'QA fixture','city':'Shanghai','topics':'testreview','summaryZh':'仅用于本机审核测试。','summary':'Local review fixture only.'}
    for key,value in fields.items():page.locator('#ops-source-form [name='+key+']').fill(value)
-   page.locator('#ops-source-form button').click();expect(page.locator('#ops-source-note')).to_contain_text('已进入审核队列');page.locator('#ops-source-close').click();page.locator('[data-ops-tab="reviews"]').click();expect(page.locator('#ops-content')).to_contain_text('QA 测试资料');check('admin cannot self-approve source in UI',page.locator('[data-vote]').count()==0)
-   saved=page.request.get(URL+'/api/ops').json();proposal=saved['proposals'][-1]
-   for name in ['reviewer1','reviewer2','reviewer3','reviewer4','reviewer5']:
-    reviewer=browser.new_context();res=reviewer.request.post(URL+'/api/ops',data={'action':'login','username':name,'password':accounts[name]});assert res.ok
-    res=reviewer.request.post(URL+'/api/ops',data={'action':'source-vote','id':proposal['id'],'hash':proposal['hash'],'decision':'approve'});assert res.ok
-    if name!='reviewer5':check(name+' alone cannot publish',res.json()['result']['status']=='review')
-    reviewer.close()
-   page.locator('#ops-reload').click();expect(page.locator('#ops-content')).to_contain_text('5 / 5');check('five separate signed accounts publish exact source revision',page.request.get(URL+'/api/ops?view=library').json()['records'][-1]['id']==proposal['sourceId'])
+   page.locator('#ops-source-form button').click();expect(page.locator('#ops-source-note')).to_contain_text('已发布');page.locator('#ops-source-close').click();page.locator('[data-ops-tab="reviews"]').click();expect(page.locator('#ops-content')).to_contain_text('QA 测试资料');check('admin source submission publishes without reviewer votes',page.locator('[data-vote]').count()==0)
+   saved=page.request.get(URL+'/api/ops').json();proposal=saved['proposals'][-1];check('direct publication keeps audit and rollback',proposal['status']=='published' and proposal['verification']['mode']=='admin-direct')
+   check('published source is in shared library',any(r['id']==proposal['sourceId'] for r in page.request.get(URL+'/api/ops?view=library').json()['records']))
    response=page.request.post(URL+'/api/ops',data={'action':'source-rollback','id':proposal['id']});check('admin rollback succeeds',response.ok)
   page.locator('[data-ops-tab="overview"]').click();page.locator('#ops-dataset').select_option('live');expect(page.locator('.ops-dataset-label')).to_contain_text('真实访问')
   page.locator('#ops-signout').click();expect(page.locator('#ops-cloud-login')).to_be_visible();page.locator('#ops-close').click()

@@ -59,7 +59,7 @@ try:
                 page.evaluate('__playFixture()')
                 page.wait_for_function('(n)=>TravelApp.getState().history.length>n',arg=previous,timeout=45000)
                 check('second actual audio turn submits without Send or restarting call',True)
-            check(language+' first request remains visible',bool(page.locator('#initial-request').inner_text()))
+            check(language+' first request remains visible',bool(page.locator('#initial-request').text_content()))
             page.locator('#hangup').click()
             check(language+' microphone track stopped',page.evaluate('__fixtureTracks.every(t=>t.readyState==="ended")'))
             page.evaluate('__fixtureAudio.close()')

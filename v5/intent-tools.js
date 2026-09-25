@@ -1,8 +1,12 @@
 /* Read-only tools shared by the browser, cloud assistant and scenario evaluator. */
-(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('./travel-tools'),require('./metro'));else root.TravelIntent=factory(root.TravelTools,root.TravelMetro);})(globalThis,function(T,M){
+(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('./travel-tools'),require('./metro'),require('./discovery'));else root.TravelIntent=factory(root.TravelTools,root.TravelMetro,root.TravelDiscovery);})(globalThis,function(T,M,D){
 'use strict';
 function analyze(text,city,language='zh',history=[]){
  const zh=language==='zh',tr=(a,b)=>zh?a:b;let t=String(text||'');
+ const explicitMetro=M.intent(t,city,history),routeAsked=/地铁|subway|metro|终点|目的地|途经|换乘|改到/i.test(t)&&!/附近|周边|nearby|near |around/i.test(t);
+ if(routeAsked&&explicitMetro)return{kind:'metro',sourceIds:['sh-metro-map'],metro:explicitMetro,text:M.answer(explicitMetro,language)};
+ const discovery=D.reply(t,{language,history:[...history,{text:t,context:{city}}]});if(discovery)return discovery;
+ if(explicitMetro)return{kind:'metro',sourceIds:['sh-metro-map'],metro:explicitMetro,text:M.answer(explicitMetro,language)};
  // Short answers can finish an existing taxi question without inventing a route distance.
  if(/^(?:是|大概|大约|约|距离|路程|it's|about|around|distance)?\s*(?:T\s*[12]|[12]号航站楼|\d+(?:\.\d+)?\s*(?:公里|千米|km|kilomet(?:er|re)s?))[。.!?\s]*$/i.test(t)){
   const prior=history.slice(-3),i=prior.findLastIndex(h=>/出租车|打车|taxi|cab\b|车费/i.test(h.text||''));

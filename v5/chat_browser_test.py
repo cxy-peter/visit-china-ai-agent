@@ -2,7 +2,7 @@
 import json, os, pathlib, shutil, socket, subprocess, tempfile, time, urllib.request
 from playwright.sync_api import sync_playwright, expect
 ROOT=pathlib.Path(__file__).resolve().parents[1]
-OUT=ROOT/('evidence/v5.8/hosted' if os.environ.get('CHAT_TEST_URL') else 'evidence/v5.8');OUT.mkdir(parents=True,exist_ok=True)
+OUT=ROOT/('evidence/v5.9/hosted' if os.environ.get('CHAT_TEST_URL') else 'evidence/v5.9');OUT.mkdir(parents=True,exist_ok=True)
 with socket.socket() as s:s.bind(('127.0.0.1',0));port=s.getsockname()[1]
 runtime=tempfile.mkdtemp(prefix='vc54-chat-');server=None;checks=[]
 def check(name,result):
@@ -28,13 +28,13 @@ try:
         expect(page.locator('.offer-group')).to_have_count(4)
         check('four offer types follow the relevant assistant bubble',page.locator('#transcript .companion .offer-group').count()==4)
         check('each offer group is explicitly simulated',page.locator('.offer-warning').count()==4 and '非实时' in page.locator('.offer-warning').first.inner_text())
-        check('current needs and opening request are visible','上海' in page.locator('#initial-request').inner_text() and page.locator('.need-badge').count()>=4)
+        check('current needs and opening request are visible','上海' in page.locator('#initial-request').text_content() and page.locator('.need-badge').count()>=4)
         check('preference changes sample hotel budget','320' in page.locator('.offer-group').filter(has_text='住宿待安排').inner_text())
         page.screenshot(path=str(OUT/'chat-cards-desktop.png'),full_page=True)
-        opening=page.locator('#initial-request').inner_text()
+        opening=page.locator('#initial-request').text_content()
         page.locator('#output-language').select_option('en');send('我还想去博物馆。')
         check('Chinese input can produce English replies',page.evaluate('TravelApp.getState().language')=='en' and not any('\u4e00'<=c<='\u9fff' for c in page.locator('#transcript .companion').last.locator('p').first.inner_text()))
-        check('first large need remains after later requests',page.locator('#initial-request').inner_text()==opening)
+        check('first large need remains after later requests',page.locator('#initial-request').text_content()==opening)
         page.locator('#output-language').select_option('zh');send('在上海打车20公里大概多少钱？')
         page.locator('[data-taxi-km="20"]').click();expect(page.locator('#taxi-result')).to_contain_text('66.65')
         check('spoken-distance pattern pre-fills fare form',page.locator('#taxi-km').input_value()=='20' and page.locator('#taxi-city').input_value()=='Shanghai')

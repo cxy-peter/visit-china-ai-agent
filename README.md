@@ -102,3 +102,10 @@ Vercel构建配置提供静态前端；完整模型/审核后端当前运行于�
 `v5/` 为普通源码；`prompts/` 为从运行代码导出的提示词；`evidence/v5/` 存放实际开发测试。回归测试和浏览器中的模型/语音均用测试替身；真人效果独立验证。旧 `.bootstrap` 是历史失败传输，不是当前运行依赖。
 
 不包含Key、DCG、内部公司材料、真实旅客对话、录音、证件、reviewer注册表或字体文件。
+
+
+## V5.9: real places and source operations
+
+Shanghai station records and 19 sourced places share the library with the assistant. The sidebar follows the current destination, offers grounded nearby places and adds via stations. DeepSeek intent self-ratings and evidence scores are separate, with low-confidence review material in Operations. Admin source submissions publish directly with audit/rollback; government excerpts require fetched exact-text verification for automatic confirmation.
+
+The downloadable corpus contains 1,216 synthetic/source-adapted cases (184 source-adapted, 1,032 authored), plus 10 historical scenarios. These are local regressions, not 1,216 paid model calls or a measured model accuracy claim. See [V5.9 design and validation](docs/V5_9_DISCOVERY_AND_OPERATIONS.md).

@@ -3,7 +3,7 @@ import json,os,pathlib,shutil,socket,subprocess,tempfile,time,urllib.request
 from playwright.sync_api import sync_playwright,expect
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 HOSTED=os.environ.get('LIBRARY_TEST_URL')
-OUT=ROOT/('evidence/v5.8/hosted-library' if HOSTED else 'evidence/v5.8');OUT.mkdir(parents=True,exist_ok=True)
+OUT=ROOT/('evidence/v5.9/hosted-library' if HOSTED else 'evidence/v5.9');OUT.mkdir(parents=True,exist_ok=True)
 checks=[]
 def check(name,value):
     assert value,name
@@ -39,7 +39,7 @@ try:
         check('browsing and attaching a source does not mutate traveler facts',page.evaluate('TravelApp.getState().facts')==before['facts'])
         page.locator('#send').click();expect(page.locator('#transcript .user')).to_have_count(2)
         check('source references belong to each turn',page.evaluate("TravelApp.getState().history.at(-1).sourceIds[0]==='sh-metro'") and page.locator('.turn-sources').last.is_visible())
-        check('opening request is preserved after source question','父母' in page.locator('#initial-request').inner_text())
+        check('opening request is preserved after source question','父母' in page.locator('#initial-request').text_content())
         page.locator('#shared-model-open').click();expect(page.locator('#shared-model-dialog')).to_be_visible()
         if HOSTED:
             check('hosted model status identifies deployed cloud backend','云端接口' in page.locator('#shared-model-detail').inner_text());page.locator('#shared-model-close').click()
