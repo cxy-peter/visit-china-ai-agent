@@ -16,3 +16,19 @@ test('city and review-days changes invalidate source fingerprint',()=>{const s=O
 async function serve(t,handler){const srv=http.createServer(handler);await new Promise(resolve=>srv.listen(0,'127.0.0.1',resolve));t.after(()=>{srv.closeAllConnections();srv.close();});return 'http://127.0.0.1:'+srv.address().port;}
 test('actual mock product HTTP: method, origin, JSON, malformed inputs and no external calls',async t=>{const url=await serve(t,require('./product-api').createProducts());const send=(body,headers={})=>fetch(url,{method:'POST',headers:{'content-type':'application/json',...headers},body:JSON.stringify(body)});assert.equal((await fetch(url)).status,405);assert.equal((await send({product:'rail'},{origin:'https://evil.example'})).status,403);assert.equal((await send({product:'rail',url:'https://evil.example'})).status,400);const result=await send({product:'rail',city:'上海',after:'06:00',before:'12:00'});assert.equal(result.status,200);const b=await result.json();assert.equal(b.providerRequestSent,false);assert.equal(b.request.city,'Shanghai');assert.equal((await send({product:'rail',city:'x'.repeat(13000)})).status,413);});
 test('Operations preset/revalidate require admin, preserve state until manual publication',async t=>{const env={OPS_SESSION_SECRET:'fixture-secret'.repeat(3),OPS_USERS_JSON:JSON.stringify({admin:{role:'admin'},reviewer:{role:'reviewer'}})};let saved=O.initial();const store={kind:'test',read:async()=>structuredClone(saved),mutate:async f=>{const next=structuredClone(saved),out=f(next);saved=next;return out;}};const url=await serve(t,createOps({env,store}));async function post(body,actor){return fetch(url,{method:'POST',headers:{'content-type':'application/json',cookie:actor?'vc_ops='+auth(env).issue({actor}):''},body:JSON.stringify(body)});}assert.equal((await post({action:'skill-preset',preset:'coverage'})).status,403);assert.equal((await post({action:'skill-preset',preset:'coverage'},'reviewer')).status,403);const response=await post({action:'skill-preset',preset:'coverage'},'admin');assert.equal(response.status,200);const row=(await response.json()).result;assert.equal(row.origin,'operator-preset:coverage');assert.equal(saved.harness.active.topK,8);const checked=await post({action:'skill-revalidate',id:row.id,hash:row.hash},'admin');assert.equal(checked.status,200);assert.equal(saved.harness.active.topK,8);assert.ok(saved.audit.some(x=>x.type==='skill-revalidate'));});
+
+test('departure periods and explicit time windows have the same intersection used by the table',()=>{
+ assert.deepEqual(P.departureWindow({period:'morning'}),{after:'00:00',before:'11:59'});
+ assert.deepEqual(P.departureWindow({period:'afternoon',after:'13:30',before:'21:00'}),{after:'13:30',before:'17:59'});
+ assert.deepEqual(P.departureWindow({period:'all',after:'06:00',before:'12:00'}),{after:'06:00',before:'12:00'});
+ assert.throws(()=>P.departureWindow({period:'morning',after:'18:00'}),/DEPARTURE_WINDOW/);
+ assert.throws(()=>P.departureWindow({period:'midnight'}),/DEPARTURE_PERIOD/);
+});
+test('provider source changes invalidate the candidate corpus',()=>{const s=O.initial(),r=catalog(s);assert.notEqual(H.corpusHash(r),H.corpusHash(r.map((x,i)=>i?x:{...x,url:'https://different.example/'})));});
+test('controlled skill publication changes the next retrieval config, then rollback restores it',()=>{
+ const s=O.initial(),r=catalog(s),row=H.propose(s,Presets.apply('coverage',H.DEFAULT),'admin',r,'operator-preset:coverage');
+ assert.equal(H.state(s).active.topK,8);H.publish(s,row.id,row.hash,'admin',r);assert.equal(H.state(s).active.topK,10);
+ const retrieval=require('./rag').retrieve('上海地铁怎么买票',r,{...H.state(s).active,city:'Shanghai'});
+ assert.ok(retrieval.hits.length>0&&retrieval.hits.length<=10);assert.equal(H.state(s).active.version,'skill-'+row.id);
+ H.rollback(s,row.id,'admin');assert.equal(H.state(s).active.topK,8);
+});

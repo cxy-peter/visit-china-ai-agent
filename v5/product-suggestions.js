@@ -30,6 +30,13 @@ function forIntent(intent={},text='',context={}){
  return keys.filter(k=>!declined(k,negative)&&!dismissed.includes(k)&&!(k==='hotel'&&(f.hotelBooked===true||f.hotel==='booked'))&&!(k==='flight'&&(f.flightBooked===true||f.flight==='booked'))).slice(0,3).map(k=>({id:k,...items[k],city,sample:true,liveInventory:false,mode:'provider-discovery',url:k==='rail'&&city==='Hong Kong'?'https://www.mtr.com.hk/en/customer/main/index.html':items[k].url,reason:intent.responseMode==='guide'?'arrival-continuation':intent.kind+'-extension'}));
 }
 function time(value){if(value==null||value==='')return '';if(typeof value!=='string'||!/^([01]\d|2[0-3]):[0-5]\d$/.test(value))throw Error('DEPARTURE_TIME');return value;}
+function departureWindow(options={}){
+ const period=options.period||'all',ranges={all:['',''],morning:['00:00','11:59'],afternoon:['12:00','17:59'],evening:['18:00','23:59']};
+ if(!Object.hasOwn(ranges,period))throw Error('DEPARTURE_PERIOD');
+ const after=time(options.after),before=time(options.before),[low,high]=ranges[period];
+ const start=[after,low].filter(Boolean).sort().at(-1)||'',end=[before,high].filter(Boolean).sort()[0]||'';
+ if(start&&end&&start>end)throw Error('DEPARTURE_WINDOW');return{after:start,before:end};
+}
 function safePlace(v){if(v==null||v==='')return null;if(typeof v!=='string'||v.length>100||/[<>@]|https?:|\d{7,}/i.test(v))throw Error('PLACE_FIELD');return v.trim()||null;}
 function prepare(input){
  if(!input||typeof input!=='object'||Array.isArray(input)||!Object.hasOwn(items,input.product))throw Error('PRODUCT_REQUIRED');
@@ -44,5 +51,5 @@ function prepare(input){
  if(city&&!['Shanghai','Beijing','Guangzhou','Shenzhen','China'].includes(city))rows=rows.filter(r=>!/^meituan-|dianping-|rail-official/.test(r[0]));
  return{schema:'related-services/1',mode:'mock-adapter',request,missingFields:missing,offers:rows.map(([id,provider,url])=>({id,provider,url,product:input.product,inventory:null,price:null,currency:null,availability:'not-connected',prefilled:false,bookable:false})),bookingCreated:false,providerRequestSent:false,notice:zh?'已整理查询条件，尚未发送给服务商。下面是公开平台入口，不是报价、库存或预订确认；请在平台重新核对条件。':'Search details are prepared but have not been sent to a provider. These are public entry points, not quotes, inventory or booking confirmations; recheck the details on the provider site.',qualification:input.product==='car'?(zh?'这是自驾租车，需由服务商核验驾驶资格、年龄及押金等条件；不等于带司机接送。':'Self-drive rental requires provider checks of driving eligibility, age and deposits. It is not a transfer with a driver.'):null};
 }
-return{items,providers,forIntent,declined,prepare,time};
+return{items,providers,forIntent,declined,prepare,time,departureWindow};
 });
