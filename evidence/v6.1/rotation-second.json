@@ -1,0 +1,2623 @@
+{
+  "version": "travel-regression-6.1-20000",
+  "total": 120,
+  "sha256": "7420b4759b4d8fb11e5d4db78a9e9d64cf90f6945c147b4e5d887206d6b9a461",
+  "scope": "20000条去重组合合成用例：本地意图/工具/上下文、固定资料RAG召回、反馈建议分类。不是20000次真实DeepSeek调用，不是真实用户日志，不代表生产准确率；同一家族存在相关性。固定holdout按语义组哈希划分。",
+  "types": {
+    "metro": 11877,
+    "rail-scope": 12,
+    "place": 152,
+    "taxi": 1960,
+    "rail": 648,
+    "followup": 1950,
+    "via": 1000,
+    "noise": 20,
+    "incomplete": 7,
+    "nearby": 16,
+    "rag": 1478,
+    "rag-boundary": 160,
+    "feedback": 720
+  },
+  "provenance": {
+    "authored": 18338,
+    "public-source-adapted": 1662
+  },
+  "download": "/evaluation-cases.json",
+  "stats": {
+    "total": 20000,
+    "legacyCount": 1221,
+    "uniqueNormalizedInputs": 20000,
+    "uniqueRate": 1,
+    "semanticGroups": 12671,
+    "templateFamilies": {
+      "legacy.metro": 856,
+      "legacy.rail-scope": 12,
+      "legacy.place": 152,
+      "legacy.taxi": 40,
+      "legacy.rail": 48,
+      "legacy.followup": 30,
+      "legacy.via": 40,
+      "legacy.noise": 20,
+      "legacy.incomplete": 7,
+      "legacy.nearby": 16,
+      "rag.charging.zh.0": 35,
+      "rag.charging.en.0": 35,
+      "rag.charging.zh.1": 35,
+      "rag.charging.en.1": 35,
+      "rag.charging.zh.2": 35,
+      "rag.charging.en.2": 35,
+      "rag.charging.zh.3": 35,
+      "rag.charging.en.3": 35,
+      "rag.charging.zh.4": 35,
+      "rag.charging.en.4": 35,
+      "rag.charging.zh.5": 35,
+      "rag.charging.en.5": 35,
+      "rag.luggage.zh.0": 35,
+      "rag.luggage.en.0": 35,
+      "rag.luggage.zh.1": 35,
+      "rag.luggage.en.1": 35,
+      "rag.luggage.zh.2": 35,
+      "rag.luggage.en.2": 35,
+      "rag.luggage.zh.3": 35,
+      "rag.luggage.en.3": 35,
+      "rag.luggage.zh.4": 35,
+      "rag.luggage.en.4": 35,
+      "rag.luggage.zh.5": 35,
+      "rag.luggage.en.5": 35,
+      "rag.metro_ticket.zh.0": 35,
+      "rag.metro_ticket.en.0": 35,
+      "rag.metro_ticket.zh.1": 35,
+      "rag.metro_ticket.en.1": 35,
+      "rag.metro_ticket.zh.2": 35,
+      "rag.metro_ticket.en.2": 35,
+      "rag.metro_ticket.zh.3": 35,
+      "rag.metro_ticket.en.3": 35,
+      "rag.metro_ticket.zh.4": 35,
+      "rag.metro_ticket.en.4": 35,
+      "rag.metro_ticket.zh.5": 35,
+      "rag.metro_ticket.en.5": 35,
+      "rag.place.0": 19,
+      "rag.place.1": 19,
+      "rag.place.2": 19,
+      "rag.place.3": 19,
+      "rag.place.4": 19,
+      "rag.place.5": 19,
+      "rag.place.6": 19,
+      "rag.place.7": 19,
+      "rag.hotel.zh.0": 3,
+      "rag.hotel.zh.1": 3,
+      "rag.hotel.zh.2": 3,
+      "rag.hotel.zh.3": 3,
+      "rag.hotel.zh.4": 3,
+      "rag.hotel.zh.5": 3,
+      "rag.boundary.held": 40,
+      "rag.boundary.expired": 40,
+      "rag.boundary.wrong-city": 40,
+      "rag.boundary.index-only": 40,
+      "rag.tenpaygo.0.zh": 4,
+      "rag.tenpaygo.0.en": 4,
+      "rag.tenpaygo.1.zh": 4,
+      "rag.tenpaygo.1.en": 4,
+      "rag.tenpaygo.2.zh": 4,
+      "rag.tenpaygo.2.en": 4,
+      "rag.tenpaygo.3.zh": 4,
+      "rag.tenpaygo.3.en": 4,
+      "rag.tenpaygo.4.zh": 4,
+      "rag.tenpaygo.4.en": 4,
+      "rag.tenpaygo.5.zh": 4,
+      "rag.tenpaygo.5.en": 4,
+      "taxi.distance.0": 240,
+      "taxi.distance.1": 240,
+      "taxi.distance.2": 240,
+      "taxi.distance.3": 240,
+      "taxi.distance.4": 240,
+      "taxi.distance.5": 240,
+      "taxi.distance.6": 240,
+      "taxi.distance.7": 240,
+      "rail.intercity.0": 100,
+      "rail.intercity.1": 100,
+      "rail.intercity.2": 100,
+      "rail.intercity.3": 100,
+      "rail.intercity.4": 100,
+      "rail.intercity.5": 100,
+      "metro.correction.0": 240,
+      "metro.correction.1": 240,
+      "metro.correction.2": 240,
+      "metro.correction.3": 240,
+      "metro.correction.4": 240,
+      "metro.correction.5": 240,
+      "metro.correction.6": 240,
+      "metro.correction.7": 240,
+      "metro.via.0": 240,
+      "metro.via.1": 240,
+      "metro.via.2": 240,
+      "metro.via.3": 240,
+      "feedback.intent_error.zh": 40,
+      "feedback.intent_error.en": 40,
+      "feedback.fact_error.zh": 40,
+      "feedback.fact_error.en": 40,
+      "feedback.stale_info.zh": 40,
+      "feedback.stale_info.en": 40,
+      "feedback.wrong_route.zh": 40,
+      "feedback.wrong_route.en": 40,
+      "feedback.missing_detail.zh": 40,
+      "feedback.missing_detail.en": 40,
+      "feedback.process_issue.zh": 40,
+      "feedback.process_issue.en": 40,
+      "feedback.language_issue.zh": 40,
+      "feedback.language_issue.en": 40,
+      "feedback.connection_issue.zh": 40,
+      "feedback.connection_issue.en": 40,
+      "feedback.other.zh": 40,
+      "feedback.other.en": 40,
+      "metro.route.zh.1": 459,
+      "metro.route.zh.2": 460,
+      "metro.route.zh.3": 461,
+      "metro.route.zh.4": 461,
+      "metro.route.zh.5": 461,
+      "metro.route.zh.6": 461,
+      "metro.route.zh.7": 461,
+      "metro.route.zh.8": 460,
+      "metro.route.zh.9": 459,
+      "metro.route.zh.10": 459,
+      "metro.route.zh.11": 459,
+      "metro.route.en.0": 459,
+      "metro.route.en.1": 459,
+      "metro.route.en.2": 459,
+      "metro.route.en.3": 459,
+      "metro.route.en.4": 459,
+      "metro.route.en.5": 459,
+      "metro.route.en.6": 458,
+      "metro.route.en.7": 458,
+      "metro.route.en.8": 458,
+      "metro.route.en.9": 458,
+      "metro.route.en.10": 458,
+      "metro.route.en.11": 458,
+      "metro.route.zh.0": 458
+    },
+    "types": {
+      "metro": 11877,
+      "rail-scope": 12,
+      "place": 152,
+      "taxi": 1960,
+      "rail": 648,
+      "followup": 1950,
+      "via": 1000,
+      "noise": 20,
+      "incomplete": 7,
+      "nearby": 16,
+      "rag": 1478,
+      "rag-boundary": 160,
+      "feedback": 720
+    },
+    "languages": {
+      "zh": 10181,
+      "en": 9819
+    },
+    "splits": {
+      "development": 15999,
+      "holdout": 4001
+    },
+    "provenance": {
+      "authored": 18338,
+      "public-source-adapted": 1662
+    }
+  },
+  "paidModelCalls": 0,
+  "passed": 120,
+  "elapsedMs": 144,
+  "byType": {
+    "metro": {
+      "total": 23,
+      "passed": 23
+    },
+    "feedback": {
+      "total": 17,
+      "passed": 17
+    },
+    "taxi": {
+      "total": 6,
+      "passed": 6
+    },
+    "via": {
+      "total": 4,
+      "passed": 4
+    },
+    "rag": {
+      "total": 53,
+      "passed": 53
+    },
+    "rail": {
+      "total": 4,
+      "passed": 4
+    },
+    "incomplete": {
+      "total": 1,
+      "passed": 1
+    },
+    "noise": {
+      "total": 1,
+      "passed": 1
+    },
+    "followup": {
+      "total": 7,
+      "passed": 7
+    },
+    "place": {
+      "total": 1,
+      "passed": 1
+    },
+    "rail-scope": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag-boundary": {
+      "total": 2,
+      "passed": 2
+    }
+  },
+  "byFamily": {
+    "metro.route.en.0": {
+      "total": 1,
+      "passed": 1
+    },
+    "feedback.language_issue.en": {
+      "total": 1,
+      "passed": 1
+    },
+    "taxi.distance.5": {
+      "total": 1,
+      "passed": 1
+    },
+    "taxi.distance.7": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.via.1": {
+      "total": 1,
+      "passed": 1
+    },
+    "feedback.intent_error.en": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.charging.zh.0": {
+      "total": 1,
+      "passed": 1
+    },
+    "feedback.other.en": {
+      "total": 1,
+      "passed": 1
+    },
+    "feedback.process_issue.en": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.route.zh.0": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.tenpaygo.5.en": {
+      "total": 1,
+      "passed": 1
+    },
+    "taxi.distance.2": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.tenpaygo.4.en": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.route.zh.6": {
+      "total": 1,
+      "passed": 1
+    },
+    "feedback.intent_error.zh": {
+      "total": 1,
+      "passed": 1
+    },
+    "rail.intercity.0": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.tenpaygo.3.en": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.hotel.zh.2": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.hotel.zh.0": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.charging.en.0": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.metro_ticket.en.5": {
+      "total": 1,
+      "passed": 1
+    },
+    "feedback.connection_issue.en": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.luggage.en.3": {
+      "total": 1,
+      "passed": 1
+    },
+    "legacy.incomplete": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.luggage.en.4": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.route.en.1": {
+      "total": 1,
+      "passed": 1
+    },
+    "taxi.distance.4": {
+      "total": 1,
+      "passed": 1
+    },
+    "feedback.missing_detail.en": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.route.en.9": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.charging.zh.5": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.route.en.6": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.route.en.10": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.metro_ticket.zh.2": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.metro_ticket.zh.1": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.route.zh.4": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.luggage.en.1": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.charging.zh.3": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.route.en.5": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.place.6": {
+      "total": 1,
+      "passed": 1
+    },
+    "legacy.noise": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.hotel.zh.3": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.correction.5": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.hotel.zh.5": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.route.en.3": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.hotel.zh.4": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.place.7": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.place.0": {
+      "total": 1,
+      "passed": 1
+    },
+    "legacy.place": {
+      "total": 1,
+      "passed": 1
+    },
+    "taxi.distance.0": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.route.zh.2": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.correction.4": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.place.2": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.metro_ticket.en.3": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.charging.en.1": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.tenpaygo.2.zh": {
+      "total": 1,
+      "passed": 1
+    },
+    "feedback.fact_error.en": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.tenpaygo.5.zh": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.charging.en.3": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.correction.2": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.route.en.4": {
+      "total": 1,
+      "passed": 1
+    },
+    "feedback.wrong_route.zh": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.luggage.en.2": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.correction.0": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.metro_ticket.zh.3": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.route.en.7": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.charging.en.2": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.metro_ticket.en.2": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.charging.en.4": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.route.zh.10": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.via.3": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.luggage.zh.2": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.route.zh.9": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.route.zh.8": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.via.2": {
+      "total": 1,
+      "passed": 1
+    },
+    "feedback.connection_issue.zh": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.hotel.zh.1": {
+      "total": 1,
+      "passed": 1
+    },
+    "legacy.rail-scope": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.metro_ticket.en.1": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.boundary.expired": {
+      "total": 1,
+      "passed": 1
+    },
+    "rail.intercity.2": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.tenpaygo.1.en": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.luggage.zh.4": {
+      "total": 1,
+      "passed": 1
+    },
+    "feedback.other.zh": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.place.4": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.tenpaygo.0.zh": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.correction.1": {
+      "total": 1,
+      "passed": 1
+    },
+    "feedback.language_issue.zh": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.luggage.zh.0": {
+      "total": 1,
+      "passed": 1
+    },
+    "feedback.stale_info.zh": {
+      "total": 1,
+      "passed": 1
+    },
+    "rail.intercity.5": {
+      "total": 1,
+      "passed": 1
+    },
+    "feedback.missing_detail.zh": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.charging.zh.2": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.charging.zh.4": {
+      "total": 1,
+      "passed": 1
+    },
+    "legacy.via": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.tenpaygo.4.zh": {
+      "total": 1,
+      "passed": 1
+    },
+    "feedback.wrong_route.en": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.tenpaygo.0.en": {
+      "total": 1,
+      "passed": 1
+    },
+    "feedback.stale_info.en": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.luggage.zh.3": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.correction.3": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.tenpaygo.3.zh": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.route.zh.3": {
+      "total": 1,
+      "passed": 1
+    },
+    "rail.intercity.3": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.route.zh.11": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.route.zh.7": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.luggage.zh.1": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.route.zh.1": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.correction.6": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.route.zh.5": {
+      "total": 1,
+      "passed": 1
+    },
+    "legacy.taxi": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.metro_ticket.en.4": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.boundary.index-only": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.metro_ticket.en.0": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.route.en.2": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.luggage.en.0": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.charging.zh.1": {
+      "total": 1,
+      "passed": 1
+    },
+    "metro.route.en.11": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.place.3": {
+      "total": 1,
+      "passed": 1
+    },
+    "rag.luggage.en.5": {
+      "total": 1,
+      "passed": 1
+    },
+    "feedback.process_issue.zh": {
+      "total": 1,
+      "passed": 1
+    }
+  },
+  "bySplit": {
+    "development": {
+      "total": 120,
+      "passed": 120
+    }
+  },
+  "snapshot": {
+    "fingerprint": "82f8d25e008caa5f",
+    "compiledAt": "2026-09-25T05:46:17.934Z",
+    "chunks": 490
+  },
+  "checks": [
+    {
+      "id": "vc61-09f1165f88f72263",
+      "input": "How do I take the metro from Liuhang to Jinyun Road?",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "metro",
+      "family": "metro.route.en.0",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-3dc31f4dc781c550",
+      "input": "About my journey from Gongkang Road to Zhuanqiao: I requested English but you replied in Chinese; the response language is wrong.",
+      "passed": true,
+      "actual": "language_issue",
+      "failures": [],
+      "type": "feedback",
+      "family": "feedback.language_issue.en",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-d205c23b139bcf0c",
+      "input": "The map shows 7.25 kilometres in Shanghai; what is the basic taxi estimate?",
+      "passed": true,
+      "actual": "taxi",
+      "failures": [],
+      "type": "taxi",
+      "family": "taxi.distance.5",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-68a8e1f2d99eaaad",
+      "input": "I need a daytime Shanghai taxi calculation using a distance of 5.5 kilometres.",
+      "passed": true,
+      "actual": "taxi",
+      "failures": [],
+      "type": "taxi",
+      "family": "taxi.distance.7",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-f3401aebcd0e1a7b",
+      "input": "地铁行程是远东大道去上海体育场，经过铁力路。",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "via",
+      "family": "metro.via.1",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-b3e2832d142653dc",
+      "input": "About my journey from Site of the First CPC National Congress · Huangpi Rd.(S) to Lancun Road: I asked for a metro route, not intercity train tickets. You misunderstood my intent.",
+      "passed": true,
+      "actual": "intent_error",
+      "failures": [],
+      "type": "feedback",
+      "family": "feedback.intent_error.en",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-968dc2317fb1368b",
+      "input": "在上海彭浦新村，充电宝怎么租借？",
+      "passed": true,
+      "actual": "station-20,sh-power-bank,verified-hongqiao-p10-charging,verified-pvg-rest-charging,news-nihao-china-shanghai-20260817,station-259",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.charging.zh.0",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-MobileAndInternet/20260727/56b62a3a9d2f4ddaa8d77367c206b2ae.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-d993dd9f86f6d55c",
+      "input": "About my journey from Wenshui Road to Chunshen Road: I have a suggestion about this answer and would like someone to review it.",
+      "passed": true,
+      "actual": "other",
+      "failures": [],
+      "type": "feedback",
+      "family": "feedback.other.en",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-e7d753b3b94f8d8c",
+      "input": "About my journey from Panxiang Road·Shanghai National Accounting Institute to Wuzhou Avenue: I already gave the departure station but you keep asking again; the process is stuck.",
+      "passed": true,
+      "actual": "process_issue",
+      "failures": [],
+      "type": "feedback",
+      "family": "feedback.process_issue.en",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-b4da3aa54cd900ce",
+      "input": "从北新泾到国家会展中心(17号线)的地铁怎么走？",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "metro",
+      "family": "metro.route.zh.0",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-9507c6a7ace0f8d8",
+      "input": "When preparing to pay in Shanghai, Who publishes TenPayGo and where can I verify its official information?",
+      "passed": true,
+      "actual": "news-tenpaygo-20260924,verified-shanghai-rail-station,news-nihao-china-shanghai-20260817,news-nihao-china-shanghai-20260817,verified-hongqiao-indoor-navigation,news-tenpaygo-20260924,pvg-arrival,verified-pvg-rest-charging",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.tenpaygo.5.en",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://apps.apple.com/us/app/tenpaygo/id6778755338",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-7aa3808682baced8",
+      "input": "只想估算上海7.75公里的打车费用。",
+      "passed": true,
+      "actual": "taxi",
+      "failures": [],
+      "type": "taxi",
+      "family": "taxi.distance.2",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-6e3e129c942454df",
+      "input": "When preparing to pay in Shanghai, Can you guarantee TenPayGo can directly pass Shanghai metro gates?",
+      "passed": true,
+      "actual": "news-tenpaygo-20260924,news-tenpaygo-20260924,sh-metro,news-nihao-china-shanghai-20260817,verified-pvg-rest-charging,verified-shanghai-rail-station,verified-metro-lockers,news-nihao-china-shanghai-20260817",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.tenpaygo.4.en",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://apps.apple.com/us/app/tenpaygo/id6778755338",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-b45f480659106a82",
+      "input": "第一次到上海，东方绿舟乘地铁去华宁路应该怎么换？",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "metro",
+      "family": "metro.route.zh.6",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-9d610f1c6399abe1",
+      "input": "关于我从友谊路去航津路的这轮对话：我问的是地铁，不是火车票，你理解错了。",
+      "passed": true,
+      "actual": "intent_error",
+      "failures": [],
+      "type": "feedback",
+      "family": "feedback.intent_error.zh",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-d877e36780226a0f",
+      "input": "请查从福州到苏州的高铁票，不是市内地铁。",
+      "passed": true,
+      "actual": "rail",
+      "failures": [],
+      "type": "rail",
+      "family": "rail.intercity.0",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-54877ed1a0be064a",
+      "input": "As a first-time visitor to China, Are all transport functions of TenPayGo already available?",
+      "passed": true,
+      "actual": "verified-pvg-rest-charging,news-tenpaygo-20260924,sh-metro,verified-shanghai-rail-station,pvg-arrival,verified-hongqiao-p10-charging,verified-rail-12306,pvg-arrival",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.tenpaygo.3.en",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://apps.apple.com/us/app/tenpaygo/id6778755338",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-f1a47d8f9fc34db4",
+      "input": "想核对上海雅居乐万豪侯爵酒店，是否靠近人民广场地铁站？",
+      "passed": true,
+      "actual": "sh-marriott-city-centre,station-12,sh-luggage-guide,verified-man-bao-lou,verified-metro-lockers,verified-shanghai-rail-station,verified-jw-tomorrow-square,verified-hongqiao-rail-station",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.hotel.zh.2",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://www.marriott.com/en-us/hotels/shamc-shanghai-marriott-marquis-city-centre/overview/",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-9ae8ff0df5215cea",
+      "input": "请查上海雅居乐万豪侯爵酒店，酒店电话怎么找？",
+      "passed": true,
+      "actual": "sh-marriott-city-centre,verified-man-bao-lou,verified-jw-tomorrow-square,verified-courtyard-central,verified-pullman-jingan,verified-dazhong-airport,verified-hyatt-place-hongqiao,verified-wan-hao-xuan",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.hotel.zh.0",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://www.marriott.com/en-us/hotels/shamc-shanghai-marriott-marquis-city-centre/overview/",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-7f2df348bbb26ffe",
+      "input": "Near Shanghai Circus World in Shanghai, how can I rent a power bank?",
+      "passed": true,
+      "actual": "station-18,sh-power-bank,verified-hongqiao-p10-charging,verified-pvg-rest-charging,verified-hongqiao-p10-charging,sh-metro,news-nihao-china-shanghai-20260817,news-shanghai-transit-code-guide",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.charging.en.0",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-MobileAndInternet/20260727/56b62a3a9d2f4ddaa8d77367c206b2ae.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-7f37e1a2aaff4f45",
+      "input": "Near Wenshui Road in Shanghai, where should I confirm the metro ticket fare?",
+      "passed": true,
+      "actual": "verified-rail-12306,sh-metro-tickets,verified-shanghai-rail-station,verified-rail-12306,rail-passport,rail-passport,verified-metro-lockers,news-shanghai-transit-code-guide",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.metro_ticket.en.5",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-Individuals-Transportation-PublicTransport/20260813/f257d5c373db4da3a8bde717b9f46b27.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-b70f06ac8eb347ee",
+      "input": "About my journey from Gongkang Road to Zhuanqiao: The experience code failed to connect: ACCESS_CODE_INVALID.",
+      "passed": true,
+      "actual": "connection_issue",
+      "failures": [],
+      "type": "feedback",
+      "family": "feedback.connection_issue.en",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-fb86e4d82b754938",
+      "input": "Near Haitiansan Road in Shanghai, can you guarantee an empty luggage locker now?",
+      "passed": true,
+      "actual": "verified-metro-lockers,verified-metro-lockers,sh-luggage-guide,pvg-arrival,station-29,verified-shanghai-rail-station,verified-rail-12306,news-nihao-china-shanghai-20260817",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.luggage.en.3",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-Individuals-Tourism-TouristServices/20260916/719ada5276444dfdb0d4f342ff68da26.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc59-1221",
+      "input": "我要坐地铁，但是还没确定从哪出发",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "incomplete",
+      "family": "legacy.incomplete",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-6b375552cb9018e5",
+      "input": "Near Pengpu Xincun in Shanghai, how do I find the Cunzhiji luggage storage service?",
+      "passed": true,
+      "actual": "verified-metro-lockers,sh-luggage-guide,verified-metro-lockers,station-20,pvg-arrival,verified-pvg-rest-charging,rail-passport,verified-rail-12306",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.luggage.en.4",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-Individuals-Tourism-TouristServices/20260916/719ada5276444dfdb0d4f342ff68da26.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-f88c1fa8b05a5d49",
+      "input": "Please draw the subway journey from Waihuanlu to Yuandong Avenue.",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "metro",
+      "family": "metro.route.en.1",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-f17e898df0f58ece",
+      "input": "Estimate a Shanghai taxi for 33.25 km in daytime.",
+      "passed": true,
+      "actual": "taxi",
+      "failures": [],
+      "type": "taxi",
+      "family": "taxi.distance.4",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-18c4b4bac0d3a4ef",
+      "input": "About my journey from Bao'an Highway to Jinping Road: The answer is missing the address and opening hours; details are incomplete.",
+      "passed": true,
+      "actual": "missing_detail",
+      "failures": [],
+      "type": "feedback",
+      "family": "feedback.missing_detail.en",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-8ec773720f56dc3a",
+      "input": "No taxi please: metro from Sanlu Highway to Anting.",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "metro",
+      "family": "metro.route.en.9",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-27a09d5246f2f27d",
+      "input": "在上海富锦路，怎么查询附近充电宝柜机的位置？",
+      "passed": true,
+      "actual": "sh-power-bank,station-27,verified-pvg-rest-charging,verified-hongqiao-p10-charging,verified-metro-lockers,sh-luggage-guide,news-nihao-china-shanghai-20260817,verified-hongqiao-rail-station",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.charging.zh.5",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-MobileAndInternet/20260727/56b62a3a9d2f4ddaa8d77367c206b2ae.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-9e42abf228ebd368",
+      "input": "I prefer fewer changes on the metro from Waihuanlu to Jiuting.",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "metro",
+      "family": "metro.route.en.6",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-b08a386c23b06be6",
+      "input": "Can you map the metro route from Wuzhong Road to Weining Road in English?",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "metro",
+      "family": "metro.route.en.10",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-cfbd5bcd4b9e354a",
+      "input": "在上海宝安公路，地铁单程票隔天能不能用？",
+      "passed": true,
+      "actual": "station-25,sh-metro-tickets,news-nihao-china-shanghai-20260817,verified-shanghai-rail-station,verified-hongqiao-rail-station,news-shanghai-transit-code-guide,verified-metro-lockers,sh-luggage-guide",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.metro_ticket.zh.2",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-Individuals-Transportation-PublicTransport/20260813/f257d5c373db4da3a8bde717b9f46b27.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-a04089bf1405b31b",
+      "input": "在上海上海马戏城，地铁乘车码在哪里打开？",
+      "passed": true,
+      "actual": "station-18,news-nihao-china-shanghai-20260817,news-shanghai-transit-code-guide,sh-metro-tickets,sh-metro,verified-hongqiao-indoor-navigation,verified-shanghai-rail-station,verified-hongqiao-rail-station",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.metro_ticket.zh.1",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-Individuals-Transportation-PublicTransport/20260813/f257d5c373db4da3a8bde717b9f46b27.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-649bb8adeeef00d4",
+      "input": "地铁从航头东出发前往交通大学，具体在哪儿换线？",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "metro",
+      "family": "metro.route.zh.4",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-f7fe761cddde89b5",
+      "input": "Near Gongfu Xincun in Shanghai, how can I check luggage storage opening hours?",
+      "passed": true,
+      "actual": "sh-luggage-guide,verified-metro-lockers,verified-metro-lockers,station-24,news-nihao-china-shanghai-20260817,pvg-arrival,news-tenpaygo-20260924,news-nihao-china-shanghai-20260817",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.luggage.en.1",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-Individuals-Tourism-TouristServices/20260916/719ada5276444dfdb0d4f342ff68da26.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-4b248d18aaa708ac",
+      "input": "在上海上海南站，租充电宝前要核对哪些费用？",
+      "passed": true,
+      "actual": "station-4,sh-power-bank,verified-hongqiao-p10-charging,verified-pvg-rest-charging,verified-shanghai-rail-station,verified-hongqiao-rail-station,sh-luggage-guide,news-nihao-china-shanghai-20260817",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.charging.zh.3",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-MobileAndInternet/20260727/56b62a3a9d2f4ddaa8d77367c206b2ae.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-bec8195bf9a54e58",
+      "input": "For a first visit, explain the metro route Hongkou Football Stadium to Middle Huaxia Road.",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "metro",
+      "family": "metro.route.en.5",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-623fddb42b47bd29",
+      "input": "Please find a referenced introduction to Xintiandi.",
+      "passed": true,
+      "actual": "place-xintiandi",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.place.6",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-CityTour/20250325/a0b2498d73b74b658da4f279ee3d3684.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc59-1195",
+      "input": "oh",
+      "passed": true,
+      "actual": "ignored",
+      "failures": [],
+      "type": "noise",
+      "family": "legacy.noise",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-f96130cc7983ab74",
+      "input": "请查上海雅居乐万豪侯爵酒店，官网有没有列明交通方式？",
+      "passed": true,
+      "actual": "sh-marriott-city-centre,news-shanghai-transit-code-guide,sh-metro,news-nihao-china-shanghai-20260817,sh-power-bank,verified-man-bao-lou,verified-hongqiao-airport-taxi,news-tenpaygo-20260924",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.hotel.zh.3",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://www.marriott.com/en-us/hotels/shamc-shanghai-marriott-marquis-city-centre/overview/",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-f53ea56e49f526f3",
+      "input": "Change the destination to Zhenbei Road instead; still taking the metro.",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "followup",
+      "family": "metro.correction.5",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-2e7e0b853ac35d82",
+      "input": "请查上海雅居乐万豪侯爵酒店，订房前去哪个官网核实？",
+      "passed": true,
+      "actual": "sh-marriott-city-centre,sh-power-bank,verified-man-bao-lou,verified-jw-tomorrow-square,verified-dazhong-airport,verified-pullman-jingan,verified-courtyard-central,verified-wan-hao-xuan",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.hotel.zh.5",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://www.marriott.com/en-us/hotels/shamc-shanghai-marriott-marquis-city-centre/overview/",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-d8c67edba949b3f4",
+      "input": "I have luggage. Which metro lines connect Shanghai Stadium and Taierzhuang Road?",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "metro",
+      "family": "metro.route.en.3",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-a8b2287189b7cbcd",
+      "input": "我考虑入住上海雅居乐万豪侯爵酒店，能确认现在还有空房吗？",
+      "passed": true,
+      "actual": "sh-marriott-city-centre,verified-metro-lockers,verified-hongqiao-rail-station,verified-shanghai-rail-station,news-tenpaygo-20260924,verified-man-bao-lou,verified-jw-tomorrow-square,verified-pullman-jingan",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.hotel.zh.4",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://www.marriott.com/en-us/hotels/shamc-shanghai-marriott-marquis-city-centre/overview/",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-cd49ade43300b3ea",
+      "input": "Show saved evidence about Yuyuan Garden in Shanghai.",
+      "passed": true,
+      "actual": "station-239,place-yuyuan,verified-metro-lockers,verified-metro-lockers,news-nihao-china-shanghai-20260817,news-tenpaygo-20260924,pvg-arrival,place-bazaar",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.place.7",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-ScenicSpots/20231205/dc76893b94c248d195eaf7f4d44c6597.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-c21c5c63ecc16506",
+      "input": "请核对上海大悦城的真实位置和资料来源。",
+      "passed": true,
+      "actual": "place-joycity,verified-metro-lockers,sh-power-bank,verified-shanghai-rail-station,news-tenpaygo-20260924,verified-pvg-rest-charging,verified-hongqiao-rail-station,sh-luggage-guide",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.place.0",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-citywalk/20240118/7663535633d248b0acc5e278a80e0da3.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc59-0905",
+      "input": "Tell me about The Bund.",
+      "passed": true,
+      "actual": "nearby",
+      "failures": [],
+      "type": "place",
+      "family": "legacy.place",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-CityTour/20250325/a0b2498d73b74b658da4f279ee3d3684.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-ba13d36ee3cf53f7",
+      "input": "上海打车20.25公里，普通车白天的基础车费是多少？",
+      "passed": true,
+      "actual": "taxi",
+      "failures": [],
+      "type": "taxi",
+      "family": "taxi.distance.0",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-0f7177cefab60b4b",
+      "input": "我在临洮路，要乘地铁到安亭，帮我画路线。",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "metro",
+      "family": "metro.route.zh.2",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-97d33af98016d683",
+      "input": "Metro destination is now Qihua Road; keep the departure station.",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "followup",
+      "family": "metro.correction.4",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-99ca1cb492a3c47d",
+      "input": "我要了解上海市历史博物馆，请只引用资料库里的内容。",
+      "passed": true,
+      "actual": "place-history,news-nihao-china-shanghai-20260817,news-shanghai-transit-code-guide,place-natural,place-sculpture,place-sihang,station-313,station-315",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.place.2",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-ArtExhibitions/20260506/45a00430e4a64c5eaa9d9aeeb418b3a6.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-1cab120343e0551e",
+      "input": "Near Lianhua Road in Shanghai, does a metro single ticket cover an out-of-station transfer?",
+      "passed": true,
+      "actual": "sh-metro-tickets,verified-shanghai-rail-station,rail-passport,news-tenpaygo-20260924,rail-passport,verified-rail-12306,station-2,verified-rail-12306",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.metro_ticket.en.3",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-Individuals-Transportation-PublicTransport/20260813/f257d5c373db4da3a8bde717b9f46b27.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-7f674f372f34bd0a",
+      "input": "Near Yuandong Avenue in Shanghai, what should I check before renting a power bank?",
+      "passed": true,
+      "actual": "sh-power-bank,verified-hongqiao-p10-charging,station-30,verified-pvg-rest-charging,verified-hongqiao-p10-charging,news-nihao-china-shanghai-20260817,sh-metro,pvg-arrival",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.charging.en.1",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-MobileAndInternet/20260727/56b62a3a9d2f4ddaa8d77367c206b2ae.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-0e92ee24a99e51f1",
+      "input": "准备在上海付款时，TenPayGo 可以在哪些支持微信支付的商户付款？",
+      "passed": true,
+      "actual": "news-tenpaygo-20260924,news-nihao-china-shanghai-20260817,news-shanghai-transit-code-guide,sh-metro-tickets",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.tenpaygo.2.zh",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://apps.apple.com/us/app/tenpaygo/id6778755338",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-3204ff9eafa23a32",
+      "input": "About my journey from Bao'an Highway to Jinping Road: The address and phone number are factually wrong. Please check the source.",
+      "passed": true,
+      "actual": "fact_error",
+      "failures": [],
+      "type": "feedback",
+      "family": "feedback.fact_error.en",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-53b8c12d70e221b8",
+      "input": "在计划上海旅行的时候，TenPayGo 开发者和正式资料来源是什么？",
+      "passed": true,
+      "actual": "news-tenpaygo-20260924",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.tenpaygo.5.zh",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://apps.apple.com/us/app/tenpaygo/id6778755338",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-ede130a481fc1073",
+      "input": "Near Bao'an Highway in Shanghai, can you confirm live power bank stock?",
+      "passed": true,
+      "actual": "sh-power-bank,station-25,verified-hongqiao-p10-charging,verified-pvg-rest-charging,verified-hongqiao-p10-charging,verified-shanghai-rail-station,verified-metro-lockers,sh-metro",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.charging.en.3",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-MobileAndInternet/20260727/56b62a3a9d2f4ddaa8d77367c206b2ae.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-0806f0f5f826e2b7",
+      "input": "地铁改从南大路出发，保持刚才的终点。",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "followup",
+      "family": "metro.correction.2",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-a66924e285db8fe4",
+      "input": "Show every transfer for a subway trip from Luoshan Road to Changshu Road.",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "metro",
+      "family": "metro.route.en.4",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-508c9ef2f234be20",
+      "input": "关于我从曹杨路去新村路的这轮对话：你给的路线换乘站不对，走错了，应该检查路线。",
+      "passed": true,
+      "actual": "wrong_route",
+      "failures": [],
+      "type": "feedback",
+      "family": "feedback.wrong_route.zh",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-c4c4df6388a6470a",
+      "input": "Near Bao'an Highway in Shanghai, where can I verify bag size limits for storage?",
+      "passed": true,
+      "actual": "sh-luggage-guide,station-25,verified-metro-lockers,verified-metro-lockers,sh-power-bank,pvg-arrival,news-nihao-china-shanghai-20260817,news-nihao-china-shanghai-20260817",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.luggage.en.2",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-Individuals-Tourism-TouristServices/20260916/719ada5276444dfdb0d4f342ff68da26.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-9e405e626c3aaec7",
+      "input": "终点改成封浜，还是乘地铁。",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "followup",
+      "family": "metro.correction.0",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-ac2337115507abb8",
+      "input": "在上海外环路，出站换乘能继续用这张地铁单程票吗？",
+      "passed": true,
+      "actual": "station-1,sh-metro-tickets,news-shanghai-transit-code-guide,news-nihao-china-shanghai-20260817,verified-shanghai-rail-station,verified-hongqiao-rail-station,verified-metro-lockers,sh-luggage-guide",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.metro_ticket.zh.3",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-Individuals-Transportation-PublicTransport/20260813/f257d5c373db4da3a8bde717b9f46b27.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-f75a368621bd3611",
+      "input": "Give me the metro stops between Yunshan Road and Jiangsu Road.",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "metro",
+      "family": "metro.route.en.7",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-430e0a7e4c072aad",
+      "input": "Near Caobao Road in Shanghai, how do I return a charging power bank?",
+      "passed": true,
+      "actual": "sh-power-bank,station-5,verified-hongqiao-p10-charging,verified-pvg-rest-charging,verified-hongqiao-p10-charging,verified-pvg-rest-charging,verified-metro-lockers,sh-metro",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.charging.en.2",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-MobileAndInternet/20260727/56b62a3a9d2f4ddaa8d77367c206b2ae.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-11ac6a9d9f719f7b",
+      "input": "Near Site of the First CPC National Congress · Huangpi Rd.(S) in Shanghai, is a metro single ticket valid the next day?",
+      "passed": true,
+      "actual": "station-11,sh-metro-tickets,verified-rail-12306,rail-passport,verified-rail-12306,verified-shanghai-rail-station,news-shanghai-transit-code-guide,rail-passport",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.metro_ticket.en.2",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-Individuals-Transportation-PublicTransport/20260813/f257d5c373db4da3a8bde717b9f46b27.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-5bd33bb26580117b",
+      "input": "Near Waihuanlu in Shanghai, where should I look up charging rental cabinets?",
+      "passed": true,
+      "actual": "sh-power-bank,station-1,verified-metro-lockers,verified-hongqiao-p10-charging,verified-pvg-rest-charging,verified-hongqiao-p10-charging,news-nihao-china-shanghai-20260817,news-tenpaygo-20260924",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.charging.en.4",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-MobileAndInternet/20260727/56b62a3a9d2f4ddaa8d77367c206b2ae.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-dea90e5f8e76ff88",
+      "input": "从杨树浦路搭地铁至临港大道，先乘哪条线再换哪条？",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "metro",
+      "family": "metro.route.zh.10",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-60b172f912472f5a",
+      "input": "Plan a subway journey from Shangcheng Road to Sanlin, stop at Wujiaochang.",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "via",
+      "family": "metro.via.3",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-5c71c1184bb9468a",
+      "input": "在上海汉中路，大箱子的寄存尺寸限制怎么查？",
+      "passed": true,
+      "actual": "station-14,sh-luggage-guide,verified-metro-lockers,verified-metro-lockers,news-nihao-china-shanghai-20260817,verified-courtyard-central,verified-momo-cafe,sh-marriott-city-centre",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.luggage.zh.2",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-Individuals-Tourism-TouristServices/20260916/719ada5276444dfdb0d4f342ff68da26.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-3cf6fcf835003b3e",
+      "input": "请提供抚顺路到丰庄的地铁示意图和途经站。",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "metro",
+      "family": "metro.route.zh.9",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-f98350a7a072099e",
+      "input": "不是高铁，从浦东南路(原东昌路)到西渡只查地铁。",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "metro",
+      "family": "metro.route.zh.8",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-5858be91da3149d5",
+      "input": "Metro from Hongqiao Railway Station to West Gaoke Road via Hailun Road.",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "via",
+      "family": "metro.via.2",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-29cebcbee510a25f",
+      "input": "关于我从友谊西路去华宁路的这轮对话：体验码输入后连接失败，显示 ACCESS_CODE_INVALID。",
+      "passed": true,
+      "actual": "connection_issue",
+      "failures": [],
+      "type": "feedback",
+      "family": "feedback.connection_issue.zh",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-57403089950ae79e",
+      "input": "想核对上海雅居乐万豪侯爵酒店，酒店地址在哪里？",
+      "passed": true,
+      "actual": "sh-marriott-city-centre,verified-shanghai-rail-station,verified-hongqiao-rail-station,verified-man-bao-lou,verified-metro-lockers,sh-luggage-guide,verified-jw-tomorrow-square,sh-power-bank",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.hotel.zh.1",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://www.marriott.com/en-us/hotels/shamc-shanghai-marriott-marquis-city-centre/overview/",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc59-0758",
+      "input": "Show the subway route from South Sanlin to Panlong Road.",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "rail-scope",
+      "family": "legacy.rail-scope",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-609e7f87c7db25cb",
+      "input": "Near Fujin Road in Shanghai, where can I open a Shanghai metro QR code?",
+      "passed": true,
+      "actual": "news-nihao-china-shanghai-20260817,news-shanghai-transit-code-guide,news-nihao-china-shanghai-20260817,sh-metro-tickets,station-27,verified-hongqiao-indoor-navigation,verified-shanghai-rail-station,verified-metro-lockers",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.metro_ticket.en.1",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-Individuals-Transportation-PublicTransport/20260813/f257d5c373db4da3a8bde717b9f46b27.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-0c415aa2d929258f",
+      "input": "上海龙阳路附近共享充电宝资料，第40个站点的过期版本能进入答案吗？",
+      "passed": true,
+      "actual": "",
+      "failures": [],
+      "type": "rag-boundary",
+      "family": "rag.boundary.expired",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-3d521d079482c6bd",
+      "input": "从合肥去南京乘高铁，票价余票需要以官方查询为准吗？",
+      "passed": true,
+      "actual": "rail",
+      "failures": [],
+      "type": "rail",
+      "family": "rail.intercity.2",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-61a431af09e09c04",
+      "input": "Before travelling to Shanghai, Is the service I called Tengopay actually named TenPayGo?",
+      "passed": true,
+      "actual": "sh-metro,news-tenpaygo-20260924,verified-rail-12306,rail-passport,pvg-arrival,pvg-arrival,sh-luggage-guide,rail-passport",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.tenpaygo.1.en",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://apps.apple.com/us/app/tenpaygo/id6778755338",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-cca0d4161fa0169b",
+      "input": "在上海外环路，寄存柜是否有空位能保证吗？",
+      "passed": true,
+      "actual": "station-1,verified-metro-lockers,sh-luggage-guide,verified-metro-lockers,sh-metro,news-nihao-china-shanghai-20260817",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.luggage.zh.4",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-Individuals-Tourism-TouristServices/20260916/719ada5276444dfdb0d4f342ff68da26.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-d0b8501f5db9ab8b",
+      "input": "关于我从张江高科去灵岩南路的这轮对话：我对这轮回答有个建议，希望可以人工看看。",
+      "passed": true,
+      "actual": "other",
+      "failures": [],
+      "type": "feedback",
+      "family": "feedback.other.zh",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-8a00efa6df08a57a",
+      "input": "Where can I verify the address of People’s Park?",
+      "passed": true,
+      "actual": "place-peoplespark,news-shanghai-transit-code-guide,verified-hongqiao-p10-charging,sh-power-bank,verified-rail-12306,sh-metro-tickets,news-shanghai-transit-code-guide,sh-luggage-guide",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.place.4",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-CityTour/20240306/78e6a001aed842d6b8c37607764bdbee.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-c892b9cd412e564a",
+      "input": "在计划上海旅行的时候，TenPayGo 面向来华游客有什么新的支付功能？",
+      "passed": true,
+      "actual": "news-tenpaygo-20260924,news-nihao-china-shanghai-20260817,news-shanghai-transit-code-guide,sh-metro-tickets",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.tenpaygo.0.zh",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://apps.apple.com/us/app/tenpaygo/id6778755338",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-2f7b29fae1da38f0",
+      "input": "目的地换成祁连山南路，继续从刚才那站坐地铁。",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "followup",
+      "family": "metro.correction.1",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-c4b25712b362df13",
+      "input": "关于我从陆家嘴去临沂新村的这轮对话：我要求用英语回答，你却用了中文，语言不对。",
+      "passed": true,
+      "actual": "language_issue",
+      "failures": [],
+      "type": "feedback",
+      "family": "feedback.language_issue.zh",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-cf87c40345a5e7ce",
+      "input": "在上海宝安公路，行李寄存去哪里查询？",
+      "passed": true,
+      "actual": "station-25,sh-luggage-guide,verified-metro-lockers,verified-metro-lockers,sh-metro-tickets,verified-hongqiao-rail-station,news-nihao-china-shanghai-20260817",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.luggage.zh.0",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-Individuals-Tourism-TouristServices/20260916/719ada5276444dfdb0d4f342ff68da26.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-0e2089b2ab7abf7b",
+      "input": "关于我从江杨北路去洲海路的这轮对话：你的新闻信息已过期，政府发布了更新，请更新资料。",
+      "passed": true,
+      "actual": "stale_info",
+      "failures": [],
+      "type": "feedback",
+      "family": "feedback.stale_info.zh",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-53e9c703fe81301c",
+      "input": "Please help compare train travel from Guangzhou to Nanjing; do not invent live availability.",
+      "passed": true,
+      "actual": "rail",
+      "failures": [],
+      "type": "rail",
+      "family": "rail.intercity.5",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-1c17acd8d0037b91",
+      "input": "关于我从南京西路去浦电路的这轮对话：你的回答缺少地址和营业时间，细节不全。",
+      "passed": true,
+      "actual": "missing_detail",
+      "failures": [],
+      "type": "feedback",
+      "family": "feedback.missing_detail.zh",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-d01cca7019192ac2",
+      "input": "在上海通河新村，共享充电宝归还规则是什么？",
+      "passed": true,
+      "actual": "sh-power-bank,station-22,verified-hongqiao-p10-charging,verified-pvg-rest-charging,news-nihao-china-shanghai-20260817",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.charging.zh.2",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-MobileAndInternet/20260727/56b62a3a9d2f4ddaa8d77367c206b2ae.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-f82dcbf440005a40",
+      "input": "在上海延长路，能保证现在一定有充电宝可借吗？",
+      "passed": true,
+      "actual": "station-17,sh-power-bank,verified-hongqiao-p10-charging,verified-pvg-rest-charging,sh-metro,news-nihao-china-shanghai-20260817",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.charging.zh.4",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-MobileAndInternet/20260727/56b62a3a9d2f4ddaa8d77367c206b2ae.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc59-1150",
+      "input": "从世纪大道坐地铁到中山公园，途经陆家嘴",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "via",
+      "family": "legacy.via",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-58255e09ffe717e1",
+      "input": "作为第一次来华的游客，TenPayGo 能不能保证直接刷上海地铁闸机？",
+      "passed": true,
+      "actual": "news-tenpaygo-20260924,sh-metro-tickets,sh-metro,verified-metro-lockers,news-nihao-china-shanghai-20260817,verified-rail-12306,verified-shanghai-rail-station,verified-hongqiao-rail-station",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.tenpaygo.4.zh",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://apps.apple.com/us/app/tenpaygo/id6778755338",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-05cbff4c3436c32c",
+      "input": "About my journey from Panxiang Road·Shanghai National Accounting Institute to Wuzhou Avenue: The route has the wrong transfer station; please correct the route.",
+      "passed": true,
+      "actual": "wrong_route",
+      "failures": [],
+      "type": "feedback",
+      "family": "feedback.wrong_route.en",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-478d4f1e38d72c41",
+      "input": "Before travelling to Shanghai, What is the new TenPayGo payment service for visitors to China?",
+      "passed": true,
+      "actual": "rail-passport,sh-metro,news-nihao-china-shanghai-20260817,pvg-arrival,verified-shanghai-rail-station,news-tenpaygo-20260924,verified-pvg-rest-charging,verified-metro-lockers",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.tenpaygo.0.en",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://apps.apple.com/us/app/tenpaygo/id6778755338",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-f506de047f9c7818",
+      "input": "About my journey from Tieli Road to South Waigaoqiao Free Trade Zone: Your information is outdated; the government has published an update.",
+      "passed": true,
+      "actual": "stale_info",
+      "failures": [],
+      "type": "feedback",
+      "family": "feedback.stale_info.en",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-6f58b176277a3f1c",
+      "input": "在上海汶水路，存包服务的营业时间在哪里确认？",
+      "passed": true,
+      "actual": "verified-metro-lockers,sh-luggage-guide,station-19,verified-metro-lockers,pvg-arrival,verified-rail-12306,verified-pvg-taxi,news-nihao-china-shanghai-20260817",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.luggage.zh.3",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-Individuals-Tourism-TouristServices/20260916/719ada5276444dfdb0d4f342ff68da26.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-386549ad94b15155",
+      "input": "出发站改成桃浦新村，仍按前文的目的地坐地铁。",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "followup",
+      "family": "metro.correction.3",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-46205e2a5050d4be",
+      "input": "在计划上海旅行的时候，TenPayGo 的交通功能是不是已经全部上线？",
+      "passed": true,
+      "actual": "news-tenpaygo-20260924,news-shanghai-transit-code-guide,verified-hongqiao-airport-taxi,news-nihao-china-shanghai-20260817,sh-metro,verified-shanghai-rail-station,verified-courtyard-central,place-joycity",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.tenpaygo.3.zh",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://apps.apple.com/us/app/tenpaygo/id6778755338",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-fa984c57394626dc",
+      "input": "请把曙建路至世纪大道的地铁乘车步骤写清楚。",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "metro",
+      "family": "metro.route.zh.3",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-544218259835605e",
+      "input": "How can I check train tickets from Qingdao to Suzhou?",
+      "passed": true,
+      "actual": "rail",
+      "failures": [],
+      "type": "rail",
+      "family": "rail.intercity.3",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-ae7c097b09710352",
+      "input": "想知道曲阜路与刘行之间的地铁交通，不需要买火车票。",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "metro",
+      "family": "metro.route.zh.11",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-fe40af8bc46011de",
+      "input": "不坐出租车，颛桥到云锦路的地铁路线是什么？",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "metro",
+      "family": "metro.route.zh.7",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-788c98510e4f9ea1",
+      "input": "在上海海天三路，寄存行李前应核对什么？",
+      "passed": true,
+      "actual": "station-29,sh-luggage-guide,verified-metro-lockers,verified-metro-lockers,verified-shanghai-rail-station,verified-hongqiao-rail-station,news-nihao-china-shanghai-20260817,sh-power-bank",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.luggage.zh.1",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-Individuals-Tourism-TouristServices/20260916/719ada5276444dfdb0d4f342ff68da26.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-f311dfca59a9126b",
+      "input": "地铁路线想查基隆路去呼兰路，请列出换乘站。",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "metro",
+      "family": "metro.route.zh.1",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-ff6affa4a24cdd0e",
+      "input": "Actually, metro from Shanghai Library; keep the earlier destination.",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "followup",
+      "family": "metro.correction.6",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-bba2b2c1a783e7a3",
+      "input": "带着行李从航头坐地铁到花木路，想少换乘。",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "metro",
+      "family": "metro.route.zh.5",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc59-1037",
+      "input": "上海打车20公里多少钱",
+      "passed": true,
+      "actual": "taxi",
+      "failures": [],
+      "type": "taxi",
+      "family": "legacy.taxi",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-52cbbbc2a3753cb9",
+      "input": "Near Hanzhong Road in Shanghai, how can I use Alipay on the Shanghai metro?",
+      "passed": true,
+      "actual": "sh-metro-tickets,news-nihao-china-shanghai-20260817,news-shanghai-transit-code-guide,news-shanghai-transit-code-guide,verified-hongqiao-rail-station,verified-shanghai-rail-station,news-nihao-china-shanghai-20260817,verified-hongqiao-p10-charging",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.metro_ticket.en.4",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-Individuals-Transportation-PublicTransport/20260813/f257d5c373db4da3a8bde717b9f46b27.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-527beef4bfeb598e",
+      "input": "上海彭浦新村附近共享充电宝资料，第21个站点的无摘要版本能进入答案吗？",
+      "passed": true,
+      "actual": "",
+      "failures": [],
+      "type": "rag-boundary",
+      "family": "rag.boundary.index-only",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-9212aad1a6f0050a",
+      "input": "Near East Huaxia Road in Shanghai, how can I buy a Shanghai metro single-journey ticket?",
+      "passed": true,
+      "actual": "sh-metro-tickets,station-33,verified-rail-12306,verified-shanghai-rail-station,news-shanghai-transit-code-guide,rail-passport,rail-passport,verified-rail-12306",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.metro_ticket.en.0",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-Individuals-Transportation-PublicTransport/20260813/f257d5c373db4da3a8bde717b9f46b27.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-e59f753d1a2a8bfa",
+      "input": "Metro directions: leaving Fudan University, arriving at Wangyuan Road.",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "metro",
+      "family": "metro.route.en.2",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-69c353ed56083c68",
+      "input": "Near Changshu Road in Shanghai, where can I look up luggage storage?",
+      "passed": true,
+      "actual": "verified-metro-lockers,station-9,verified-metro-lockers,sh-luggage-guide,pvg-arrival,sh-power-bank,news-nihao-china-shanghai-20260817,news-shanghai-transit-code-guide",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.luggage.en.0",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-Individuals-Tourism-TouristServices/20260916/719ada5276444dfdb0d4f342ff68da26.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-41910785f5ff0474",
+      "input": "在上海锦江乐园，手机没电后如何租用充电宝？",
+      "passed": true,
+      "actual": "station-3,verified-hongqiao-p10-charging,sh-power-bank,verified-pvg-rest-charging,sh-metro,news-tenpaygo-20260924,news-nihao-china-shanghai-20260817",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.charging.zh.1",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-MobileAndInternet/20260727/56b62a3a9d2f4ddaa8d77367c206b2ae.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-73cf1d21b1f9606e",
+      "input": "My departure metro station is Hetao Road; my arrival station is Loushanguan Road.",
+      "passed": true,
+      "actual": "metro",
+      "failures": [],
+      "type": "metro",
+      "family": "metro.route.en.11",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    },
+    {
+      "id": "vc61-9b86b3aeb9acc7d5",
+      "input": "到味香斋（泰康路）之前，先给我官方介绍。",
+      "passed": true,
+      "actual": "place-weixiang,pvg-arrival,rail-passport,news-tenpaygo-20260924,place-tianzifang,place-pongciao",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.place.3",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-SpecialtyShoppingAreas/20250806/744a5d61cd9644279abbac8f34678416.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-cd58e1c76ae9c59b",
+      "input": "Near People's Square in Shanghai, what should I confirm before leaving my luggage?",
+      "passed": true,
+      "actual": "station-12,verified-metro-lockers,verified-metro-lockers,sh-luggage-guide,pvg-arrival,verified-shanghai-rail-station,verified-hongqiao-indoor-navigation,verified-hongqiao-rail-station",
+      "failures": [],
+      "type": "rag",
+      "family": "rag.luggage.en.5",
+      "split": "development",
+      "provenance": {
+        "type": "public-source-adapted",
+        "url": "https://english.shanghai.gov.cn/en-Individuals-Tourism-TouristServices/20260916/719ada5276444dfdb0d4f342ff68da26.html",
+        "note": "依据公开事实改写的测试问题，不是真实用户语录"
+      }
+    },
+    {
+      "id": "vc61-3c6e860d4a5af0ed",
+      "input": "关于我从南京西路去浦电路的这轮对话：已经告诉你出发站了，你还重复追问，流程卡住了。",
+      "passed": true,
+      "actual": "process_issue",
+      "failures": [],
+      "type": "feedback",
+      "family": "feedback.process_issue.zh",
+      "split": "development",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的组合合成测试，不是真实用户数据"
+      }
+    }
+  ],
+  "run": {
+    "at": "2026-09-25T05:46:18.047Z",
+    "mode": "rotating-offline-sample",
+    "paidModelCalls": 0,
+    "round": {
+      "id": "second",
+      "seed": "second-wave",
+      "split": "development",
+      "count": 120,
+      "ids": [
+        "vc61-09f1165f88f72263",
+        "vc61-3dc31f4dc781c550",
+        "vc61-d205c23b139bcf0c",
+        "vc61-68a8e1f2d99eaaad",
+        "vc61-f3401aebcd0e1a7b",
+        "vc61-b3e2832d142653dc",
+        "vc61-968dc2317fb1368b",
+        "vc61-d993dd9f86f6d55c",
+        "vc61-e7d753b3b94f8d8c",
+        "vc61-b4da3aa54cd900ce",
+        "vc61-9507c6a7ace0f8d8",
+        "vc61-7aa3808682baced8",
+        "vc61-6e3e129c942454df",
+        "vc61-b45f480659106a82",
+        "vc61-9d610f1c6399abe1",
+        "vc61-d877e36780226a0f",
+        "vc61-54877ed1a0be064a",
+        "vc61-f1a47d8f9fc34db4",
+        "vc61-9ae8ff0df5215cea",
+        "vc61-7f2df348bbb26ffe",
+        "vc61-7f37e1a2aaff4f45",
+        "vc61-b70f06ac8eb347ee",
+        "vc61-fb86e4d82b754938",
+        "vc59-1221",
+        "vc61-6b375552cb9018e5",
+        "vc61-f88c1fa8b05a5d49",
+        "vc61-f17e898df0f58ece",
+        "vc61-18c4b4bac0d3a4ef",
+        "vc61-8ec773720f56dc3a",
+        "vc61-27a09d5246f2f27d",
+        "vc61-9e42abf228ebd368",
+        "vc61-b08a386c23b06be6",
+        "vc61-cfbd5bcd4b9e354a",
+        "vc61-a04089bf1405b31b",
+        "vc61-649bb8adeeef00d4",
+        "vc61-f7fe761cddde89b5",
+        "vc61-4b248d18aaa708ac",
+        "vc61-bec8195bf9a54e58",
+        "vc61-623fddb42b47bd29",
+        "vc59-1195",
+        "vc61-f96130cc7983ab74",
+        "vc61-f53ea56e49f526f3",
+        "vc61-2e7e0b853ac35d82",
+        "vc61-d8c67edba949b3f4",
+        "vc61-a8b2287189b7cbcd",
+        "vc61-cd49ade43300b3ea",
+        "vc61-c21c5c63ecc16506",
+        "vc59-0905",
+        "vc61-ba13d36ee3cf53f7",
+        "vc61-0f7177cefab60b4b",
+        "vc61-97d33af98016d683",
+        "vc61-99ca1cb492a3c47d",
+        "vc61-1cab120343e0551e",
+        "vc61-7f674f372f34bd0a",
+        "vc61-0e92ee24a99e51f1",
+        "vc61-3204ff9eafa23a32",
+        "vc61-53b8c12d70e221b8",
+        "vc61-ede130a481fc1073",
+        "vc61-0806f0f5f826e2b7",
+        "vc61-a66924e285db8fe4",
+        "vc61-508c9ef2f234be20",
+        "vc61-c4c4df6388a6470a",
+        "vc61-9e405e626c3aaec7",
+        "vc61-ac2337115507abb8",
+        "vc61-f75a368621bd3611",
+        "vc61-430e0a7e4c072aad",
+        "vc61-11ac6a9d9f719f7b",
+        "vc61-5bd33bb26580117b",
+        "vc61-dea90e5f8e76ff88",
+        "vc61-60b172f912472f5a",
+        "vc61-5c71c1184bb9468a",
+        "vc61-3cf6fcf835003b3e",
+        "vc61-f98350a7a072099e",
+        "vc61-5858be91da3149d5",
+        "vc61-29cebcbee510a25f",
+        "vc61-57403089950ae79e",
+        "vc59-0758",
+        "vc61-609e7f87c7db25cb",
+        "vc61-0c415aa2d929258f",
+        "vc61-3d521d079482c6bd",
+        "vc61-61a431af09e09c04",
+        "vc61-cca0d4161fa0169b",
+        "vc61-d0b8501f5db9ab8b",
+        "vc61-8a00efa6df08a57a",
+        "vc61-c892b9cd412e564a",
+        "vc61-2f7b29fae1da38f0",
+        "vc61-c4b25712b362df13",
+        "vc61-cf87c40345a5e7ce",
+        "vc61-0e2089b2ab7abf7b",
+        "vc61-53e9c703fe81301c",
+        "vc61-1c17acd8d0037b91",
+        "vc61-d01cca7019192ac2",
+        "vc61-f82dcbf440005a40",
+        "vc59-1150",
+        "vc61-58255e09ffe717e1",
+        "vc61-05cbff4c3436c32c",
+        "vc61-478d4f1e38d72c41",
+        "vc61-f506de047f9c7818",
+        "vc61-6f58b176277a3f1c",
+        "vc61-386549ad94b15155",
+        "vc61-46205e2a5050d4be",
+        "vc61-fa984c57394626dc",
+        "vc61-544218259835605e",
+        "vc61-ae7c097b09710352",
+        "vc61-fe40af8bc46011de",
+        "vc61-788c98510e4f9ea1",
+        "vc61-f311dfca59a9126b",
+        "vc61-ff6affa4a24cdd0e",
+        "vc61-bba2b2c1a783e7a3",
+        "vc59-1037",
+        "vc61-52cbbbc2a3753cb9",
+        "vc61-527beef4bfeb598e",
+        "vc61-9212aad1a6f0050a",
+        "vc61-e59f753d1a2a8bfa",
+        "vc61-69c353ed56083c68",
+        "vc61-41910785f5ff0474",
+        "vc61-73cf1d21b1f9606e",
+        "vc61-9b86b3aeb9acc7d5",
+        "vc61-cd58e1c76ae9c59b",
+        "vc61-3c6e860d4a5af0ed"
+      ],
+      "at": "2026-09-25T05:46:17.901Z"
+    },
+    "remaining": 15759
+  }
+}

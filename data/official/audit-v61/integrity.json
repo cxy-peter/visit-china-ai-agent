@@ -1,0 +1,7 @@
+{
+  "unique_urls": 5000,
+  "row_count": 5000,
+  "unique_ids": 5000,
+  "all_new_rows_have_parent_hash": true,
+  "all_new_rows_have_no_summary": true
+}

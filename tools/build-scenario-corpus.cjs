@@ -1,8 +1,15 @@
 'use strict';
-const fs=require('node:fs'),path=require('node:path'),D=require('../v5/metro-data'),P=require('../v5/place-data');
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),D=require('../v5/metro-data'),P=require('../v5/place-data');
 const metroStations=new Set(D.lines.filter(l=>!/市域|磁浮/.test(l.name)).flatMap(l=>l.stations));
 const english=s=>D.stations.filter(x=>x.en===s.en).length>1?s.en+' (Line '+D.lines.find(l=>l.stations.includes(s.id)).name.replace('号线','')+')':s.en;
-const cases=[];const add=(type,input,expect,origin='authored',source=null,history=[])=>cases.push({id:'vc59-'+String(cases.length+1).padStart(4,'0'),type,input,language:/[\u4e00-\u9fff]/.test(input)?'zh':'en',provenance:{type:origin,...(source?{url:source}:{}),note:origin==='public-source-adapted'?'依据公开事实改写的测试问题，不是真实用户语录':'自行编写的合成测试，不是真实用户数据'},expect,history});
+const cases=[],seen=new Set();
+const digest=s=>crypto.createHash('sha256').update(s).digest('hex');
+const normalized=s=>String(s).normalize('NFKC').toLowerCase().replace(/[\s，。？！,?!;；:：]|(?<!\d)\.|\.(?!\d)/g,'');
+const add=(type,input,expect,origin='authored',source=null,history=[],meta={})=>{
+ const key=normalized(input);if(seen.has(key))return;seen.add(key);
+ const legacy=!meta.family,group=expect.kind==='metro'&&expect.origin&&expect.destination?'metro:'+expect.origin+':'+expect.destination+':'+(expect.via||''):expect.sourceId&&type!=='rag-boundary'?'source:'+expect.sourceId:meta.group||type+':'+JSON.stringify(expect),id=legacy?'vc59-'+String(cases.length+1).padStart(4,'0'):'vc61-'+digest(input+JSON.stringify(history)).slice(0,16);
+ cases.push({id,type,input,language:meta.language||(/[\u4e00-\u9fff]/.test(input)?'zh':'en'),family:meta.family||'legacy.'+type,group,split:parseInt(digest(group).slice(0,8),16)%5===0?'holdout':'development',provenance:{type:origin,...(source?{url:source}:{}),note:origin==='public-source-adapted'?'依据公开事实改写的测试问题，不是真实用户语录':'自行编写的组合合成测试，不是真实用户数据'},expect,history});
+};
 for(const [i,s]of D.stations.entries()){
  const start=D.stations[(i+37)%D.stations.length];
  add(metroStations.has(start.id)&&metroStations.has(s.id)?'metro':'rail-scope',`请问从${start.zh}乘地铁去${s.zh}，在哪里换乘？`,{kind:'metro',origin:start.id,destination:s.id});
@@ -20,5 +27,10 @@ for(const q of ['从浦东机场坐地铁','地铁去上海站','怎么坐地铁
 for(const q of ['上海站附近有什么可以玩','上海火车站周边有什么好玩','上海火车站附近能吃什么','What can I visit near Shanghai Railway Station?','Where can I eat near Shanghai Railway Station?','人民广场附近有什么公园','豫园附近有什么吃的','What is there around Yuyuan?','南京东路附近有什么景点','打浦桥附近推荐几个去处','自然博物馆周边吃饭','曲阜路附近可以走走吗'])add('nearby',q,{kind:'nearby'});
 for(const q of ['Tell me places to eat near Yuyuan Garden.','Where can I eat around Yuyuan Garden?','豫园附近推荐吃什么','豫园周边有什么餐厅'])add('nearby',q,{kind:'nearby',sourceId:'place-hefeng'});
 add('incomplete','我要坐地铁，但是还没确定从哪出发',{kind:'metro',needsClarification:true});
-const corpus={version:'travel-regression-5.9',createdAt:'2026-09-25',scope:'本地路由、工具、检索及上下文回归；不是 1000 次真实 DeepSeek 语义评测，也不是训练数据。公开资料问题均为改写。',cases};
-const dir=path.join(__dirname,'../data/evaluation');fs.mkdirSync(dir,{recursive:true});fs.writeFileSync(path.join(dir,'v5.9-cases.json'),JSON.stringify(corpus,null,2)+'\n');console.log(JSON.stringify({total:cases.length,types:cases.reduce((a,c)=>(a[c.type]=(a[c.type]||0)+1,a),{}),publicSourceAdapted:cases.filter(c=>c.provenance.type==='public-source-adapted').length}));
+const legacyCount=cases.length;
+require('./corpus-families.cjs').extend(add,()=>cases.length,20000);
+if(cases.length!==20000)throw Error('Expected exactly 20000 unique cases, got '+cases.length);
+const counts=key=>cases.reduce((a,c)=>(a[c[key]]=(a[c[key]]||0)+1,a),{});
+const stats={total:cases.length,legacyCount,uniqueNormalizedInputs:seen.size,uniqueRate:seen.size/cases.length,semanticGroups:new Set(cases.map(c=>c.group)).size,templateFamilies:counts('family'),types:counts('type'),languages:counts('language'),splits:counts('split'),provenance:cases.reduce((a,c)=>(a[c.provenance.type]=(a[c.provenance.type]||0)+1,a),{})};
+const corpus={version:'travel-regression-6.1-20000',createdAt:'2026-09-25',scope:'20000条去重组合合成用例：本地意图/工具/上下文、固定资料RAG召回、反馈建议分类。不是20000次真实DeepSeek调用，不是真实用户日志，不代表生产准确率；同一家族存在相关性。固定holdout按语义组哈希划分。',stats,cases};
+const dir=path.join(__dirname,'../data/evaluation');fs.mkdirSync(dir,{recursive:true});fs.writeFileSync(path.join(dir,'v6.1-cases.json'),JSON.stringify(corpus,null,2)+'\n');fs.writeFileSync(path.join(dir,'v6.1-manifest.json'),JSON.stringify({...stats,version:corpus.version,sha256:digest(JSON.stringify(corpus)),scope:corpus.scope},null,2)+'\n');console.log(JSON.stringify(stats));

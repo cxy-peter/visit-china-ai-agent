@@ -1,0 +1,45 @@
+{
+  "verified_at": "2026-09-25",
+  "method": "Primary publisher pages opened and read; bilingual summaries are authored paraphrases. News and provider capabilities are not policy or live-inventory integrations.",
+  "records": [
+    {
+      "id": "news-tenpaygo-20260924",
+      "canonical_name": "TenPayGo",
+      "input_aliases": ["Tengopay", "TengoPay", "tenpay go"],
+      "alias_rule": "Suggest that the user may mean TenPayGo; do not silently equate an unidentified product with it.",
+      "primary_pages_opened": ["https://tenpaygo.com/", "https://apps.apple.com/us/app/tenpaygo/id6778755338"],
+      "verified_claims": ["Tencent App Store publisher identity", "payments at merchants accepting Weixin Pay", "website describes supported international cards, Apple Pay and e-wallets without a Chinese phone number or Weixin account", "transaction history and gradual rollout of local services"],
+      "not_established": ["Shanghai metro gate integration", "universal zero fees", "all foreign wallets already enabled", "all users exempt from identity verification"],
+      "announcement_date": "2026-09-24",
+      "announcement_url": "https://mp.weixin.qq.com/s/Xk95ohQHyVr4ul27yyvLvQ",
+      "announcement_body_status": "inaccessible",
+      "publication_date_cross_check": "https://hkcd.com/hkcdweb/content/2026/09/24/content_8776909.html",
+      "government_article_found": false
+    },
+    {
+      "id": "news-nihao-china-shanghai-20260817",
+      "url": "https://sww.sh.gov.cn/swdt/20260819/e184b804c7c141ae80d5d4f2c3e80d25.html",
+      "body_status": "opened_and_read",
+      "publication_date": "2026-08-17",
+      "url_date_not_used_as_publication_date": "2026-08-19",
+      "verified_claims": ["supported foreign-card funding", "Shanghai metro and bus transit code", "ATM and currency-exchange discovery", "translation"],
+      "operator_cross_check": "https://www.unionpayintl.com/ZT/en/NHCAPP/"
+    },
+    {
+      "id": "news-go-beijing-20260430",
+      "url": "https://english.beijing.gov.cn/specials/paymentservices/news/202604/t20260430_4624215.html",
+      "body_status": "opened_and_read",
+      "publication_date": "2026-04-30",
+      "verified_claims": ["multilingual Beijing services", "ride-hailing, ticket and hotel entries", "Travel Wallet funded via cross-border remittances"],
+      "scope": "Beijing service evidence; does not imply Shanghai integration"
+    },
+    {
+      "id": "news-shanghai-transit-code-guide",
+      "url": "https://jtw.sh.gov.cn/zsk/20240424/f502895cea0f46bea5975842cfbfac16.html",
+      "body_status": "opened_and_read",
+      "publication_date": "2024-04-24",
+      "verified_claims": ["Shanghai bus, metro and ferry transit code", "pay after travel", "supported app activation paths", "Alipay trip-completion flow for missing station records"],
+      "scope": "Historical official service guidance, with current app-interface caveat"
+    }
+  ]
+}

@@ -46,7 +46,7 @@ async function smartAssist({state,model,signal,records,skillConfig=H.DEFAULT,exe
  const recover=['other','unclear'].includes(intent.kind)&&fallback&&/地铁|metro|subway/i.test(h.text)&&((fallback.origin&&fallback.destination)||(intent.kind==='unclear'&&h.text.trim().length>4));
  if(recover)intent={...fallback,city:'Shanghai'};
  execution.stages.push({name:'tool_or_answer',status:'completed',kind:intent.kind});
- const meta={intent,intentProvider:recover?'local-fallback':'deepseek',usage:out.usage};
+ const meta={intent,intentProvider:recover?'local-fallback':'deepseek',usage:out.usage,services:intent.city&&!['Shanghai','China','Unknown'].includes(intent.city)?[]:S.cards(intent.kind,intent.kind==='taxi'?intent.origin||intent.destination||'':intent.destination||intent.origin||'',state.language,records)};
  if(intent.kind==='unclear')return{...meta,text:'',sourceIds:[],mode:'ignored'};
  let tool;
  if(intent.kind==='metro')tool=MI.metroTool(intent,state.language);
@@ -79,6 +79,6 @@ async function smartAssist({state,model,signal,records,skillConfig=H.DEFAULT,exe
   answer=checked(generated);
  }
  if(/还有哪一项具体需求|按你的问题查资料|what else would you like help/i.test(answer.text))return{...meta,mode:'clarification',sourceIds:[],text:zh?'这次还没有得到可用答案。请补充一个地点、站名或要核对的事项，我会继续处理本次问题。':'I do not yet have an actionable answer. Please add a place, station, or the specific fact to check.',confidence:Q.answer(intent,[],null,0)};
- return{...answer,...meta,services:S.categories[intent.kind]?S.cards(intent.kind,intent.destination||intent.origin||'上海',state.language):[],confidence:Q.answer(intent,records.filter(r=>answer.sourceIds.includes(r.id)),{text:answer.text},out.confidence)};
+ return{...answer,...meta,services:meta.services,confidence:Q.answer(intent,records.filter(r=>answer.sourceIds.includes(r.id)),{text:answer.text},out.confidence)};
 }
 module.exports={assist,validate,PROMPT,smartAssist};

@@ -4,7 +4,8 @@
 function analyze(text,city,language='zh',history=[]){
  const zh=language==='zh',tr=(a,b)=>zh?a:b;let t=String(text||'');
  const explicitMetro=M.intent(t,city,history),routeAsked=/地铁|subway|metro|终点|目的地|途经|换乘|改到/i.test(t)&&!/附近|周边|nearby|near |around/i.test(t);
- if(routeAsked&&explicitMetro)return{kind:'metro',sourceIds:['sh-metro-map'],metro:explicitMetro,text:M.answer(explicitMetro,language)};
+ const routeCorrection=/\b(?:start|leave|depart) from\b.*\b(?:instead|previous|same|arrival)\b/i.test(t)&&history.slice(-3).some(h=>/地铁|metro|subway/i.test(h.text||''))&&!/附近|周边|nearby|around/i.test(t);
+ if((routeAsked||routeCorrection)&&explicitMetro)return{kind:'metro',sourceIds:['sh-metro-map'],metro:explicitMetro,text:M.answer(explicitMetro,language)};
  const discovery=D.reply(t,{language,history:[...history,{text:t,context:{city}}]});if(discovery)return discovery;
  if(explicitMetro)return{kind:'metro',sourceIds:['sh-metro-map'],metro:explicitMetro,text:M.answer(explicitMetro,language)};
  // Short answers can finish an existing taxi question without inventing a route distance.

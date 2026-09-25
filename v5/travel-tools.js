@@ -10,7 +10,7 @@ function number(value,min,max,name){if(value===''||value==null||!Number.isFinite
 function taxi(input){const t=tariffs[input.city];if(!t)throw Error('CITY_REQUIRED');const km=number(input.km,.1,300,'DISTANCE_RANGE'),wait=number(input.wait??0,0,180,'WAIT_RANGE'),extra=number(input.extra??0,0,1000,'EXTRA_RANGE');
  const base=input.city==='Shanghai'&&input.large?16:t.base,fuel=input.city==='Beijing'&&input.fuel?1:0;
  const distanceCost=d=>Math.max(0,Math.min(d,15)-3)*t.rate+Math.max(0,d-15)*t.rate*1.5;
- const waiting=wait*t.waitRate*(input.city==='Beijing'&&input.peak?2:1),total=base+distanceCost(km)+waiting+extra+fuel,round=n=>Math.round(n*100)/100;
+ const waiting=wait*t.waitRate*(input.city==='Beijing'&&input.peak?2:1),total=base+distanceCost(km)+waiting+extra+fuel,round=n=>Math.round((n+Number.EPSILON*Math.max(1,Math.abs(n)))*100)/100;
  return{city:input.city,km,base,rate:t.rate,distance:round(distanceCost(km)),longDistance:round(Math.max(0,km-15)*t.rate*.5),waiting:round(waiting),extra,fuel,total:round(total),low:Math.floor(base+distanceCost(Math.max(.1,km*.9))+waiting+extra+fuel),high:Math.ceil(base+distanceCost(km*1.1)+waiting+extra+fuel),source:t.source,publisher:t.publisher,checkedAt:'2026-09-24'};
 }
 function taxiRequest(text,city){if(!/taxi|cab\b|打车|出租车|车费|公里|kilomet|\bkm\b/i.test(text))return null;const m=text.match(/(\d+(?:\.\d+)?)\s*(?:公里|千米|km\b|kilomet(?:er|re)s?)/i);return{city:/上海|shanghai/i.test(text)?'Shanghai':/北京|beijing/i.test(text)?'Beijing':city||'',km:m?Number(m[1]):null};}

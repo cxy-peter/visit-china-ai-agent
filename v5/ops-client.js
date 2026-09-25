@@ -1,4 +1,4 @@
-/* Source sync and small anonymous analytics batches; never send chat text or audio. */
+/* Source sync and small anonymous analytics batches; analytics never send chat text/audio; explicit issue reports use a separate consent flow. */
 (function(){'use strict';
 const uid=()=>crypto.randomUUID(),seen=new Set();let chat=(TravelApp.getState().history.length?sessionStorage.getItem('vc-ops-chat'):null)||uid(),ready=false,queue=[],timer=null,sending=false,observer=null,started=false;
 sessionStorage.setItem('vc-ops-chat',chat);
@@ -15,6 +15,7 @@ const intro=document.querySelector('.library-intro');intro.insertAdjacentHTML('b
 document.getElementById('library-submit').onclick=()=>CloudOps.sourceForm();document.getElementById('library-refresh').onclick=()=>CloudOps.open('sources');
 function answer(a,h){if(!ready)return;h.answerId||=uid();const key='answer:'+h.answerId;if(seen.has(key))return;seen.add(key);event('answer_shown',a?.intent?.kind==='unclear'?'other':a?.intent?.kind||TravelIntent.analyze(h.text,h.context?.city,h.language).kind,h.answerId);}
 async function resolution(h,outcome,reason){if(!ready)await sync();if(!ready)throw Error('FEEDBACK_OFFLINE');answer(h.assistance,h);await flush();return CloudOps.api({action:'resolution',chat,answerId:h.answerId,outcome,reason,kind:h.assistance?.intent?.kind==='unclear'?'other':h.assistance?.intent?.kind||TravelIntent.analyze(h.text,h.context?.city,h.language).kind,provider:h.assistance?.intentProvider||'local',route:h.assistance?.tool?.metro||TravelMetro.intent(h.text,h.context?.city)});}
-window.TravelOpsClient={sync,event,answer,resolution,turn,fresh,observe,sourceUsed:(ids,rev)=>{const key='source:'+rev;if(ids.length&&!seen.has(key)){seen.add(key);event('source_used','other',ids.join('.').slice(0,100));}},flush};
+async function report(h,input){if(!ready)await sync();if(!ready)throw Error('FEEDBACK_OFFLINE');answer(h.assistance,h);return CloudOps.api({action:'feedback-case-submit',chat,answerId:h.answerId,...input});}
+window.TravelOpsClient={sync,event,answer,resolution,report,turn,fresh,observe,sourceUsed:(ids,rev)=>{const key='source:'+rev;if(ids.length&&!seen.has(key)){seen.add(key);event('source_used','other',ids.join('.').slice(0,100));}},flush};
 sync();
 })();

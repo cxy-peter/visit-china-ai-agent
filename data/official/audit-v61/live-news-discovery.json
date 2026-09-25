@@ -1,0 +1,417 @@
+{
+  "at": "2026-09-25T05:43:58.952Z",
+  "candidates": [
+    {
+      "id": "news-candidate-303760d8417bed89",
+      "title": "【“十五五”开好局起好步】推进文化和旅游高质量发展",
+      "url": "https://www.gov.cn/yaowen/liebiao/202609/content_7081994.htm",
+      "city": "China",
+      "publishedAt": "2026-09-24",
+      "feedId": "govcn-public-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-169d3967b004b629",
+      "title": "预计国庆假期我国交通出行人数达21.3亿人次",
+      "url": "https://www.gov.cn/lianbo/202609/content_7081991.htm",
+      "city": "China",
+      "publishedAt": "2026-09-24",
+      "feedId": "govcn-public-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-e40858aad63e7c10",
+      "title": "全国建成一刻钟便民生活圈9156个",
+      "url": "https://www.gov.cn/lianbo/202609/content_7081799.htm",
+      "city": "China",
+      "publishedAt": "2026-09-22",
+      "feedId": "govcn-public-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-fbd28201473311b0",
+      "title": "超3.1亿元消费券 全国国庆文化和旅游消费月启动",
+      "url": "https://www.gov.cn/lianbo/202609/content_7081774.htm",
+      "city": "China",
+      "publishedAt": "2026-09-22",
+      "feedId": "govcn-public-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-7c251c111aa5bd3c",
+      "title": "文化和旅游部关于印发《非物质文化遗产保护传承“十五五”规划》的通知",
+      "url": "https://www.gov.cn/zhengce/zhengceku/202609/content_7081712.htm",
+      "city": "China",
+      "publishedAt": "2026-09-21",
+      "feedId": "govcn-public-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-1487516622dd867b",
+      "title": "文化和旅游部关于印发《公共文化服务体系建设“十五五”规划》的通知",
+      "url": "https://www.gov.cn/zhengce/zhengceku/202609/content_7081612.htm",
+      "city": "China",
+      "publishedAt": "2026-09-20",
+      "feedId": "govcn-public-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-3c6c9f88b66bf694",
+      "title": "文化和旅游部印发《公共文化服务体系建设“十五五”规划》",
+      "url": "https://www.gov.cn/lianbo/202609/content_7081606.htm",
+      "city": "China",
+      "publishedAt": "2026-09-20",
+      "feedId": "govcn-public-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-31139a16283d3127",
+      "title": "中老跨境数字支付互联互通正式启动",
+      "url": "https://www.gov.cn/lianbo/202609/content_7081524.htm",
+      "city": "China",
+      "publishedAt": "2026-09-19",
+      "feedId": "govcn-public-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-231d3617d66c3306",
+      "title": "文化和旅游部发布《文化产业发展“十五五”规划》",
+      "url": "https://www.gov.cn/lianbo/202609/content_7081516.htm",
+      "city": "China",
+      "publishedAt": "2026-09-19",
+      "feedId": "govcn-public-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-0d7e0e04a37feaf5",
+      "title": "文化和旅游部关于印发《文化产业发展“十五五”规划》的通知",
+      "url": "https://www.gov.cn/zhengce/zhengceku/202609/content_7081514.htm",
+      "city": "China",
+      "publishedAt": "2026-09-19",
+      "feedId": "govcn-public-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-8b60a9e4edeff6cc",
+      "title": "文化和旅游部印发《文化和旅游发展“十五五”规划》",
+      "url": "https://www.gov.cn/lianbo/202609/content_7081316.htm",
+      "city": "China",
+      "publishedAt": "2026-09-16",
+      "feedId": "govcn-public-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-4769d083653b34e7",
+      "title": "文化和旅游部关于印发《文化和旅游发展“十五五”规划》的通知",
+      "url": "https://www.gov.cn/zhengce/zhengceku/202609/content_7081315.htm",
+      "city": "China",
+      "publishedAt": "2026-09-16",
+      "feedId": "govcn-public-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-c62c62a60d72a4e5",
+      "title": "我国将加强旅游产业“空间供给”",
+      "url": "https://www.gov.cn/lianbo/202609/content_7081252.htm",
+      "city": "China",
+      "publishedAt": "2026-09-15",
+      "feedId": "govcn-public-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-4a07687b19492d96",
+      "title": "第四届“全国一刻钟便民生活服务月”活动10月开启",
+      "url": "https://www.gov.cn/lianbo/202609/content_7080757.htm",
+      "city": "China",
+      "publishedAt": "2026-09-11",
+      "feedId": "govcn-public-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-4bf55cba930fd5cd",
+      "title": "今年前8个月4.99亿人次出入境",
+      "url": "https://www.gov.cn/lianbo/202609/content_7080607.htm",
+      "city": "China",
+      "publishedAt": "2026-09-10",
+      "feedId": "govcn-public-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-6113922ecf1de36f",
+      "title": "上半年我国支持城市更新减税降费及退税4870亿元",
+      "url": "https://www.gov.cn/yaowen/liebiao/202609/content_7080281.htm",
+      "city": "China",
+      "publishedAt": "2026-09-05",
+      "feedId": "govcn-public-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-1119e5df2617cbfc",
+      "title": "国家医疗保障局关于做好长期护理保险支付管理工作的指导意见",
+      "url": "https://www.gov.cn/zhengce/zhengceku/202608/content_7079155.htm",
+      "city": "China",
+      "publishedAt": "2026-08-26",
+      "feedId": "govcn-public-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-0c7b293d7b78ab93",
+      "title": "长期护理保险支付管理将统一规范",
+      "url": "https://www.gov.cn/lianbo/202608/content_7079139.htm",
+      "city": "China",
+      "publishedAt": "2026-08-26",
+      "feedId": "govcn-public-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-dc06580dab2a7b06",
+      "title": "前7个月我国交通出行397.9亿人次",
+      "url": "https://www.gov.cn/lianbo/202608/content_7079044.htm",
+      "city": "China",
+      "publishedAt": "2026-08-24",
+      "feedId": "govcn-public-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-870174651a54f6fe",
+      "title": "关于印发《综合交通运输标准化发展“十五五”规划》的通知",
+      "url": "https://www.gov.cn/zhengce/zhengceku/202608/content_7078452.htm",
+      "city": "China",
+      "publishedAt": "2026-08-18",
+      "feedId": "govcn-public-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-64d96fd917bfa834",
+      "title": "国务院关于出境入境管理的规定",
+      "url": "https://www.gov.cn/zhengce/content/202607/content_7077172.htm",
+      "city": "China",
+      "publishedAt": "2026-07-31",
+      "feedId": "govcn-policy-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-9ecae785cdbb8aef",
+      "title": "国务院关于《旅游强国建设“十五五”规划》的批复",
+      "url": "https://www.gov.cn/zhengce/content/202607/content_7074516.htm",
+      "city": "China",
+      "publishedAt": "2026-07-07",
+      "feedId": "govcn-policy-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-f541bb2cc369fe81",
+      "title": "国务院关于推行常住地提供基本公共服务的实施意见",
+      "url": "https://www.gov.cn/zhengce/content/202605/content_7069960.htm",
+      "city": "China",
+      "publishedAt": "2026-05-22",
+      "feedId": "govcn-policy-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-c94e6886a73bcf11",
+      "title": "国务院办公厅关于进一步加强旅游市场综合监管的通知",
+      "url": "https://www.gov.cn/zhengce/content/202509/content_7040751.htm",
+      "city": "China",
+      "publishedAt": "2025-09-15",
+      "feedId": "govcn-policy-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-97391f51b40a1bec",
+      "title": "国务院关于修改《中华人民共和国外国人入境出境管理条例》的决定",
+      "url": "https://www.gov.cn/zhengce/content/202508/content_7036507.htm",
+      "city": "China",
+      "publishedAt": "2025-08-14",
+      "feedId": "govcn-policy-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-14c125d5c91f2e50",
+      "title": "保障中小企业款项支付条例",
+      "url": "https://www.gov.cn/zhengce/content/202503/content_7015401.htm",
+      "city": "China",
+      "publishedAt": "2025-03-24",
+      "feedId": "govcn-policy-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-6aa57a2b56f7b827",
+      "title": "国务院办公厅印发《关于进一步培育新增长点繁荣文化和旅游消费的若干措施》的通知",
+      "url": "https://www.gov.cn/zhengce/content/202501/content_6998238.htm",
+      "city": "China",
+      "publishedAt": "2025-01-13",
+      "feedId": "govcn-policy-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-6f6e45c8568fc4db",
+      "title": "中共中央办公厅 国务院办公厅关于加快建设统一开放的交通运输市场的意见",
+      "url": "https://www.gov.cn/zhengce/202412/content_6994162.htm",
+      "city": "China",
+      "publishedAt": "2024-12-23",
+      "feedId": "govcn-policy-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-6ffbdb25c86a4fec",
+      "title": "城市公共交通条例",
+      "url": "https://www.gov.cn/zhengce/content/202410/content_6982321.htm",
+      "city": "China",
+      "publishedAt": "2024-10-23",
+      "feedId": "govcn-policy-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-1c3bf97c41a3e762",
+      "title": "国务院办公厅关于进一步优化支付服务提升支付便利性的意见",
+      "url": "https://www.gov.cn/zhengce/content/202403/content_6937623.htm",
+      "city": "China",
+      "publishedAt": "2024-03-07",
+      "feedId": "govcn-policy-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-ce05ba60bdace6a2",
+      "title": "非银行支付机构监督管理条例",
+      "url": "https://www.gov.cn/zhengce/content/202312/content_6920724.htm",
+      "city": "China",
+      "publishedAt": "2023-12-17",
+      "feedId": "govcn-policy-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-b5bc62d5c29d28f4",
+      "title": "国务院办公厅印发《关于释放旅游消费潜力推动旅游业高质量发展的若干措施》的通知",
+      "url": "https://www.gov.cn/zhengce/content/202309/content_6907051.htm",
+      "city": "China",
+      "publishedAt": "2023-09-29",
+      "feedId": "govcn-policy-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-452ac6323d53bf3d",
+      "title": "国务院办公厅关于印发《保障农民工工资支付工作考核办法》的通知",
+      "url": "https://www.gov.cn/zhengce/content/202309/content_6906541.htm",
+      "city": "China",
+      "publishedAt": "2023-09-27",
+      "feedId": "govcn-policy-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-fe98c8e5802e62ac",
+      "title": "国务院办公厅关于推动12345政务服务便民热线与110报警服务台高效对接联动的意见",
+      "url": "https://www.gov.cn/zhengce/content/2022-05/16/content_5690655.htm",
+      "city": "China",
+      "publishedAt": "2022-05-16",
+      "feedId": "govcn-policy-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-087798322ac67f93",
+      "title": "中共中央办公厅 国务院办公厅印发《关于构建更高水平的全民健身公共服务体系的意见》",
+      "url": "https://www.gov.cn/zhengce/2022-03/23/content_5680908.htm",
+      "city": "China",
+      "publishedAt": "2022-03-23",
+      "feedId": "govcn-policy-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-caae131a9a17454f",
+      "title": "国务院关于印发“十四五”旅游业发展规划的通知",
+      "url": "https://www.gov.cn/zhengce/content/2022-01/20/content_5669468.htm",
+      "city": "China",
+      "publishedAt": "2022-01-20",
+      "feedId": "govcn-policy-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-f853be7c9cc59f3a",
+      "title": "国务院关于印发“十四五”现代综合交通运输体系发展规划的通知",
+      "url": "https://www.gov.cn/zhengce/content/2022-01/18/content_5669049.htm",
+      "city": "China",
+      "publishedAt": "2022-01-18",
+      "feedId": "govcn-policy-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-fd33268c77ee5d1f",
+      "title": "国务院关于“十四五”公共服务规划的批复",
+      "url": "https://www.gov.cn/zhengce/content/2021-11/30/content_5654936.htm",
+      "city": "China",
+      "publishedAt": "2021-11-30",
+      "feedId": "govcn-policy-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-82778b49219a478f",
+      "title": "国务院办公厅转发交通运输部等单位关于加强铁路沿线安全环境治理工作意见的通知",
+      "url": "https://www.gov.cn/zhengce/content/2021-06/01/content_5614662.htm",
+      "city": "China",
+      "publishedAt": "2021-06-01",
+      "feedId": "govcn-policy-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    },
+    {
+      "id": "news-candidate-b797c382ba322f17",
+      "title": "中共中央 国务院印发《国家综合立体交通网规划纲要》",
+      "url": "https://www.gov.cn/zhengce/2021-02/24/content_5588654.htm",
+      "city": "China",
+      "publishedAt": "2021-02-24",
+      "feedId": "govcn-policy-news",
+      "status": "needs_body_review",
+      "requiresBodyFetch": true
+    }
+  ],
+  "checks": [
+    {
+      "feedId": "govcn-public-news",
+      "status": "discovered",
+      "count": 20
+    },
+    {
+      "feedId": "govcn-policy-news",
+      "status": "discovered",
+      "count": 20
+    }
+  ]
+}

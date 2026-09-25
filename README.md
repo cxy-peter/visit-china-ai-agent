@@ -1,3 +1,20 @@
+# Visit China AI V6.1 · 旅行问答、来源运营与问题回放
+
+**个人项目 · 产品与运营设计 · AI辅助实现。** 语音和文字共用对话与资料库，DeepSeek负责语义理解及有据回答；地铁路线、车费和来源校验由应用工具执行。Operations把用户反馈、相关上下文、问题分类、技能候选、自动验收、回放与人工发布连起来。
+
+- **20,000条中英文回归用例**：组合合成与公开资料改写，支持每轮不同问法、版本指纹和失败重放；不是20,000名用户、付费模型调用或模型准确率成绩。
+- **5,000个去重官方网页URL**：保留原1,114条正文抓取元数据，新增3,886条官方链接发现；未抓取、未核验正文不能进入事实回答。
+- **20条核对过的地点／服务记录**：6家酒店、5家餐饮、9条交通便民服务，10个公开商务电话，关联上海站、虹桥枢纽、人民广场和浦东机场。地址、电话、地图与官网直接出现在相关回答下方；未接实时房态、余票、价格或柜机库存。
+- **资料证据分大于60才可自动引用**，60及以下待核验；仍检查城市、有效期、停用与版本状态。模型自评分单独显示，不是真实正确率。
+- **运营入口**：可选分享最多8轮脱敏上下文，定位事实、意图、流程等问题；管理员可总结、补资料、建技能候选、回放、发布或回滚。新增有期限和调用上限的 `VC-…` 体验码，区别于仅保存在服务端的 `sk-…` API密钥。
+- **每三天的资料检查**：每日调度检查是否到期，按72小时门槛发现新闻候选并轮转检查已收录来源，也支持手动更新；新标题不会自动成为已核实事实。
+
+[V6.1架构与运营使用说明](docs/V6_1_ARCHITECTURE.md) · [20,000条评测构成与限制](docs/V6_1_EVALUATION.md) · [5,000条索引、TenPayGo及新闻更新](docs/V6_1_SOURCE_RESEARCH.md) · [真实地点、电话和来源清单](docs/V6_1_VERIFIED_SERVICES.md)
+
+当前保留轻量执行图和站点关系，检索为 **BM25 + 稀疏TF-IDF + RRF + 确定性重排**；没有部署Neo4j，也未接入学习型embedding或模型权重训练。V6.1的完整工程、浏览器和线上验收总数以最终发布报告为准，暂不在概览填写未汇总的数字。
+
+下方为各版本交付历史；其中的索引数量、测试规模、连接与部署说明保留当时口径，当前行为以V6.1说明及最终验收记录为准。
+
 # V6: automatic RAG and an editable Operations Harness
 
 Private DeepSeek access now supports credential-document import and authenticated administrator connection. Reviewed sources are chunked and automatically retrieved with BM25, sparse TF-IDF, RRF and evidence-aware reranking. Operations adds bounded skill versions, automatic acceptance, rollback, execution traces and quality metrics with explicit denominators. Location-based hotel, power-bank, luggage, train and metro-ticket queries distinguish real sources from unconnected inventory.
