@@ -29,3 +29,12 @@ jobs:
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: npm test
       - run: npm run build
+      - name: Export locked runtime dependencies
+        run: |
+          npm prune --omit=dev --ignore-scripts --no-audit --no-fund
+          tar -czf /tmp/visit-runtime-deps.tar.gz node_modules
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v65-runtime-deps
+          path: /tmp/visit-runtime-deps.tar.gz
+          retention-days: 1
