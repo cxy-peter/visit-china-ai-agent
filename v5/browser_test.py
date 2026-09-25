@@ -4,7 +4,8 @@ Speech recognition/synthesis are controlled test doubles in BOTH modes. No real 
 import os, sys, json, time, pathlib, tempfile, subprocess, hashlib, urllib.request, shutil, socket
 from playwright.sync_api import sync_playwright, expect
 ROOT=pathlib.Path(__file__).resolve().parents[1]
-OUT=ROOT/'evidence/v6';OUT.mkdir(parents=True,exist_ok=True)
+OUT=ROOT/'evidence/v6.1/legacy-browser';OUT.mkdir(parents=True,exist_ok=True)
+IMAGES=ROOT.parent/'v6.1-legacy-browser';IMAGES.mkdir(parents=True,exist_ok=True)
 static='--static' in sys.argv
 checks=[]
 def check(name,value):
@@ -54,7 +55,7 @@ try:
         page.locator('#voice-provider').select_option('browser')
         page.locator('#voice-language').select_option('en-US')
         check('call entry visible',page.locator('#start-call').is_visible())
-        page.screenshot(path=str(OUT/('static-desktop.png' if static else 'desktop.png')),full_page=True)
+        page.screenshot(path=str(IMAGES/('static-desktop.png' if static else 'desktop.png')),full_page=True)
         page.locator('#start-call').click();page.locator('#consent-start').click()
         check('mic consent gate enforced',bool(page.locator('#consent-error').inner_text()))
         page.locator('#mic-consent').check();page.locator('#consent-start').click()
@@ -85,7 +86,7 @@ try:
         page.locator('.trip-memory > summary').click();page.locator('#confirm').click()
         check('one-click confirmation updates task list','已确认' in page.locator('#confirmation').inner_text())
         check('call survives confirmation',page.evaluate('TravelApp.getCall().active'))
-        page.screenshot(path=str(OUT/('static-call.png' if static else 'call.png')),full_page=True)
+        page.screenshot(path=str(IMAGES/('static-call.png' if static else 'call.png')),full_page=True)
         page.locator('#message').fill('My hotel is booked. I am with my parents.');page.locator('#send').click()
         page.wait_for_function("() => TravelApp.getState().facts.hotel==='booked'")
         check('text during call preserves chosen transfer',page.evaluate("TravelApp.getState().facts.transfer==='taxi'"))
@@ -118,7 +119,7 @@ try:
                 if i<5:check(f'{i} approval(s) cannot publish','published' not in page.locator('.candidate .status').inner_text())
             check('fifth distinct login publishes exact candidate',page.locator('.candidate .status').inner_text()=='published')
             check('active policy version is updated','wf-2' in page.locator('#ops-body').inner_text())
-            page.screenshot(path=str(OUT/'operations.png'),full_page=True)
+            page.screenshot(path=str(IMAGES/'operations.png'),full_page=True)
             page.locator('#ops-logout').click();page.locator('#ops-user').fill('admin');page.locator('#ops-password').fill('test-admin');page.locator('#ops-login').click()
             page.wait_for_selector('[data-action="rollback"]');page.once('dialog',lambda d:d.accept());page.locator('[data-action="rollback"]').click()
             expect(page.locator('.candidate .status')).to_have_text('rolled_back')
@@ -135,7 +136,7 @@ try:
             check('server rehydration restores opening need',page.locator('#initial-request').text_content()==opening)
         page.set_viewport_size({'width':390,'height':844})
         check('mobile has no horizontal overflow',page.evaluate('document.documentElement.scrollWidth<=innerWidth+2'))
-        page.screenshot(path=str(OUT/('static-mobile.png' if static else 'mobile.png')),full_page=True)
+        page.screenshot(path=str(IMAGES/('static-mobile.png' if static else 'mobile.png')),full_page=True)
         check('no uncaught browser exceptions',not errors)
         if not static:
             offline=browser.new_page(viewport={'width':1000,'height':900})
@@ -145,6 +146,8 @@ try:
             offline.locator('#chat-settings-open').click();offline.locator('#remember').check();offline.locator('#shared-model-close').click()
             saved=offline.locator('#transcript').inner_text();brief=offline.locator('#initial-request').text_content()
             offline.reload();expect(offline.locator('#mode')).to_contain_text('浏览器体验')
+            if offline.locator('#transcript').inner_text()!=saved:
+                (IMAGES/'memory-restore-diagnostic.json').write_text(json.dumps({'saved':saved,'restored':offline.locator('#transcript').inner_text()},ensure_ascii=False,indent=2),encoding='utf-8')
             check('static browser memory restores both sides',offline.locator('#transcript').inner_text()==saved)
             check('static browser memory restores opening need',offline.locator('#initial-request').text_content()==brief)
             offline.locator('#message').fill('Actually Beijing');offline.locator('#send').click()
@@ -160,5 +163,5 @@ finally:
         assert resolved.parent==pathlib.Path(tempfile.gettempdir()).resolve() and resolved.name.startswith('vc5-browser-')
         shutil.rmtree(resolved,ignore_errors=True)
 report={'passed':len(checks),'checks':checks,'scope':('Built standalone HTML rendered via set_content; no HTTP integration.' if static else 'Real Chromium -> Node HTTP. Five separate authenticated test accounts; NOT five real reviewers.')+' Speech APIs are synthetic test doubles, not microphone or spoken-audio validation. No paid model, booking, or provider inventory calls.'}
-(OUT/('static-browser-report.json' if static else 'browser-report.json')).write_text(json.dumps(report,ensure_ascii=False,indent=2))
+(OUT/('static-browser-report.json' if static else 'browser-report.json')).write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
 print(json.dumps({'browserChecksPassed':len(checks),'static':static}))

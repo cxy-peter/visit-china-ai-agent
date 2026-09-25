@@ -1,0 +1,64 @@
+{
+  "generatedAt": "2026-09-25T06:03:56.149081+00:00",
+  "status": "passed",
+  "suites": [
+    {
+      "script": "v5/browser_test.py",
+      "report": "browser-report.json",
+      "passed": 49,
+      "failed": 0
+    },
+    {
+      "script": "v5/chat_browser_test.py",
+      "report": "chat-browser-report.json",
+      "passed": 31,
+      "failed": 0
+    },
+    {
+      "script": "v5/cloud_browser_test.py",
+      "report": "cloud-browser-report.json",
+      "passed": 11,
+      "failed": 0
+    },
+    {
+      "script": "v5/library_browser_test.py",
+      "report": "library-browser-report.json",
+      "passed": 19,
+      "failed": 0
+    },
+    {
+      "script": "v5/operations_browser_test.py",
+      "report": "V5_7_浏览器验收.json",
+      "passed": 18,
+      "failed": 0
+    },
+    {
+      "script": "v5/discovery_browser_test.py",
+      "report": "discovery-browser-results.json",
+      "passed": 22,
+      "failed": 0
+    },
+    {
+      "script": "v5/harness_browser_test.py",
+      "report": "harness-browser-report.json",
+      "passed": 18,
+      "failed": 0
+    }
+  ],
+  "passed": 168,
+  "failed": 0,
+  "modelApiCalls": 0,
+  "browser": "Real Chromium controlled through Playwright; initial agent-browser smoke also passed",
+  "scope": "7 historical UI suites against actual local Node HTTP/auth/storage. Controlled model/SpeechRecognition/SpeechSynthesis fixtures; no paid DeepSeek call, real microphone, booking, inventory API or real external reviewer. Synthetic local ASR is reported separately.",
+  "verifiedFixes": [
+    "Mixed hotel/restaurant/rail records no longer suppress flight sample cards; requested categories remain visible.",
+    "Offline remembered conversation restores current source-backed service cards instead of reverting to samples."
+  ],
+  "adaptations": [
+    "5000 index count read from the collection manifest; automatic RAG replaces the removed ask/pin UI while preserving unsent composer, shared consent, voice context and new-chat isolation.",
+    "Chinese source query names bank-card subtopic and nearby click selects the intended cafe rather than a changed first-card order.",
+    "Operations/discovery execute all 20010 regressions, and two 120-question development rounds advance persisted rotation.",
+    "Charging lookup is explicitly a query entry without proof of a cabinet."
+  ],
+  "screenshots": "Local work/v6.1-legacy-browser (kept outside repository); machine-readable per-suite results retained alongside this file."
+}

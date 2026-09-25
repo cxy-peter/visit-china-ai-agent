@@ -1,4 +1,4 @@
-name: V6 verify actual branch
+name: V6.1 verify actual branch
 on:
   pull_request:
   push:
@@ -24,6 +24,7 @@ jobs:
           python-version: '3.11'
       - run: npm ci
       - run: npm test
+      - run: python tools/collect-official-v61.py --target 5000 --verify-only
       - run: npm run voice:check && npm run voice:build && npm run build
       - run: pip install playwright==1.57.0 && python -m playwright install --with-deps chromium
       - run: python v5/browser_test.py
@@ -37,8 +38,9 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: v6-browser-evidence
+          name: v6-1-browser-evidence
           path: |
             evidence/v6/
             evidence/v5.6/
+            evidence/v6.1/
           retention-days: 14

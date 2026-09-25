@@ -3,7 +3,9 @@ import json,os,pathlib,shutil,socket,subprocess,tempfile,time,urllib.request
 from playwright.sync_api import sync_playwright,expect
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 HOSTED=os.environ.get('LIBRARY_TEST_URL')
-OUT=ROOT/('evidence/v6/hosted-library' if HOSTED else 'evidence/v6');OUT.mkdir(parents=True,exist_ok=True)
+OUT=ROOT/('evidence/v6.1/legacy-browser/hosted-library' if HOSTED else 'evidence/v6.1/legacy-browser');OUT.mkdir(parents=True,exist_ok=True)
+IMAGES=ROOT.parent/'v6.1-legacy-browser';IMAGES.mkdir(parents=True,exist_ok=True)
+INDEX_COUNT=json.loads((ROOT/'data/official/collection-report.json').read_text(encoding='utf-8'))['unique_index_urls']
 checks=[]
 def check(name,value):
     assert value,name
@@ -27,18 +29,21 @@ try:
         send('我计划和父母去上海，机票已经订好，想看看地铁怎么坐。')
         expect(page.locator('#transcript .user')).to_have_count(1)
         before=page.evaluate('TravelApp.getState()')
+        draft='我在上海，想了解地铁买票和乘车规则。'
+        page.locator('#message').fill(draft)
         page.locator('#nav-library').click();expect(page.locator('#library-workspace')).to_be_visible()
         check('library stays in same tab and shows current request',len(page.context.pages)==1 and '父母' in page.locator('#library-context').inner_text())
-        check('full catalog preserves honest index and summary counts','1,114' in page.locator('#library-count').inner_text() and '索引不等于已核验' in page.locator('.library-metrics').inner_text())
-        page.locator('#library-query').fill('地铁');page.locator('#library-city').select_option('Shanghai');page.locator('#library-kind').select_option('summary');page.locator('#library-search button').click()
+        check('full catalog preserves honest index and summary counts',format(INDEX_COUNT,',') in page.locator('#library-count').inner_text() and '索引不等于已核验' in page.locator('.library-metrics').inner_text())
+        page.locator('#library-query').fill('地铁 银行卡');page.locator('#library-city').select_option('Shanghai');page.locator('#library-kind').select_option('summary');page.locator('#library-search button').click()
         check('Chinese search retrieves curated metro source',page.locator('#library-results [data-source-detail="sh-metro"]').count()==1)
         page.locator('#library-results [data-source-detail="sh-metro"]').click();expect(page.locator('#source-detail')).to_contain_text('发布方')
         check('source drawer keeps original URL and review status','english.shanghai.gov.cn' in page.locator('#source-detail a').get_attribute('href') and '复核' in page.locator('#source-detail').inner_text())
-        page.screenshot(path=str(OUT/'unified-library-desktop.png'),full_page=True)
-        page.locator('[data-source-ask="sh-metro"]').click();expect(page.locator('#travel-workspace')).to_be_visible()
-        check('browsing and attaching a source does not mutate traveler facts',page.evaluate('TravelApp.getState().facts')==before['facts'])
+        page.screenshot(path=str(IMAGES/'unified-library-desktop.png'),full_page=True)
+        check('source library uses automatic retrieval without ask or pin controls',page.locator('[data-source-ask],[data-source-pin]').count()==0 and page.evaluate('TravelApp.getSourceIds().length')==0)
+        page.locator('[data-return-chat]').click();expect(page.locator('#travel-workspace')).to_be_visible()
+        check('browsing sources preserves traveler facts and unsent draft',page.evaluate('TravelApp.getState().facts')==before['facts'] and page.locator('#message').input_value()==draft and page.locator('#transcript .user').count()==1)
         page.locator('#send').click();expect(page.locator('#transcript .user')).to_have_count(2)
-        check('source references belong to each turn',page.evaluate("TravelApp.getState().history.at(-1).sourceIds[0]==='sh-metro'") and page.locator('.turn-sources').last.is_visible())
+        check('actual question creates a turn without manually attached sources',page.evaluate("TravelApp.getState().history.at(-1).sourceIds.length===0") and page.locator('#transcript .user').last.inner_text().find(draft)>=0)
         check('opening request is preserved after source question','父母' in page.locator('#initial-request').text_content())
         page.locator('#shared-model-open').click();expect(page.locator('#shared-model-dialog')).to_be_visible()
         if HOSTED:
@@ -48,7 +53,8 @@ try:
             page.locator('#shared-model-open').click();page.locator('#shared-model-consent').check();page.locator('#shared-model-close').click()
             expect(page.locator('.assistant-answer')).to_have_count(1)
             check('one shared consent enables model response inside existing conversation','This is a test response.' in page.locator('.assistant-answer').inner_text() and page.locator('#model-consent').is_checked())
-            check('model citations link back to the same source drawer','AI 引用' in page.locator('.turn-sources').last.inner_text())
+            page.locator('.turn-sources').last.locator('summary').click()
+            check('automatic RAG citations link back to the same source drawer','AI 引用' in page.locator('.turn-sources').last.inner_text() and page.evaluate("TravelApp.getState().history.at(-1).assistance.sourceIds.includes('sh-metro')"))
             page.evaluate("TravelApp.commit({type:'text',text:'我在上海，继续看看地铁',channel:'text'})")
             expect(page.locator('.assistant-answer')).to_have_count(2)
             check('later turns preserve earlier model answer',page.locator('.assistant-answer').count()==2)
@@ -68,10 +74,10 @@ try:
                 if page.evaluate("__said.some(t=>t.includes('This is a test response.'))"):break
                 page.wait_for_timeout(50)
             assert page.evaluate("__said.some(t=>t.includes('This is a test response.'))")
-            check('voice uses same source context and speaks shared model answer',page.evaluate("TravelApp.getState().history.at(-1).channel==='voice' && TravelApp.getState().history.at(-1).sourceIds[0]==='sh-metro'"))
+            check('voice uses automatic retrieval and speaks shared model answer',page.evaluate("TravelApp.getState().history.at(-1).channel==='voice' && TravelApp.getState().history.at(-1).sourceIds.length===0 && TravelApp.getState().history.at(-1).assistance.sourceIds.includes('sh-metro')"))
             page.locator('#nav-library').click();check('active call remains controllable in source library',page.locator('#library-hangup').is_visible() and page.evaluate('TravelApp.getCall().active'))
             page.locator('#library-hangup').click();check('library hangup stops the same call',not page.evaluate('TravelApp.getCall().active'));page.locator('#library-back').click()
-        page.screenshot(path=str(OUT/'unified-chat-desktop.png'),full_page=True)
+        page.screenshot(path=str(IMAGES/'unified-chat-desktop.png'),full_page=True)
         page.locator('#chat-settings-open').click();page.locator('#remember').check();page.reload();expect(page.locator('#transcript .user')).not_to_have_count(0)
         check('stored chat keeps per-turn source references',page.locator('.turn-sources').count()>=2)
         page.locator('#new-chat-top').click();expect(page.locator('#transcript .user')).to_have_count(0)
@@ -80,7 +86,7 @@ try:
         check('index-only entries are visibly labeled','仅索引' in page.locator('#library-results').inner_text())
         page.locator('#library-results [data-source-detail]').first.click()
         check('source library fits mobile width',page.evaluate('document.documentElement.scrollWidth<=innerWidth+2'))
-        page.screenshot(path=str(OUT/'unified-library-mobile.png'),full_page=True)
+        page.screenshot(path=str(IMAGES/'unified-library-mobile.png'),full_page=True)
         check('no uncaught browser errors',not errors)
         browser.close()
 finally:

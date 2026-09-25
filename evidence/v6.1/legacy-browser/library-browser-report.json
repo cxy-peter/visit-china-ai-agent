@@ -1,0 +1,82 @@
+{
+  "passed": 19,
+  "checks": [
+    {
+      "name": "library stays in same tab and shows current request",
+      "passed": true
+    },
+    {
+      "name": "full catalog preserves honest index and summary counts",
+      "passed": true
+    },
+    {
+      "name": "Chinese search retrieves curated metro source",
+      "passed": true
+    },
+    {
+      "name": "source drawer keeps original URL and review status",
+      "passed": true
+    },
+    {
+      "name": "source library uses automatic retrieval without ask or pin controls",
+      "passed": true
+    },
+    {
+      "name": "browsing sources preserves traveler facts and unsent draft",
+      "passed": true
+    },
+    {
+      "name": "actual question creates a turn without manually attached sources",
+      "passed": true
+    },
+    {
+      "name": "opening request is preserved after source question",
+      "passed": true
+    },
+    {
+      "name": "one shared consent enables model response inside existing conversation",
+      "passed": true
+    },
+    {
+      "name": "automatic RAG citations link back to the same source drawer",
+      "passed": true
+    },
+    {
+      "name": "later turns preserve earlier model answer",
+      "passed": true
+    },
+    {
+      "name": "voice uses automatic retrieval and speaks shared model answer",
+      "passed": true
+    },
+    {
+      "name": "active call remains controllable in source library",
+      "passed": true
+    },
+    {
+      "name": "library hangup stops the same call",
+      "passed": true
+    },
+    {
+      "name": "stored chat keeps per-turn source references",
+      "passed": true
+    },
+    {
+      "name": "new chat removes old references and answers",
+      "passed": true
+    },
+    {
+      "name": "index-only entries are visibly labeled",
+      "passed": true
+    },
+    {
+      "name": "source library fits mobile width",
+      "passed": true
+    },
+    {
+      "name": "no uncaught browser errors",
+      "passed": true
+    }
+  ],
+  "scope": "Real Chromium and local HTTP or public static site. DeepSeek provider is a test double; no paid API request and no human microphone test."
+}

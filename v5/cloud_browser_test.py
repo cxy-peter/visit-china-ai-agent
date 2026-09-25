@@ -2,7 +2,8 @@
 import json, os, pathlib, shutil, socket, subprocess, tempfile, time, urllib.request
 from playwright.sync_api import sync_playwright, expect
 ROOT=pathlib.Path(__file__).resolve().parents[1]
-OUT=ROOT/'evidence/v6';OUT.mkdir(parents=True,exist_ok=True)
+OUT=ROOT/'evidence/v6.1/legacy-browser';OUT.mkdir(parents=True,exist_ok=True)
+IMAGES=ROOT.parent/'v6.1-legacy-browser';IMAGES.mkdir(parents=True,exist_ok=True)
 with socket.socket() as s:s.bind(('127.0.0.1',0));port=s.getsockname()[1]
 runtime=tempfile.mkdtemp(prefix='vc56-cloud-');checks=[];pending=[];requests=[];authorized=False
 def check(name,value):
