@@ -8,7 +8,9 @@ function validate(value,evidence,history){
  if(/https?:|www\.|已(?:出票|扣款|预订成功)|booking (?:is )?confirmed|reservation (?:is )?confirmed|(?:send|upload|provide).{0,30}(?:passport|password|otp)|(?:发送|上传|提供).{0,20}(?:护照|密码|验证码)/i.test(text))throw Error('ANSWER_UNSAFE');
  const used=evidence.filter(e=>sourceIds.includes(e.id));
  const supported=[history.map(h=>h.text).join(' '),...used.map(e=>e.summary)].join(' ');
- if((text.match(/\d+(?:[.,]\d+)?\s*%?/g)||[]).some(n=>!supported.includes(n)))throw Error('ANSWER_NUMBER');
+ // A line-leading list marker is formatting, not a fare, distance or other claim.
+ const claims=text.replace(/(^|\n)\s*\d{1,2}[.)、]\s+(?=\S)/g,'$1');
+ if((claims.match(/\d+(?:[.,]\d+)?\s*%?/g)||[]).some(n=>!supported.includes(n)))throw Error('ANSWER_NUMBER');
  if(evidence.length&&!sourceIds.length)throw Error('ANSWER_CITATION_REQUIRED');
  return{text,sourceIds,mode:'deepseek',notice:evidence.length?'saved-summaries':'conversation-only'};
 }
@@ -64,17 +66,18 @@ async function smartAssist({state,model,signal,records,skillConfig=H.DEFAULT,exe
  }
  const applicable=pool.filter(r=>!intent.city||!r.city||r.city==='China'||r.city===intent.city);
  if(h.sourceIds?.some(id=>!applicable.some(r=>r.id===id))||(/签证|护照|政策|visa|passport|policy|eligibility/i.test(h.text)&&!out.value.source_ids?.length))return{...meta,text:zh?'没有找到适用且在复核周期内的资料摘要，请先核对官方原文。':'No applicable reviewed source was found. Please check the official source.',sourceIds:[],mode:'source-gap',confidence:{...Q.answer(intent,[],null,out.confidence),requiresReview:true,reasons:['没有适用的已复核资料']}};
- let generated=out.value;
- // Intent classification can legitimately omit prose for a tool call. Service requests
- // still need a grounded answer; recover with a separate generation step, once only.
- if((S.categories[intent.kind]&&(!generated||typeof generated.text!=='string'||!generated.text.trim()))||(generated?.text&&!MI.matchesLanguage(generated.text,state.language))){
+ let generated=out.value,answer,validationIssue;
+ const checked=value=>{const a=validate(value,applicable,state.history);if(!MI.matchesLanguage(a.text,state.language))throw Error('ANSWER_LANGUAGE');return a;};
+ try{answer=checked(generated);}catch(error){if(!['ANSWER_SCHEMA','ANSWER_LANGUAGE','ANSWER_NUMBER','ANSWER_SOURCE','ANSWER_CITATION_REQUIRED'].includes(error.message))throw error;validationIssue=error.message;}
+ // One bounded regeneration covers intent-only output, language and grounding failures.
+ // Every retry is checked against the same eligible sources; no numeric rule is waived.
+ if(validationIssue){
   if(!applicable.length)return{...meta,text:zh?'已识别你要找的服务，但目前没有该地点适用的资料。请补充地点，或在资料库添加可核对的来源。':'I identified the service, but have no applicable evidence for that location. Please add a place or a verifiable source.',sourceIds:[],mode:'source-gap',confidence:Q.answer(intent,[],null,out.confidence)};
-  const started=Date.now(),draft=await model.call(PROMPT+MI.languageRule(state.language),{language:state.language,currentRequest:h.text,intent,history:state.history.slice(-6).map(x=>({traveler:x.text,companion:x.assistance?.text||x.reply})),evidence:applicable,advisoryStyle:skillConfig.guidance},signal);generated=draft.value;
+  const started=Date.now(),draft=await model.call(PROMPT+MI.languageRule(state.language)+' Use plain paragraphs or unnumbered bullets. Include only numbers present in the cited evidence or provided in the traveler request; omit unknown prices, sizes, distances and opening hours.',{language:state.language,currentRequest:h.text,intent,validationIssue,history:state.history.slice(-6).map(x=>({traveler:x.text,companion:x.assistance?.text||x.reply})),evidence:applicable,advisoryStyle:skillConfig.guidance},signal);generated=draft.value;
   meta.usage={prompt_tokens:(out.usage?.prompt_tokens||0)+(draft.usage?.prompt_tokens||0),completion_tokens:(out.usage?.completion_tokens||0)+(draft.usage?.completion_tokens||0),total_tokens:(out.usage?.total_tokens||0)+(draft.usage?.total_tokens||0)};
-  execution.stages.push({name:'grounded_generation',status:'completed',ms:Date.now()-started});
+  execution.stages.push({name:'grounded_generation',status:'completed',reason:validationIssue,ms:Date.now()-started});
+  answer=checked(generated);
  }
- const answer=validate(generated,applicable.filter(r=>generated.source_ids?.includes(r.id)),state.history);
- if(!MI.matchesLanguage(answer.text,state.language))throw Error('ANSWER_LANGUAGE');
  if(/还有哪一项具体需求|按你的问题查资料|what else would you like help/i.test(answer.text))return{...meta,mode:'clarification',sourceIds:[],text:zh?'这次还没有得到可用答案。请补充一个地点、站名或要核对的事项，我会继续处理本次问题。':'I do not yet have an actionable answer. Please add a place, station, or the specific fact to check.',confidence:Q.answer(intent,[],null,0)};
  return{...answer,...meta,services:S.categories[intent.kind]?S.cards(intent.kind,intent.destination||intent.origin||'上海',state.language):[],confidence:Q.answer(intent,records.filter(r=>answer.sourceIds.includes(r.id)),{text:answer.text},out.confidence)};
 }
