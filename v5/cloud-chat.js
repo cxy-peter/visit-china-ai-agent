@@ -3,7 +3,7 @@
 const crypto=require('node:crypto'),E=require('./engine'),{assist}=require('./assistant'),{createModel}=require('../v4/server');
 const equal=(a,b)=>crypto.timingSafeEqual(crypto.createHash('sha256').update(String(a)).digest(),crypto.createHash('sha256').update(String(b)).digest());
 function createCloudChat({env=process.env,fetcher=fetch,now=()=>Date.now(),store=null}={}){
- const identities=require('./ops-auth').auth(env);const model=createModel(env,fetcher);model.configure({maxTokens:800});const access=env.TRAVEL_CHAT_ACCESS_CODE||'';let budget={at:now(),calls:0};
+ const identities=require('./ops-auth').auth(env);const model=createModel(env,fetcher);model.configure({maxTokens:800});const access=env.TRAVEL_CHAT_ACCESS_CODE||'';let budget={at:now(),calls:0},kbBudget={at:0,calls:0};
  const sign=text=>crypto.createHmac('sha256',access).update(text).digest('base64url');
  const token=grant=>{const body=Buffer.from(JSON.stringify({expires:Math.min(now()+8*3600000,grant?Date.parse(grant.expiresAt):Infinity),nonce:crypto.randomBytes(16).toString('hex'),grantId:grant?.id||null})).toString('base64url');return body+'.'+sign(body);};
  const durable=()=>store||(store=require('./ops-store').createStore(env));
@@ -17,6 +17,16 @@ function createCloudChat({env=process.env,fetcher=fetch,now=()=>Date.now(),store
    if(req.method!=='POST')return json(res,405,{error:'METHOD_NOT_ALLOWED'});
    if(req.headers.origin&&new URL(req.headers.origin).host!==req.headers.host)throw Error('ORIGIN_NOT_ALLOWED');
    const b=await body(req);if(!b||typeof b!=='object'||Array.isArray(b))throw Error('BODY_OBJECT');
+   if(b.action==='kb'){const kbStarted=Date.now();
+    if(typeof b.text!=='string'||b.text.length>600||!['en','zh'].includes(b.language))throw Error('CONVERSATION_REQUIRED');
+    if(!require('./kb-direct').hasQuestion(b.text))return json(res,200,{matched:false,reason:'no-approved-exact-question'});
+    if(now()-kbBudget.at>60000)kbBudget={at:now(),calls:0};if(++kbBudget.calls>60)return json(res,429,{error:'KB_RATE_LIMIT'});
+    let records=require('./library').records;
+    if(env.BLOB_STORE_ID||env.BLOB_READ_WRITE_TOKEN||env.CLOUD_OPERATIONS==='1')records=require('./ops-api').catalog(await durable().read()||require('./operations').initial());
+    const result=require('./kb-direct').lookup(b.text,{city:b.city,language:b.language,records});
+    if(result.matched){result.answer.execution={kb:result.trace,stages:[{name:'kb_direct',status:'completed'},{name:'verify',status:'completed'}],totalMs:Date.now()-kbStarted};result.answer.dataset=b.evaluation===true&&identities.actor(req)?.role==='admin'?'evaluation':'live';if(env.BLOB_STORE_ID||env.BLOB_READ_WRITE_TOKEN||env.CLOUD_OPERATIONS==='1')try{result.answer.executionId=await durable().mutate(s=>require('./harness').observe(s,result.answer));}catch(_){result.answer.telemetrySaved=false;}}
+    return json(res,200,{matched:result.matched,reason:result.reason,...(result.matched?{answer:result.answer}:{})});
+   }
    if(access.length<24)return json(res,503,{error:'CHAT_ACCESS_NOT_CONFIGURED'});
    if(b.action==='login'||b.action==='admin-connect'){let grant=null;
     if(b.action==='admin-connect'){if(identities.actor(req)?.role!=='admin')return json(res,403,{error:'ADMIN_LOGIN_REQUIRED'});if(b.modelConsent!==true)throw Error('MODEL_CONSENT_REQUIRED');}

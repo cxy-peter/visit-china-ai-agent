@@ -1,8 +1,8 @@
 /* Scores express evidence checks, not calibrated probabilities of truth. */
 (function(r,f){if(typeof module==='object'&&module.exports)module.exports=f();else r.TravelConfidence=f();})(globalThis,function(){
 'use strict';
-const governments=new Set(['en.shio.gov.cn','german.beijing.gov.cn','english.shanghai.gov.cn','www.shanghai.gov.cn','jtw.sh.gov.cn','service.shanghai.gov.cn','english.beijing.gov.cn','jtw.beijing.gov.cn','sww.sh.gov.cn','www.gov.cn','kab.sww.sh.gov.cn','www.shcn.gov.cn','www.shbsq.gov.cn','www.jinshan.gov.cn','www.jingan.gov.cn','www.shjjjc.gov.cn','whlyj.sh.gov.cn']);
-const operators=new Set(['www.trip.com','www.shairport.com','service.shmetro.com','map.amap.com','www.12306.cn','mobile.12306.cn','kyfw.12306.cn','www.marriott.com','pullman.accor.com','www.hyatt.com','www.96822.com','www.shanghaiairport.com','tenpaygo.com','www.global.jcb']);
+const governments=new Set(['en.shio.gov.cn','german.beijing.gov.cn','english.shanghai.gov.cn','www.shanghai.gov.cn','jtw.sh.gov.cn','service.shanghai.gov.cn','english.beijing.gov.cn','jtw.beijing.gov.cn','sww.sh.gov.cn','www.gov.cn','kab.sww.sh.gov.cn','www.shcn.gov.cn','www.shbsq.gov.cn','www.jinshan.gov.cn','www.jingan.gov.cn','www.shjjjc.gov.cn','whlyj.sh.gov.cn','en.by.gov.cn','qh.sz.gov.cn','www.sz.gov.cn']);
+const operators=new Set(['www.trip.com','www.shairport.com','service.shmetro.com','map.amap.com','www.12306.cn','mobile.12306.cn','kyfw.12306.cn','www.marriott.com','pullman.accor.com','www.hyatt.com','www.96822.com','www.shanghaiairport.com','tenpaygo.com','www.global.jcb','www.mtr.com.hk']);
 function host(url){try{return new URL(url).hostname;}catch(_){return '';}}
 function source(row,now=Date.now()){
  const gov=governments.has(host(row.url)),operator=operators.has(host(row.url)),summary=Boolean(row.summary||row.summaryZh),current=Boolean(row.reviewedAt&&Date.parse(row.reviewedAt)<=now&&now-Date.parse(row.reviewedAt)<=Number(row.reviewDays||14)*86400000),held=row.active===false||row.lastCheck?.status==='changed';

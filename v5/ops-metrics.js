@@ -8,11 +8,12 @@ function rows(data){const q=data.quality||{},m=data.metrics||{},i=data.insights|
  const missing=(key,label,formula,events,meaning)=>({key,label,value:null,n:null,d:null,unit:'percent',formula,events,meaning,window:'待接入',target:null,status:'未接入'});
  const measured=(key,label,metric,events,meaning)=>ratio(key,label,metric?.n,metric?.d,'分子 / 分母，按同一去重粒度统计',events,meaning,'近 '+(i.days||7)+' 天',metric?.target??null);
  const out=[
+  ratio('kb_direct_share','标准KB直出占比',i.kb?.served,i.kb?.denominator,'KB直出执行 / 同窗口已留存执行','execution.mode=kb-direct + kb.entryId/sourceHash/modelCalls','仅留存执行，不是全站用户；零生成不等于已计算金额节省。'),
   ratio('resolution','用户确认解决率',q.solved,q.rated,'最新评价为“已解决”的回答 / 有评价的回答','answer_shown + resolution，visitor/chat/answerId/outcome','无反馈不算失败；不是订单或完整旅行任务完成率。','近 '+(m.days||7)+' 天',.4),
   {key:'feedback_coverage',label:'解决反馈覆盖率',value:finite(q.coverage)?q.coverage:null,n:finite(q.coverage)&&finite(q.shown)?Math.round(q.coverage*q.shown):null,d:finite(q.shown)?q.shown:null,unit:'percent',formula:'能匹配展示事件的已评价回答 / 已展示回答',events:'answer_shown + resolution，匹配 session/answerId',meaning:'区分没收到评价与没有解决，防止选择偏差被隐藏。',window:'近 '+(m.days||7)+' 天',target:null,status:!finite(q.shown)?'未接入':q.shown<1?'暂无样本':q.shown<30?'样本不足':'可观察'},
   measured('csat_legacy','历史独立满意度（旧版）',find('满意'),'csat_up/csat_down，session/answerId/at；每个回答保留最新评价','旧版独立赞踩保留供回查。新版只收一次解决反馈，不能把解决率冒充独立CSAT。'),
   measured('intent_accuracy','人工标注意图准确率',find('意图准确'),'executionId + intentCorrect + reviewer + reviewedAt','只计算人工核对过原问题的执行，模型自评不作真值。'),
-  measured('retrieval_nonempty','检索有结果率',find('检索有结果'),'executionId + retrieval.hits + dataset + at','有片段不代表片段正确；需要配合召回标注和回答验收。'),
+  measured('retrieval_nonempty','检索有结果率',find('检索有结果'),'executionId + retrieval.hits + dataset + at','KB直出不进入检索分母；有片段不代表片段正确，仍需召回标注与回答验收。'),
   missing('retrieval_relevance','检索正确命中率','召回正确资料的标注问题 / 已标注检索问题','queryId + expectedSourceIds + retrievedSourceIds + judge','需要独立正确资料标签；20,000 条离线回归不能充当线上命中率。'),
   measured('suggestion_ctr','猜你想问点击率',find('猜你想问'),'suggestion_view/click，session/item/at；至少50%可见，点击需在曝光后30分钟内','按会话＋建议卡片去重，不能拿点击总数除页面访问总数。'),
   ratio('provider_funnel','推荐到平台入口转化',f[3],f[2],'按序看到推荐且点击平台的会话 / 按序看到推荐的会话','chat_started → user_message → offer_view → product_click，session/kind/item/at','同一会话、30分钟窗口；只到平台外跳，不代表购票或成交。','近 '+(m.days||7)+' 天'),

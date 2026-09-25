@@ -21,5 +21,5 @@ const questions=[
 ['上海地铁票和高铁票是同一种票吗？','Are Shanghai metro tickets and high-speed train tickets the same?'],
 ['浦东和虹桥机场的航班去哪里核对？','Where can I verify flights at Pudong and Hongqiao airports?'],
 ['青浦区一天路线能导出来吗？','Can you export a one-day Qingpu itinerary?']
-];return{questions};
+];const arrivalQuestions=[["上海机场哪里可以找工作人员帮助？", "Where can I get arrival help at Shanghai airports?"], ["北京大兴机场在哪里找语言帮助？", "Where can I get language help at Beijing Daxing Airport?"], ["广州白云机场T2哪里有国际服务中心？", "Where is international arrival help at Guangzhou Baiyun T2?"], ["深圳宝安机场T3哪里有国际服务中心？", "Where is international arrival help at Shenzhen Airport T3?"], ["香港机场快线线上二维码票怎么使用？", "How do I use my online Hong Kong Airport Express QR ticket?"]];return{questions,arrivalQuestions};
 });

@@ -14,7 +14,7 @@ function item(index){
  const input=before[lang][variant%12]+seed.input+(lang==='en'?' ':' ')+after[lang][Math.floor(variant/12)];
  return{...seed,id:VERSION+':'+index,input,split:'generated-development',family:seed.family,provenance:{type:'authored-template-variation',seedId:seed.id,seedProvenance:seed.provenance,variant,prefix:variant%12,suffix:Math.floor(variant/12)},queryHash:hash(input.normalize('NFKC').toLowerCase().replace(/\s+/g,' ').trim())};
 }
-const evaluatorHash=hash(['./rag','./corpus-eval','./confidence','./library','./loop-evolution'].map(p=>fs.readFileSync(require.resolve(p),'utf8').replace(/\r\n/g,'\n')).join('\n'));
+const evaluatorHash=hash(['./rag','./city-scope','./city-sources','./retrieval-plan','./kb-direct','./answer-guard','./corpus-eval','./confidence','./library','./loop-evolution'].map(p=>fs.readFileSync(require.resolve(p),'utf8').replace(/\r\n/g,'\n')).join('\n'));
 function configHash(c){return hash(H.config(c));}
 function sourceHash(records){return hash(records.map(r=>[r.id,r.publicationHash||'',r.active,r.reviewedAt,r.reviewDays,r.content,r.summaryZh,r.summary,r.title,r.city,r.topics,r.lastCheck?.status]));}
 const bitGet=(encoded,index)=>Boolean(Buffer.from(encoded||'','base64')[Math.floor(index/8)]&(1<<(index%8)));
