@@ -63,7 +63,7 @@ function visibleRows(rows,limit=6){
 function answerHTML(h){
  const a=h.assistance,zh=(h.language||TravelApp.getState().language)==='zh',rows=answerRows(h),body=cards(visibleRows(rows),zh);
  const evidence=[...new Set((a?.execution?.retrieval?.hits||[]).map(hit=>hit.sourceId))].map(id=>TravelLibrary.get(id)).filter(Boolean);
- return (body?'<div class="answer-services">'+body+'</div><p class="muted">'+(zh?'可在运营方查询当前价格和可用量；未下单或预订。':'Check providers for current prices and availability; no order or reservation has been made.')+'</p>':'')+(a?.execution?'<details class="answer-evidence"><summary>'+(zh?'这次回答查了哪些资料？':'What evidence was retrieved?')+'</summary><ul>'+evidence.map(r=>{const url=webUrl(r.url);return url?'<li><a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">'+esc(r.title)+' ↗</a></li>':'';}).join('')+'</ul></details>':'');
+ return (window.TravelThemeUI?.html(h)||'')+(a?.modelRouting?'<small class="answer-model">'+esc(a.modelRouting.selected.toUpperCase())+' · '+esc(a.modelRouting.reason)+'</small>':'')+(body?'<div class="answer-services">'+body+'</div><p class="muted">'+(zh?'可在运营方查询当前价格和可用量；未下单或预订。':'Check providers for current prices and availability; no order or reservation has been made.')+'</p>':'')+(a?.execution?'<details class="answer-evidence"><summary>'+(zh?'这次回答查了哪些资料？':'What evidence was retrieved?')+'</summary><ul>'+evidence.map(r=>{const url=webUrl(r.url);return url?'<li><a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">'+esc(r.title)+' ↗</a></li>':'';}).join('')+'</ul></details>':'');
 }
 function hasVerified(h){return answerRows(h).some(row=>row.status!=='provider-search'&&usable(row));}
 window.TravelServiceUI={render,answerHTML,answerRows,cards,hasVerified};render();

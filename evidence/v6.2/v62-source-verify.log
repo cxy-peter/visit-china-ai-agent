@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "target_reached": true,
+    "unique_urls": true,
+    "unique_ids": true,
+    "hash_matches_report": true,
+    "only_known_government_hosts": true,
+    "new_rows_are_index_only": true,
+    "new_rows_have_provenance": true,
+    "new_rows_not_marked_body_fetched": true,
+    "old_body_hashes_preserved": true
+  },
+  "passed": true,
+  "count": 5000
+}

@@ -1,0 +1,2396 @@
+{
+  "url": "https://visit-china-ai-agent-67eh9vm5m-cxy-peters-projects.vercel.app",
+  "checks": [
+    {
+      "name": "V6.2 cloud reports configured DeepSeek",
+      "passed": true
+    },
+    {
+      "name": "admin login",
+      "passed": true
+    },
+    {
+      "name": "isolated QA experience code",
+      "passed": true
+    },
+    {
+      "name": "experience code connects",
+      "passed": true
+    },
+    {
+      "name": "real intent 1",
+      "passed": true
+    },
+    {
+      "name": "grounded 1",
+      "passed": true
+    },
+    {
+      "name": "evaluation dataset 1",
+      "passed": true
+    },
+    {
+      "name": "JCB positively supported without private balance",
+      "passed": true
+    },
+    {
+      "name": "auto selects Pro for qualified support",
+      "passed": true
+    },
+    {
+      "name": "real intent 2",
+      "passed": true
+    },
+    {
+      "name": "grounded 2",
+      "passed": true
+    },
+    {
+      "name": "evaluation dataset 2",
+      "passed": true
+    },
+    {
+      "name": "manual Flash respected 2",
+      "passed": true
+    },
+    {
+      "name": "real intent 3",
+      "passed": true
+    },
+    {
+      "name": "grounded 3",
+      "passed": true
+    },
+    {
+      "name": "evaluation dataset 3",
+      "passed": true
+    },
+    {
+      "name": "route stops carry sources 3",
+      "passed": true
+    },
+    {
+      "name": "real intent 4",
+      "passed": true
+    },
+    {
+      "name": "grounded 4",
+      "passed": true
+    },
+    {
+      "name": "evaluation dataset 4",
+      "passed": true
+    },
+    {
+      "name": "route stops carry sources 4",
+      "passed": true
+    },
+    {
+      "name": "real intent 5",
+      "passed": true
+    },
+    {
+      "name": "grounded 5",
+      "passed": true
+    },
+    {
+      "name": "evaluation dataset 5",
+      "passed": true
+    },
+    {
+      "name": "manual Flash respected 5",
+      "passed": true
+    },
+    {
+      "name": "real intent 6",
+      "passed": true
+    },
+    {
+      "name": "grounded 6",
+      "passed": true
+    },
+    {
+      "name": "evaluation dataset 6",
+      "passed": true
+    },
+    {
+      "name": "manual Flash respected 6",
+      "passed": true
+    },
+    {
+      "name": "context retained for itinerary time and hotel correction",
+      "passed": true
+    },
+    {
+      "name": "body assessment and loop APIs available",
+      "passed": true
+    },
+    {
+      "name": "API key is rejected as the wrong credential type",
+      "passed": true
+    }
+  ],
+  "answers": [
+    {
+      "input": "我想用JCB银行卡直接拍卡坐上海地铁，可以吗？没有告诉你额度会影响判断吗？",
+      "language": "zh",
+      "answer": {
+        "text": "可以。上海地铁自2025年6月28日起在全网（含市域线）试点银行卡拍卡过闸，支持可在国内使用的JCB芯片闪付卡；JCB也已确认可用JCB非接触式卡在上海地铁闸机直接拍卡付车费。但需满足：卡片具有JCB非接触式芯片且非TYPE-B芯片、开通小额免密、余额或信用额度充足；无需另外开通地铁拍卡功能。未告知额度不影响判断品牌支持，因为JCB品牌支持与某张卡能否实际扣款是两层问题；是否支持与账户可用额度无关。若进站失败可换乘车码，进站后出站失败请到车站服务中心处理。",
+        "sourceIds": [
+          "sh-metro-jcb-contactless",
+          "operator-jcb-shanghai-contactless"
+        ],
+        "mode": "deepseek",
+        "notice": "saved-summaries",
+        "intent": {
+          "kind": "metro_ticket",
+          "origin": null,
+          "destination": null,
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 5605,
+          "completion_tokens": 1726,
+          "total_tokens": 7331
+        },
+        "services": [
+          {
+            "id": "service-metro_ticket",
+            "kind": "metro_ticket",
+            "title": "上海地铁购票与乘车",
+            "description": "地铁可使用 Metro 大都会或支付宝、微信中的乘车服务。单程票可在车站购买，当日有效；出站换乘不能沿用同一张单程票。票价按距离计算，以车站和官方查询结果为准。",
+            "url": "https://english.shanghai.gov.cn/en-Individuals-Transportation-PublicTransport/20260813/f257d5c373db4da3a8bde717b9f46b27.html",
+            "sourceId": "sh-metro-tickets",
+            "status": "official-guide",
+            "liveAvailability": false
+          }
+        ],
+        "confidence": {
+          "model": 0.97,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "sh-metro-jcb-contactless",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "operator-jcb-shanghai-contactless",
+              "score": 85,
+              "level": "high",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "已匹配运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 85,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 91
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 10529
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 78
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "metro_ticket"
+            },
+            {
+              "name": "grounded_generation",
+              "status": "completed",
+              "reason": "EVIDENCE_ALIGNMENT",
+              "ms": 12582
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 513,
+            "candidates": 461,
+            "elapsedMs": 78,
+            "hits": [
+              {
+                "id": "sh-metro-jcb-contactless:c5f466ebdc86174e:0",
+                "sourceId": "sh-metro-jcb-contactless",
+                "version": "c5f466ebdc86174e",
+                "score": 0.03796,
+                "coverage": 0.424
+              },
+              {
+                "id": "operator-jcb-shanghai-contactless:3d017fc410ef1656:0",
+                "sourceId": "operator-jcb-shanghai-contactless",
+                "version": "3d017fc410ef1656",
+                "score": 0.03487,
+                "coverage": 0.273
+              },
+              {
+                "id": "operator-jcb-shanghai-contactless:3d017fc410ef1656:1",
+                "sourceId": "operator-jcb-shanghai-contactless",
+                "version": "3d017fc410ef1656",
+                "score": 0.02882,
+                "coverage": 0.03
+              },
+              {
+                "id": "sh-metro:8bafe358a25a4099:0",
+                "sourceId": "sh-metro",
+                "version": "8bafe358a25a4099",
+                "score": 0.02683,
+                "coverage": 0.242
+              },
+              {
+                "id": "news-tenpaygo-20260924:19cb946f176278d7:0",
+                "sourceId": "news-tenpaygo-20260924",
+                "version": "19cb946f176278d7",
+                "score": 0.02603,
+                "coverage": 0.212
+              },
+              {
+                "id": "sh-marriott-city-centre:d95fbe4d18488db5:0",
+                "sourceId": "sh-marriott-city-centre",
+                "version": "d95fbe4d18488db5",
+                "score": 0.02432,
+                "coverage": 0.121
+              },
+              {
+                "id": "news-nihao-china-shanghai-20260817:739f3f5d3d0ae667:0",
+                "sourceId": "news-nihao-china-shanghai-20260817",
+                "version": "739f3f5d3d0ae667",
+                "score": 0.02378,
+                "coverage": 0.121
+              },
+              {
+                "id": "sh-metro-map:6a1b43a40e1dfea9:0",
+                "sourceId": "sh-metro-map",
+                "version": "6a1b43a40e1dfea9",
+                "score": 0.02343,
+                "coverage": 0.121
+              }
+            ]
+          },
+          "totalMs": 23287
+        },
+        "modelRouting": {
+          "requested": "auto",
+          "selected": "pro",
+          "model": "deepseek-v4-pro",
+          "thinking": true,
+          "effort": "low",
+          "reason": "需要区分适用条件",
+          "method": "bounded-complexity-rules"
+        },
+        "dataset": "evaluation",
+        "executionId": "452edec8-670e-4a7f-ae54-2bcbf137c3e2",
+        "assessmentId": "953be7a3-ef19-4b94-a373-a89b8eaa1bca"
+      },
+      "error": null,
+      "elapsedSeconds": 26.9
+    },
+    {
+      "input": "Can I use my contactless JCB card at Shanghai metro gates? I have not told you my credit limit.",
+      "language": "en",
+      "answer": {
+        "text": "Yes — JCB brand-level support for direct contactless gate tapping on Shanghai Metro is confirmed in the saved summaries, so not telling me your credit limit does not mean your card is unsupported.\n\nWhat the saved summaries say:\n- JCB's June 30, 2025 announcement covers contactless card payment at Shanghai and Beijing subway gates or designated readers, including airport routes, without buying a ticket first. Network counts in that announcement are historical, not today's scale.\n- Shanghai extended bank-card tap-to-ride to the rail network, including suburban lines, from June 28, 2025. Eligible JCB contactless chip cards are supported, alongside UnionPay, Visa, Mastercard and American Express.\n\nConditions that still apply to your specific card:\n- It must be a JCB contactless chip card usable in China; Type-B chips and cards without ODA are excluded.\n- Small-amount PIN-free payment must be enabled, and you need sufficient balance or available credit.\n- No separate metro activation is needed.\n- This is direct gate tapping, not the same as buying a ticket first or binding the card in an app.\n\nIf entry fails, you can switch to a transit code; if exit fails after entering, go to the station service center. These are saved summaries, not a live check of your card or of current gate settings — confirm with station staff or your issuer if a tap is declined.",
+        "sourceIds": [
+          "operator-jcb-shanghai-contactless",
+          "sh-metro-jcb-contactless",
+          "sh-metro"
+        ],
+        "mode": "deepseek",
+        "notice": "saved-summaries",
+        "intent": {
+          "kind": "metro_ticket",
+          "origin": null,
+          "destination": null,
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 5026,
+          "completion_tokens": 660,
+          "total_tokens": 5686
+        },
+        "services": [
+          {
+            "id": "service-metro_ticket",
+            "kind": "metro_ticket",
+            "title": "Shanghai Metro ticket guide",
+            "description": "Use Metro Daduhui or supported Alipay/WeChat transit services. Buy single-journey tickets at stations; they are valid on the purchase day and do not cover out-of-station transfers. Confirm distance-based fares with the operator.",
+            "url": "https://english.shanghai.gov.cn/en-Individuals-Transportation-PublicTransport/20260813/f257d5c373db4da3a8bde717b9f46b27.html",
+            "sourceId": "sh-metro-tickets",
+            "status": "official-guide",
+            "liveAvailability": false
+          }
+        ],
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "sh-metro",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "sh-metro-jcb-contactless",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "operator-jcb-shanghai-contactless",
+              "score": 85,
+              "level": "high",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "已匹配运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 85,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 101
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 2084
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 76
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "metro_ticket"
+            },
+            {
+              "name": "grounded_generation",
+              "status": "completed",
+              "reason": "EVIDENCE_ALIGNMENT",
+              "ms": 2255
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 513,
+            "candidates": 482,
+            "elapsedMs": 76,
+            "hits": [
+              {
+                "id": "operator-jcb-shanghai-contactless:3d017fc410ef1656:0",
+                "sourceId": "operator-jcb-shanghai-contactless",
+                "version": "3d017fc410ef1656",
+                "score": 0.03773,
+                "coverage": 0.429
+              },
+              {
+                "id": "sh-metro-jcb-contactless:c5f466ebdc86174e:0",
+                "sourceId": "sh-metro-jcb-contactless",
+                "version": "c5f466ebdc86174e",
+                "score": 0.03569,
+                "coverage": 0.429
+              },
+              {
+                "id": "sh-metro-jcb-contactless:c5f466ebdc86174e:1",
+                "sourceId": "sh-metro-jcb-contactless",
+                "version": "c5f466ebdc86174e",
+                "score": 0.03529,
+                "coverage": 0.333
+              },
+              {
+                "id": "operator-jcb-shanghai-contactless:3d017fc410ef1656:1",
+                "sourceId": "operator-jcb-shanghai-contactless",
+                "version": "3d017fc410ef1656",
+                "score": 0.03327,
+                "coverage": 0.19
+              },
+              {
+                "id": "sh-metro:8bafe358a25a4099:0",
+                "sourceId": "sh-metro",
+                "version": "8bafe358a25a4099",
+                "score": 0.02921,
+                "coverage": 0.429
+              },
+              {
+                "id": "news-tenpaygo-20260924:19cb946f176278d7:1",
+                "sourceId": "news-tenpaygo-20260924",
+                "version": "19cb946f176278d7",
+                "score": 0.02502,
+                "coverage": 0.286
+              },
+              {
+                "id": "news-nihao-china-shanghai-20260817:739f3f5d3d0ae667:1",
+                "sourceId": "news-nihao-china-shanghai-20260817",
+                "version": "739f3f5d3d0ae667",
+                "score": 0.02462,
+                "coverage": 0.238
+              },
+              {
+                "id": "verified-hongqiao-airport-taxi:9ec5b44088d58128:1",
+                "sourceId": "verified-hongqiao-airport-taxi",
+                "version": "9ec5b44088d58128",
+                "score": 0.02439,
+                "coverage": 0.143
+              }
+            ]
+          },
+          "totalMs": 4518
+        },
+        "modelRouting": {
+          "requested": "flash",
+          "selected": "flash",
+          "model": "deepseek-flash",
+          "thinking": false,
+          "effort": "none",
+          "reason": "由你手动选择",
+          "method": "manual"
+        },
+        "dataset": "evaluation",
+        "executionId": "e23832f4-596f-4f10-9fd7-c7424d4e382c",
+        "assessmentId": "badefdbc-b304-4a90-8421-1f2c4e0f6fcb"
+      },
+      "error": null,
+      "elapsedSeconds": 8.17
+    },
+    {
+      "input": "我想逛长宁区，早上十点出发，按顺序安排附近吃饭和住宿，帮我导出路线。",
+      "language": "zh",
+      "answer": {
+        "intent": {
+          "kind": "itinerary",
+          "origin": null,
+          "destination": "长宁区",
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null,
+          "theme": "changning",
+          "startTime": "10:00",
+          "days": null,
+          "includeFood": true,
+          "includeHotel": true
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 3236,
+          "completion_tokens": 794,
+          "total_tokens": 4030,
+          "prompt_tokens_details": {
+            "cached_tokens": 768
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 655
+          },
+          "prompt_cache_hit_tokens": 768,
+          "prompt_cache_miss_tokens": 2468
+        },
+        "services": [],
+        "sourceIds": [
+          "theme-changning-walking-map",
+          "theme-changning-yuyuan-food",
+          "theme-changning-huazheng"
+        ],
+        "text": "已按地理片区把路线排好了。长宁：愚园路—中山公园—苏河华政步道。按一个相邻街区组织慢游；愚园路和豫园是不同地点。 建议到达时间、吃住候选和地图见下面；可以修改开始时间或导出行程。",
+        "mode": "deepseek-tool",
+        "notice": "model-intent-source-backed-itinerary",
+        "tool": {
+          "kind": "itinerary",
+          "itinerary": {
+            "schemaVersion": 1,
+            "kind": "itinerary",
+            "theme": "changning",
+            "language": "zh",
+            "title": "长宁：愚园路—中山公园—苏河华政步道",
+            "scope": "按一个相邻街区组织慢游；愚园路和豫园是不同地点。",
+            "city": "Shanghai",
+            "startTime": "10:00",
+            "days": [
+              {
+                "day": 1,
+                "title": "长宁街区",
+                "stops": [
+                  {
+                    "id": "theme-place-yuyuan-road",
+                    "title": "愚园路历史街区",
+                    "nameZh": "愚园路历史街区",
+                    "nameEn": "Yuyuan Road historic neighborhood",
+                    "address": "长宁区愚园路（江苏路至定西路段）",
+                    "description": "从江苏路一侧开始，沿街看历史建筑与街区生活；不要把愚园路当作豫园景区。",
+                    "station": "江苏路",
+                    "category": "walk",
+                    "sourceIds": [
+                      "theme-changning-walking-map",
+                      "theme-changning-yuyuan-food"
+                    ],
+                    "sourceUrls": [
+                      "https://www.shcn.gov.cn/col5685/20240826/1265407.html",
+                      "https://www.shcn.gov.cn/col6991/20251009/1299696.html"
+                    ],
+                    "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E6%84%9A%E5%9B%AD%E8%B7%AF%E5%8E%86%E5%8F%B2%E8%A1%97%E5%8C%BA%20%E9%95%BF%E5%AE%81%E5%8C%BA%E6%84%9A%E5%9B%AD%E8%B7%AF%EF%BC%88%E6%B1%9F%E8%8B%8F%E8%B7%AF%E8%87%B3%E5%AE%9A%E8%A5%BF%E8%B7%AF%E6%AE%B5%EF%BC%89&city=310000&view=map&src=visit-china",
+                    "url": "https://www.shcn.gov.cn/col5685/20240826/1265407.html",
+                    "phone": null,
+                    "phoneRole": null,
+                    "liveAvailability": false,
+                    "order": 1,
+                    "role": "visit",
+                    "plannedArrival": "10:00",
+                    "plannedDeparture": "11:00",
+                    "plannedDurationMinutes": 60,
+                    "transferBufferMinutes": 0,
+                    "timeBasis": "editorial-planning-allocation",
+                    "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+                  },
+                  {
+                    "id": "theme-place-yuyuan-market",
+                    "title": "愚园公共市集",
+                    "nameZh": "愚园公共市集",
+                    "nameEn": "Yuyuan Road Public Market",
+                    "address": "愚园路1088弄片区",
+                    "description": "区政府报道列出过乐喜、宜小蘭、Onita等就餐候选，按现场营业和饮食需要选择。",
+                    "station": "江苏路",
+                    "category": "food",
+                    "sourceIds": [
+                      "theme-changning-yuyuan-food"
+                    ],
+                    "sourceUrls": [
+                      "https://www.shcn.gov.cn/col6991/20251009/1299696.html"
+                    ],
+                    "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E6%84%9A%E5%9B%AD%E5%85%AC%E5%85%B1%E5%B8%82%E9%9B%86%20%E6%84%9A%E5%9B%AD%E8%B7%AF1088%E5%BC%84%E7%89%87%E5%8C%BA&city=310000&view=map&src=visit-china",
+                    "url": "https://www.shcn.gov.cn/col6991/20251009/1299696.html",
+                    "phone": null,
+                    "phoneRole": null,
+                    "liveAvailability": false,
+                    "order": 2,
+                    "role": "meal",
+                    "plannedArrival": "11:30",
+                    "plannedDeparture": "12:30",
+                    "plannedDurationMinutes": 60,
+                    "transferBufferMinutes": 30,
+                    "timeBasis": "editorial-planning-allocation",
+                    "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+                  },
+                  {
+                    "id": "theme-place-zhongshan",
+                    "title": "中山公园",
+                    "nameZh": "中山公园",
+                    "nameEn": "Zhongshan Park",
+                    "address": "长宁区中山公园，万航渡路一侧可衔接华政步道",
+                    "description": "百年公园休息与散步，之后可前往相邻河岸步道。",
+                    "station": "中山公园",
+                    "category": "park",
+                    "sourceIds": [
+                      "theme-changning-walking-map",
+                      "theme-changning-huazheng"
+                    ],
+                    "sourceUrls": [
+                      "https://www.shcn.gov.cn/col5685/20240826/1265407.html",
+                      "https://www.shcn.gov.cn/col314/20230128/1229393.html"
+                    ],
+                    "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E4%B8%AD%E5%B1%B1%E5%85%AC%E5%9B%AD%20%E9%95%BF%E5%AE%81%E5%8C%BA%E4%B8%AD%E5%B1%B1%E5%85%AC%E5%9B%AD%EF%BC%8C%E4%B8%87%E8%88%AA%E6%B8%A1%E8%B7%AF%E4%B8%80%E4%BE%A7%E5%8F%AF%E8%A1%94%E6%8E%A5%E5%8D%8E%E6%94%BF%E6%AD%A5%E9%81%93&city=310000&view=map&src=visit-china",
+                    "url": "https://www.shcn.gov.cn/col5685/20240826/1265407.html",
+                    "phone": null,
+                    "phoneRole": null,
+                    "liveAvailability": false,
+                    "order": 3,
+                    "role": "visit",
+                    "plannedArrival": "13:15",
+                    "plannedDeparture": "14:15",
+                    "plannedDurationMinutes": 60,
+                    "transferBufferMinutes": 45,
+                    "timeBasis": "editorial-planning-allocation",
+                    "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+                  },
+                  {
+                    "id": "theme-place-huazheng",
+                    "title": "苏州河华政步道",
+                    "nameZh": "苏州河华政步道",
+                    "nameEn": "ECUPL promenade on Suzhou Creek",
+                    "address": "万航渡路与华阳路交叉口等公开入口",
+                    "description": "沿公共河岸看历史校园建筑，教学区按现场开放范围参观。",
+                    "station": null,
+                    "category": "walk",
+                    "sourceIds": [
+                      "theme-changning-huazheng"
+                    ],
+                    "sourceUrls": [
+                      "https://www.shcn.gov.cn/col314/20230128/1229393.html"
+                    ],
+                    "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E8%8B%8F%E5%B7%9E%E6%B2%B3%E5%8D%8E%E6%94%BF%E6%AD%A5%E9%81%93%20%E4%B8%87%E8%88%AA%E6%B8%A1%E8%B7%AF%E4%B8%8E%E5%8D%8E%E9%98%B3%E8%B7%AF%E4%BA%A4%E5%8F%89%E5%8F%A3%E7%AD%89%E5%85%AC%E5%BC%80%E5%85%A5%E5%8F%A3&city=310000&view=map&src=visit-china",
+                    "url": "https://www.shcn.gov.cn/col314/20230128/1229393.html",
+                    "phone": null,
+                    "phoneRole": null,
+                    "liveAvailability": false,
+                    "order": 4,
+                    "role": "visit",
+                    "plannedArrival": "14:45",
+                    "plannedDeparture": "15:45",
+                    "plannedDurationMinutes": 60,
+                    "transferBufferMinutes": 30,
+                    "timeBasis": "editorial-planning-allocation",
+                    "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+                  },
+                  {
+                    "id": "theme-place-zpark",
+                    "title": "Zpark Coffee（龙之梦万丽酒店）",
+                    "nameZh": "Zpark Coffee（龙之梦万丽酒店）",
+                    "nameEn": "Zpark Coffee at Renaissance Zhongshan Park",
+                    "address": "长宁路1018号酒店内",
+                    "description": "酒店官网收录的咖啡、简餐休息点，营业和席位向酒店确认。",
+                    "station": "中山公园",
+                    "category": "food",
+                    "sourceIds": [
+                      "theme-changning-renaissance"
+                    ],
+                    "sourceUrls": [
+                      "https://www.marriott.com/en-us/hotels/shabz-renaissance-shanghai-zhongshan-park-hotel/overview/"
+                    ],
+                    "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20Zpark%20Coffee%EF%BC%88%E9%BE%99%E4%B9%8B%E6%A2%A6%E4%B8%87%E4%B8%BD%E9%85%92%E5%BA%97%EF%BC%89%20%E9%95%BF%E5%AE%81%E8%B7%AF1018%E5%8F%B7%E9%85%92%E5%BA%97%E5%86%85&city=310000&view=map&src=visit-china",
+                    "url": "https://www.marriott.com/en-us/hotels/shabz-renaissance-shanghai-zhongshan-park-hotel/overview/",
+                    "phone": null,
+                    "phoneRole": null,
+                    "liveAvailability": false,
+                    "order": 5,
+                    "role": "break",
+                    "plannedArrival": "16:30",
+                    "plannedDeparture": "17:15",
+                    "plannedDurationMinutes": 45,
+                    "transferBufferMinutes": 45,
+                    "timeBasis": "editorial-planning-allocation",
+                    "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+                  }
+                ]
+              }
+            ],
+            "accommodations": [
+              {
+                "id": "theme-place-renaissance",
+                "title": "上海龙之梦万丽酒店",
+                "nameZh": "上海龙之梦万丽酒店",
+                "nameEn": "Renaissance Shanghai Zhongshan Park Hotel",
+                "address": "长宁路1018号",
+                "description": "中山公园地铁站上方的真实酒店，可衔接本路线；房态与价格另查。",
+                "station": "中山公园",
+                "category": "hotel",
+                "sourceIds": [
+                  "theme-changning-renaissance"
+                ],
+                "sourceUrls": [
+                  "https://www.marriott.com/en-us/hotels/shabz-renaissance-shanghai-zhongshan-park-hotel/overview/"
+                ],
+                "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E4%B8%8A%E6%B5%B7%E9%BE%99%E4%B9%8B%E6%A2%A6%E4%B8%87%E4%B8%BD%E9%85%92%E5%BA%97%20%E9%95%BF%E5%AE%81%E8%B7%AF1018%E5%8F%B7&city=310000&view=map&src=visit-china",
+                "url": "https://www.marriott.com/en-us/hotels/shabz-renaissance-shanghai-zhongshan-park-hotel/overview/",
+                "phone": "+86 21 3135 8888",
+                "phoneRole": "hotel-switchboard",
+                "liveAvailability": false,
+                "association": "中山公园站片区，可衔接长宁游览"
+              }
+            ],
+            "sourceIds": [
+              "theme-changning-walking-map",
+              "theme-changning-yuyuan-food",
+              "theme-changning-huazheng"
+            ],
+            "allSourceIds": [
+              "theme-changning-walking-map",
+              "theme-changning-yuyuan-food",
+              "theme-changning-huazheng",
+              "theme-changning-renaissance"
+            ],
+            "sources": [
+              {
+                "id": "theme-changning-walking-map",
+                "title": "长宁中山公园区域慢行地图：魅力苏河与摩登硅巷",
+                "url": "https://www.shcn.gov.cn/col5685/20240826/1265407.html",
+                "reviewedAt": "2026-09-25",
+                "publishedAt": "2024-08-12"
+              },
+              {
+                "id": "theme-changning-yuyuan-food",
+                "title": "愚园路漫步与餐饮：江苏路、公共市集、定西路",
+                "url": "https://www.shcn.gov.cn/col6991/20251009/1299696.html",
+                "reviewedAt": "2026-09-25",
+                "publishedAt": "2025-10-03"
+              },
+              {
+                "id": "theme-changning-huazheng",
+                "title": "苏河华政步道：与中山公园衔接及公开入口",
+                "url": "https://www.shcn.gov.cn/col314/20230128/1229393.html",
+                "reviewedAt": "2026-09-25",
+                "publishedAt": "2023-01-27"
+              },
+              {
+                "id": "theme-changning-renaissance",
+                "title": "上海龙之梦万丽酒店与Azur / Zpark餐饮",
+                "url": "https://www.marriott.com/en-us/hotels/shabz-renaissance-shanghai-zhongshan-park-hotel/overview/",
+                "reviewedAt": "2026-09-25",
+                "publishedAt": null
+              }
+            ],
+            "missingSourceIds": [],
+            "status": "ready",
+            "timeBasis": "editorial-planning-allocation",
+            "liveAvailability": false,
+            "notes": [
+              "时间为可调整的行程建议，不是开馆时间、实时交通预测或已预约时段。",
+              "出发前核对开放、预约、天气与通行；餐饮和酒店不含实时房态、餐位、价格。"
+            ]
+          }
+        },
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "theme-changning-walking-map",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "theme-changning-yuyuan-food",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "theme-changning-huazheng",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 90,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 110
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 9467
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 67
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "itinerary"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 513,
+            "candidates": 26,
+            "elapsedMs": 67,
+            "hits": [
+              {
+                "id": "sh-marriott-city-centre:d95fbe4d18488db5:0",
+                "sourceId": "sh-marriott-city-centre",
+                "version": "d95fbe4d18488db5",
+                "score": 0.02519,
+                "coverage": 0.129
+              },
+              {
+                "id": "sh-metro-map:6a1b43a40e1dfea9:0",
+                "sourceId": "sh-metro-map",
+                "version": "6a1b43a40e1dfea9",
+                "score": 0.01864,
+                "coverage": 0.065
+              },
+              {
+                "id": "verified-hongqiao-rail-station:1c6991b2bad55c70:0",
+                "sourceId": "verified-hongqiao-rail-station",
+                "version": "1c6991b2bad55c70",
+                "score": 0.01843,
+                "coverage": 0.065
+              },
+              {
+                "id": "theme-changning-renaissance:0cda4fc63a50416e:0",
+                "sourceId": "theme-changning-renaissance",
+                "version": "0cda4fc63a50416e",
+                "score": 0.01823,
+                "coverage": 0.129
+              },
+              {
+                "id": "verified-jw-tomorrow-square:1a36c6dd8670882b:0",
+                "sourceId": "verified-jw-tomorrow-square",
+                "version": "1a36c6dd8670882b",
+                "score": 0.0178,
+                "coverage": 0.129
+              },
+              {
+                "id": "verified-courtyard-central:be2f9990c74f069c:0",
+                "sourceId": "verified-courtyard-central",
+                "version": "be2f9990c74f069c",
+                "score": 0.01752,
+                "coverage": 0.129
+              },
+              {
+                "id": "verified-pullman-jingan:d1d198223d8f2b4d:0",
+                "sourceId": "verified-pullman-jingan",
+                "version": "d1d198223d8f2b4d",
+                "score": 0.01697,
+                "coverage": 0.097
+              },
+              {
+                "id": "verified-hyatt-place-hongqiao:8c0d9b56202f6d23:0",
+                "sourceId": "verified-hyatt-place-hongqiao",
+                "version": "8c0d9b56202f6d23",
+                "score": 0.01658,
+                "coverage": 0.097
+              }
+            ]
+          },
+          "totalMs": 9648
+        },
+        "sourceAcquisition": {
+          "sourceId": "off-f7b3425c0c47888e",
+          "score": 5,
+          "eligible": false
+        },
+        "modelRouting": {
+          "requested": "auto",
+          "selected": "pro",
+          "model": "deepseek-v4-pro",
+          "thinking": true,
+          "effort": "low",
+          "reason": "多地点或主题行程",
+          "method": "bounded-complexity-rules"
+        },
+        "dataset": "evaluation",
+        "executionId": "9fdf0f00-cb25-413c-bb25-c19456d874a6",
+        "assessmentId": "d915b01c-bd8c-4dc3-b82b-78c38202b175"
+      },
+      "error": null,
+      "elapsedSeconds": 19.45
+    },
+    {
+      "input": "二战日军攻入上海有哪些相关纪念地可以参观？安排三天路线，包含附近吃什么住哪里。",
+      "language": "zh",
+      "answer": {
+        "intent": {
+          "kind": "itinerary",
+          "origin": null,
+          "destination": null,
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null,
+          "theme": "wwii-shanghai",
+          "startTime": null,
+          "days": 3,
+          "includeFood": true,
+          "includeHotel": true
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 3067,
+          "completion_tokens": 1795,
+          "total_tokens": 4862,
+          "prompt_tokens_details": {
+            "cached_tokens": 1024
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1643
+          },
+          "prompt_cache_hit_tokens": 1024,
+          "prompt_cache_miss_tokens": 2043
+        },
+        "services": [],
+        "sourceIds": [
+          "theme-sihang-memorial",
+          "theme-songhu-memorial",
+          "theme-jinshan-landing"
+        ],
+        "text": "已按地理片区把路线排好了。上海抗战历史：四行仓库—宝山—金山卫。按今天参观动线分天安排，并非日军行军或战役发生先后顺序。四行仓库是战斗遗址，宝山侧重淞沪抗战与人物纪念，金山卫关联1937年11月的登陆史。 建议到达时间、吃住候选和地图见下面；可以修改开始时间或导出行程。",
+        "mode": "deepseek-tool",
+        "notice": "model-intent-source-backed-itinerary",
+        "tool": {
+          "kind": "itinerary",
+          "itinerary": {
+            "schemaVersion": 1,
+            "kind": "itinerary",
+            "theme": "wwii-shanghai",
+            "language": "zh",
+            "title": "上海抗战历史：四行仓库—宝山—金山卫",
+            "scope": "按今天参观动线分天安排，并非日军行军或战役发生先后顺序。四行仓库是战斗遗址，宝山侧重淞沪抗战与人物纪念，金山卫关联1937年11月的登陆史。",
+            "city": "Shanghai",
+            "startTime": "09:30",
+            "days": [
+              {
+                "day": 1,
+                "title": "中心城区",
+                "stops": [
+                  {
+                    "id": "place-sihang",
+                    "title": "四行仓库抗战纪念馆",
+                    "nameZh": "四行仓库抗战纪念馆",
+                    "nameEn": "Sihang Warehouse Battle Memorial",
+                    "address": "静安区光复路21号",
+                    "description": "了解四行仓库历史，毗邻苏州河。",
+                    "station": "曲阜路",
+                    "category": "museum",
+                    "sourceIds": [
+                      "place-sihang"
+                    ],
+                    "sourceUrls": [
+                      "https://english.shanghai.gov.cn/en-ScenicSpots/20250220/48accefa828c45bd908dab51fdd77bcc.html"
+                    ],
+                    "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E5%9B%9B%E8%A1%8C%E4%BB%93%E5%BA%93%E6%8A%97%E6%88%98%E7%BA%AA%E5%BF%B5%E9%A6%86%20%E9%9D%99%E5%AE%89%E5%8C%BA%E5%85%89%E5%A4%8D%E8%B7%AF21%E5%8F%B7&city=310000&view=map&src=visit-china",
+                    "url": "https://english.shanghai.gov.cn/en-ScenicSpots/20250220/48accefa828c45bd908dab51fdd77bcc.html",
+                    "phone": null,
+                    "phoneRole": null,
+                    "liveAvailability": false,
+                    "order": 1,
+                    "role": "visit",
+                    "plannedArrival": "09:30",
+                    "plannedDeparture": "11:00",
+                    "plannedDurationMinutes": 90,
+                    "transferBufferMinutes": 0,
+                    "timeBasis": "editorial-planning-allocation",
+                    "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+                  },
+                  {
+                    "id": "theme-place-jinyuan",
+                    "title": "晋元纪念广场与四行仓库西墙",
+                    "nameZh": "晋元纪念广场与四行仓库西墙",
+                    "nameEn": "Jinyuan Memorial Square and Sihang western wall",
+                    "address": "四行仓库抗战纪念馆外，光复路与晋元路附近",
+                    "description": "与馆内展陈结合理解仓库保卫战；按现场指引参观纪念空间。",
+                    "station": "曲阜路",
+                    "category": "memorial",
+                    "sourceIds": [
+                      "theme-sihang-memorial"
+                    ],
+                    "sourceUrls": [
+                      "https://www.jingan.gov.cn/govxxgk/JA0/2020-08-27/8b99354e-6c58-4503-9b5f-ff637facde1a.html"
+                    ],
+                    "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E6%99%8B%E5%85%83%E7%BA%AA%E5%BF%B5%E5%B9%BF%E5%9C%BA%E4%B8%8E%E5%9B%9B%E8%A1%8C%E4%BB%93%E5%BA%93%E8%A5%BF%E5%A2%99%20%E5%9B%9B%E8%A1%8C%E4%BB%93%E5%BA%93%E6%8A%97%E6%88%98%E7%BA%AA%E5%BF%B5%E9%A6%86%E5%A4%96%EF%BC%8C%E5%85%89%E5%A4%8D%E8%B7%AF%E4%B8%8E%E6%99%8B%E5%85%83%E8%B7%AF%E9%99%84%E8%BF%91&city=310000&view=map&src=visit-china",
+                    "url": "https://www.jingan.gov.cn/govxxgk/JA0/2020-08-27/8b99354e-6c58-4503-9b5f-ff637facde1a.html",
+                    "phone": null,
+                    "phoneRole": null,
+                    "liveAvailability": false,
+                    "order": 2,
+                    "role": "visit",
+                    "plannedArrival": "11:15",
+                    "plannedDeparture": "11:45",
+                    "plannedDurationMinutes": 30,
+                    "transferBufferMinutes": 15,
+                    "timeBasis": "editorial-planning-allocation",
+                    "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+                  },
+                  {
+                    "id": "place-coffee",
+                    "title": "人民咖啡馆（四行仓库）",
+                    "nameZh": "人民咖啡馆（四行仓库）",
+                    "nameEn": "People’s Coffee House at Sihang Warehouse",
+                    "address": "静安区光复路9号",
+                    "description": "政府城市漫步指南收录的咖啡馆；出发前核对门店状态。",
+                    "station": "曲阜路",
+                    "category": "food",
+                    "sourceIds": [
+                      "place-coffee"
+                    ],
+                    "sourceUrls": [
+                      "https://english.shanghai.gov.cn/en-citywalk/20240118/7663535633d248b0acc5e278a80e0da3.html"
+                    ],
+                    "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E4%BA%BA%E6%B0%91%E5%92%96%E5%95%A1%E9%A6%86%EF%BC%88%E5%9B%9B%E8%A1%8C%E4%BB%93%E5%BA%93%EF%BC%89%20%E9%9D%99%E5%AE%89%E5%8C%BA%E5%85%89%E5%A4%8D%E8%B7%AF9%E5%8F%B7&city=310000&view=map&src=visit-china",
+                    "url": "https://english.shanghai.gov.cn/en-citywalk/20240118/7663535633d248b0acc5e278a80e0da3.html",
+                    "phone": null,
+                    "phoneRole": null,
+                    "liveAvailability": false,
+                    "order": 3,
+                    "role": "break",
+                    "plannedArrival": "12:00",
+                    "plannedDeparture": "12:45",
+                    "plannedDurationMinutes": 45,
+                    "transferBufferMinutes": 15,
+                    "timeBasis": "editorial-planning-allocation",
+                    "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+                  },
+                  {
+                    "id": "verified-man-bao-lou",
+                    "title": "满宝楼（雅居乐万豪侯爵酒店）",
+                    "nameZh": "满宝楼（雅居乐万豪侯爵酒店）",
+                    "nameEn": "Man Bao Lou at Shanghai Marriott Marquis City Centre",
+                    "address": "黄浦区西藏中路555号，雅居乐万豪侯爵酒店内",
+                    "description": "当前酒店官网将中餐厅列为满宝楼；保留当前名称，避免沿用第三方旧称。",
+                    "station": "人民广场",
+                    "category": "food",
+                    "sourceIds": [
+                      "verified-man-bao-lou"
+                    ],
+                    "sourceUrls": [
+                      "https://www.marriott.com/en-us/hotels/shamc-shanghai-marriott-marquis-city-centre/dining/"
+                    ],
+                    "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E6%BB%A1%E5%AE%9D%E6%A5%BC%EF%BC%88%E9%9B%85%E5%B1%85%E4%B9%90%E4%B8%87%E8%B1%AA%E4%BE%AF%E7%88%B5%E9%85%92%E5%BA%97%EF%BC%89%20%E9%BB%84%E6%B5%A6%E5%8C%BA%E8%A5%BF%E8%97%8F%E4%B8%AD%E8%B7%AF555%E5%8F%B7%EF%BC%8C%E9%9B%85%E5%B1%85%E4%B9%90%E4%B8%87%E8%B1%AA%E4%BE%AF%E7%88%B5%E9%85%92%E5%BA%97%E5%86%85&city=310000&view=map&src=visit-china",
+                    "url": "https://www.marriott.com/en-us/hotels/shamc-shanghai-marriott-marquis-city-centre/dining/",
+                    "phone": "+86 21 2312 9732",
+                    "phoneRole": "restaurant",
+                    "liveAvailability": false,
+                    "order": 4,
+                    "role": "meal",
+                    "plannedArrival": "13:45",
+                    "plannedDeparture": "14:45",
+                    "plannedDurationMinutes": 60,
+                    "transferBufferMinutes": 60,
+                    "timeBasis": "editorial-planning-allocation",
+                    "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+                  }
+                ]
+              },
+              {
+                "day": 2,
+                "title": "宝山纪念场馆",
+                "stops": [
+                  {
+                    "id": "theme-place-songhu",
+                    "title": "上海淞沪抗战纪念馆",
+                    "nameZh": "上海淞沪抗战纪念馆",
+                    "nameEn": "Shanghai Songhu Memorial Hall",
+                    "address": "宝山区友谊路1号",
+                    "description": "先了解淞沪抗战的历史脉络，区分1932与1937两场战事。",
+                    "station": null,
+                    "category": "museum",
+                    "sourceIds": [
+                      "theme-songhu-memorial",
+                      "theme-songhu-current-directory"
+                    ],
+                    "sourceUrls": [
+                      "https://www.shjjjc.gov.cn/2015jjw/n2346/n2349/u1ai63692.html",
+                      "https://whlyj.sh.gov.cn/bwg/20260106/265b828de4394054bdc2e61e1599ed4c.html"
+                    ],
+                    "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E4%B8%8A%E6%B5%B7%E6%B7%9E%E6%B2%AA%E6%8A%97%E6%88%98%E7%BA%AA%E5%BF%B5%E9%A6%86%20%E5%AE%9D%E5%B1%B1%E5%8C%BA%E5%8F%8B%E8%B0%8A%E8%B7%AF1%E5%8F%B7&city=310000&view=map&src=visit-china",
+                    "url": "https://www.shjjjc.gov.cn/2015jjw/n2346/n2349/u1ai63692.html",
+                    "phone": null,
+                    "phoneRole": null,
+                    "liveAvailability": false,
+                    "order": 1,
+                    "role": "visit",
+                    "plannedArrival": "09:30",
+                    "plannedDeparture": "11:30",
+                    "plannedDurationMinutes": 120,
+                    "transferBufferMinutes": 0,
+                    "timeBasis": "editorial-planning-allocation",
+                    "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+                  },
+                  {
+                    "id": "theme-place-yao",
+                    "title": "姚子青营牺牲处",
+                    "nameZh": "姚子青营牺牲处",
+                    "nameEn": "Yao Ziqing Battalion memorial site",
+                    "address": "友谊路1号淞沪抗战纪念公园内",
+                    "description": "与同一公园的纪念馆组合参观，不把纪念点称为完整原貌战场。",
+                    "station": null,
+                    "category": "memorial",
+                    "sourceIds": [
+                      "theme-songhu-memorial"
+                    ],
+                    "sourceUrls": [
+                      "https://www.shjjjc.gov.cn/2015jjw/n2346/n2349/u1ai63692.html"
+                    ],
+                    "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E5%A7%9A%E5%AD%90%E9%9D%92%E8%90%A5%E7%89%BA%E7%89%B2%E5%A4%84%20%E5%8F%8B%E8%B0%8A%E8%B7%AF1%E5%8F%B7%E6%B7%9E%E6%B2%AA%E6%8A%97%E6%88%98%E7%BA%AA%E5%BF%B5%E5%85%AC%E5%9B%AD%E5%86%85&city=310000&view=map&src=visit-china",
+                    "url": "https://www.shjjjc.gov.cn/2015jjw/n2346/n2349/u1ai63692.html",
+                    "phone": null,
+                    "phoneRole": null,
+                    "liveAvailability": false,
+                    "order": 2,
+                    "role": "visit",
+                    "plannedArrival": "11:50",
+                    "plannedDeparture": "12:35",
+                    "plannedDurationMinutes": 45,
+                    "transferBufferMinutes": 20,
+                    "timeBasis": "editorial-planning-allocation",
+                    "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+                  }
+                ]
+              },
+              {
+                "day": 3,
+                "title": "金山卫登陆史",
+                "stops": [
+                  {
+                    "id": "theme-place-jinshan",
+                    "title": "金山卫抗战遗址纪念园",
+                    "nameZh": "金山卫抗战遗址纪念园",
+                    "nameEn": "Jinshanwei War Memorial Park",
+                    "address": "金山区南安路87号",
+                    "description": "了解1937年11月日军在金山卫登陆的历史，适合单独一天安排。",
+                    "station": null,
+                    "category": "memorial",
+                    "sourceIds": [
+                      "theme-jinshan-landing"
+                    ],
+                    "sourceUrls": [
+                      "https://www.shanghai.gov.cn/jinshan/index.html"
+                    ],
+                    "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E9%87%91%E5%B1%B1%E5%8D%AB%E6%8A%97%E6%88%98%E9%81%97%E5%9D%80%E7%BA%AA%E5%BF%B5%E5%9B%AD%20%E9%87%91%E5%B1%B1%E5%8C%BA%E5%8D%97%E5%AE%89%E8%B7%AF87%E5%8F%B7&city=310000&view=map&src=visit-china",
+                    "url": "https://www.shanghai.gov.cn/jinshan/index.html",
+                    "phone": null,
+                    "phoneRole": null,
+                    "liveAvailability": false,
+                    "order": 1,
+                    "role": "visit",
+                    "plannedArrival": "09:30",
+                    "plannedDeparture": "11:30",
+                    "plannedDurationMinutes": 120,
+                    "transferBufferMinutes": 0,
+                    "timeBasis": "editorial-planning-allocation",
+                    "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+                  }
+                ]
+              }
+            ],
+            "accommodations": [
+              {
+                "id": "sh-marriott-city-centre",
+                "title": "上海雅居乐万豪侯爵酒店",
+                "nameZh": "上海雅居乐万豪侯爵酒店",
+                "nameEn": "Shanghai Marriott Marquis City Centre",
+                "address": "黄浦区西藏中路555号",
+                "description": "酒店官网明确列出附近人民广场地铁站。",
+                "station": "人民广场",
+                "category": "hotel",
+                "sourceIds": [
+                  "sh-marriott-city-centre"
+                ],
+                "sourceUrls": [
+                  "https://www.marriott.com/en-us/hotels/shamc-shanghai-marriott-marquis-city-centre/overview/"
+                ],
+                "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E4%B8%8A%E6%B5%B7%E9%9B%85%E5%B1%85%E4%B9%90%E4%B8%87%E8%B1%AA%E4%BE%AF%E7%88%B5%E9%85%92%E5%BA%97%20%E9%BB%84%E6%B5%A6%E5%8C%BA%E8%A5%BF%E8%97%8F%E4%B8%AD%E8%B7%AF555%E5%8F%B7&city=310000&view=map&src=visit-china",
+                "url": "https://www.marriott.com/en-us/hotels/shamc-shanghai-marriott-marquis-city-centre/overview/",
+                "phone": "+86 21 2312 9888",
+                "phoneRole": "hotel",
+                "liveAvailability": false,
+                "association": "中心城区住宿备选；并非宝山或金山附近酒店"
+              },
+              {
+                "id": "verified-courtyard-central",
+                "title": "上海浦西万怡酒店",
+                "nameZh": "上海浦西万怡酒店",
+                "nameEn": "Courtyard by Marriott Shanghai Central",
+                "address": "静安区恒丰路338号",
+                "description": "官网附近交通列出汉中路站和上海火车站。",
+                "station": "汉中路",
+                "category": "hotel",
+                "sourceIds": [
+                  "verified-courtyard-central"
+                ],
+                "sourceUrls": [
+                  "https://www.marriott.com/en-us/hotels/shapx-courtyard-shanghai-central/overview/"
+                ],
+                "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E4%B8%8A%E6%B5%B7%E6%B5%A6%E8%A5%BF%E4%B8%87%E6%80%A1%E9%85%92%E5%BA%97%20%E9%9D%99%E5%AE%89%E5%8C%BA%E6%81%92%E4%B8%B0%E8%B7%AF338%E5%8F%B7&city=310000&view=map&src=visit-china",
+                "url": "https://www.marriott.com/en-us/hotels/shapx-courtyard-shanghai-central/overview/",
+                "phone": "+86 21 2215 3888",
+                "phoneRole": "hotel",
+                "liveAvailability": false,
+                "association": "中心城区住宿备选；并非宝山或金山附近酒店"
+              }
+            ],
+            "sourceIds": [
+              "theme-sihang-memorial",
+              "theme-songhu-memorial",
+              "theme-jinshan-landing"
+            ],
+            "allSourceIds": [
+              "place-sihang",
+              "theme-sihang-memorial",
+              "place-coffee",
+              "verified-man-bao-lou",
+              "theme-songhu-memorial",
+              "theme-songhu-current-directory",
+              "theme-jinshan-landing",
+              "sh-marriott-city-centre",
+              "verified-courtyard-central"
+            ],
+            "sources": [
+              {
+                "id": "place-sihang",
+                "title": "四行仓库抗战纪念馆 / Sihang Warehouse Battle Memorial",
+                "url": "https://english.shanghai.gov.cn/en-ScenicSpots/20250220/48accefa828c45bd908dab51fdd77bcc.html",
+                "reviewedAt": "2026-09-25",
+                "publishedAt": null
+              },
+              {
+                "id": "theme-sihang-memorial",
+                "title": "四行仓库抗战纪念馆与晋元纪念广场",
+                "url": "https://www.jingan.gov.cn/govxxgk/JA0/2020-08-27/8b99354e-6c58-4503-9b5f-ff637facde1a.html",
+                "reviewedAt": "2026-09-25",
+                "publishedAt": "2020-08-27"
+              },
+              {
+                "id": "place-coffee",
+                "title": "人民咖啡馆（四行仓库） / People’s Coffee House at Sihang Warehouse",
+                "url": "https://english.shanghai.gov.cn/en-citywalk/20240118/7663535633d248b0acc5e278a80e0da3.html",
+                "reviewedAt": "2026-09-25",
+                "publishedAt": null
+              },
+              {
+                "id": "verified-man-bao-lou",
+                "title": "满宝楼（雅居乐万豪侯爵酒店） / Man Bao Lou at Shanghai Marriott Marquis City Centre",
+                "url": "https://www.marriott.com/en-us/hotels/shamc-shanghai-marriott-marquis-city-centre/dining/",
+                "reviewedAt": "2026-09-25",
+                "publishedAt": null
+              },
+              {
+                "id": "theme-songhu-memorial",
+                "title": "上海淞沪抗战纪念馆：宝山地址与纪念点",
+                "url": "https://www.shjjjc.gov.cn/2015jjw/n2346/n2349/u1ai63692.html",
+                "reviewedAt": "2026-09-25",
+                "publishedAt": "2017-10-14"
+              },
+              {
+                "id": "theme-songhu-current-directory",
+                "title": "2025年度上海博物馆名单：淞沪抗战纪念馆",
+                "url": "https://whlyj.sh.gov.cn/bwg/20260106/265b828de4394054bdc2e61e1599ed4c.html",
+                "reviewedAt": "2026-09-25",
+                "publishedAt": "2026-01-06"
+              },
+              {
+                "id": "theme-jinshan-landing",
+                "title": "金山卫抗战遗址纪念园：登陆史与地址",
+                "url": "https://www.shanghai.gov.cn/jinshan/index.html",
+                "reviewedAt": "2026-09-25",
+                "publishedAt": null
+              },
+              {
+                "id": "sh-marriott-city-centre",
+                "title": "上海雅居乐万豪侯爵酒店 · Marriott Marquis City Centre",
+                "url": "https://www.marriott.com/en-us/hotels/shamc-shanghai-marriott-marquis-city-centre/overview/",
+                "reviewedAt": "2026-09-25",
+                "publishedAt": null
+              },
+              {
+                "id": "verified-courtyard-central",
+                "title": "上海浦西万怡酒店 / Courtyard by Marriott Shanghai Central",
+                "url": "https://www.marriott.com/en-us/hotels/shapx-courtyard-shanghai-central/overview/",
+                "reviewedAt": "2026-09-25",
+                "publishedAt": null
+              }
+            ],
+            "missingSourceIds": [],
+            "status": "ready",
+            "timeBasis": "editorial-planning-allocation",
+            "liveAvailability": false,
+            "notes": [
+              "时间为可调整的行程建议，不是开馆时间、实时交通预测或已预约时段。",
+              "出发前核对开放、预约、天气与通行；餐饮和酒店不含实时房态、餐位、价格。",
+              "宝山与金山分开安排；两处尚无同片区已核验餐饮酒店记录，可在导航中就近查询或向运营补充资料。"
+            ]
+          }
+        },
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "theme-sihang-memorial",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "theme-songhu-memorial",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "theme-jinshan-landing",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 90,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 43
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 21926
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 53
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "itinerary"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 513,
+            "candidates": 53,
+            "elapsedMs": 53,
+            "hits": [
+              {
+                "id": "place-sihang:21d5ef392fde1d0a:0",
+                "sourceId": "place-sihang",
+                "version": "21d5ef392fde1d0a",
+                "score": 0.02907,
+                "coverage": 0.155
+              },
+              {
+                "id": "sh-marriott-city-centre:d95fbe4d18488db5:0",
+                "sourceId": "sh-marriott-city-centre",
+                "version": "d95fbe4d18488db5",
+                "score": 0.02237,
+                "coverage": 0.086
+              },
+              {
+                "id": "theme-jinshan-landing:86d14d3e6d86d8ec:0",
+                "sourceId": "theme-jinshan-landing",
+                "version": "86d14d3e6d86d8ec",
+                "score": 0.02006,
+                "coverage": 0.328
+              },
+              {
+                "id": "theme-sihang-memorial:52a5c57d9e027257:0",
+                "sourceId": "theme-sihang-memorial",
+                "version": "52a5c57d9e027257",
+                "score": 0.01958,
+                "coverage": 0.31
+              },
+              {
+                "id": "theme-songhu-memorial:d53af8d84ba3be3e:0",
+                "sourceId": "theme-songhu-memorial",
+                "version": "d53af8d84ba3be3e",
+                "score": 0.01761,
+                "coverage": 0.155
+              },
+              {
+                "id": "theme-songhu-current-directory:137528a015bff7b3:0",
+                "sourceId": "theme-songhu-current-directory",
+                "version": "137528a015bff7b3",
+                "score": 0.01704,
+                "coverage": 0.121
+              },
+              {
+                "id": "verified-courtyard-central:be2f9990c74f069c:0",
+                "sourceId": "verified-courtyard-central",
+                "version": "be2f9990c74f069c",
+                "score": 0.01612,
+                "coverage": 0.086
+              },
+              {
+                "id": "theme-changning-renaissance:0cda4fc63a50416e:0",
+                "sourceId": "theme-changning-renaissance",
+                "version": "0cda4fc63a50416e",
+                "score": 0.01602,
+                "coverage": 0.086
+              }
+            ]
+          },
+          "totalMs": 22023
+        },
+        "modelRouting": {
+          "requested": "pro",
+          "selected": "pro",
+          "model": "deepseek-v4-pro",
+          "thinking": true,
+          "effort": "low",
+          "reason": "由你手动选择",
+          "method": "manual"
+        },
+        "dataset": "evaluation",
+        "executionId": "f8853a11-e1c0-47ae-99aa-1870675ff795",
+        "assessmentId": "dcb229cf-a9d0-4464-a0cb-f1fd80445575"
+      },
+      "error": null,
+      "elapsedSeconds": 27.06
+    },
+    {
+      "input": "上海浦东机场坐地铁去上海火车站，具体哪里换乘？",
+      "language": "zh",
+      "answer": {
+        "intent": {
+          "kind": "metro",
+          "origin": "浦东机场",
+          "destination": "上海火车站",
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 3010,
+          "completion_tokens": 86,
+          "total_tokens": 3096,
+          "prompt_tokens_details": {
+            "cached_tokens": 896
+          },
+          "prompt_cache_hit_tokens": 896,
+          "prompt_cache_miss_tokens": 2114
+        },
+        "services": [],
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "sh-metro-map",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 90,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "text": "从浦东1号2号航站楼乘坐2号线（往蟠祥路·国家会计学院方向），到人民广场下车。 在人民广场换乘1号线（往富锦路方向），到上海火车站下车。 路线图和途经站在下方。",
+        "sourceIds": [
+          "sh-metro-map"
+        ],
+        "mode": "deepseek-tool",
+        "notice": "model-intent-verified-tool",
+        "tool": {
+          "kind": "metro",
+          "metro": {
+            "kind": "metro",
+            "origin": "浦东1号2号航站楼",
+            "destination": "上海火车站",
+            "via": null
+          },
+          "estimate": null,
+          "request": null,
+          "places": null
+        },
+        "routeVersion": "shanghai-metro-2026-09-25",
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 55
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 1162
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 46
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "metro"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 513,
+            "candidates": 481,
+            "elapsedMs": 46,
+            "hits": [
+              {
+                "id": "station-15:6f80ee45a8a01e1d:0",
+                "sourceId": "station-15",
+                "version": "6f80ee45a8a01e1d",
+                "score": 0.03508,
+                "coverage": 0.429
+              },
+              {
+                "id": "verified-metro-lockers:ac7d654795dd78d2:0",
+                "sourceId": "verified-metro-lockers",
+                "version": "ac7d654795dd78d2",
+                "score": 0.02575,
+                "coverage": 0.429
+              },
+              {
+                "id": "verified-pvg-rest-charging:3c747ba8fb743181:0",
+                "sourceId": "verified-pvg-rest-charging",
+                "version": "3c747ba8fb743181",
+                "score": 0.02559,
+                "coverage": 0.19
+              },
+              {
+                "id": "verified-pvg-taxi:cca2a96bbc4759cf:0",
+                "sourceId": "verified-pvg-taxi",
+                "version": "cca2a96bbc4759cf",
+                "score": 0.02496,
+                "coverage": 0.143
+              },
+              {
+                "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                "sourceId": "verified-shanghai-rail-station",
+                "version": "26195dc7b3d7255a",
+                "score": 0.02406,
+                "coverage": 0.381
+              },
+              {
+                "id": "verified-pvg-taxi:cca2a96bbc4759cf:1",
+                "sourceId": "verified-pvg-taxi",
+                "version": "cca2a96bbc4759cf",
+                "score": 0.0235,
+                "coverage": 0.143
+              },
+              {
+                "id": "verified-hongqiao-airport-taxi:9ec5b44088d58128:0",
+                "sourceId": "verified-hongqiao-airport-taxi",
+                "version": "9ec5b44088d58128",
+                "score": 0.02094,
+                "coverage": 0.238
+              },
+              {
+                "id": "verified-hongqiao-rail-station:1c6991b2bad55c70:0",
+                "sourceId": "verified-hongqiao-rail-station",
+                "version": "1c6991b2bad55c70",
+                "score": 0.02047,
+                "coverage": 0.333
+              }
+            ]
+          },
+          "totalMs": 1267
+        },
+        "modelRouting": {
+          "requested": "flash",
+          "selected": "flash",
+          "model": "deepseek-flash",
+          "thinking": false,
+          "effort": "none",
+          "reason": "由你手动选择",
+          "method": "manual"
+        },
+        "dataset": "evaluation",
+        "executionId": "184dd56f-cd08-4442-87f2-38be172a4b56",
+        "assessmentId": "e00a1072-2ad2-4ca4-97d3-73935e881518"
+      },
+      "error": null,
+      "elapsedSeconds": 5.65
+    },
+    {
+      "input": "Before travelling to Shanghai, Are all transport functions of TenPayGo already available?",
+      "language": "en",
+      "answer": {
+        "text": "Short answer: the saved summaries do not show that all TenPayGo transport functions are already available in Shanghai.\n\nWhat the saved evidence supports: TenPayGo is Tencent's app for visitors to China, letting you pay at Weixin Pay merchants with supported international cards, Apple Pay or supported overseas e-wallets, without a Chinese phone number or Weixin account. Its official App Store listing mentions transaction history and a gradual rollout of more local services.\n\nWhat is explicitly not established: Shanghai Metro gate support, universal overseas-wallet eligibility, and zero fees. The saved summary says to check current in-app availability and terms rather than assume these.\n\nSeparately, Shanghai Metro's own published pilot allows eligible contactless bank cards, including specified international card schemes, to tap directly at gates. Conditions apply: card-chip compatibility, small-amount password-free payment enabled, and sufficient balance or available credit. Type-B chips and cards without ODA are excluded. This is direct gate tapping, not the same as buying tickets or binding a card in an app.\n\nSo: TenPayGo payment at merchants is supported per the saved summary; full transport coverage in Shanghai is not confirmed. Verify live in the app and with the metro operator before you travel. No booking or other action has been executed.",
+        "sourceIds": [
+          "news-tenpaygo-20260924",
+          "sh-metro",
+          "sh-metro-jcb-contactless"
+        ],
+        "mode": "deepseek",
+        "notice": "saved-summaries",
+        "intent": {
+          "kind": "other",
+          "origin": null,
+          "destination": null,
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 4668,
+          "completion_tokens": 608,
+          "total_tokens": 5276
+        },
+        "services": [],
+        "confidence": {
+          "model": 0.72,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "sh-metro",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "news-tenpaygo-20260924",
+              "score": 85,
+              "level": "high",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "已匹配运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "sh-metro-jcb-contactless",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 85,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [
+            "模型意图自评偏低"
+          ],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 57
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 2124
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 41
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "other"
+            },
+            {
+              "name": "grounded_generation",
+              "status": "completed",
+              "reason": "EVIDENCE_ALIGNMENT",
+              "ms": 2022
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 513,
+            "candidates": 33,
+            "elapsedMs": 41,
+            "hits": [
+              {
+                "id": "news-tenpaygo-20260924:19cb946f176278d7:1",
+                "sourceId": "news-tenpaygo-20260924",
+                "version": "19cb946f176278d7",
+                "score": 0.02952,
+                "coverage": 0.231
+              },
+              {
+                "id": "news-tenpaygo-20260924:19cb946f176278d7:0",
+                "sourceId": "news-tenpaygo-20260924",
+                "version": "19cb946f176278d7",
+                "score": 0.02912,
+                "coverage": 0.077
+              },
+              {
+                "id": "verified-pvg-rest-charging:3c747ba8fb743181:1",
+                "sourceId": "verified-pvg-rest-charging",
+                "version": "3c747ba8fb743181",
+                "score": 0.02834,
+                "coverage": 0.308
+              },
+              {
+                "id": "pvg-arrival:5985bdc9e0cddcd4:1",
+                "sourceId": "pvg-arrival",
+                "version": "5985bdc9e0cddcd4",
+                "score": 0.02733,
+                "coverage": 0.231
+              },
+              {
+                "id": "verified-hongqiao-p10-charging:d5012857ac09a5cc:1",
+                "sourceId": "verified-hongqiao-p10-charging",
+                "version": "d5012857ac09a5cc",
+                "score": 0.02668,
+                "coverage": 0.231
+              },
+              {
+                "id": "sh-metro:8bafe358a25a4099:0",
+                "sourceId": "sh-metro",
+                "version": "8bafe358a25a4099",
+                "score": 0.02662,
+                "coverage": 0.308
+              },
+              {
+                "id": "pvg-arrival:5985bdc9e0cddcd4:0",
+                "sourceId": "pvg-arrival",
+                "version": "5985bdc9e0cddcd4",
+                "score": 0.02568,
+                "coverage": 0.308
+              },
+              {
+                "id": "sh-metro-map:6a1b43a40e1dfea9:0",
+                "sourceId": "sh-metro-map",
+                "version": "6a1b43a40e1dfea9",
+                "score": 0.02418,
+                "coverage": 0.231
+              }
+            ]
+          },
+          "totalMs": 4247
+        },
+        "modelRouting": {
+          "requested": "flash",
+          "selected": "flash",
+          "model": "deepseek-flash",
+          "thinking": false,
+          "effort": "none",
+          "reason": "由你手动选择",
+          "method": "manual"
+        },
+        "dataset": "evaluation",
+        "executionId": "e5b55f5c-217b-45f4-8be5-bcb48d01066d",
+        "assessmentId": "cce3c57b-3679-4e31-9002-0e31a8ace9bd"
+      },
+      "error": null,
+      "elapsedSeconds": 7.92
+    },
+    {
+      "input": "改成十一点半开始，酒店先不要了。",
+      "answer": {
+        "intent": {
+          "kind": "itinerary",
+          "origin": null,
+          "destination": null,
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null,
+          "theme": "changning",
+          "startTime": "11:30",
+          "days": null,
+          "includeFood": true,
+          "includeHotel": false
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 3188,
+          "completion_tokens": 495,
+          "total_tokens": 3683,
+          "prompt_tokens_details": {
+            "cached_tokens": 1024
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 359
+          },
+          "prompt_cache_hit_tokens": 1024,
+          "prompt_cache_miss_tokens": 2164
+        },
+        "services": [],
+        "sourceIds": [
+          "theme-changning-walking-map",
+          "theme-changning-yuyuan-food",
+          "theme-changning-huazheng"
+        ],
+        "text": "已按地理片区把路线排好了。长宁：愚园路—中山公园—苏河华政步道。按一个相邻街区组织慢游；愚园路和豫园是不同地点。 建议到达时间、吃住候选和地图见下面；可以修改开始时间或导出行程。",
+        "mode": "deepseek-tool",
+        "notice": "model-intent-source-backed-itinerary",
+        "tool": {
+          "kind": "itinerary",
+          "itinerary": {
+            "schemaVersion": 1,
+            "kind": "itinerary",
+            "theme": "changning",
+            "language": "zh",
+            "title": "长宁：愚园路—中山公园—苏河华政步道",
+            "scope": "按一个相邻街区组织慢游；愚园路和豫园是不同地点。",
+            "city": "Shanghai",
+            "startTime": "11:30",
+            "days": [
+              {
+                "day": 1,
+                "title": "长宁街区",
+                "stops": [
+                  {
+                    "id": "theme-place-yuyuan-road",
+                    "title": "愚园路历史街区",
+                    "nameZh": "愚园路历史街区",
+                    "nameEn": "Yuyuan Road historic neighborhood",
+                    "address": "长宁区愚园路（江苏路至定西路段）",
+                    "description": "从江苏路一侧开始，沿街看历史建筑与街区生活；不要把愚园路当作豫园景区。",
+                    "station": "江苏路",
+                    "category": "walk",
+                    "sourceIds": [
+                      "theme-changning-walking-map",
+                      "theme-changning-yuyuan-food"
+                    ],
+                    "sourceUrls": [
+                      "https://www.shcn.gov.cn/col5685/20240826/1265407.html",
+                      "https://www.shcn.gov.cn/col6991/20251009/1299696.html"
+                    ],
+                    "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E6%84%9A%E5%9B%AD%E8%B7%AF%E5%8E%86%E5%8F%B2%E8%A1%97%E5%8C%BA%20%E9%95%BF%E5%AE%81%E5%8C%BA%E6%84%9A%E5%9B%AD%E8%B7%AF%EF%BC%88%E6%B1%9F%E8%8B%8F%E8%B7%AF%E8%87%B3%E5%AE%9A%E8%A5%BF%E8%B7%AF%E6%AE%B5%EF%BC%89&city=310000&view=map&src=visit-china",
+                    "url": "https://www.shcn.gov.cn/col5685/20240826/1265407.html",
+                    "phone": null,
+                    "phoneRole": null,
+                    "liveAvailability": false,
+                    "order": 1,
+                    "role": "visit",
+                    "plannedArrival": "11:30",
+                    "plannedDeparture": "12:30",
+                    "plannedDurationMinutes": 60,
+                    "transferBufferMinutes": 0,
+                    "timeBasis": "editorial-planning-allocation",
+                    "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+                  },
+                  {
+                    "id": "theme-place-yuyuan-market",
+                    "title": "愚园公共市集",
+                    "nameZh": "愚园公共市集",
+                    "nameEn": "Yuyuan Road Public Market",
+                    "address": "愚园路1088弄片区",
+                    "description": "区政府报道列出过乐喜、宜小蘭、Onita等就餐候选，按现场营业和饮食需要选择。",
+                    "station": "江苏路",
+                    "category": "food",
+                    "sourceIds": [
+                      "theme-changning-yuyuan-food"
+                    ],
+                    "sourceUrls": [
+                      "https://www.shcn.gov.cn/col6991/20251009/1299696.html"
+                    ],
+                    "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E6%84%9A%E5%9B%AD%E5%85%AC%E5%85%B1%E5%B8%82%E9%9B%86%20%E6%84%9A%E5%9B%AD%E8%B7%AF1088%E5%BC%84%E7%89%87%E5%8C%BA&city=310000&view=map&src=visit-china",
+                    "url": "https://www.shcn.gov.cn/col6991/20251009/1299696.html",
+                    "phone": null,
+                    "phoneRole": null,
+                    "liveAvailability": false,
+                    "order": 2,
+                    "role": "meal",
+                    "plannedArrival": "13:00",
+                    "plannedDeparture": "14:00",
+                    "plannedDurationMinutes": 60,
+                    "transferBufferMinutes": 30,
+                    "timeBasis": "editorial-planning-allocation",
+                    "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+                  },
+                  {
+                    "id": "theme-place-zhongshan",
+                    "title": "中山公园",
+                    "nameZh": "中山公园",
+                    "nameEn": "Zhongshan Park",
+                    "address": "长宁区中山公园，万航渡路一侧可衔接华政步道",
+                    "description": "百年公园休息与散步，之后可前往相邻河岸步道。",
+                    "station": "中山公园",
+                    "category": "park",
+                    "sourceIds": [
+                      "theme-changning-walking-map",
+                      "theme-changning-huazheng"
+                    ],
+                    "sourceUrls": [
+                      "https://www.shcn.gov.cn/col5685/20240826/1265407.html",
+                      "https://www.shcn.gov.cn/col314/20230128/1229393.html"
+                    ],
+                    "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E4%B8%AD%E5%B1%B1%E5%85%AC%E5%9B%AD%20%E9%95%BF%E5%AE%81%E5%8C%BA%E4%B8%AD%E5%B1%B1%E5%85%AC%E5%9B%AD%EF%BC%8C%E4%B8%87%E8%88%AA%E6%B8%A1%E8%B7%AF%E4%B8%80%E4%BE%A7%E5%8F%AF%E8%A1%94%E6%8E%A5%E5%8D%8E%E6%94%BF%E6%AD%A5%E9%81%93&city=310000&view=map&src=visit-china",
+                    "url": "https://www.shcn.gov.cn/col5685/20240826/1265407.html",
+                    "phone": null,
+                    "phoneRole": null,
+                    "liveAvailability": false,
+                    "order": 3,
+                    "role": "visit",
+                    "plannedArrival": "14:45",
+                    "plannedDeparture": "15:45",
+                    "plannedDurationMinutes": 60,
+                    "transferBufferMinutes": 45,
+                    "timeBasis": "editorial-planning-allocation",
+                    "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+                  },
+                  {
+                    "id": "theme-place-huazheng",
+                    "title": "苏州河华政步道",
+                    "nameZh": "苏州河华政步道",
+                    "nameEn": "ECUPL promenade on Suzhou Creek",
+                    "address": "万航渡路与华阳路交叉口等公开入口",
+                    "description": "沿公共河岸看历史校园建筑，教学区按现场开放范围参观。",
+                    "station": null,
+                    "category": "walk",
+                    "sourceIds": [
+                      "theme-changning-huazheng"
+                    ],
+                    "sourceUrls": [
+                      "https://www.shcn.gov.cn/col314/20230128/1229393.html"
+                    ],
+                    "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E8%8B%8F%E5%B7%9E%E6%B2%B3%E5%8D%8E%E6%94%BF%E6%AD%A5%E9%81%93%20%E4%B8%87%E8%88%AA%E6%B8%A1%E8%B7%AF%E4%B8%8E%E5%8D%8E%E9%98%B3%E8%B7%AF%E4%BA%A4%E5%8F%89%E5%8F%A3%E7%AD%89%E5%85%AC%E5%BC%80%E5%85%A5%E5%8F%A3&city=310000&view=map&src=visit-china",
+                    "url": "https://www.shcn.gov.cn/col314/20230128/1229393.html",
+                    "phone": null,
+                    "phoneRole": null,
+                    "liveAvailability": false,
+                    "order": 4,
+                    "role": "visit",
+                    "plannedArrival": "16:15",
+                    "plannedDeparture": "17:15",
+                    "plannedDurationMinutes": 60,
+                    "transferBufferMinutes": 30,
+                    "timeBasis": "editorial-planning-allocation",
+                    "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+                  },
+                  {
+                    "id": "theme-place-zpark",
+                    "title": "Zpark Coffee（龙之梦万丽酒店）",
+                    "nameZh": "Zpark Coffee（龙之梦万丽酒店）",
+                    "nameEn": "Zpark Coffee at Renaissance Zhongshan Park",
+                    "address": "长宁路1018号酒店内",
+                    "description": "酒店官网收录的咖啡、简餐休息点，营业和席位向酒店确认。",
+                    "station": "中山公园",
+                    "category": "food",
+                    "sourceIds": [
+                      "theme-changning-renaissance"
+                    ],
+                    "sourceUrls": [
+                      "https://www.marriott.com/en-us/hotels/shabz-renaissance-shanghai-zhongshan-park-hotel/overview/"
+                    ],
+                    "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20Zpark%20Coffee%EF%BC%88%E9%BE%99%E4%B9%8B%E6%A2%A6%E4%B8%87%E4%B8%BD%E9%85%92%E5%BA%97%EF%BC%89%20%E9%95%BF%E5%AE%81%E8%B7%AF1018%E5%8F%B7%E9%85%92%E5%BA%97%E5%86%85&city=310000&view=map&src=visit-china",
+                    "url": "https://www.marriott.com/en-us/hotels/shabz-renaissance-shanghai-zhongshan-park-hotel/overview/",
+                    "phone": null,
+                    "phoneRole": null,
+                    "liveAvailability": false,
+                    "order": 5,
+                    "role": "break",
+                    "plannedArrival": "18:00",
+                    "plannedDeparture": "18:45",
+                    "plannedDurationMinutes": 45,
+                    "transferBufferMinutes": 45,
+                    "timeBasis": "editorial-planning-allocation",
+                    "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+                  }
+                ]
+              }
+            ],
+            "accommodations": [],
+            "sourceIds": [
+              "theme-changning-walking-map",
+              "theme-changning-yuyuan-food",
+              "theme-changning-huazheng"
+            ],
+            "allSourceIds": [
+              "theme-changning-walking-map",
+              "theme-changning-yuyuan-food",
+              "theme-changning-huazheng",
+              "theme-changning-renaissance"
+            ],
+            "sources": [
+              {
+                "id": "theme-changning-walking-map",
+                "title": "长宁中山公园区域慢行地图：魅力苏河与摩登硅巷",
+                "url": "https://www.shcn.gov.cn/col5685/20240826/1265407.html",
+                "reviewedAt": "2026-09-25",
+                "publishedAt": "2024-08-12"
+              },
+              {
+                "id": "theme-changning-yuyuan-food",
+                "title": "愚园路漫步与餐饮：江苏路、公共市集、定西路",
+                "url": "https://www.shcn.gov.cn/col6991/20251009/1299696.html",
+                "reviewedAt": "2026-09-25",
+                "publishedAt": "2025-10-03"
+              },
+              {
+                "id": "theme-changning-huazheng",
+                "title": "苏河华政步道：与中山公园衔接及公开入口",
+                "url": "https://www.shcn.gov.cn/col314/20230128/1229393.html",
+                "reviewedAt": "2026-09-25",
+                "publishedAt": "2023-01-27"
+              },
+              {
+                "id": "theme-changning-renaissance",
+                "title": "上海龙之梦万丽酒店与Azur / Zpark餐饮",
+                "url": "https://www.marriott.com/en-us/hotels/shabz-renaissance-shanghai-zhongshan-park-hotel/overview/",
+                "reviewedAt": "2026-09-25",
+                "publishedAt": null
+              }
+            ],
+            "missingSourceIds": [],
+            "status": "ready",
+            "timeBasis": "editorial-planning-allocation",
+            "liveAvailability": false,
+            "notes": [
+              "时间为可调整的行程建议，不是开馆时间、实时交通预测或已预约时段。",
+              "出发前核对开放、预约、天气与通行；餐饮和酒店不含实时房态、餐位、价格。"
+            ]
+          }
+        },
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "theme-changning-walking-map",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "theme-changning-yuyuan-food",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "theme-changning-huazheng",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 90,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 44
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 6526
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 50
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "itinerary"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 513,
+            "candidates": 16,
+            "elapsedMs": 50,
+            "hits": [
+              {
+                "id": "sh-marriott-city-centre:d95fbe4d18488db5:0",
+                "sourceId": "sh-marriott-city-centre",
+                "version": "d95fbe4d18488db5",
+                "score": 0.02395,
+                "coverage": 0.091
+              },
+              {
+                "id": "theme-changning-renaissance:0cda4fc63a50416e:0",
+                "sourceId": "theme-changning-renaissance",
+                "version": "0cda4fc63a50416e",
+                "score": 0.01872,
+                "coverage": 0.182
+              },
+              {
+                "id": "verified-jw-tomorrow-square:1a36c6dd8670882b:0",
+                "sourceId": "verified-jw-tomorrow-square",
+                "version": "1a36c6dd8670882b",
+                "score": 0.01746,
+                "coverage": 0.091
+              },
+              {
+                "id": "verified-hyatt-kitchen:fccb407f8045ec0c:0",
+                "sourceId": "verified-hyatt-kitchen",
+                "version": "fccb407f8045ec0c",
+                "score": 0.01721,
+                "coverage": 0.136
+              },
+              {
+                "id": "verified-pullman-jingan:d1d198223d8f2b4d:0",
+                "sourceId": "verified-pullman-jingan",
+                "version": "d1d198223d8f2b4d",
+                "score": 0.01691,
+                "coverage": 0.091
+              },
+              {
+                "id": "verified-courtyard-central:be2f9990c74f069c:0",
+                "sourceId": "verified-courtyard-central",
+                "version": "be2f9990c74f069c",
+                "score": 0.0168,
+                "coverage": 0.091
+              },
+              {
+                "id": "verified-hyatt-place-hongqiao:8c0d9b56202f6d23:0",
+                "sourceId": "verified-hyatt-place-hongqiao",
+                "version": "8c0d9b56202f6d23",
+                "score": 0.01666,
+                "coverage": 0.091
+              },
+              {
+                "id": "verified-dazhong-airport:b95e335747df6dee:0",
+                "sourceId": "verified-dazhong-airport",
+                "version": "b95e335747df6dee",
+                "score": 0.01581,
+                "coverage": 0.091
+              }
+            ]
+          },
+          "totalMs": 6622
+        },
+        "sourceAcquisition": {
+          "sourceId": "off-0df6dd4ce66e1265",
+          "score": 0,
+          "eligible": false
+        },
+        "modelRouting": {
+          "requested": "pro",
+          "selected": "pro",
+          "model": "deepseek-v4-pro",
+          "thinking": true,
+          "effort": "low",
+          "reason": "由你手动选择",
+          "method": "manual"
+        },
+        "dataset": "evaluation",
+        "executionId": "2ec7436f-26e4-4f86-a090-3740598e94d5",
+        "assessmentId": "4532f05f-a485-4b85-9750-d0fc8de9248a"
+      },
+      "error": null
+    }
+  ],
+  "scope": "Small real DeepSeek sample, explicitly tagged evaluation. Separate from 20k offline cases."
+}

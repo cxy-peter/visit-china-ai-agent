@@ -7,8 +7,8 @@ function check(c,context={}){const failures=[],expect=(v,n)=>{if(!v)failures.pus
   if(c.type==='rag-boundary'){
    const target=records.find(r=>r.id===c.expect.sourceId);expect(Boolean(target),'fixture source exists');
    const patches={held:{active:false},expired:{reviewedAt:'2000-01-01',reviewDays:1},'wrong-city':{city:'Beijing'},'index-only':{content:'',summary:'',summaryZh:''}};
-   result=R.retrieve(c.input,[{...target,...patches[c.expect.condition]}],{city:'Shanghai'});expect(result.hits.length===0,'ineligible source excluded');
-  }else{result=context.prepared?R.retrievePrepared(c.input,context.prepared):R.retrieve(c.input,records,{city:'Shanghai'});expect(result.hits.some(h=>h.sourceId===c.expect.sourceId),'retrieval source '+c.expect.sourceId);}
+   result=R.retrieve(c.input,[{...target,...patches[c.expect.condition]}],{...context.config,city:'Shanghai'});expect(result.hits.length===0,'ineligible source excluded');
+  }else{result=context.prepared?R.retrievePrepared(c.input,context.prepared):R.retrieve(c.input,records,{...context.config,city:'Shanghai'});expect(result.hits.some(h=>h.sourceId===c.expect.sourceId),'retrieval source '+c.expect.sourceId);}
   actual=result.hits.map(h=>h.sourceId).join(',');
  }
  else if(c.type==='feedback'){actual=require('./feedback-cases').classify(c.input);expect(actual===c.expect.reason,'suggested feedback category '+c.expect.reason);expect(c.history.length>0,'context available for replay');}
@@ -25,7 +25,7 @@ function check(c,context={}){const failures=[],expect=(v,n)=>{if(!v)failures.pus
  }
  }catch(e){failures.push(e.message);}return{id:c.id,input:c.input,passed:failures.length===0,actual,failures,type:c.type,family:c.family,split:c.split,provenance:c.provenance};}
 function evaluateCorpus(options={}){
- const selected=options.cases||corpus.cases,started=Date.now(),records=options.records||L.records,context={records,prepared:R.compile(records,{city:'Shanghai'})},checks=selected.map(c=>check(c,context));
+ const selected=options.cases||corpus.cases,started=Date.now(),records=options.records||L.records,context={records,config:options.config,prepared:R.compile(records,{...options.config,city:'Shanghai'})},checks=selected.map(c=>check(c,context));
  const buckets=key=>checks.reduce((out,c)=>{const b=out[c[key]]||={total:0,passed:0};b.total++;if(c.passed)b.passed++;return out;},{});
  return{...catalog(),total:selected.length,passed:checks.filter(c=>c.passed).length,elapsedMs:Date.now()-started,byType:buckets('type'),byFamily:buckets('family'),bySplit:buckets('split'),snapshot:{fingerprint:context.prepared.fingerprint,compiledAt:context.prepared.compiledAt,chunks:context.prepared.all.length},checks};
 }

@@ -1,0 +1,1908 @@
+{
+  "id": "31171b99-b786-4cd6-b479-3279f08d3881",
+  "version": "loop-phrasing-6.2-v1",
+  "status": "completed",
+  "phase": "acceptance",
+  "index": 0,
+  "start": 12000,
+  "count": 12000,
+  "seed": "release-v6.2",
+  "author": "offline-full-sample-runner",
+  "at": "2026-09-25T06:32:14.981Z",
+  "baseVersion": "skill-1",
+  "baselineConfig": {
+    "topK": 8,
+    "chunkSize": 520,
+    "overlap": 60,
+    "minCoverage": 0.06,
+    "expansion": "",
+    "guidance": "先直接回答当前问题；证据不足时说明缺少什么，不重复询问已经给出的地点。"
+  },
+  "baselineConfigHash": "f23a7dc36a2cd1ebbbda2bd496cef69a9837c8ac70ba1fc3c9db3f27751884bb",
+  "evaluatorHash": "e79602053b35e4a44a82a80d1842a0e74554f46ffaac0e4f5aa53703d9aa73dd",
+  "sourceHash": "60c6d6a0c6b02e885506cf98b28bc889efe143ab8b724cb7b01578ab4be0bc5f",
+  "sourceSnapshot": "0a354583eae16f51",
+  "baseDatasetHash": "7420b4759b4d8fb11e5d4db78a9e9d64cf90f6945c147b4e5d887206d6b9a461",
+  "baseline": {
+    "total": 12000,
+    "passed": 11597,
+    "byFamily": {
+      "rag.charging.zh.4": {
+        "total": 295,
+        "passed": 295
+      },
+      "rag.charging.en.4": {
+        "total": 295,
+        "passed": 295
+      },
+      "rag.charging.zh.5": {
+        "total": 295,
+        "passed": 295
+      },
+      "rag.charging.en.5": {
+        "total": 295,
+        "passed": 295
+      },
+      "rag.charging.zh.0": {
+        "total": 295,
+        "passed": 295
+      },
+      "rag.charging.en.0": {
+        "total": 295,
+        "passed": 295
+      },
+      "rag.charging.zh.1": {
+        "total": 295,
+        "passed": 295
+      },
+      "rag.charging.en.1": {
+        "total": 295,
+        "passed": 295
+      },
+      "rag.charging.zh.2": {
+        "total": 294,
+        "passed": 294
+      },
+      "rag.charging.en.2": {
+        "total": 294,
+        "passed": 294
+      },
+      "rag.charging.zh.3": {
+        "total": 294,
+        "passed": 294
+      },
+      "rag.charging.en.3": {
+        "total": 294,
+        "passed": 294
+      },
+      "rag.luggage.zh.0": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.luggage.en.0": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.luggage.zh.1": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.luggage.en.1": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.luggage.zh.2": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.luggage.en.2": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.luggage.zh.3": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.luggage.en.3": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.luggage.zh.4": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.luggage.en.4": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.luggage.zh.5": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.luggage.en.5": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.metro_ticket.zh.0": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.metro_ticket.en.0": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.metro_ticket.zh.1": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.metro_ticket.en.1": {
+        "total": 280,
+        "passed": 154
+      },
+      "rag.metro_ticket.zh.2": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.metro_ticket.en.2": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.metro_ticket.zh.3": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.metro_ticket.en.3": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.metro_ticket.zh.4": {
+        "total": 280,
+        "passed": 277
+      },
+      "rag.metro_ticket.en.4": {
+        "total": 280,
+        "passed": 128
+      },
+      "rag.metro_ticket.zh.5": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.metro_ticket.en.5": {
+        "total": 280,
+        "passed": 166
+      },
+      "rag.place.0": {
+        "total": 152,
+        "passed": 152
+      },
+      "rag.place.1": {
+        "total": 152,
+        "passed": 152
+      },
+      "rag.place.2": {
+        "total": 152,
+        "passed": 152
+      },
+      "rag.place.3": {
+        "total": 152,
+        "passed": 152
+      },
+      "rag.place.4": {
+        "total": 152,
+        "passed": 152
+      },
+      "rag.place.5": {
+        "total": 152,
+        "passed": 149
+      },
+      "rag.place.6": {
+        "total": 152,
+        "passed": 152
+      },
+      "rag.place.7": {
+        "total": 152,
+        "passed": 151
+      },
+      "rag.hotel.zh.0": {
+        "total": 24,
+        "passed": 24
+      },
+      "rag.hotel.zh.1": {
+        "total": 24,
+        "passed": 24
+      },
+      "rag.hotel.zh.2": {
+        "total": 24,
+        "passed": 24
+      },
+      "rag.hotel.zh.3": {
+        "total": 24,
+        "passed": 24
+      },
+      "rag.hotel.zh.4": {
+        "total": 24,
+        "passed": 24
+      },
+      "rag.hotel.zh.5": {
+        "total": 24,
+        "passed": 24
+      },
+      "rag.tenpaygo.0.zh": {
+        "total": 32,
+        "passed": 32
+      },
+      "rag.tenpaygo.0.en": {
+        "total": 32,
+        "passed": 30
+      },
+      "rag.tenpaygo.1.zh": {
+        "total": 32,
+        "passed": 32
+      },
+      "rag.tenpaygo.1.en": {
+        "total": 32,
+        "passed": 32
+      },
+      "rag.tenpaygo.2.zh": {
+        "total": 32,
+        "passed": 32
+      },
+      "rag.tenpaygo.2.en": {
+        "total": 32,
+        "passed": 32
+      },
+      "rag.tenpaygo.3.zh": {
+        "total": 32,
+        "passed": 32
+      },
+      "rag.tenpaygo.3.en": {
+        "total": 32,
+        "passed": 30
+      },
+      "rag.tenpaygo.4.zh": {
+        "total": 32,
+        "passed": 32
+      },
+      "rag.tenpaygo.4.en": {
+        "total": 32,
+        "passed": 32
+      },
+      "rag.tenpaygo.5.zh": {
+        "total": 32,
+        "passed": 32
+      },
+      "rag.tenpaygo.5.en": {
+        "total": 32,
+        "passed": 32
+      }
+    },
+    "byType": {
+      "rag": {
+        "total": 12000,
+        "passed": 11597
+      }
+    },
+    "bySplit": {
+      "generated-development": {
+        "total": 12000,
+        "passed": 11597
+      }
+    }
+  },
+  "candidate": {
+    "total": 12000,
+    "passed": 11722,
+    "byFamily": {
+      "rag.charging.zh.4": {
+        "total": 295,
+        "passed": 295
+      },
+      "rag.charging.en.4": {
+        "total": 295,
+        "passed": 295
+      },
+      "rag.charging.zh.5": {
+        "total": 295,
+        "passed": 295
+      },
+      "rag.charging.en.5": {
+        "total": 295,
+        "passed": 295
+      },
+      "rag.charging.zh.0": {
+        "total": 295,
+        "passed": 295
+      },
+      "rag.charging.en.0": {
+        "total": 295,
+        "passed": 295
+      },
+      "rag.charging.zh.1": {
+        "total": 295,
+        "passed": 295
+      },
+      "rag.charging.en.1": {
+        "total": 295,
+        "passed": 295
+      },
+      "rag.charging.zh.2": {
+        "total": 294,
+        "passed": 294
+      },
+      "rag.charging.en.2": {
+        "total": 294,
+        "passed": 294
+      },
+      "rag.charging.zh.3": {
+        "total": 294,
+        "passed": 294
+      },
+      "rag.charging.en.3": {
+        "total": 294,
+        "passed": 294
+      },
+      "rag.luggage.zh.0": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.luggage.en.0": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.luggage.zh.1": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.luggage.en.1": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.luggage.zh.2": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.luggage.en.2": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.luggage.zh.3": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.luggage.en.3": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.luggage.zh.4": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.luggage.en.4": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.luggage.zh.5": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.luggage.en.5": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.metro_ticket.zh.0": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.metro_ticket.en.0": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.metro_ticket.zh.1": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.metro_ticket.en.1": {
+        "total": 280,
+        "passed": 192
+      },
+      "rag.metro_ticket.zh.2": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.metro_ticket.en.2": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.metro_ticket.zh.3": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.metro_ticket.en.3": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.metro_ticket.zh.4": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.metro_ticket.en.4": {
+        "total": 280,
+        "passed": 179
+      },
+      "rag.metro_ticket.zh.5": {
+        "total": 280,
+        "passed": 280
+      },
+      "rag.metro_ticket.en.5": {
+        "total": 280,
+        "passed": 196
+      },
+      "rag.place.0": {
+        "total": 152,
+        "passed": 152
+      },
+      "rag.place.1": {
+        "total": 152,
+        "passed": 152
+      },
+      "rag.place.2": {
+        "total": 152,
+        "passed": 152
+      },
+      "rag.place.3": {
+        "total": 152,
+        "passed": 152
+      },
+      "rag.place.4": {
+        "total": 152,
+        "passed": 152
+      },
+      "rag.place.5": {
+        "total": 152,
+        "passed": 150
+      },
+      "rag.place.6": {
+        "total": 152,
+        "passed": 152
+      },
+      "rag.place.7": {
+        "total": 152,
+        "passed": 152
+      },
+      "rag.hotel.zh.0": {
+        "total": 24,
+        "passed": 24
+      },
+      "rag.hotel.zh.1": {
+        "total": 24,
+        "passed": 24
+      },
+      "rag.hotel.zh.2": {
+        "total": 24,
+        "passed": 24
+      },
+      "rag.hotel.zh.3": {
+        "total": 24,
+        "passed": 24
+      },
+      "rag.hotel.zh.4": {
+        "total": 24,
+        "passed": 24
+      },
+      "rag.hotel.zh.5": {
+        "total": 24,
+        "passed": 24
+      },
+      "rag.tenpaygo.0.zh": {
+        "total": 32,
+        "passed": 32
+      },
+      "rag.tenpaygo.0.en": {
+        "total": 32,
+        "passed": 30
+      },
+      "rag.tenpaygo.1.zh": {
+        "total": 32,
+        "passed": 32
+      },
+      "rag.tenpaygo.1.en": {
+        "total": 32,
+        "passed": 32
+      },
+      "rag.tenpaygo.2.zh": {
+        "total": 32,
+        "passed": 32
+      },
+      "rag.tenpaygo.2.en": {
+        "total": 32,
+        "passed": 32
+      },
+      "rag.tenpaygo.3.zh": {
+        "total": 32,
+        "passed": 32
+      },
+      "rag.tenpaygo.3.en": {
+        "total": 32,
+        "passed": 31
+      },
+      "rag.tenpaygo.4.zh": {
+        "total": 32,
+        "passed": 32
+      },
+      "rag.tenpaygo.4.en": {
+        "total": 32,
+        "passed": 32
+      },
+      "rag.tenpaygo.5.zh": {
+        "total": 32,
+        "passed": 32
+      },
+      "rag.tenpaygo.5.en": {
+        "total": 32,
+        "passed": 32
+      }
+    },
+    "byType": {
+      "rag": {
+        "total": 12000,
+        "passed": 11722
+      }
+    },
+    "bySplit": {
+      "generated-development": {
+        "total": 12000,
+        "passed": 11722
+      }
+    }
+  },
+  "guardBaseline": {
+    "total": 20000,
+    "passed": 20000,
+    "byFamily": {
+      "legacy.metro": {
+        "total": 856,
+        "passed": 856
+      },
+      "legacy.rail-scope": {
+        "total": 12,
+        "passed": 12
+      },
+      "legacy.place": {
+        "total": 152,
+        "passed": 152
+      },
+      "legacy.taxi": {
+        "total": 40,
+        "passed": 40
+      },
+      "legacy.rail": {
+        "total": 48,
+        "passed": 48
+      },
+      "legacy.followup": {
+        "total": 30,
+        "passed": 30
+      },
+      "legacy.via": {
+        "total": 40,
+        "passed": 40
+      },
+      "legacy.noise": {
+        "total": 20,
+        "passed": 20
+      },
+      "legacy.incomplete": {
+        "total": 7,
+        "passed": 7
+      },
+      "legacy.nearby": {
+        "total": 16,
+        "passed": 16
+      },
+      "rag.charging.zh.0": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.charging.en.0": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.charging.zh.1": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.charging.en.1": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.charging.zh.2": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.charging.en.2": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.charging.zh.3": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.charging.en.3": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.charging.zh.4": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.charging.en.4": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.charging.zh.5": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.charging.en.5": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.luggage.zh.0": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.luggage.en.0": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.luggage.zh.1": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.luggage.en.1": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.luggage.zh.2": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.luggage.en.2": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.luggage.zh.3": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.luggage.en.3": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.luggage.zh.4": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.luggage.en.4": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.luggage.zh.5": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.luggage.en.5": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.metro_ticket.zh.0": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.metro_ticket.en.0": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.metro_ticket.zh.1": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.metro_ticket.en.1": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.metro_ticket.zh.2": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.metro_ticket.en.2": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.metro_ticket.zh.3": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.metro_ticket.en.3": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.metro_ticket.zh.4": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.metro_ticket.en.4": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.metro_ticket.zh.5": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.metro_ticket.en.5": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.place.0": {
+        "total": 19,
+        "passed": 19
+      },
+      "rag.place.1": {
+        "total": 19,
+        "passed": 19
+      },
+      "rag.place.2": {
+        "total": 19,
+        "passed": 19
+      },
+      "rag.place.3": {
+        "total": 19,
+        "passed": 19
+      },
+      "rag.place.4": {
+        "total": 19,
+        "passed": 19
+      },
+      "rag.place.5": {
+        "total": 19,
+        "passed": 19
+      },
+      "rag.place.6": {
+        "total": 19,
+        "passed": 19
+      },
+      "rag.place.7": {
+        "total": 19,
+        "passed": 19
+      },
+      "rag.hotel.zh.0": {
+        "total": 3,
+        "passed": 3
+      },
+      "rag.hotel.zh.1": {
+        "total": 3,
+        "passed": 3
+      },
+      "rag.hotel.zh.2": {
+        "total": 3,
+        "passed": 3
+      },
+      "rag.hotel.zh.3": {
+        "total": 3,
+        "passed": 3
+      },
+      "rag.hotel.zh.4": {
+        "total": 3,
+        "passed": 3
+      },
+      "rag.hotel.zh.5": {
+        "total": 3,
+        "passed": 3
+      },
+      "rag.boundary.held": {
+        "total": 40,
+        "passed": 40
+      },
+      "rag.boundary.expired": {
+        "total": 40,
+        "passed": 40
+      },
+      "rag.boundary.wrong-city": {
+        "total": 40,
+        "passed": 40
+      },
+      "rag.boundary.index-only": {
+        "total": 40,
+        "passed": 40
+      },
+      "rag.tenpaygo.0.zh": {
+        "total": 4,
+        "passed": 4
+      },
+      "rag.tenpaygo.0.en": {
+        "total": 4,
+        "passed": 4
+      },
+      "rag.tenpaygo.1.zh": {
+        "total": 4,
+        "passed": 4
+      },
+      "rag.tenpaygo.1.en": {
+        "total": 4,
+        "passed": 4
+      },
+      "rag.tenpaygo.2.zh": {
+        "total": 4,
+        "passed": 4
+      },
+      "rag.tenpaygo.2.en": {
+        "total": 4,
+        "passed": 4
+      },
+      "rag.tenpaygo.3.zh": {
+        "total": 4,
+        "passed": 4
+      },
+      "rag.tenpaygo.3.en": {
+        "total": 4,
+        "passed": 4
+      },
+      "rag.tenpaygo.4.zh": {
+        "total": 4,
+        "passed": 4
+      },
+      "rag.tenpaygo.4.en": {
+        "total": 4,
+        "passed": 4
+      },
+      "rag.tenpaygo.5.zh": {
+        "total": 4,
+        "passed": 4
+      },
+      "rag.tenpaygo.5.en": {
+        "total": 4,
+        "passed": 4
+      },
+      "taxi.distance.0": {
+        "total": 240,
+        "passed": 240
+      },
+      "taxi.distance.1": {
+        "total": 240,
+        "passed": 240
+      },
+      "taxi.distance.2": {
+        "total": 240,
+        "passed": 240
+      },
+      "taxi.distance.3": {
+        "total": 240,
+        "passed": 240
+      },
+      "taxi.distance.4": {
+        "total": 240,
+        "passed": 240
+      },
+      "taxi.distance.5": {
+        "total": 240,
+        "passed": 240
+      },
+      "taxi.distance.6": {
+        "total": 240,
+        "passed": 240
+      },
+      "taxi.distance.7": {
+        "total": 240,
+        "passed": 240
+      },
+      "rail.intercity.0": {
+        "total": 100,
+        "passed": 100
+      },
+      "rail.intercity.1": {
+        "total": 100,
+        "passed": 100
+      },
+      "rail.intercity.2": {
+        "total": 100,
+        "passed": 100
+      },
+      "rail.intercity.3": {
+        "total": 100,
+        "passed": 100
+      },
+      "rail.intercity.4": {
+        "total": 100,
+        "passed": 100
+      },
+      "rail.intercity.5": {
+        "total": 100,
+        "passed": 100
+      },
+      "metro.correction.0": {
+        "total": 240,
+        "passed": 240
+      },
+      "metro.correction.1": {
+        "total": 240,
+        "passed": 240
+      },
+      "metro.correction.2": {
+        "total": 240,
+        "passed": 240
+      },
+      "metro.correction.3": {
+        "total": 240,
+        "passed": 240
+      },
+      "metro.correction.4": {
+        "total": 240,
+        "passed": 240
+      },
+      "metro.correction.5": {
+        "total": 240,
+        "passed": 240
+      },
+      "metro.correction.6": {
+        "total": 240,
+        "passed": 240
+      },
+      "metro.correction.7": {
+        "total": 240,
+        "passed": 240
+      },
+      "metro.via.0": {
+        "total": 240,
+        "passed": 240
+      },
+      "metro.via.1": {
+        "total": 240,
+        "passed": 240
+      },
+      "metro.via.2": {
+        "total": 240,
+        "passed": 240
+      },
+      "metro.via.3": {
+        "total": 240,
+        "passed": 240
+      },
+      "feedback.intent_error.zh": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.intent_error.en": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.fact_error.zh": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.fact_error.en": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.stale_info.zh": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.stale_info.en": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.wrong_route.zh": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.wrong_route.en": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.missing_detail.zh": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.missing_detail.en": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.process_issue.zh": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.process_issue.en": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.language_issue.zh": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.language_issue.en": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.connection_issue.zh": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.connection_issue.en": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.other.zh": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.other.en": {
+        "total": 40,
+        "passed": 40
+      },
+      "metro.route.zh.1": {
+        "total": 459,
+        "passed": 459
+      },
+      "metro.route.zh.2": {
+        "total": 460,
+        "passed": 460
+      },
+      "metro.route.zh.3": {
+        "total": 461,
+        "passed": 461
+      },
+      "metro.route.zh.4": {
+        "total": 461,
+        "passed": 461
+      },
+      "metro.route.zh.5": {
+        "total": 461,
+        "passed": 461
+      },
+      "metro.route.zh.6": {
+        "total": 461,
+        "passed": 461
+      },
+      "metro.route.zh.7": {
+        "total": 461,
+        "passed": 461
+      },
+      "metro.route.zh.8": {
+        "total": 460,
+        "passed": 460
+      },
+      "metro.route.zh.9": {
+        "total": 459,
+        "passed": 459
+      },
+      "metro.route.zh.10": {
+        "total": 459,
+        "passed": 459
+      },
+      "metro.route.zh.11": {
+        "total": 459,
+        "passed": 459
+      },
+      "metro.route.en.0": {
+        "total": 459,
+        "passed": 459
+      },
+      "metro.route.en.1": {
+        "total": 459,
+        "passed": 459
+      },
+      "metro.route.en.2": {
+        "total": 459,
+        "passed": 459
+      },
+      "metro.route.en.3": {
+        "total": 459,
+        "passed": 459
+      },
+      "metro.route.en.4": {
+        "total": 459,
+        "passed": 459
+      },
+      "metro.route.en.5": {
+        "total": 459,
+        "passed": 459
+      },
+      "metro.route.en.6": {
+        "total": 458,
+        "passed": 458
+      },
+      "metro.route.en.7": {
+        "total": 458,
+        "passed": 458
+      },
+      "metro.route.en.8": {
+        "total": 458,
+        "passed": 458
+      },
+      "metro.route.en.9": {
+        "total": 458,
+        "passed": 458
+      },
+      "metro.route.en.10": {
+        "total": 458,
+        "passed": 458
+      },
+      "metro.route.en.11": {
+        "total": 458,
+        "passed": 458
+      },
+      "metro.route.zh.0": {
+        "total": 458,
+        "passed": 458
+      }
+    },
+    "byType": {
+      "metro": {
+        "total": 11877,
+        "passed": 11877
+      },
+      "rail-scope": {
+        "total": 12,
+        "passed": 12
+      },
+      "place": {
+        "total": 152,
+        "passed": 152
+      },
+      "taxi": {
+        "total": 1960,
+        "passed": 1960
+      },
+      "rail": {
+        "total": 648,
+        "passed": 648
+      },
+      "followup": {
+        "total": 1950,
+        "passed": 1950
+      },
+      "via": {
+        "total": 1000,
+        "passed": 1000
+      },
+      "noise": {
+        "total": 20,
+        "passed": 20
+      },
+      "incomplete": {
+        "total": 7,
+        "passed": 7
+      },
+      "nearby": {
+        "total": 16,
+        "passed": 16
+      },
+      "rag": {
+        "total": 1478,
+        "passed": 1478
+      },
+      "rag-boundary": {
+        "total": 160,
+        "passed": 160
+      },
+      "feedback": {
+        "total": 720,
+        "passed": 720
+      }
+    },
+    "bySplit": {
+      "development": {
+        "total": 15999,
+        "passed": 15999
+      },
+      "holdout": {
+        "total": 4001,
+        "passed": 4001
+      }
+    }
+  },
+  "guardCandidate": {
+    "total": 20000,
+    "passed": 20000,
+    "byFamily": {
+      "legacy.metro": {
+        "total": 856,
+        "passed": 856
+      },
+      "legacy.rail-scope": {
+        "total": 12,
+        "passed": 12
+      },
+      "legacy.place": {
+        "total": 152,
+        "passed": 152
+      },
+      "legacy.taxi": {
+        "total": 40,
+        "passed": 40
+      },
+      "legacy.rail": {
+        "total": 48,
+        "passed": 48
+      },
+      "legacy.followup": {
+        "total": 30,
+        "passed": 30
+      },
+      "legacy.via": {
+        "total": 40,
+        "passed": 40
+      },
+      "legacy.noise": {
+        "total": 20,
+        "passed": 20
+      },
+      "legacy.incomplete": {
+        "total": 7,
+        "passed": 7
+      },
+      "legacy.nearby": {
+        "total": 16,
+        "passed": 16
+      },
+      "rag.charging.zh.0": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.charging.en.0": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.charging.zh.1": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.charging.en.1": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.charging.zh.2": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.charging.en.2": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.charging.zh.3": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.charging.en.3": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.charging.zh.4": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.charging.en.4": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.charging.zh.5": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.charging.en.5": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.luggage.zh.0": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.luggage.en.0": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.luggage.zh.1": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.luggage.en.1": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.luggage.zh.2": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.luggage.en.2": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.luggage.zh.3": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.luggage.en.3": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.luggage.zh.4": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.luggage.en.4": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.luggage.zh.5": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.luggage.en.5": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.metro_ticket.zh.0": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.metro_ticket.en.0": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.metro_ticket.zh.1": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.metro_ticket.en.1": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.metro_ticket.zh.2": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.metro_ticket.en.2": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.metro_ticket.zh.3": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.metro_ticket.en.3": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.metro_ticket.zh.4": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.metro_ticket.en.4": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.metro_ticket.zh.5": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.metro_ticket.en.5": {
+        "total": 35,
+        "passed": 35
+      },
+      "rag.place.0": {
+        "total": 19,
+        "passed": 19
+      },
+      "rag.place.1": {
+        "total": 19,
+        "passed": 19
+      },
+      "rag.place.2": {
+        "total": 19,
+        "passed": 19
+      },
+      "rag.place.3": {
+        "total": 19,
+        "passed": 19
+      },
+      "rag.place.4": {
+        "total": 19,
+        "passed": 19
+      },
+      "rag.place.5": {
+        "total": 19,
+        "passed": 19
+      },
+      "rag.place.6": {
+        "total": 19,
+        "passed": 19
+      },
+      "rag.place.7": {
+        "total": 19,
+        "passed": 19
+      },
+      "rag.hotel.zh.0": {
+        "total": 3,
+        "passed": 3
+      },
+      "rag.hotel.zh.1": {
+        "total": 3,
+        "passed": 3
+      },
+      "rag.hotel.zh.2": {
+        "total": 3,
+        "passed": 3
+      },
+      "rag.hotel.zh.3": {
+        "total": 3,
+        "passed": 3
+      },
+      "rag.hotel.zh.4": {
+        "total": 3,
+        "passed": 3
+      },
+      "rag.hotel.zh.5": {
+        "total": 3,
+        "passed": 3
+      },
+      "rag.boundary.held": {
+        "total": 40,
+        "passed": 40
+      },
+      "rag.boundary.expired": {
+        "total": 40,
+        "passed": 40
+      },
+      "rag.boundary.wrong-city": {
+        "total": 40,
+        "passed": 40
+      },
+      "rag.boundary.index-only": {
+        "total": 40,
+        "passed": 40
+      },
+      "rag.tenpaygo.0.zh": {
+        "total": 4,
+        "passed": 4
+      },
+      "rag.tenpaygo.0.en": {
+        "total": 4,
+        "passed": 4
+      },
+      "rag.tenpaygo.1.zh": {
+        "total": 4,
+        "passed": 4
+      },
+      "rag.tenpaygo.1.en": {
+        "total": 4,
+        "passed": 4
+      },
+      "rag.tenpaygo.2.zh": {
+        "total": 4,
+        "passed": 4
+      },
+      "rag.tenpaygo.2.en": {
+        "total": 4,
+        "passed": 4
+      },
+      "rag.tenpaygo.3.zh": {
+        "total": 4,
+        "passed": 4
+      },
+      "rag.tenpaygo.3.en": {
+        "total": 4,
+        "passed": 4
+      },
+      "rag.tenpaygo.4.zh": {
+        "total": 4,
+        "passed": 4
+      },
+      "rag.tenpaygo.4.en": {
+        "total": 4,
+        "passed": 4
+      },
+      "rag.tenpaygo.5.zh": {
+        "total": 4,
+        "passed": 4
+      },
+      "rag.tenpaygo.5.en": {
+        "total": 4,
+        "passed": 4
+      },
+      "taxi.distance.0": {
+        "total": 240,
+        "passed": 240
+      },
+      "taxi.distance.1": {
+        "total": 240,
+        "passed": 240
+      },
+      "taxi.distance.2": {
+        "total": 240,
+        "passed": 240
+      },
+      "taxi.distance.3": {
+        "total": 240,
+        "passed": 240
+      },
+      "taxi.distance.4": {
+        "total": 240,
+        "passed": 240
+      },
+      "taxi.distance.5": {
+        "total": 240,
+        "passed": 240
+      },
+      "taxi.distance.6": {
+        "total": 240,
+        "passed": 240
+      },
+      "taxi.distance.7": {
+        "total": 240,
+        "passed": 240
+      },
+      "rail.intercity.0": {
+        "total": 100,
+        "passed": 100
+      },
+      "rail.intercity.1": {
+        "total": 100,
+        "passed": 100
+      },
+      "rail.intercity.2": {
+        "total": 100,
+        "passed": 100
+      },
+      "rail.intercity.3": {
+        "total": 100,
+        "passed": 100
+      },
+      "rail.intercity.4": {
+        "total": 100,
+        "passed": 100
+      },
+      "rail.intercity.5": {
+        "total": 100,
+        "passed": 100
+      },
+      "metro.correction.0": {
+        "total": 240,
+        "passed": 240
+      },
+      "metro.correction.1": {
+        "total": 240,
+        "passed": 240
+      },
+      "metro.correction.2": {
+        "total": 240,
+        "passed": 240
+      },
+      "metro.correction.3": {
+        "total": 240,
+        "passed": 240
+      },
+      "metro.correction.4": {
+        "total": 240,
+        "passed": 240
+      },
+      "metro.correction.5": {
+        "total": 240,
+        "passed": 240
+      },
+      "metro.correction.6": {
+        "total": 240,
+        "passed": 240
+      },
+      "metro.correction.7": {
+        "total": 240,
+        "passed": 240
+      },
+      "metro.via.0": {
+        "total": 240,
+        "passed": 240
+      },
+      "metro.via.1": {
+        "total": 240,
+        "passed": 240
+      },
+      "metro.via.2": {
+        "total": 240,
+        "passed": 240
+      },
+      "metro.via.3": {
+        "total": 240,
+        "passed": 240
+      },
+      "feedback.intent_error.zh": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.intent_error.en": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.fact_error.zh": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.fact_error.en": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.stale_info.zh": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.stale_info.en": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.wrong_route.zh": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.wrong_route.en": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.missing_detail.zh": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.missing_detail.en": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.process_issue.zh": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.process_issue.en": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.language_issue.zh": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.language_issue.en": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.connection_issue.zh": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.connection_issue.en": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.other.zh": {
+        "total": 40,
+        "passed": 40
+      },
+      "feedback.other.en": {
+        "total": 40,
+        "passed": 40
+      },
+      "metro.route.zh.1": {
+        "total": 459,
+        "passed": 459
+      },
+      "metro.route.zh.2": {
+        "total": 460,
+        "passed": 460
+      },
+      "metro.route.zh.3": {
+        "total": 461,
+        "passed": 461
+      },
+      "metro.route.zh.4": {
+        "total": 461,
+        "passed": 461
+      },
+      "metro.route.zh.5": {
+        "total": 461,
+        "passed": 461
+      },
+      "metro.route.zh.6": {
+        "total": 461,
+        "passed": 461
+      },
+      "metro.route.zh.7": {
+        "total": 461,
+        "passed": 461
+      },
+      "metro.route.zh.8": {
+        "total": 460,
+        "passed": 460
+      },
+      "metro.route.zh.9": {
+        "total": 459,
+        "passed": 459
+      },
+      "metro.route.zh.10": {
+        "total": 459,
+        "passed": 459
+      },
+      "metro.route.zh.11": {
+        "total": 459,
+        "passed": 459
+      },
+      "metro.route.en.0": {
+        "total": 459,
+        "passed": 459
+      },
+      "metro.route.en.1": {
+        "total": 459,
+        "passed": 459
+      },
+      "metro.route.en.2": {
+        "total": 459,
+        "passed": 459
+      },
+      "metro.route.en.3": {
+        "total": 459,
+        "passed": 459
+      },
+      "metro.route.en.4": {
+        "total": 459,
+        "passed": 459
+      },
+      "metro.route.en.5": {
+        "total": 459,
+        "passed": 459
+      },
+      "metro.route.en.6": {
+        "total": 458,
+        "passed": 458
+      },
+      "metro.route.en.7": {
+        "total": 458,
+        "passed": 458
+      },
+      "metro.route.en.8": {
+        "total": 458,
+        "passed": 458
+      },
+      "metro.route.en.9": {
+        "total": 458,
+        "passed": 458
+      },
+      "metro.route.en.10": {
+        "total": 458,
+        "passed": 458
+      },
+      "metro.route.en.11": {
+        "total": 458,
+        "passed": 458
+      },
+      "metro.route.zh.0": {
+        "total": 458,
+        "passed": 458
+      }
+    },
+    "byType": {
+      "metro": {
+        "total": 11877,
+        "passed": 11877
+      },
+      "rail-scope": {
+        "total": 12,
+        "passed": 12
+      },
+      "place": {
+        "total": 152,
+        "passed": 152
+      },
+      "taxi": {
+        "total": 1960,
+        "passed": 1960
+      },
+      "rail": {
+        "total": 648,
+        "passed": 648
+      },
+      "followup": {
+        "total": 1950,
+        "passed": 1950
+      },
+      "via": {
+        "total": 1000,
+        "passed": 1000
+      },
+      "noise": {
+        "total": 20,
+        "passed": 20
+      },
+      "incomplete": {
+        "total": 7,
+        "passed": 7
+      },
+      "nearby": {
+        "total": 16,
+        "passed": 16
+      },
+      "rag": {
+        "total": 1478,
+        "passed": 1478
+      },
+      "rag-boundary": {
+        "total": 160,
+        "passed": 160
+      },
+      "feedback": {
+        "total": 720,
+        "passed": 720
+      }
+    },
+    "bySplit": {
+      "development": {
+        "total": 15999,
+        "passed": 15999
+      },
+      "holdout": {
+        "total": 4001,
+        "passed": 4001
+      }
+    }
+  },
+  "improved": 125,
+  "regressed": 0,
+  "guardRegressed": 0,
+  "guardImproved": 0,
+  "elapsedMs": 105654,
+  "paidModelCalls": 0,
+  "scope": "同场景的新组合话术，测量目标资料召回和工具/边界回归；不是独立新意图、线上解决率或模型权重训练。固定历史集单列，已用于调试，不是盲测。",
+  "candidateConfig": {
+    "topK": 10,
+    "chunkSize": 520,
+    "overlap": 60,
+    "minCoverage": 0.04,
+    "expansion": "",
+    "guidance": "先直接回答当前问题；证据不足时说明缺少什么，不重复询问已经给出的地点。"
+  },
+  "candidateConfigHash": "b1eb3d1303e9619764094b08f576380d080ba1c660ff7c870a66c41a4b563380",
+  "hypothesis": "基线存在 403 个目标资料未召回样例；试验扩大召回窗口并小幅降低词项覆盖阈值，随后对同一全样本和历史集检查回归。",
+  "gate": {
+    "fullNewSample": true,
+    "minSample": true,
+    "fullHistorical": true,
+    "targetRecall": true,
+    "noNewRegression": true,
+    "noHistoricalRegression": true,
+    "boundaries": true,
+    "smallGold": true,
+    "measuredImprovement": true
+  },
+  "gold": {
+    "passed": 21,
+    "total": 21,
+    "corpusHash": "d47d0bebf5b1218af020b8a8942f9af37eb4cd2119c7fd9ae1bf8d1544a8cc79"
+  },
+  "completedAt": "2026-09-25T06:34:12.097Z",
+  "releaseEligible": true,
+  "result": "candidate-ready",
+  "candidateId": "59521dee-a5bc-4bbc-a890-fb9650d2ae6a",
+  "candidateHash": "b1eb3d1303e9619764094b08f576380d080ba1c660ff7c870a66c41a4b563380",
+  "progress": {
+    "completed": 44000,
+    "total": 44000,
+    "phase": "acceptance"
+  },
+  "dataset": {
+    "version": "loop-phrasing-6.2-v1",
+    "count": 12000,
+    "range": [
+      12000,
+      24000
+    ],
+    "sha256": "58044d3cf129688b66401d373c5d24df208c627bfd1428e74d4db9897f5b7e03",
+    "seedQuestions": 1478,
+    "scope": "Seed labels are preserved. New wording combines authored request framing and answer constraints around existing service/document questions; these are not 12,000 independent human-labeled intents."
+  },
+  "fullCheckArtifact": "loop-evolution.checks.jsonl.gz",
+  "fullCheckSha256": "d72d0d16107e3b4e75cab9cdac97dda109f403ad8f3273af8d2a25ad7406d2c6",
+  "published": false,
+  "releaseScope": "Only an accepted candidate is produced. Publishing remains a separate administrator action with an exact base/source check and rollback."
+}

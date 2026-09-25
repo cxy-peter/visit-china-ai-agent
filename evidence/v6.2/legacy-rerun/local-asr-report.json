@@ -1,0 +1,178 @@
+{
+  "checks": [
+    {
+      "name": "en-US actual WASM model listens",
+      "passed": true
+    },
+    {
+      "name": "en-US microphone level reflects PCM energy",
+      "passed": true
+    },
+    {
+      "name": "en-US actual audio becomes saved transcript",
+      "passed": true
+    },
+    {
+      "name": "en-US automatically listens for the next turn",
+      "passed": true
+    },
+    {
+      "name": "second actual audio turn submits without Send or restarting call",
+      "passed": true
+    },
+    {
+      "name": "en-US first request remains visible",
+      "passed": true
+    },
+    {
+      "name": "en-US microphone track stopped",
+      "passed": true
+    },
+    {
+      "name": "zh-CN actual WASM model listens",
+      "passed": true
+    },
+    {
+      "name": "zh-CN microphone level reflects PCM energy",
+      "passed": true
+    },
+    {
+      "name": "zh-CN actual audio becomes saved transcript",
+      "passed": true
+    },
+    {
+      "name": "zh-CN automatically listens for the next turn",
+      "passed": true
+    },
+    {
+      "name": "zh-CN first request remains visible",
+      "passed": true
+    },
+    {
+      "name": "zh-CN microphone track stopped",
+      "passed": true
+    },
+    {
+      "name": "bilingual audio builds shared trip context",
+      "passed": true
+    },
+    {
+      "name": "hotel need is not confused with a booked flight",
+      "passed": true
+    },
+    {
+      "name": "final speech remains visible after hangup",
+      "passed": true
+    },
+    {
+      "name": "no external speech or paid API requests",
+      "passed": true
+    },
+    {
+      "name": "no uncaught browser errors",
+      "passed": true
+    }
+  ],
+  "state": {
+    "schema": 5,
+    "revision": 3,
+    "language": "zh",
+    "outputLanguage": "auto",
+    "preferences": {},
+    "facts": {
+      "city": "Shanghai",
+      "stage": "planning",
+      "party": "with parents",
+      "hotel": "not_booked",
+      "flight": "booked"
+    },
+    "tasks": [
+      "metro",
+      "hotel"
+    ],
+    "confirmedRevision": null,
+    "history": [
+      {
+        "revision": 1,
+        "sourceIds": [],
+        "text": "i am planning a trip to shanghai with my parents and i need a hotel and metro tickets",
+        "channel": "voice",
+        "language": "en",
+        "context": {
+          "city": "Shanghai",
+          "preferences": {}
+        },
+        "offers": [
+          "hotel"
+        ],
+        "factsChanged": [
+          "city",
+          "stage",
+          "party",
+          "hotel"
+        ],
+        "reply": "I have added find a place to stay examples below for comparison. These are simulated options. Let’s handle metro boarding guide first. The action and source cards are ready beside this call. Need help from staff, or shall we return to your plan?",
+        "answerId": "6ca6497b-58f2-49f5-a4fa-90b2a3642f1e"
+      },
+      {
+        "revision": 2,
+        "sourceIds": [],
+        "text": "i am planning a trip to shanghai with my parents and i need a hotel and metro tickets",
+        "channel": "voice",
+        "language": "en",
+        "context": {
+          "city": "Shanghai",
+          "preferences": {}
+        },
+        "offers": [
+          "hotel"
+        ],
+        "factsChanged": [],
+        "reply": "I have added find a place to stay examples below for comparison. These are simulated options. Let’s handle metro boarding guide first. The action and source cards are ready beside this call. Need help from staff, or shall we return to your plan?",
+        "answerId": "ade9e103-8424-4020-a2fa-4f40b081a428"
+      },
+      {
+        "revision": 3,
+        "sourceIds": [],
+        "text": "和想带父母去上海旅游机票已经订好了我需要酒店和地铁票",
+        "channel": "voice",
+        "language": "zh",
+        "context": {
+          "city": "Shanghai",
+          "preferences": {}
+        },
+        "offers": [
+          "hotel"
+        ],
+        "factsChanged": [
+          "flight"
+        ],
+        "reply": "我先把你需要的安排住宿放在下面，供你比较。这些是模拟示例。先处理：地铁乘车指引。相关行动卡和来源已经放在右边。你可以边看边说；需要先找现场人员协助吗？",
+        "answerId": "b2c0b59f-1abd-4af4-a0b8-0f12d7f2a024"
+      }
+    ],
+    "initialRequest": {
+      "text": "i am planning a trip to shanghai with my parents and i need a hotel and metro tickets",
+      "channel": "voice"
+    },
+    "answered": [],
+    "lastQuestion": "issue",
+    "policy": {
+      "version": "wf-1",
+      "maxSpokenChars": 220,
+      "questionOrder": [
+        "stage",
+        "flight",
+        "hotel",
+        "transfer",
+        "interests"
+      ],
+      "proactiveExtensions": true,
+      "promptSuffix": "Ask one useful question at a time. Accept a click as an answer. Never require listening to finish."
+    },
+    "currentIssue": "metro",
+    "outcomes": {},
+    "lastReply": "我先把你需要的安排住宿放在下面，供你比较。这些是模拟示例。先处理：地铁乘车指引。相关行动卡和来源已经放在右边。你可以边看边说；需要先找现场人员协助吗？"
+  },
+  "scope": "Real WASM recognition, synthetic English and Chinese audio routed through a test MediaStream. No real human microphone, noise, accent, or latency study."
+}

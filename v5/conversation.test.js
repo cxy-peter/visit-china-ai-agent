@@ -57,8 +57,8 @@ test('local voice preserves drafts and ignores late results when a click interru
  rec.listeners.partialresult({result:{partial:'I also need'}});r.call.cancel({preserveInterim:true});rec.listeners.result({result:{text:'stale'}});
  assert.equal(drafts[0],'I also need');assert.equal(r.texts.length,0);r.call.stop();
 });
-test('local voice mutes tracks during playback and resumes after local TTS',async()=>{
- const r=rig();await r.call.start({consent:true});assert.equal(r.tracks[0].enabled,true);r.call.speak('Next question');assert.equal(r.tracks[0].enabled,false);
+test('local voice listens during playback for barge-in and disables tracks only on mute',async()=>{
+ const r=rig();await r.call.start({consent:true});assert.equal(r.tracks[0].enabled,true);r.call.speak('Next question');assert.equal(r.tracks[0].enabled,true);
  r.synth.last.onend();assert.equal(r.tracks[0].enabled,true);r.call.mute();assert.equal(r.tracks[0].enabled,false);r.call.stop();
 });
 test('local voice refuses remote TTS when no system voice exists',async()=>{
@@ -80,7 +80,7 @@ test('local short phrase breaks accumulate into one complete multiline turn',asy
 });
 test('silence requests a real final result and never commits an interim transcript',async()=>{
  const r=rig();await r.call.start({consent:true});const rec=r.call.rec;
- rec.listeners.partialresult({result:{partial:'Shanghai'}});r.call.lastSound=Date.now()-1500;
+ rec.listeners.partialresult({result:{partial:'Shanghai'}});r.call.lastSound=Date.now()-r.call.endpointMs()-100;
  r.call.processor.onaudioprocess({inputBuffer:{getChannelData:()=>new Float32Array(4096)}});
  assert.equal(rec.finalRequested,true);assert.equal(r.texts.length,0);
  rec.listeners.result({result:{text:'Shanghai'}});assert.deepEqual(r.texts,['Shanghai']);r.call.stop();
@@ -89,15 +89,15 @@ test('local TTS output language can differ from the recognition language',async(
  const r=rig();r.synth.getVoices=()=>[{localService:true,lang:'zh-CN'}];await r.call.start({consent:true,language:'en-US'});r.call.outputLanguage='zh-CN';r.call.speak('准备好了吗');assert.equal(r.synth.last.lang,'zh-CN');assert.equal(r.call.language,'en-US');r.synth.last.onend();assert.equal(r.call.phase,'listening');r.call.stop();
 });
 test('model phrase endpoint can finalize despite sustained background energy',async()=>{
- const r=rig();await r.call.start({consent:true});const rec=r.call.rec;rec.listeners.result({result:{text:'Shanghai'}});r.call.lastSound=Date.now();await new Promise(resolve=>setTimeout(resolve,1450));assert.equal(rec.finalRequested,true);assert.equal(r.texts.length,0);rec.listeners.result({result:{text:''}});assert.deepEqual(r.texts,['Shanghai']);r.call.stop();
+ const r=rig();await r.call.start({consent:true});const rec=r.call.rec;r.call.silenceMs=1500;rec.listeners.result({result:{text:'Shanghai'}});r.call.lastSound=Date.now();await new Promise(resolve=>setTimeout(resolve,1700));assert.equal(rec.finalRequested,true);assert.equal(r.texts.length,0);rec.listeners.result({result:{text:''}});assert.deepEqual(r.texts,['Shanghai']);r.call.stop();
 });
 
 
-test('interrupted local ASR sends an accepted final immediately, rejects noise and ignores stale results',async()=>{
+test('interrupted local ASR still waits for a full turn, rejects noise and ignores stale results',async()=>{
  const r=rig();r.call.acceptText=t=>E.speechDecision(t).accepted;const rejected=[];r.call.onRejected=t=>rejected.push(t);
  await r.call.start({consent:true});r.call.interruptAndListen();const old=r.call.rec;
  old.listeners.result({result:{text:'啊'}});assert.equal(r.texts.length,0);
  r.call.finish();old.listeners.result({result:{text:''}});assert.equal(r.texts.length,0);assert.equal(rejected.length,1);
- const current=r.call.rec;assert.notEqual(current,old);current.listeners.result({result:{text:'上海地铁怎么走'}});
+ const current=r.call.rec;assert.notEqual(current,old);current.listeners.result({result:{text:'上海地铁怎么走'}});assert.equal(r.texts.length,0);r.call.finish();current.listeners.result({result:{text:''}});
  assert.equal(r.texts.length,1);assert.equal(r.texts[0],'上海地铁怎么走');old.listeners.result({result:{text:'late train'}});assert.equal(r.texts.length,1);r.call.stop();
 });

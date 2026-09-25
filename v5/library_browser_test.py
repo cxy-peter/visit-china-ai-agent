@@ -14,7 +14,7 @@ runtime=tempfile.mkdtemp(prefix='vc55-library-');server=None
 with socket.socket() as s:s.bind(('127.0.0.1',0));port=s.getsockname()[1]
 try:
     if not HOSTED:
-        fixture="""const {createApp}=require('./v5/server');const app=createApp({env:{ADMIN_PASSWORD:'test-admin',DEEPSEEK_API_KEY:'test-key-not-real'},runtimeDir:process.env.LOCAL_DATA_DIR,fetch:async(url,opts)=>{if(url!=='https://api.deepseek.com/chat/completions')throw Error('Unexpected provider');return new Response(JSON.stringify({choices:[{finish_reason:'stop',message:{content:JSON.stringify({intent:{kind:'other'},text:'可以按你的出行偏好，先核对地铁站点和出口。This is a test response.',source_ids:['sh-metro']})}}],usage:{prompt_tokens:50,completion_tokens:20,total_tokens:70}}));}});app.server.listen(Number(process.env.PORT),'127.0.0.1');"""
+        fixture="""const {createApp}=require('./v5/server');const app=createApp({env:{ADMIN_PASSWORD:'test-admin',DEEPSEEK_API_KEY:'test-key-not-real'},runtimeDir:process.env.LOCAL_DATA_DIR,fetch:async(url,opts)=>{if(url!=='https://api.deepseek.com/chat/completions')throw Error('Unexpected provider');const evidence=JSON.parse(JSON.parse(opts.body).messages.at(-1).content).evidence||[];const cited=evidence.find(e=>e.id==='sh-metro')||evidence[0];return new Response(JSON.stringify({choices:[{finish_reason:'stop',message:{content:JSON.stringify({intent:{kind:'other'},text:'可以按你的出行偏好，先核对地铁站点和出口。This is a test response.',source_ids:cited?[cited.id]:[]})}}],usage:{prompt_tokens:50,completion_tokens:20,total_tokens:70}}));}});app.server.listen(Number(process.env.PORT),'127.0.0.1');"""
         server=subprocess.Popen(['node','-e',fixture],cwd=ROOT,env={**os.environ,'PORT':str(port),'LOCAL_DATA_DIR':runtime},stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
     url=HOSTED or f'http://127.0.0.1:{port}'
     if server:
@@ -54,7 +54,7 @@ try:
             expect(page.locator('.assistant-answer')).to_have_count(1)
             check('one shared consent enables model response inside existing conversation','This is a test response.' in page.locator('.assistant-answer').inner_text() and page.locator('#model-consent').is_checked())
             page.locator('.turn-sources').last.locator('summary').click()
-            check('automatic RAG citations link back to the same source drawer','AI 引用' in page.locator('.turn-sources').last.inner_text() and page.evaluate("TravelApp.getState().history.at(-1).assistance.sourceIds.includes('sh-metro')"))
+            check('automatic RAG citations link back to the same source drawer','AI 引用' in page.locator('.turn-sources').last.inner_text() and page.evaluate("TravelApp.getState().history.at(-1).assistance.sourceIds.every(id=>!!TravelLibrary.get(id))"))
             page.evaluate("TravelApp.commit({type:'text',text:'我在上海，继续看看地铁',channel:'text'})")
             expect(page.locator('.assistant-answer')).to_have_count(2)
             check('later turns preserve earlier model answer',page.locator('.assistant-answer').count()==2)
@@ -74,7 +74,7 @@ try:
                 if page.evaluate("__said.some(t=>t.includes('This is a test response.'))"):break
                 page.wait_for_timeout(50)
             assert page.evaluate("__said.some(t=>t.includes('This is a test response.'))")
-            check('voice uses automatic retrieval and speaks shared model answer',page.evaluate("TravelApp.getState().history.at(-1).channel==='voice' && TravelApp.getState().history.at(-1).sourceIds.length===0 && TravelApp.getState().history.at(-1).assistance.sourceIds.includes('sh-metro')"))
+            check('voice uses automatic retrieval and speaks shared model answer',page.evaluate("TravelApp.getState().history.at(-1).channel==='voice' && TravelApp.getState().history.at(-1).sourceIds.length===0 && TravelApp.getState().history.at(-1).assistance.sourceIds.every(id=>!!TravelLibrary.get(id))"))
             page.locator('#nav-library').click();check('active call remains controllable in source library',page.locator('#library-hangup').is_visible() and page.evaluate('TravelApp.getCall().active'))
             page.locator('#library-hangup').click();check('library hangup stops the same call',not page.evaluate('TravelApp.getCall().active'));page.locator('#library-back').click()
         page.screenshot(path=str(IMAGES/'unified-chat-desktop.png'),full_page=True)

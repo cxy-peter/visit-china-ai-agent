@@ -1,0 +1,7 @@
+{"suite": "browser_test.py", "exit": 0, "tail": "{\"browserChecksPassed\": 49, \"static\": false}\n"}
+{"suite": "chat_browser_test.py", "exit": 0, "tail": "{\"chatChecksPassed\": 31}\n"}
+{"suite": "cloud_browser_test.py", "exit": 0, "tail": "{\"cloudChecksPassed\": 11}\n"}
+{"suite": "library_browser_test.py", "exit": 1, "tail": "ackages\\playwright\\_impl\\_sync_base.py\", line 115, in _sync\n    return task.result()\n           ^^^^^^^^^^^^^\n  File \"D:\\Anaconda\\Lib\\site-packages\\playwright\\_impl\\_assertions.py\", line 382, in to_have_count\n    await self._expect_impl(\n  File \"D:\\Anaconda\\Lib\\site-packages\\playwright\\_impl\\_assertions.py\", line 85, in _expect_impl\n    raise AssertionError(\nAssertionError: Locator expected to have count '1'\nActual value: 0 \nCall log:\n  - Expect \"to_have_count\" with timeout 5000ms\n  - waiting for locator(\".assistant-answer\")\n    9 × locator resolved to 0 elements\n      - unexpected value \"0\"\n\n"}
+{"suite": "operations_browser_test.py", "exit": 0, "tail": "{\"passed\": 18, \"errors\": []}\n"}
+{"suite": "discovery_browser_test.py", "exit": 0, "tail": "{\"passed\": 22, \"errors\": []}\n"}
+{"suite": "harness_browser_test.py", "exit": 0, "tail": "{\"passed\": 18, \"errors\": []}\n"}
