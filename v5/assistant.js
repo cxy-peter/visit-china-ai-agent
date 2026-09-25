@@ -38,7 +38,7 @@ async function smartAssist({state,model,signal,records}){
  const out=await MI.interpret(state,model,pool,signal);let intent=out.intent;
  const fallback=M.intent(h.text,state.facts.city,prior);
  // The model routes first; a complete explicit metro request cannot degrade to generic prose.
- const recover=['other','unclear'].includes(intent.kind)&&fallback?.origin&&fallback?.destination&&/地铁|metro|subway/i.test(h.text);
+ const recover=['other','unclear'].includes(intent.kind)&&fallback&&/地铁|metro|subway/i.test(h.text)&&((fallback.origin&&fallback.destination)||(intent.kind==='unclear'&&h.text.trim().length>4));
  if(recover)intent={...fallback,city:'Shanghai'};
  const meta={intent,intentProvider:recover?'local-fallback':'deepseek',usage:out.usage};
  if(intent.kind==='unclear')return{...meta,text:'',sourceIds:[],mode:'ignored'};
@@ -53,7 +53,7 @@ async function smartAssist({state,model,signal,records}){
  }else if(intent.kind==='rail')tool=I.analyze((intent.origin||'')+' 到 '+(intent.destination||'')+' 高铁',intent.city||state.facts.city,state.language,[]);
  if(tool){
   const evidence=records.filter(r=>tool.sourceIds.includes(r.id));
-  const confidence=Q.answer(intent,evidence,tool,out.confidence);if(recover){confidence.requiresReview=true;confidence.reasons.push('模型未识别完整地铁问题，使用明确站点路网兜底');}
+  const confidence=Q.answer(intent,evidence,tool,out.confidence);if(recover){confidence.requiresReview=true;confidence.reasons.push('模型未识别明确的地铁需求，使用站点工具回答或追问缺失信息');}
   const held=tool.sourceIds.some(id=>{const r=records.find(r=>r.id===id);return !r||!L.current(r)||(r.publicationHash&&['sh-taxi-tariff','sh-metro-map','sh-hz-rail'].includes(id));});
   if(held)return{...meta,confidence:{...confidence,requiresReview:true},text:zh?'已识别本次需求，但对应路线或费用依据需要复核，暂不能给出已核验结果。请打开本轮官方来源，或调整路线地点后重试。':'I identified this request, but its route or fare evidence needs review. Open the official source below or adjust the route and retry.',sourceIds:tool.sourceIds,mode:'source-gap',notice:'required-source-held'};
   return{...meta,confidence,text:tool.text,sourceIds:tool.sourceIds,mode:'deepseek-tool',notice:recover?'explicit-route-fallback':'model-intent-verified-tool',tool:{kind:tool.kind,metro:tool.metro||null,estimate:tool.estimate?.total||null,request:tool.request||null,places:tool.places||null},routeVersion:tool.kind==='metro'?M.version:null};

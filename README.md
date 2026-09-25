@@ -108,4 +108,4 @@ Vercel构建配置提供静态前端；完整模型/审核后端当前运行于�
 
 Shanghai station records and 19 sourced places share the library with the assistant. The sidebar follows the current destination, offers grounded nearby places and adds via stations. DeepSeek intent self-ratings and evidence scores are separate, with low-confidence review material in Operations. Admin source submissions publish directly with audit/rollback; government excerpts require fetched exact-text verification for automatic confirmation.
 
-The downloadable corpus contains 1,220 synthetic/source-adapted cases (184 source-adapted, 1,036 authored), plus 10 historical scenarios. These are local regressions, not 1,220 paid model calls or a measured model accuracy claim. See [V5.9 design and validation](docs/V5_9_DISCOVERY_AND_OPERATIONS.md).
+The downloadable corpus contains 1,221 synthetic/source-adapted cases (184 source-adapted, 1,037 authored), plus 10 historical scenarios. These are local regressions, not 1,221 paid model calls or a measured model accuracy claim. See [V5.9 design and validation](docs/V5_9_DISCOVERY_AND_OPERATIONS.md).

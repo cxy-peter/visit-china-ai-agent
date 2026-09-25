@@ -54,7 +54,7 @@ try:
   page.screenshot(path=str(OUT/'V5_7_Operations_Dashboard.png'))
   page.locator('[data-ops-tab="sources"]').click();check('source refresh and proposals accessible',page.locator('#ops-refresh-sources').is_enabled())
   page.locator('[data-ops-tab="reviews"]').click();expect(page.locator('#ops-content')).to_contain_text('五个不同审核账号')
-  page.locator('[data-ops-tab="evaluation"]').click();page.locator('#ops-run-eval').click();expect(page.locator('#ops-content')).to_contain_text('1230 / 1230',timeout=30000)
+  page.locator('[data-ops-tab="evaluation"]').click();page.locator('#ops-run-eval').click();expect(page.locator('#ops-content')).to_contain_text('1231 / 1231',timeout=30000)
   check('simulated scenario evaluation persisted',page.locator('#ops-content').inner_text().find('上海到杭州的高铁')>=0)
   if URL.startswith('http://127.'):
    page.locator('[data-ops-tab="sources"]').click();page.locator('#ops-source-add').click()

@@ -19,5 +19,6 @@ for(const q of ['我','啊','嗯','哦','呃','额','喂','嗯嗯','啊啊','呃
 for(const q of ['从浦东机场坐地铁','地铁去上海站','怎么坐地铁到人民广场','Metro to Shanghai Railway Station','Metro from Pudong airport','地铁从陆家嘴出发'])add('incomplete',q,{kind:'metro',needsClarification:true});
 for(const q of ['上海站附近有什么可以玩','上海火车站周边有什么好玩','上海火车站附近能吃什么','What can I visit near Shanghai Railway Station?','Where can I eat near Shanghai Railway Station?','人民广场附近有什么公园','豫园附近有什么吃的','What is there around Yuyuan?','南京东路附近有什么景点','打浦桥附近推荐几个去处','自然博物馆周边吃饭','曲阜路附近可以走走吗'])add('nearby',q,{kind:'nearby'});
 for(const q of ['Tell me places to eat near Yuyuan Garden.','Where can I eat around Yuyuan Garden?','豫园附近推荐吃什么','豫园周边有什么餐厅'])add('nearby',q,{kind:'nearby',sourceId:'place-hefeng'});
+add('incomplete','我要坐地铁，但是还没确定从哪出发',{kind:'metro',needsClarification:true});
 const corpus={version:'travel-regression-5.9',createdAt:'2026-09-25',scope:'本地路由、工具、检索及上下文回归；不是 1000 次真实 DeepSeek 语义评测，也不是训练数据。公开资料问题均为改写。',cases};
 const dir=path.join(__dirname,'../data/evaluation');fs.mkdirSync(dir,{recursive:true});fs.writeFileSync(path.join(dir,'v5.9-cases.json'),JSON.stringify(corpus,null,2)+'\n');console.log(JSON.stringify({total:cases.length,types:cases.reduce((a,c)=>(a[c.type]=(a[c.type]||0)+1,a),{}),publicSourceAdapted:cases.filter(c=>c.provenance.type==='public-source-adapted').length}));

@@ -19754,6 +19754,21 @@
         "sourceId": "place-hefeng"
       },
       "history": []
+    },
+    {
+      "id": "vc59-1221",
+      "type": "incomplete",
+      "input": "我要坐地铁，但是还没确定从哪出发",
+      "language": "zh",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的合成测试，不是真实用户数据"
+      },
+      "expect": {
+        "kind": "metro",
+        "needsClarification": true
+      },
+      "history": []
     }
   ]
 }
