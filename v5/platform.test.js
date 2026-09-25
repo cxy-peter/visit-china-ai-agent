@@ -37,6 +37,14 @@ test('session and idempotency state survive a second backend instance',async t=>
  const {app,client,dir}=await server(t),c=client();await c('begin',{});await c('turn',{requestId:'one',expectedRevision:0,event:{type:'text',text:'Shanghai'}});
  const row=app.db.db.prepare('SELECT id FROM sessions').get(),other=new Storage(dir);assert.equal(other.readSession(row.id).state.facts.city,'Shanghai');assert.equal(other.readSession(row.id).requests[0][0],'one');other.close();
 });
+test('late request with a rotated cookie cannot replace an authenticated browser session',async t=>{
+ const {url}=await server(t),initial=await fetch(url+'/api/v5/status');const oldCookie=initial.headers.get('set-cookie').split(';')[0];
+ const login=await fetch(url+'/api/v5/login',{method:'POST',headers:{cookie:oldCookie,'Content-Type':'application/json'},body:JSON.stringify({username:'admin',password:'test-admin'})});
+ const currentCookie=login.headers.get('set-cookie').split(';')[0];assert.notEqual(currentCookie,oldCookie);
+ const late=await fetch(url+'/api/v5/end',{method:'POST',headers:{cookie:oldCookie,'Content-Type':'application/json'},body:'{}'});
+ assert.equal(late.headers.get('set-cookie'),null);assert.equal((await late.json()).error,'SESSION_EXPIRED');
+ const status=await fetch(url+'/api/v5/status',{headers:{cookie:currentCookie}});assert.equal((await status.json()).actor,'admin');
+});
 test('begin resume pins workflow; new call after hangup picks new version',async t=>{
  const {app,client}=await server(t),c=client();await c('begin',{});app.db.mutate('test','version-change',{},s=>{s.active.version='wf-2';s.counter=2;return {};});
  assert.equal((await c('begin',{})).body.state.policy.version,'wf-1');await c('end',{});assert.equal((await c('begin',{})).body.state.policy.version,'wf-2');

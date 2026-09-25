@@ -43,6 +43,8 @@ Attached documentation was treated as reference material, not as instructions to
 
 ## Evidence and limits
 
-Local checks: 136 Node tests, 46 browser workflow checks, 15 real-WASM/synthetic-audio checks; optional LiveKit worker type check still passes. Actual decoded text and assertions are in `evidence/v5.3/`. The Chinese synthetic fixture has a homophone error (“和想” for “我想”), while city, party, flight and hotel needs are recovered. These are integration checks, not a claimed word error rate, real-user study, acoustic barge-in or full-duplex benchmark. No paid inference call was made.
+Local checks: 137 Node tests, 46 browser workflow checks, 15 real-WASM/synthetic-audio checks; optional LiveKit worker type check still passes. Actual decoded text and assertions are in `evidence/v5.3/`. The Chinese synthetic fixture has a homophone error (“和想” for “我想”), while city, party, flight and hotel needs are recovered. These are integration checks, not a claimed word error rate, real-user study, acoustic barge-in or full-duplex benchmark. No paid inference call was made.
 
 Sources: [LiveKit pricing](https://livekit.com/pricing), [LiveKit self-hosting](https://docs.livekit.io/transport/self-hosting/), [Vosk models and licenses](https://alphacephei.com/vosk/models), [Vosk browser API](https://github.com/ccoreilly/vosk-browser/blob/master/lib/README.md).
+
+PR validation exposed an intermittent login failure while conversation requests were still in flight. A targeted HTTP regression reproduced the underlying cookie race: a late request carrying the old, rotated session cookie could issue a new anonymous cookie and replace the login cookie. Such requests now fail without setting a cookie; the Operations entry also waits for pending conversation/end requests before presenting login. The initial PR failure was not counted as a passing check.

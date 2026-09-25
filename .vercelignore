@@ -22,3 +22,5 @@ DCG*
 dist-worker/
 node_modules/
 .git/
+
+dist/
