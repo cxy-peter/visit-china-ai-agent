@@ -1,0 +1,531 @@
+{
+  "url": "https://visit-china-ai-agent-33epccivw-cxy-peters-projects.vercel.app",
+  "checks": [
+    {
+      "name": "version 6.4",
+      "passed": true
+    },
+    {
+      "name": "admin login",
+      "passed": true
+    },
+    {
+      "name": "admin connect",
+      "passed": true
+    },
+    {
+      "name": "session persists",
+      "passed": true
+    },
+    {
+      "name": "answer 1",
+      "passed": true
+    },
+    {
+      "name": "real cited response 1",
+      "passed": false
+    },
+    {
+      "name": "airport prose not topology",
+      "passed": true
+    },
+    {
+      "name": "airport destination retained",
+      "passed": true
+    },
+    {
+      "name": "answer 2",
+      "passed": true
+    },
+    {
+      "name": "real cited response 2",
+      "passed": true
+    },
+    {
+      "name": "airport prose not topology",
+      "passed": true
+    },
+    {
+      "name": "airport destination retained",
+      "passed": true
+    }
+  ],
+  "answers": [
+    {
+      "input": "呃，我现在从浦东机场降落了然后我要去上海虹桥火车站我需要注意什么以及我要怎么走。",
+      "expected": "guide",
+      "answer": {
+        "intent": {
+          "kind": "metro",
+          "responseMode": "guide",
+          "origin": "浦东机场",
+          "destination": "上海虹桥火车站",
+          "via": null,
+          "city": "上海",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 4007,
+          "completion_tokens": 1358,
+          "total_tokens": 5365,
+          "prompt_tokens_details": {
+            "cached_tokens": 1536
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 1070
+          },
+          "prompt_cache_hit_tokens": 1536,
+          "prompt_cache_miss_tokens": 2471
+        },
+        "services": [],
+        "text": "已记录上海虹桥火车站的服务问题；目前缺少能证明这一项的适用正文，不能据此判定不支持。可查看相关运营方的当前说明或补充一条可核对的来源。",
+        "sourceIds": [],
+        "mode": "source-gap",
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [],
+          "sourceScore": null,
+          "requiresReview": false,
+          "needsClarification": true,
+          "reasons": [
+            "缺少完成本次请求所需的信息"
+          ],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 163
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 17198
+            },
+            {
+              "name": "website_lookup",
+              "status": "review-required"
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 83
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "metro"
+            },
+            {
+              "name": "verify",
+              "status": "held"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 551,
+            "candidates": 472,
+            "elapsedMs": 83,
+            "hits": [
+              {
+                "id": "arrival-airport-link-guide:75c387d1b32eb18f:0",
+                "sourceId": "arrival-airport-link-guide",
+                "version": "75c387d1b32eb18f",
+                "score": 0.03051,
+                "coverage": 0.455
+              },
+              {
+                "id": "station-55:bb0aa121bd73499f:0",
+                "sourceId": "station-55",
+                "version": "bb0aa121bd73499f",
+                "score": 0.02932,
+                "coverage": 0.136
+              },
+              {
+                "id": "history-airport-link:ad016dd0995915ef:0",
+                "sourceId": "history-airport-link",
+                "version": "ad016dd0995915ef",
+                "score": 0.02635,
+                "coverage": 0.205
+              },
+              {
+                "id": "verified-hongqiao-rail-station:1c6991b2bad55c70:0",
+                "sourceId": "verified-hongqiao-rail-station",
+                "version": "1c6991b2bad55c70",
+                "score": 0.02487,
+                "coverage": 0.182
+              },
+              {
+                "id": "history-airport-season:9ac7db13bc323924:0",
+                "sourceId": "history-airport-season",
+                "version": "9ac7db13bc323924",
+                "score": 0.02311,
+                "coverage": 0.091
+              },
+              {
+                "id": "verified-pvg-taxi:cca2a96bbc4759cf:0",
+                "sourceId": "verified-pvg-taxi",
+                "version": "cca2a96bbc4759cf",
+                "score": 0.0228,
+                "coverage": 0.068
+              },
+              {
+                "id": "history-sh-hz-trains:5f222a63b6cce02e:0",
+                "sourceId": "history-sh-hz-trains",
+                "version": "5f222a63b6cce02e",
+                "score": 0.02187,
+                "coverage": 0.159
+              },
+              {
+                "id": "verified-pvg-rest-charging:3c747ba8fb743181:0",
+                "sourceId": "verified-pvg-rest-charging",
+                "version": "3c747ba8fb743181",
+                "score": 0.0217,
+                "coverage": 0.068
+              }
+            ]
+          },
+          "acquisition": {
+            "status": "review-required",
+            "sourceId": "off-d30d012d0912ac9c",
+            "score": 0,
+            "eligible": false,
+            "method": "model-query → known URL → robots/body fetch → quoted evidence assessment",
+            "usage": {
+              "prompt_tokens": 668,
+              "completion_tokens": 201,
+              "total_tokens": 869,
+              "prompt_tokens_details": {
+                "cached_tokens": 128
+              },
+              "prompt_cache_hit_tokens": 128,
+              "prompt_cache_miss_tokens": 540
+            }
+          },
+          "totalMs": 22154
+        },
+        "sourceAcquisition": {
+          "status": "review-required",
+          "sourceId": "off-d30d012d0912ac9c",
+          "score": 0,
+          "eligible": false,
+          "method": "model-query → known URL → robots/body fetch → quoted evidence assessment",
+          "usage": {
+            "prompt_tokens": 668,
+            "completion_tokens": 201,
+            "total_tokens": 869,
+            "prompt_tokens_details": {
+              "cached_tokens": 128
+            },
+            "prompt_cache_hit_tokens": 128,
+            "prompt_cache_miss_tokens": 540
+          }
+        },
+        "modelRouting": {
+          "requested": "auto",
+          "selected": "pro",
+          "model": "deepseek-v4-pro",
+          "thinking": true,
+          "effort": "low",
+          "reason": "多个需求，需要分项处理",
+          "method": "bounded-complexity-rules"
+        },
+        "dataset": "evaluation",
+        "executionId": "65e13331-13ef-4316-a3d7-fff3c23312d9",
+        "assessmentId": "6ab9be48-685f-4144-ab3b-eb4bbeff8876"
+      },
+      "error": null,
+      "schemaIssue": null,
+      "seconds": 26.1
+    },
+    {
+      "input": "I just landed at Pudong Airport and need to reach Shanghai Hongqiao Railway Station. How should I get there and what should I watch out for?",
+      "expected": "guide",
+      "answer": {
+        "text": "From Pudong Airport (PVG), the most direct rail option to Shanghai Hongqiao Railway Station is the Airport Link Line (机场联络线), a suburban railway connecting Pudong T1/T2 with Hongqiao T2. A saved official guide (updated 2026-03-31) describes it as roughly 40 minutes and CNY26 end-to-end; that ride time excludes immigration, baggage, walking and onward boarding. An opening-era notice (2024-12-26) listed first departures 06:00 and last departures 22:00, but that is historical — check current service notices for today's times.\n\nKey cautions: Hongqiao T2 is not the high-speed rail boarding gate. After arriving, follow the Railway Station signs and check your ticket and station displays for your actual train. Shanghai Hongqiao Railway Station (国铁) is on Shengui Road, Minhang, served by metro lines 2, 10 and 17; note that Shanghai Railway Station (上海站) is a different station, so match your ticket carefully. For onward train details, query 12306 with your travel date and destination.\n\nAlternatives: official taxi ranks exist at PVG (outside Arrival Gate 12 at T1; Gate 25 at T2) — follow current signage, as taxi ranks differ from ride-hailing pickup areas. No live fare or queue estimate is available here. If you need indoor wayfinding at Hongqiao, the SH MaaS / Suishenxing app offers Hub Connect indoor navigation.\n\nThese are saved summaries, not live verification; confirm operation, availability and prices with the provider.",
+        "sourceIds": [
+          "arrival-airport-link-guide",
+          "history-airport-link",
+          "verified-hongqiao-rail-station"
+        ],
+        "mode": "deepseek",
+        "notice": "saved-summaries",
+        "intent": {
+          "kind": "metro",
+          "responseMode": "guide",
+          "origin": "浦东机场",
+          "destination": "上海虹桥火车站",
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 6428,
+          "completion_tokens": 657,
+          "total_tokens": 7085
+        },
+        "services": [],
+        "arbitration": {
+          "version": "rubric-6.4",
+          "selected": "deepseek",
+          "local": null,
+          "deepseek": {
+            "score": 80,
+            "checks": {
+              "evidence": true,
+              "direct": true,
+              "endpoints": false,
+              "actionable": true,
+              "format": true
+            }
+          },
+          "threshold": 60,
+          "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+          "reason": "当前需求是到达说明，优先通过证据检查的完整说明；不强制展示路线图。"
+        },
+        "confidence": {
+          "model": 0.9,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "verified-hongqiao-rail-station",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "history-airport-link",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "arrival-airport-link-guide",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 90,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 90
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 1865
+            },
+            {
+              "name": "website_lookup",
+              "status": "review-required"
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 72
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "metro"
+            },
+            {
+              "name": "grounded_generation",
+              "status": "completed",
+              "reason": "EVIDENCE_ALIGNMENT",
+              "ms": 2187
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 546,
+            "candidates": 509,
+            "elapsedMs": 72,
+            "hits": [
+              {
+                "id": "arrival-airport-link-guide:75c387d1b32eb18f:0",
+                "sourceId": "arrival-airport-link-guide",
+                "version": "75c387d1b32eb18f",
+                "score": 0.03319,
+                "coverage": 0.658
+              },
+              {
+                "id": "station-55:bb0aa121bd73499f:0",
+                "sourceId": "station-55",
+                "version": "bb0aa121bd73499f",
+                "score": 0.03041,
+                "coverage": 0.237
+              },
+              {
+                "id": "history-airport-link:ad016dd0995915ef:0",
+                "sourceId": "history-airport-link",
+                "version": "ad016dd0995915ef",
+                "score": 0.02823,
+                "coverage": 0.368
+              },
+              {
+                "id": "verified-hongqiao-rail-station:1c6991b2bad55c70:0",
+                "sourceId": "verified-hongqiao-rail-station",
+                "version": "1c6991b2bad55c70",
+                "score": 0.02685,
+                "coverage": 0.342
+              },
+              {
+                "id": "verified-hongqiao-indoor-navigation:d02a6972fdbdab0d:0",
+                "sourceId": "verified-hongqiao-indoor-navigation",
+                "version": "d02a6972fdbdab0d",
+                "score": 0.02452,
+                "coverage": 0.316
+              },
+              {
+                "id": "verified-pvg-taxi:cca2a96bbc4759cf:1",
+                "sourceId": "verified-pvg-taxi",
+                "version": "cca2a96bbc4759cf",
+                "score": 0.02417,
+                "coverage": 0.184
+              },
+              {
+                "id": "verified-pvg-taxi:cca2a96bbc4759cf:0",
+                "sourceId": "verified-pvg-taxi",
+                "version": "cca2a96bbc4759cf",
+                "score": 0.02417,
+                "coverage": 0.211
+              },
+              {
+                "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                "sourceId": "verified-shanghai-rail-station",
+                "version": "26195dc7b3d7255a",
+                "score": 0.02377,
+                "coverage": 0.342
+              }
+            ]
+          },
+          "acquisition": {
+            "status": "review-required",
+            "sourceId": "off-ebae6638fb3e1ae5",
+            "score": 20,
+            "eligible": false,
+            "method": "model-query → known URL → robots/body fetch → quoted evidence assessment",
+            "usage": {
+              "prompt_tokens": 665,
+              "completion_tokens": 233,
+              "total_tokens": 898,
+              "prompt_tokens_details": {
+                "cached_tokens": 128
+              },
+              "prompt_cache_hit_tokens": 128,
+              "prompt_cache_miss_tokens": 537
+            }
+          },
+          "arbitration": {
+            "version": "rubric-6.4",
+            "selected": "deepseek",
+            "local": null,
+            "deepseek": {
+              "score": 80,
+              "checks": {
+                "evidence": true,
+                "direct": true,
+                "endpoints": false,
+                "actionable": true,
+                "format": true
+              }
+            },
+            "threshold": 60,
+            "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+            "reason": "当前需求是到达说明，优先通过证据检查的完整说明；不强制展示路线图。"
+          },
+          "totalMs": 8155
+        },
+        "sourceAcquisition": {
+          "status": "review-required",
+          "sourceId": "off-ebae6638fb3e1ae5",
+          "score": 20,
+          "eligible": false,
+          "method": "model-query → known URL → robots/body fetch → quoted evidence assessment",
+          "usage": {
+            "prompt_tokens": 665,
+            "completion_tokens": 233,
+            "total_tokens": 898,
+            "prompt_tokens_details": {
+              "cached_tokens": 128
+            },
+            "prompt_cache_hit_tokens": 128,
+            "prompt_cache_miss_tokens": 537
+          }
+        },
+        "modelRouting": {
+          "requested": "flash",
+          "selected": "flash",
+          "model": "deepseek-flash",
+          "thinking": false,
+          "effort": "none",
+          "reason": "由你手动选择",
+          "method": "manual"
+        },
+        "dataset": "evaluation",
+        "executionId": "acf5d7f5-a636-4a6c-b1ac-cdab02dad9fe",
+        "assessmentId": "507a535f-fced-4348-9954-f734bce2bd67"
+      },
+      "error": null,
+      "schemaIssue": null,
+      "seconds": 11.6
+    }
+  ],
+  "scope": "Actual admin-authenticated DeepSeek calls, evaluation flag. No real microphone or supplier inventory tests."
+}

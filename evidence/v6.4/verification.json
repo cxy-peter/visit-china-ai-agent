@@ -1,7 +1,7 @@
 {
   "version": "6.4.0",
   "verifiedAt": "2026-09-25T08:19:25.472501+00:00",
-  "programAndApiTests": 371,
+  "programAndApiTests": 372,
   "browserChecks": {
     "legacy": 169,
     "voiceAndMultiRequest": 33,
@@ -35,5 +35,6 @@
   },
   "realModel": "Initial failures retained in model-initial.json; the corrected bilingual payment and event flows pass model-retest.json.",
   "voiceScope": "Synthetic browser recognition events; no human microphone quality or full-duplex claim.",
-  "productionNumericRepair": "Initial production failure preserved; numeric evidence map plus at most one correction, all original validation retained."
+  "productionNumericRepair": "Initial production failure preserved; numeric evidence map plus at most one correction, all original validation retained.",
+  "cityNormalization": "Chinese/English city aliases canonicalized at model schema boundary, preserving unknown cities and endpoints."
 }
