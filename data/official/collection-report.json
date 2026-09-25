@@ -28,7 +28,7 @@
     "payment_connectivity": 131,
     "government_news": 2762
   },
-  "records_sha256": "d96d2993937cd97d992b4c9fa13d81e5c8cf8569bff81828aceb37a8545a33b6",
+  "records_sha256": "c30a511c44ad6a7857ef55e3bd47d338d1d0339b3efdba367751aa69c89df94d",
   "stop_reasons": [
     {
       "host": "english.beijing.gov.cn",
@@ -36,5 +36,7 @@
       "reason": "robots unavailable or not robots: 403"
     }
   ],
-  "count_definition": "Unique official article URLs. Prior body-fetched metadata retained. New URLs were observed in official HTML/JSON; body_not_fetched rows are discovery leads only, never verified facts or current operational guidance. No generated article or pagination URL."
+  "count_definition": "Unique official article URLs. Prior body-fetched metadata retained. New URLs were observed in official HTML/JSON; body_not_fetched rows are discovery leads only, never verified facts or current operational guidance. No generated article or pagination URL.",
+  "records_capture_sha256": "d96d2993937cd97d992b4c9fa13d81e5c8cf8569bff81828aceb37a8545a33b6",
+  "records_hash_normalization": "UTF-8 bytes with CRLF normalized to LF"
 }
