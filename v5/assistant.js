@@ -58,7 +58,7 @@ async function smartAssist({state,model,signal,records,skillConfig=H.DEFAULT,exe
  }else if(intent.kind==='taxi'){
   const supplied=state.history.slice(-4).some(h=>new RegExp('(?:^|[^\\d.])'+String(intent.roadKm).replace('.','\\.')+'\\s*(?:公里|千米|km|kilomet)','i').test(h.text));
   tool=I.analyze((intent.city||state.facts.city||'')+' 打车 '+(supplied&&intent.roadKm?intent.roadKm+' 公里 ':'')+(intent.origin||'')+' 到 '+(intent.destination||''),intent.city||state.facts.city,state.language,[]);
- }else if(intent.kind==='rail')tool=I.analyze((intent.origin||'')+' 到 '+(intent.destination||'')+' 高铁',intent.city||state.facts.city,state.language,[]);
+ }else if(intent.kind==='rail')tool=I.rail(intent,state.language);
  if(tool){
   const evidence=records.filter(r=>tool.sourceIds.includes(r.id));
   const confidence=Q.answer(intent,evidence,tool,out.confidence);if(recover){confidence.requiresReview=true;confidence.reasons.push('模型未识别明确的地铁需求，使用站点工具回答或追问缺失信息');}

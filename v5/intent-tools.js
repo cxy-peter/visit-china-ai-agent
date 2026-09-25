@@ -25,5 +25,17 @@ function analyze(text,city,language='zh',history=[]){
  if(/饭店|餐厅|吃饭|restaurant|dining/i.test(t))return{kind:'restaurant',sourceIds:[],text:tr('可以按区域、预算和口味筛选。下面是饭店类型示例；店铺营业、过敏原和实时价格需要向商家确认。','We can narrow by area, budget and food preferences. The restaurant types below are examples; confirm opening, allergens and prices with the venue.')};
  return{kind:'other',sourceIds:[],text:''};
 }
-return{analyze};
+// Model-supplied endpoints must survive the read-only rail tool, including cities
+// outside the small illustrative fare table. This does not establish a live service.
+function rail(intent,language='zh'){
+ const zh=language==='zh',from=intent.origin||'',to=intent.destination||'';
+ const pair=T.routeRequest(from+' 到 '+to),shhz=pair&&[pair.from,pair.to].includes('shanghai')&&[pair.from,pair.to].includes('hangzhou');
+ if(shhz)return analyze(from+' 到 '+to+' 高铁',intent.city,language,[]);
+ const route=from&&to?from+' → '+to:from?(zh?'从 ':'From ')+from:to?(zh?'到 ':'To ')+to:'';
+ const knownForeign=/Boston|New York|Tokyo|London|Paris|波士顿|纽约|东京|伦敦|巴黎/i.test([intent.city,from,to].join(' '));
+ if(knownForeign)return{kind:'rail',sourceIds:[],text:(zh?'已记下':'Noted: ')+route+(zh?'。本站当前只有中国铁路查询资料，不能用12306证明这段境外路线、车次或票价。':' . This library currently covers Chinese rail guidance; 12306 does not verify this overseas route, service or fare.')};
+ const missing=!from&&!to?(zh?'请补充出发地和目的地。':'Please add the origin and destination. '):!from?(zh?'请补充出发地。':'Please add the origin. '):!to?(zh?'请补充目的地。':'Please add the destination. '):'';
+ return{kind:'rail',sourceIds:['rail-passport'],text:(route?(zh?'已记下 '+route+'。':'Noted: '+route+'. '):'')+missing+(zh?'查询中国铁路时，在12306按上述地点选择具体出发站、到达站和乘车日期。城市名称不等于具体车站；本助手尚未取得实时车次、余票和票价，查询结果以12306为准。':'For Chinese rail services, use these locations to select the exact departure and arrival stations and travel date on 12306. A city name is not an exact station. Live services, seats and fares have not been retrieved; check 12306 for results.')};
+}
+return{analyze,rail};
 });
