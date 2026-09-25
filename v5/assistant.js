@@ -67,13 +67,14 @@ async function smartAssist({state,model,signal,records,skillConfig=H.DEFAULT,exe
  let generated=out.value;
  // Intent classification can legitimately omit prose for a tool call. Service requests
  // still need a grounded answer; recover with a separate generation step, once only.
- if(S.categories[intent.kind]&&(!generated||typeof generated.text!=='string'||!generated.text.trim())){
+ if((S.categories[intent.kind]&&(!generated||typeof generated.text!=='string'||!generated.text.trim()))||(generated?.text&&!MI.matchesLanguage(generated.text,state.language))){
   if(!applicable.length)return{...meta,text:zh?'已识别你要找的服务，但目前没有该地点适用的资料。请补充地点，或在资料库添加可核对的来源。':'I identified the service, but have no applicable evidence for that location. Please add a place or a verifiable source.',sourceIds:[],mode:'source-gap',confidence:Q.answer(intent,[],null,out.confidence)};
-  const started=Date.now(),draft=await model.call(PROMPT,{language:state.language,currentRequest:h.text,intent,history:state.history.slice(-6).map(x=>({traveler:x.text,companion:x.assistance?.text||x.reply})),evidence:applicable,advisoryStyle:skillConfig.guidance},signal);generated=draft.value;
+  const started=Date.now(),draft=await model.call(PROMPT+MI.languageRule(state.language),{language:state.language,currentRequest:h.text,intent,history:state.history.slice(-6).map(x=>({traveler:x.text,companion:x.assistance?.text||x.reply})),evidence:applicable,advisoryStyle:skillConfig.guidance},signal);generated=draft.value;
   meta.usage={prompt_tokens:(out.usage?.prompt_tokens||0)+(draft.usage?.prompt_tokens||0),completion_tokens:(out.usage?.completion_tokens||0)+(draft.usage?.completion_tokens||0),total_tokens:(out.usage?.total_tokens||0)+(draft.usage?.total_tokens||0)};
   execution.stages.push({name:'grounded_generation',status:'completed',ms:Date.now()-started});
  }
  const answer=validate(generated,applicable.filter(r=>generated.source_ids?.includes(r.id)),state.history);
+ if(!MI.matchesLanguage(answer.text,state.language))throw Error('ANSWER_LANGUAGE');
  if(/还有哪一项具体需求|按你的问题查资料|what else would you like help/i.test(answer.text))return{...meta,mode:'clarification',sourceIds:[],text:zh?'这次还没有得到可用答案。请补充一个地点、站名或要核对的事项，我会继续处理本次问题。':'I do not yet have an actionable answer. Please add a place, station, or the specific fact to check.',confidence:Q.answer(intent,[],null,0)};
  return{...answer,...meta,services:S.categories[intent.kind]?S.cards(intent.kind,intent.destination||intent.origin||'上海',state.language):[],confidence:Q.answer(intent,records.filter(r=>answer.sourceIds.includes(r.id)),{text:answer.text},out.confidence)};
 }
