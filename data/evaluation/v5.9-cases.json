@@ -19694,6 +19694,66 @@
         "kind": "nearby"
       },
       "history": []
+    },
+    {
+      "id": "vc59-1217",
+      "type": "nearby",
+      "input": "Tell me places to eat near Yuyuan Garden.",
+      "language": "en",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的合成测试，不是真实用户数据"
+      },
+      "expect": {
+        "kind": "nearby",
+        "sourceId": "place-hefeng"
+      },
+      "history": []
+    },
+    {
+      "id": "vc59-1218",
+      "type": "nearby",
+      "input": "Where can I eat around Yuyuan Garden?",
+      "language": "en",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的合成测试，不是真实用户数据"
+      },
+      "expect": {
+        "kind": "nearby",
+        "sourceId": "place-hefeng"
+      },
+      "history": []
+    },
+    {
+      "id": "vc59-1219",
+      "type": "nearby",
+      "input": "豫园附近推荐吃什么",
+      "language": "zh",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的合成测试，不是真实用户数据"
+      },
+      "expect": {
+        "kind": "nearby",
+        "sourceId": "place-hefeng"
+      },
+      "history": []
+    },
+    {
+      "id": "vc59-1220",
+      "type": "nearby",
+      "input": "豫园周边有什么餐厅",
+      "language": "zh",
+      "provenance": {
+        "type": "authored",
+        "note": "自行编写的合成测试，不是真实用户数据"
+      },
+      "expect": {
+        "kind": "nearby",
+        "sourceId": "place-hefeng"
+      },
+      "history": []
     }
   ]
 }
