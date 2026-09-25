@@ -1,0 +1,18 @@
+{
+  "version": "6.4",
+  "at": "2026-09-25T08:18:01.024Z",
+  "total": 5000,
+  "unique": 5000,
+  "overlapWithPrior20000": 0,
+  "themeCount": 50,
+  "publicDiscussionThemes": 17,
+  "distinctDiscussionUrls": 4,
+  "authoredOfficialThemes": 33,
+  "development": 4000,
+  "holdout": 1000,
+  "targetRecall": 4485,
+  "eligibleEvidenceOnly": 5000,
+  "sha256": "17cb45e1f6cfff2e8af45690ffa6bff34a7aaa69a0782fb66ceaa5874a157296",
+  "paidModelCalls": 0,
+  "scope": "5000 unique authored wordings across 50 themes. Public question themes are paraphrased, not 5000 scraped user posts. The run measures offline target-source recall and evidence eligibility, not generated answer correctness, trained model weights, or online intent accuracy. Family holdout is reserved at authoring; viewing this report makes it unsuitable as a future blind test. Reddit is supplemental; X/Rednote were not scraped."
+}

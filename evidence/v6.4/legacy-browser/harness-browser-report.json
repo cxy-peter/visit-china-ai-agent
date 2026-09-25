@@ -1,0 +1,82 @@
+{
+  "checks": [
+    {
+      "name": "service explorer changes location and category without inserting conversation",
+      "passed": true
+    },
+    {
+      "name": "power-bank map search honestly labels inventory missing",
+      "passed": true
+    },
+    {
+      "name": "demo only fills editable composer, never sends a fake traveler message",
+      "passed": true
+    },
+    {
+      "name": "bad access code receives a recovery instruction",
+      "passed": true
+    },
+    {
+      "name": "document import fills only password input",
+      "passed": true
+    },
+    {
+      "name": "automatic RAG answers without selected source",
+      "passed": true
+    },
+    {
+      "name": "answer expands source evidence inline",
+      "passed": true
+    },
+    {
+      "name": "one merged feedback control",
+      "passed": true
+    },
+    {
+      "name": "single helpful-and-solved feedback is saved",
+      "passed": true
+    },
+    {
+      "name": "quality overview shows real denominators and insufficient-sample status",
+      "passed": true
+    },
+    {
+      "name": "saving a skill automatically runs acceptance",
+      "passed": true
+    },
+    {
+      "name": "admin publishes accepted exact skill version",
+      "passed": true
+    },
+    {
+      "name": "published skill has working rollback",
+      "passed": true
+    },
+    {
+      "name": "retrieval lab returns actual scored chunks and source versions",
+      "passed": true
+    },
+    {
+      "name": "chat execution is visible after separate persistent operations read",
+      "passed": true
+    },
+    {
+      "name": "same authenticated admin can reconnect model without retyping access code",
+      "passed": true
+    },
+    {
+      "name": "services switch English output labels",
+      "passed": true
+    },
+    {
+      "name": "mobile layout has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "browser has no uncaught JavaScript errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "scope": "Local server/auth/persistent store with controlled model HTTP; no real paid call"
+}

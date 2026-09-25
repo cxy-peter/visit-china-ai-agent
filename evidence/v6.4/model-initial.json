@@ -1,0 +1,2895 @@
+{
+  "url": "https://visit-china-ai-agent-3kbwhrsgx-cxy-peters-projects.vercel.app",
+  "checks": [
+    {
+      "name": "version 6.4",
+      "passed": true
+    },
+    {
+      "name": "admin login",
+      "passed": true
+    },
+    {
+      "name": "admin connect",
+      "passed": true
+    },
+    {
+      "name": "session persists",
+      "passed": true
+    },
+    {
+      "name": "answer 1",
+      "passed": true
+    },
+    {
+      "name": "real cited response 1",
+      "passed": true
+    },
+    {
+      "name": "intent 1",
+      "passed": true
+    },
+    {
+      "name": "answer 2",
+      "passed": true
+    },
+    {
+      "name": "real cited response 2",
+      "passed": true
+    },
+    {
+      "name": "airport prose not topology",
+      "passed": true
+    },
+    {
+      "name": "airport destination retained",
+      "passed": true
+    },
+    {
+      "name": "answer 3",
+      "passed": true
+    },
+    {
+      "name": "real cited response 3",
+      "passed": true
+    },
+    {
+      "name": "channel scoped payment answer 3",
+      "passed": false
+    },
+    {
+      "name": "answer 4",
+      "passed": true
+    },
+    {
+      "name": "real cited response 4",
+      "passed": true
+    },
+    {
+      "name": "intent 4",
+      "passed": true
+    },
+    {
+      "name": "answer 5",
+      "passed": true
+    },
+    {
+      "name": "real cited response 5",
+      "passed": true
+    },
+    {
+      "name": "separate charging and rail tasks",
+      "passed": true
+    },
+    {
+      "name": "answer 6",
+      "passed": true
+    },
+    {
+      "name": "real cited response 6",
+      "passed": true
+    },
+    {
+      "name": "intent 6",
+      "passed": true
+    },
+    {
+      "name": "answer 7",
+      "passed": false
+    },
+    {
+      "name": "real cited response 7",
+      "passed": false
+    },
+    {
+      "name": "channel scoped payment answer 7",
+      "passed": false
+    },
+    {
+      "name": "answer 8",
+      "passed": true
+    },
+    {
+      "name": "real cited response 8",
+      "passed": true
+    },
+    {
+      "name": "upcoming event source cited",
+      "passed": true
+    },
+    {
+      "name": "answer 9",
+      "passed": true
+    },
+    {
+      "name": "real cited response 9",
+      "passed": true
+    },
+    {
+      "name": "intent 9",
+      "passed": true
+    },
+    {
+      "name": "answer 10",
+      "passed": true
+    },
+    {
+      "name": "real cited response 10",
+      "passed": true
+    },
+    {
+      "name": "intent 10",
+      "passed": true
+    }
+  ],
+  "answers": [
+    {
+      "input": "上海火车站周围有充电宝吗？我不需要火车行程。",
+      "expected": "charging",
+      "answer": {
+        "text": "上海火车站周围可能有共享充电宝租借柜，但现有资料无法确认具体柜机位置、库存或价格。官方指南提到商场、餐厅、地铁站等公共场所可寻找共享充电宝租借柜；社区经验仅显示上海部分商店有共享充电宝，不能证明上海火车站有柜机。建议在运营商小程序或地图中搜索“上海火车站”附近的可借点，并核对租借费用、押金及归还规则。",
+        "sourceIds": [
+          "sh-power-bank",
+          "community-power-return"
+        ],
+        "mode": "deepseek",
+        "notice": "saved-summaries",
+        "intent": {
+          "kind": "charging",
+          "origin": null,
+          "destination": "上海火车站",
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null,
+          "responseMode": "general"
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 6536,
+          "completion_tokens": 1309,
+          "total_tokens": 7845
+        },
+        "services": [
+          {
+            "id": "service-charging",
+            "kind": "charging",
+            "title": "上海火车站 · 查询充电宝租借柜",
+            "description": "查询入口；此链接不证明该位置设有柜机。请在运营方核对位置、收费与可用量。",
+            "url": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%E7%81%AB%E8%BD%A6%E7%AB%99%20%E5%85%85%E7%94%B5%E5%AE%9D&city=上海&view=map",
+            "sourceId": "sh-power-bank",
+            "status": "provider-search",
+            "liveAvailability": false
+          },
+          {
+            "id": "guide-charging",
+            "kind": "charging",
+            "title": "官方使用与查询指引",
+            "description": "商场、餐厅、地铁站等公共场所可寻找共享充电宝租借柜。扫码后先核对费用和归还规则，再按页面操作租借。本站没有接入柜机定位、剩余数量或实时价格，请使用地图和柜机运营商核实附近可借、可还的位置。",
+            "url": "https://english.shanghai.gov.cn/en-MobileAndInternet/20260727/56b62a3a9d2f4ddaa8d77367c206b2ae.html",
+            "sourceId": "sh-power-bank",
+            "status": "official-guide",
+            "liveAvailability": false
+          }
+        ],
+        "arbitration": {
+          "version": "rubric-6.4",
+          "selected": "deepseek",
+          "local": null,
+          "deepseek": {
+            "score": 100,
+            "checks": {
+              "evidence": true,
+              "direct": true,
+              "endpoints": true,
+              "actionable": true,
+              "format": true
+            }
+          },
+          "threshold": 60,
+          "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+          "reason": "按已核对证据、直接回答和请求完整性选择。"
+        },
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "sh-power-bank",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "community-power-return",
+              "score": 60,
+              "level": "medium",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "非已核验政府/运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 60,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 164
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 12254
+            },
+            {
+              "name": "website_lookup",
+              "status": "review-required"
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 143
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "charging"
+            },
+            {
+              "name": "grounded_generation",
+              "status": "completed",
+              "reason": "EVIDENCE_ALIGNMENT",
+              "ms": 6535
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 546,
+            "candidates": 466,
+            "elapsedMs": 143,
+            "hits": [
+              {
+                "id": "station-15:6f80ee45a8a01e1d:0",
+                "sourceId": "station-15",
+                "version": "6f80ee45a8a01e1d",
+                "score": 0.03212,
+                "coverage": 0.24
+              },
+              {
+                "id": "community-power-return:10358f145b47ac9c:0",
+                "sourceId": "community-power-return",
+                "version": "10358f145b47ac9c",
+                "score": 0.02983,
+                "coverage": 0.44
+              },
+              {
+                "id": "sh-power-bank:cb0ac35360170622:0",
+                "sourceId": "sh-power-bank",
+                "version": "cb0ac35360170622",
+                "score": 0.02979,
+                "coverage": 0.4
+              },
+              {
+                "id": "verified-hongqiao-p10-charging:d5012857ac09a5cc:0",
+                "sourceId": "verified-hongqiao-p10-charging",
+                "version": "d5012857ac09a5cc",
+                "score": 0.02811,
+                "coverage": 0.36
+              },
+              {
+                "id": "verified-metro-lockers:ac7d654795dd78d2:0",
+                "sourceId": "verified-metro-lockers",
+                "version": "ac7d654795dd78d2",
+                "score": 0.02483,
+                "coverage": 0.24
+              },
+              {
+                "id": "verified-pvg-rest-charging:3c747ba8fb743181:0",
+                "sourceId": "verified-pvg-rest-charging",
+                "version": "3c747ba8fb743181",
+                "score": 0.02468,
+                "coverage": 0.12
+              },
+              {
+                "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                "sourceId": "verified-shanghai-rail-station",
+                "version": "26195dc7b3d7255a",
+                "score": 0.02429,
+                "coverage": 0.24
+              },
+              {
+                "id": "history-sh-hz-trains:5f222a63b6cce02e:0",
+                "sourceId": "history-sh-hz-trains",
+                "version": "5f222a63b6cce02e",
+                "score": 0.02347,
+                "coverage": 0.24
+              }
+            ]
+          },
+          "acquisition": {
+            "status": "review-required",
+            "sourceId": "off-4a7e6a7ee166459b",
+            "score": 0,
+            "eligible": false,
+            "method": "model-query → known URL → robots/body fetch → quoted evidence assessment",
+            "usage": {
+              "prompt_tokens": 1135,
+              "completion_tokens": 487,
+              "total_tokens": 1622,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 361
+              },
+              "prompt_cache_hit_tokens": 0,
+              "prompt_cache_miss_tokens": 1135
+            }
+          },
+          "arbitration": {
+            "version": "rubric-6.4",
+            "selected": "deepseek",
+            "local": null,
+            "deepseek": {
+              "score": 100,
+              "checks": {
+                "evidence": true,
+                "direct": true,
+                "endpoints": true,
+                "actionable": true,
+                "format": true
+              }
+            },
+            "threshold": 60,
+            "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+            "reason": "按已核对证据、直接回答和请求完整性选择。"
+          },
+          "totalMs": 28419
+        },
+        "sourceAcquisition": {
+          "status": "review-required",
+          "sourceId": "off-4a7e6a7ee166459b",
+          "score": 0,
+          "eligible": false,
+          "method": "model-query → known URL → robots/body fetch → quoted evidence assessment",
+          "usage": {
+            "prompt_tokens": 1135,
+            "completion_tokens": 487,
+            "total_tokens": 1622,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 361
+            },
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 1135
+          }
+        },
+        "modelRouting": {
+          "requested": "auto",
+          "selected": "pro",
+          "model": "deepseek-v4-pro",
+          "thinking": true,
+          "effort": "low",
+          "reason": "多地点或主题行程",
+          "method": "bounded-complexity-rules"
+        },
+        "dataset": "evaluation",
+        "executionId": "07337383-5469-46bc-89f6-02aa100c8e69",
+        "assessmentId": "aa5cdc64-221c-4a73-afe3-af7f3b02a3c4"
+      },
+      "error": null,
+      "seconds": 33.7
+    },
+    {
+      "input": "呃，我现在从浦东机场降落了然后我要去上海虹桥火车站我需要注意什么以及我要怎么走。",
+      "expected": "guide",
+      "answer": {
+        "text": "从浦东机场落地后，可乘坐机场联络线到虹桥2号航站楼，约40分钟、全程26元。下车后不要误以为已到高铁检票口，按现场“虹桥火车站 / Railway Station”指引走到后续列车候车区，并核对自己的车票和站内显示。注意：机场联络线运行时间不包括入境、取行李、步行及后续火车进站，请预留充足时间；出发前查看当日运营公告，不要依赖2024年开通时刻。如到达时间较晚，机场联络线可能停运，需另选地铁等交通，但当前时刻未提供，请现场确认。",
+        "sourceIds": [
+          "arrival-airport-link-guide"
+        ],
+        "mode": "deepseek",
+        "notice": "saved-summaries",
+        "intent": {
+          "kind": "metro",
+          "origin": "浦东机场",
+          "destination": "虹桥火车站",
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null,
+          "responseMode": "guide"
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 6292,
+          "completion_tokens": 1689,
+          "total_tokens": 7981
+        },
+        "services": [],
+        "arbitration": {
+          "version": "rubric-6.4",
+          "selected": "deepseek",
+          "local": null,
+          "deepseek": {
+            "score": 100,
+            "checks": {
+              "evidence": true,
+              "direct": true,
+              "endpoints": true,
+              "actionable": true,
+              "format": true
+            }
+          },
+          "threshold": 60,
+          "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+          "reason": "当前需求是到达说明，优先通过证据检查的完整说明；不强制展示路线图。"
+        },
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "arrival-airport-link-guide",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 90,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 113
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 10581
+            },
+            {
+              "name": "website_lookup",
+              "status": "review-required"
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 85
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "metro"
+            },
+            {
+              "name": "grounded_generation",
+              "status": "completed",
+              "reason": "ANSWER_SCHEMA",
+              "ms": 13022
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 546,
+            "candidates": 494,
+            "elapsedMs": 85,
+            "hits": [
+              {
+                "id": "station-55:bb0aa121bd73499f:0",
+                "sourceId": "station-55",
+                "version": "bb0aa121bd73499f",
+                "score": 0.03039,
+                "coverage": 0.182
+              },
+              {
+                "id": "arrival-airport-link-guide:75c387d1b32eb18f:0",
+                "sourceId": "arrival-airport-link-guide",
+                "version": "75c387d1b32eb18f",
+                "score": 0.02991,
+                "coverage": 0.409
+              },
+              {
+                "id": "history-airport-link:ad016dd0995915ef:0",
+                "sourceId": "history-airport-link",
+                "version": "ad016dd0995915ef",
+                "score": 0.02635,
+                "coverage": 0.205
+              },
+              {
+                "id": "verified-hongqiao-rail-station:1c6991b2bad55c70:0",
+                "sourceId": "verified-hongqiao-rail-station",
+                "version": "1c6991b2bad55c70",
+                "score": 0.02562,
+                "coverage": 0.227
+              },
+              {
+                "id": "history-airport-season:9ac7db13bc323924:0",
+                "sourceId": "history-airport-season",
+                "version": "9ac7db13bc323924",
+                "score": 0.02292,
+                "coverage": 0.091
+              },
+              {
+                "id": "verified-pvg-taxi:cca2a96bbc4759cf:0",
+                "sourceId": "verified-pvg-taxi",
+                "version": "cca2a96bbc4759cf",
+                "score": 0.02263,
+                "coverage": 0.068
+              },
+              {
+                "id": "verified-hongqiao-indoor-navigation:d02a6972fdbdab0d:0",
+                "sourceId": "verified-hongqiao-indoor-navigation",
+                "version": "d02a6972fdbdab0d",
+                "score": 0.02204,
+                "coverage": 0.182
+              },
+              {
+                "id": "history-sh-hz-trains:5f222a63b6cce02e:0",
+                "sourceId": "history-sh-hz-trains",
+                "version": "5f222a63b6cce02e",
+                "score": 0.02183,
+                "coverage": 0.159
+              }
+            ]
+          },
+          "acquisition": {
+            "status": "review-required",
+            "sourceId": "off-651d636507435aa9",
+            "score": 0,
+            "eligible": false,
+            "method": "model-query → known URL → robots/body fetch → quoted evidence assessment",
+            "usage": {
+              "prompt_tokens": 754,
+              "completion_tokens": 959,
+              "total_tokens": 1713,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 808
+              },
+              "prompt_cache_hit_tokens": 0,
+              "prompt_cache_miss_tokens": 754
+            }
+          },
+          "arbitration": {
+            "version": "rubric-6.4",
+            "selected": "deepseek",
+            "local": null,
+            "deepseek": {
+              "score": 100,
+              "checks": {
+                "evidence": true,
+                "direct": true,
+                "endpoints": true,
+                "actionable": true,
+                "format": true
+              }
+            },
+            "threshold": 60,
+            "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+            "reason": "当前需求是到达说明，优先通过证据检查的完整说明；不强制展示路线图。"
+          },
+          "totalMs": 38688
+        },
+        "sourceAcquisition": {
+          "status": "review-required",
+          "sourceId": "off-651d636507435aa9",
+          "score": 0,
+          "eligible": false,
+          "method": "model-query → known URL → robots/body fetch → quoted evidence assessment",
+          "usage": {
+            "prompt_tokens": 754,
+            "completion_tokens": 959,
+            "total_tokens": 1713,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 808
+            },
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 754
+          }
+        },
+        "modelRouting": {
+          "requested": "auto",
+          "selected": "pro",
+          "model": "deepseek-v4-pro",
+          "thinking": true,
+          "effort": "low",
+          "reason": "多个需求，需要分项处理",
+          "method": "bounded-complexity-rules"
+        },
+        "dataset": "evaluation",
+        "executionId": "e1ca4c5e-f210-4b50-b2a2-3f7e2375f6b8",
+        "assessmentId": "2c56226c-a8c7-411b-9a0d-c407d28d8450"
+      },
+      "error": null,
+      "seconds": 42.3
+    },
+    {
+      "input": "高铁票可以用AMEX卡买吗？12306直接付款和Trip.com有什么区别？",
+      "expected": "payment",
+      "answer": {
+        "text": "你想从哪一站到哪一站、哪天出发？实际班次、票价和余票请查询12306；没有已核对的历史记录时不填入虚构车次。",
+        "sourceIds": [
+          "rail-passport"
+        ],
+        "mode": "deepseek",
+        "notice": "saved-summaries",
+        "intent": {
+          "kind": "other",
+          "origin": null,
+          "destination": null,
+          "via": null,
+          "city": null,
+          "roadKm": null,
+          "responseMode": "service"
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 5304,
+          "completion_tokens": 2130,
+          "total_tokens": 7434
+        },
+        "services": [],
+        "arbitration": {
+          "version": "rubric-6.4",
+          "selected": "tool",
+          "local": {
+            "score": 100,
+            "checks": {
+              "evidence": true,
+              "direct": true,
+              "endpoints": true,
+              "actionable": true,
+              "format": true
+            }
+          },
+          "deepseek": {
+            "score": 100,
+            "checks": {
+              "evidence": true,
+              "direct": true,
+              "endpoints": true,
+              "actionable": true,
+              "format": true
+            }
+          },
+          "threshold": 60,
+          "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+          "reason": "按已核对证据、直接回答和请求完整性选择。 合并超出引用或字数上限，采用分数较高的一份。"
+        },
+        "confidence": {
+          "model": 0.85,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "rail-passport",
+              "score": 85,
+              "level": "high",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "已匹配运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 85,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 59
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 19040
+            },
+            {
+              "name": "website_lookup",
+              "status": "review-required"
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 76
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "other"
+            },
+            {
+              "name": "grounded_generation",
+              "status": "completed",
+              "reason": "EVIDENCE_ALIGNMENT",
+              "ms": 7428
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 551,
+            "candidates": 452,
+            "elapsedMs": 76,
+            "hits": [
+              {
+                "id": "channel-trip-payment:25662c9039d861de:0",
+                "sourceId": "channel-trip-payment",
+                "version": "25662c9039d861de",
+                "score": 0.03958,
+                "coverage": 0.522
+              },
+              {
+                "id": "channel-trip-payment:25662c9039d861de:1",
+                "sourceId": "channel-trip-payment",
+                "version": "25662c9039d861de",
+                "score": 0.03299,
+                "coverage": 0.174
+              },
+              {
+                "id": "channel-12306-payment-scope:ef3a1008e627af52:0",
+                "sourceId": "channel-12306-payment-scope",
+                "version": "ef3a1008e627af52",
+                "score": 0.02952,
+                "coverage": 0.435
+              },
+              {
+                "id": "channel-12306-payment-scope:ef3a1008e627af52:1",
+                "sourceId": "channel-12306-payment-scope",
+                "version": "ef3a1008e627af52",
+                "score": 0.02609,
+                "coverage": 0.217
+              },
+              {
+                "id": "rail-passport:777d0039a73326ca:0",
+                "sourceId": "rail-passport",
+                "version": "777d0039a73326ca",
+                "score": 0.0253,
+                "coverage": 0.217
+              },
+              {
+                "id": "verified-rail-12306:b48813c5b2636fa9:0",
+                "sourceId": "verified-rail-12306",
+                "version": "b48813c5b2636fa9",
+                "score": 0.02474,
+                "coverage": 0.217
+              },
+              {
+                "id": "verified-hongqiao-rail-station:1c6991b2bad55c70:0",
+                "sourceId": "verified-hongqiao-rail-station",
+                "version": "1c6991b2bad55c70",
+                "score": 0.0242,
+                "coverage": 0.217
+              },
+              {
+                "id": "community-rail-account:3fc1daa3e406b62b:0",
+                "sourceId": "community-rail-account",
+                "version": "3fc1daa3e406b62b",
+                "score": 0.02408,
+                "coverage": 0.087
+              }
+            ]
+          },
+          "acquisition": {
+            "status": "review-required",
+            "sourceId": "off-f5bb3599251ae145",
+            "score": 0,
+            "eligible": false,
+            "method": "model-query → known URL → robots/body fetch → quoted evidence assessment",
+            "usage": {
+              "prompt_tokens": 706,
+              "completion_tokens": 307,
+              "total_tokens": 1013,
+              "prompt_tokens_details": {
+                "cached_tokens": 256
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 170
+              },
+              "prompt_cache_hit_tokens": 256,
+              "prompt_cache_miss_tokens": 450
+            }
+          },
+          "arbitration": {
+            "version": "rubric-6.4",
+            "selected": "tool",
+            "local": {
+              "score": 100,
+              "checks": {
+                "evidence": true,
+                "direct": true,
+                "endpoints": true,
+                "actionable": true,
+                "format": true
+              }
+            },
+            "deepseek": {
+              "score": 100,
+              "checks": {
+                "evidence": true,
+                "direct": true,
+                "endpoints": true,
+                "actionable": true,
+                "format": true
+              }
+            },
+            "threshold": 60,
+            "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+            "reason": "按已核对证据、直接回答和请求完整性选择。 合并超出引用或字数上限，采用分数较高的一份。"
+          },
+          "totalMs": 33413
+        },
+        "sourceAcquisition": {
+          "status": "review-required",
+          "sourceId": "off-f5bb3599251ae145",
+          "score": 0,
+          "eligible": false,
+          "method": "model-query → known URL → robots/body fetch → quoted evidence assessment",
+          "usage": {
+            "prompt_tokens": 706,
+            "completion_tokens": 307,
+            "total_tokens": 1013,
+            "prompt_tokens_details": {
+              "cached_tokens": 256
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 170
+            },
+            "prompt_cache_hit_tokens": 256,
+            "prompt_cache_miss_tokens": 450
+          }
+        },
+        "modelRouting": {
+          "requested": "pro",
+          "selected": "pro",
+          "model": "deepseek-v4-pro",
+          "thinking": true,
+          "effort": "low",
+          "reason": "由你手动选择",
+          "method": "manual"
+        },
+        "dataset": "evaluation",
+        "executionId": "35db1e2e-6488-43f1-827b-7285272d8dcd",
+        "assessmentId": "fc5aa66d-d17f-4064-ad13-a4499ce4412b"
+      },
+      "error": null,
+      "seconds": 36.8
+    },
+    {
+      "input": "Can I use a contactless JCB card at Shanghai metro gates? I have not told you my credit limit.",
+      "expected": "metro_ticket",
+      "answer": {
+        "text": "Yes — published Shanghai Metro information supports eligible contactless JCB chip cards directly at metro gates, so you can tap to ride without buying a ticket first. This is brand-level support, not a guarantee for every JCB card or phone wallet.\n\nConditions to check on your card:\n- It must be a contactless JCB chip card; Type-B chips and cards without ODA are excluded.\n- Small-value PIN-free payment must be enabled.\n- You need sufficient available funds or credit.\n- No separate metro activation is required.\n\nYour credit limit is not needed to answer this: not stating it does not mean the card is unsupported. If a gate rejects the card, ask the station service center or your card issuer. This reflects saved official summaries, not a live check of your specific card.",
+        "sourceIds": [
+          "sh-metro-jcb-contactless",
+          "sh-metro",
+          "operator-jcb-shanghai-contactless"
+        ],
+        "mode": "deepseek",
+        "notice": "saved-summaries",
+        "intent": {
+          "kind": "metro_ticket",
+          "origin": null,
+          "destination": null,
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null,
+          "responseMode": "service"
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 5037,
+          "completion_tokens": 545,
+          "total_tokens": 5582
+        },
+        "services": [
+          {
+            "id": "service-metro_ticket",
+            "kind": "metro_ticket",
+            "title": "Shanghai Metro ticket guide",
+            "description": "Use Metro Daduhui or supported Alipay/WeChat transit services. Buy single-journey tickets at stations; they are valid on the purchase day and do not cover out-of-station transfers. Confirm distance-based fares with the operator.",
+            "url": "https://english.shanghai.gov.cn/en-Individuals-Transportation-PublicTransport/20260813/f257d5c373db4da3a8bde717b9f46b27.html",
+            "sourceId": "sh-metro-tickets",
+            "status": "official-guide",
+            "liveAvailability": false
+          }
+        ],
+        "arbitration": {
+          "version": "rubric-6.4",
+          "selected": "deepseek",
+          "local": {
+            "score": 85,
+            "checks": {
+              "evidence": true,
+              "direct": true,
+              "endpoints": true,
+              "actionable": false,
+              "format": true
+            }
+          },
+          "deepseek": {
+            "score": 100,
+            "checks": {
+              "evidence": true,
+              "direct": true,
+              "endpoints": true,
+              "actionable": true,
+              "format": true
+            }
+          },
+          "threshold": 60,
+          "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+          "reason": "按已核对证据、直接回答和请求完整性选择。"
+        },
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "sh-metro",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "sh-metro-jcb-contactless",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "operator-jcb-shanghai-contactless",
+              "score": 85,
+              "level": "high",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "已匹配运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 85,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 81
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 2172
+            },
+            {
+              "name": "website_lookup",
+              "status": "review-required"
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 63
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "metro_ticket"
+            },
+            {
+              "name": "grounded_generation",
+              "status": "completed",
+              "reason": "EVIDENCE_ALIGNMENT",
+              "ms": 1610
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 546,
+            "candidates": 497,
+            "elapsedMs": 63,
+            "hits": [
+              {
+                "id": "operator-jcb-shanghai-contactless:3d017fc410ef1656:0",
+                "sourceId": "operator-jcb-shanghai-contactless",
+                "version": "3d017fc410ef1656",
+                "score": 0.02969,
+                "coverage": 0.429
+              },
+              {
+                "id": "sh-metro:8bafe358a25a4099:0",
+                "sourceId": "sh-metro",
+                "version": "8bafe358a25a4099",
+                "score": 0.02921,
+                "coverage": 0.429
+              },
+              {
+                "id": "sh-metro-jcb-contactless:c5f466ebdc86174e:0",
+                "sourceId": "sh-metro-jcb-contactless",
+                "version": "c5f466ebdc86174e",
+                "score": 0.02853,
+                "coverage": 0.429
+              },
+              {
+                "id": "channel-trip-payment:25662c9039d861de:0",
+                "sourceId": "channel-trip-payment",
+                "version": "25662c9039d861de",
+                "score": 0.02848,
+                "coverage": 0.19
+              },
+              {
+                "id": "sh-metro-jcb-contactless:c5f466ebdc86174e:1",
+                "sourceId": "sh-metro-jcb-contactless",
+                "version": "c5f466ebdc86174e",
+                "score": 0.02822,
+                "coverage": 0.333
+              },
+              {
+                "id": "channel-trip-payment:25662c9039d861de:1",
+                "sourceId": "channel-trip-payment",
+                "version": "25662c9039d861de",
+                "score": 0.02809,
+                "coverage": 0.19
+              },
+              {
+                "id": "operator-jcb-shanghai-contactless:3d017fc410ef1656:1",
+                "sourceId": "operator-jcb-shanghai-contactless",
+                "version": "3d017fc410ef1656",
+                "score": 0.02619,
+                "coverage": 0.19
+              },
+              {
+                "id": "news-nihao-china-shanghai-20260817:739f3f5d3d0ae667:1",
+                "sourceId": "news-nihao-china-shanghai-20260817",
+                "version": "739f3f5d3d0ae667",
+                "score": 0.0248,
+                "coverage": 0.238
+              }
+            ]
+          },
+          "acquisition": {
+            "status": "review-required",
+            "sourceId": "off-91ae68a36dc0d6d1",
+            "score": 35,
+            "eligible": false,
+            "method": "model-query → known URL → robots/body fetch → quoted evidence assessment",
+            "usage": {
+              "prompt_tokens": 1370,
+              "completion_tokens": 197,
+              "total_tokens": 1567,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "prompt_cache_hit_tokens": 0,
+              "prompt_cache_miss_tokens": 1370
+            }
+          },
+          "arbitration": {
+            "version": "rubric-6.4",
+            "selected": "deepseek",
+            "local": {
+              "score": 85,
+              "checks": {
+                "evidence": true,
+                "direct": true,
+                "endpoints": true,
+                "actionable": false,
+                "format": true
+              }
+            },
+            "deepseek": {
+              "score": 100,
+              "checks": {
+                "evidence": true,
+                "direct": true,
+                "endpoints": true,
+                "actionable": true,
+                "format": true
+              }
+            },
+            "threshold": 60,
+            "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+            "reason": "按已核对证据、直接回答和请求完整性选择。"
+          },
+          "totalMs": 8414
+        },
+        "sourceAcquisition": {
+          "status": "review-required",
+          "sourceId": "off-91ae68a36dc0d6d1",
+          "score": 35,
+          "eligible": false,
+          "method": "model-query → known URL → robots/body fetch → quoted evidence assessment",
+          "usage": {
+            "prompt_tokens": 1370,
+            "completion_tokens": 197,
+            "total_tokens": 1567,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 1370
+          }
+        },
+        "modelRouting": {
+          "requested": "flash",
+          "selected": "flash",
+          "model": "deepseek-flash",
+          "thinking": false,
+          "effort": "none",
+          "reason": "由你手动选择",
+          "method": "manual"
+        },
+        "dataset": "evaluation",
+        "executionId": "289f3c30-c973-45a8-bd46-17370f83bd9d",
+        "assessmentId": "bc07fbc6-48f8-400d-9117-ed56193caf7e"
+      },
+      "error": null,
+      "seconds": 11.7
+    },
+    {
+      "input": "上海火车站有充电宝吗？另外从上海火车站怎么去杭州，想比较便宜的二等座。",
+      "expected": "multiple",
+      "answer": {
+        "mode": "deepseek-tasks",
+        "text": "1. 上海火车站有充电宝吗？\n上海火车站是否有充电宝租借柜，目前没有站内官方库存或定位证据。官方指南提到商场、餐厅、地铁站等公共场所可寻找共享充电宝租借柜，但未确认上海火车站具体有无。社区经验仅提到上海商店的共享充电宝，不能作为本站有柜机的证明。建议到站后用共享充电宝品牌小程序地图搜索“上海火车站”查看可借点，或现场询问服务台。\n\n2. 从上海火车站怎么去杭州，想比较便宜的二等座。\n你指定的是上海火车站，已保留；下面收录的是上海虹桥的历史班次，只能作为换站备选，不能当作上海站出发。可以按二等座／一等座、价格和出发时段比较下方历史记录。记录对应2024年6月15日，不是今天的班次和报价。原文没有的到达时间或席别价格显示“未记录”。请补充实际乘车日期，再到12306按准确车站查票。",
+        "tasks": [
+          {
+            "text": "上海火车站是否有充电宝租借柜，目前没有站内官方库存或定位证据。官方指南提到商场、餐厅、地铁站等公共场所可寻找共享充电宝租借柜，但未确认上海火车站具体有无。社区经验仅提到上海商店的共享充电宝，不能作为本站有柜机的证明。建议到站后用共享充电宝品牌小程序地图搜索“上海火车站”查看可借点，或现场询问服务台。",
+            "sourceIds": [
+              "sh-power-bank",
+              "community-power-return"
+            ],
+            "mode": "deepseek",
+            "notice": "saved-summaries",
+            "intent": {
+              "kind": "charging",
+              "origin": null,
+              "destination": "上海火车站",
+              "via": null,
+              "city": "Shanghai",
+              "roadKm": null,
+              "responseMode": "general"
+            },
+            "intentProvider": "deepseek",
+            "usage": {
+              "prompt_tokens": 6553,
+              "completion_tokens": 2893,
+              "total_tokens": 9446
+            },
+            "services": [
+              {
+                "id": "service-charging",
+                "kind": "charging",
+                "title": "上海火车站 · 查询充电宝租借柜",
+                "description": "查询入口；此链接不证明该位置设有柜机。请在运营方核对位置、收费与可用量。",
+                "url": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%E7%81%AB%E8%BD%A6%E7%AB%99%20%E5%85%85%E7%94%B5%E5%AE%9D&city=上海&view=map",
+                "sourceId": "sh-power-bank",
+                "status": "provider-search",
+                "liveAvailability": false
+              },
+              {
+                "id": "guide-charging",
+                "kind": "charging",
+                "title": "官方使用与查询指引",
+                "description": "商场、餐厅、地铁站等公共场所可寻找共享充电宝租借柜。扫码后先核对费用和归还规则，再按页面操作租借。本站没有接入柜机定位、剩余数量或实时价格，请使用地图和柜机运营商核实附近可借、可还的位置。",
+                "url": "https://english.shanghai.gov.cn/en-MobileAndInternet/20260727/56b62a3a9d2f4ddaa8d77367c206b2ae.html",
+                "sourceId": "sh-power-bank",
+                "status": "official-guide",
+                "liveAvailability": false
+              }
+            ],
+            "arbitration": {
+              "version": "rubric-6.4",
+              "selected": "deepseek",
+              "local": null,
+              "deepseek": {
+                "score": 100,
+                "checks": {
+                  "evidence": true,
+                  "direct": true,
+                  "endpoints": true,
+                  "actionable": true,
+                  "format": true
+                }
+              },
+              "threshold": 60,
+              "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+              "reason": "按已核对证据、直接回答和请求完整性选择。"
+            },
+            "confidence": {
+              "model": 0.9,
+              "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+              "sources": [
+                {
+                  "id": "sh-power-bank",
+                  "score": 90,
+                  "level": "high",
+                  "requiresReview": false,
+                  "government": true,
+                  "reasons": [
+                    "已匹配政府域名",
+                    "有保存摘要",
+                    "摘要在复核周期内"
+                  ],
+                  "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+                },
+                {
+                  "id": "community-power-return",
+                  "score": 60,
+                  "level": "medium",
+                  "requiresReview": false,
+                  "government": false,
+                  "reasons": [
+                    "非已核验政府/运营方域名",
+                    "有保存摘要",
+                    "摘要在复核周期内"
+                  ],
+                  "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+                }
+              ],
+              "sourceScore": 60,
+              "requiresReview": false,
+              "needsClarification": false,
+              "reasons": [],
+              "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确"
+            },
+            "number": 1,
+            "request": "上海火车站有充电宝吗？",
+            "execution": {
+              "stages": [
+                {
+                  "name": "retrieve",
+                  "status": "completed",
+                  "ms": 74
+                },
+                {
+                  "name": "intent",
+                  "status": "completed",
+                  "ms": 0
+                },
+                {
+                  "name": "website_lookup",
+                  "status": "review-required"
+                },
+                {
+                  "name": "semantic_retrieval",
+                  "status": "completed",
+                  "ms": 53
+                },
+                {
+                  "name": "tool_or_answer",
+                  "status": "completed",
+                  "kind": "charging"
+                },
+                {
+                  "name": "grounded_generation",
+                  "status": "completed",
+                  "reason": "EVIDENCE_ALIGNMENT",
+                  "ms": 6703
+                }
+              ],
+              "retrieval": {
+                "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+                "embedding": "none",
+                "reranker": "deterministic lexical/evidence reranking",
+                "corpusChunks": 546,
+                "candidates": 455,
+                "elapsedMs": 53,
+                "hits": [
+                  {
+                    "id": "station-15:6f80ee45a8a01e1d:0",
+                    "sourceId": "station-15",
+                    "version": "6f80ee45a8a01e1d",
+                    "score": 0.03457,
+                    "coverage": 0.4
+                  },
+                  {
+                    "id": "community-power-return:10358f145b47ac9c:0",
+                    "sourceId": "community-power-return",
+                    "version": "10358f145b47ac9c",
+                    "score": 0.03391,
+                    "coverage": 0.733
+                  },
+                  {
+                    "id": "sh-power-bank:cb0ac35360170622:0",
+                    "sourceId": "sh-power-bank",
+                    "version": "cb0ac35360170622",
+                    "score": 0.03129,
+                    "coverage": 0.533
+                  },
+                  {
+                    "id": "verified-hongqiao-p10-charging:d5012857ac09a5cc:0",
+                    "sourceId": "verified-hongqiao-p10-charging",
+                    "version": "d5012857ac09a5cc",
+                    "score": 0.03031,
+                    "coverage": 0.533
+                  },
+                  {
+                    "id": "verified-metro-lockers:ac7d654795dd78d2:0",
+                    "sourceId": "verified-metro-lockers",
+                    "version": "ac7d654795dd78d2",
+                    "score": 0.02673,
+                    "coverage": 0.4
+                  },
+                  {
+                    "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                    "sourceId": "verified-shanghai-rail-station",
+                    "version": "26195dc7b3d7255a",
+                    "score": 0.02615,
+                    "coverage": 0.4
+                  },
+                  {
+                    "id": "verified-pvg-rest-charging:3c747ba8fb743181:0",
+                    "sourceId": "verified-pvg-rest-charging",
+                    "version": "3c747ba8fb743181",
+                    "score": 0.02568,
+                    "coverage": 0.2
+                  },
+                  {
+                    "id": "history-sh-hz-trains:5f222a63b6cce02e:0",
+                    "sourceId": "history-sh-hz-trains",
+                    "version": "5f222a63b6cce02e",
+                    "score": 0.02542,
+                    "coverage": 0.4
+                  }
+                ]
+              },
+              "acquisition": {
+                "status": "review-required",
+                "sourceId": "off-d387a2c5df036cf1",
+                "score": 0,
+                "eligible": false,
+                "method": "model-query → known URL → robots/body fetch → quoted evidence assessment",
+                "usage": {
+                  "prompt_tokens": 1238,
+                  "completion_tokens": 385,
+                  "total_tokens": 1623,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 256
+                  },
+                  "completion_tokens_details": {
+                    "reasoning_tokens": 220
+                  },
+                  "prompt_cache_hit_tokens": 256,
+                  "prompt_cache_miss_tokens": 982
+                }
+              },
+              "arbitration": {
+                "version": "rubric-6.4",
+                "selected": "deepseek",
+                "local": null,
+                "deepseek": {
+                  "score": 100,
+                  "checks": {
+                    "evidence": true,
+                    "direct": true,
+                    "endpoints": true,
+                    "actionable": true,
+                    "format": true
+                  }
+                },
+                "threshold": 60,
+                "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+                "reason": "按已核对证据、直接回答和请求完整性选择。"
+              }
+            }
+          },
+          {
+            "intent": {
+              "kind": "rail",
+              "origin": "上海火车站",
+              "destination": "杭州",
+              "via": null,
+              "city": "Shanghai",
+              "roadKm": null,
+              "responseMode": "compare"
+            },
+            "intentProvider": "deepseek",
+            "usage": {},
+            "services": [
+              {
+                "id": "verified-rail-12306",
+                "kind": "rail",
+                "title": "铁路12306英文购票与证件指引",
+                "description": "12306英文站提供购票、改签、退票等服务；外国旅客可按规则使用有效护照购票。乘车使用购票时的有效证件，行程信息单不能作为车票。未接入本站实时余票、价格或下单。 线上官方服务；非实体门店 · 页面核对记录；营业、可用量和价格请向运营方确认。未接实时库存或预订接口。",
+                "url": "https://www.12306.cn/en/",
+                "sourceUrl": "https://www.12306.cn/en/faq.html",
+                "sourceId": "verified-rail-12306",
+                "status": "official-guide",
+                "address": "线上官方服务；非实体门店",
+                "phone": null,
+                "phoneExtension": null,
+                "phoneRole": null,
+                "station": null,
+                "stations": [],
+                "stationEvidence": [],
+                "checkedAt": "2026-09-25",
+                "liveAvailability": false
+              }
+            ],
+            "arbitration": {
+              "version": "rubric-6.4",
+              "selected": "tool",
+              "local": {
+                "score": 80,
+                "checks": {
+                  "evidence": true,
+                  "direct": true,
+                  "endpoints": false,
+                  "actionable": true,
+                  "format": true
+                }
+              },
+              "deepseek": null,
+              "threshold": 60,
+              "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+              "reason": "确定性路线与历史价格保留结构化工具；通过校验的文字可补充说明。"
+            },
+            "confidence": {
+              "model": 0.9,
+              "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+              "sources": [
+                {
+                  "id": "rail-passport",
+                  "score": 85,
+                  "level": "high",
+                  "requiresReview": false,
+                  "government": false,
+                  "reasons": [
+                    "已匹配运营方域名",
+                    "有保存摘要",
+                    "摘要在复核周期内"
+                  ],
+                  "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+                },
+                {
+                  "id": "history-sh-hz-trains",
+                  "score": 60,
+                  "level": "medium",
+                  "requiresReview": false,
+                  "government": false,
+                  "reasons": [
+                    "非已核验政府/运营方域名",
+                    "有保存摘要",
+                    "摘要在复核周期内"
+                  ],
+                  "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+                }
+              ],
+              "sourceScore": 60,
+              "requiresReview": false,
+              "needsClarification": false,
+              "reasons": [],
+              "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确"
+            },
+            "text": "你指定的是上海火车站，已保留；下面收录的是上海虹桥的历史班次，只能作为换站备选，不能当作上海站出发。可以按二等座／一等座、价格和出发时段比较下方历史记录。记录对应2024年6月15日，不是今天的班次和报价。原文没有的到达时间或席别价格显示“未记录”。请补充实际乘车日期，再到12306按准确车站查票。",
+            "sourceIds": [
+              "history-sh-hz-trains",
+              "rail-passport"
+            ],
+            "mode": "deepseek-tool",
+            "notice": "model-intent-verified-tool",
+            "tool": {
+              "kind": "rail",
+              "metro": null,
+              "estimate": null,
+              "request": null,
+              "places": null
+            },
+            "routeVersion": null,
+            "number": 2,
+            "request": "从上海火车站怎么去杭州，想比较便宜的二等座。",
+            "execution": {
+              "stages": [
+                {
+                  "name": "retrieve",
+                  "status": "completed",
+                  "ms": 59
+                },
+                {
+                  "name": "intent",
+                  "status": "completed",
+                  "ms": 0
+                },
+                {
+                  "name": "semantic_retrieval",
+                  "status": "completed",
+                  "ms": 83
+                },
+                {
+                  "name": "tool_or_answer",
+                  "status": "completed",
+                  "kind": "rail"
+                }
+              ],
+              "retrieval": {
+                "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+                "embedding": "none",
+                "reranker": "deterministic lexical/evidence reranking",
+                "corpusChunks": 546,
+                "candidates": 455,
+                "elapsedMs": 83,
+                "hits": [
+                  {
+                    "id": "station-15:6f80ee45a8a01e1d:0",
+                    "sourceId": "station-15",
+                    "version": "6f80ee45a8a01e1d",
+                    "score": 0.0336,
+                    "coverage": 0.286
+                  },
+                  {
+                    "id": "history-sh-hz-trains:5f222a63b6cce02e:0",
+                    "sourceId": "history-sh-hz-trains",
+                    "version": "5f222a63b6cce02e",
+                    "score": 0.03079,
+                    "coverage": 0.476
+                  },
+                  {
+                    "id": "sh-hz-rail:17fdb729f60d1c76:0",
+                    "sourceId": "sh-hz-rail",
+                    "version": "17fdb729f60d1c76",
+                    "score": 0.0276,
+                    "coverage": 0.286
+                  },
+                  {
+                    "id": "community-power-return:10358f145b47ac9c:0",
+                    "sourceId": "community-power-return",
+                    "version": "10358f145b47ac9c",
+                    "score": 0.02616,
+                    "coverage": 0.286
+                  },
+                  {
+                    "id": "verified-metro-lockers:ac7d654795dd78d2:0",
+                    "sourceId": "verified-metro-lockers",
+                    "version": "ac7d654795dd78d2",
+                    "score": 0.02594,
+                    "coverage": 0.286
+                  },
+                  {
+                    "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                    "sourceId": "verified-shanghai-rail-station",
+                    "version": "26195dc7b3d7255a",
+                    "score": 0.02518,
+                    "coverage": 0.286
+                  },
+                  {
+                    "id": "arrival-airport-link-guide:75c387d1b32eb18f:0",
+                    "sourceId": "arrival-airport-link-guide",
+                    "version": "75c387d1b32eb18f",
+                    "score": 0.02482,
+                    "coverage": 0.286
+                  },
+                  {
+                    "id": "verified-hongqiao-rail-station:1c6991b2bad55c70:0",
+                    "sourceId": "verified-hongqiao-rail-station",
+                    "version": "1c6991b2bad55c70",
+                    "score": 0.02283,
+                    "coverage": 0.238
+                  }
+                ]
+              },
+              "arbitration": {
+                "version": "rubric-6.4",
+                "selected": "tool",
+                "local": {
+                  "score": 80,
+                  "checks": {
+                    "evidence": true,
+                    "direct": true,
+                    "endpoints": false,
+                    "actionable": true,
+                    "format": true
+                  }
+                },
+                "deepseek": null,
+                "threshold": 60,
+                "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+                "reason": "确定性路线与历史价格保留结构化工具；通过校验的文字可补充说明。"
+              }
+            }
+          }
+        ],
+        "intent": {
+          "kind": "charging",
+          "origin": null,
+          "destination": "上海火车站",
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null,
+          "responseMode": "general"
+        },
+        "intentProvider": "deepseek",
+        "sourceIds": [
+          "sh-power-bank",
+          "community-power-return",
+          "history-sh-hz-trains"
+        ],
+        "usage": {
+          "prompt_tokens": 6553,
+          "completion_tokens": 2893,
+          "total_tokens": 9446
+        },
+        "confidence": {
+          "requiresReview": false,
+          "reasons": [],
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 94
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 28492
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 546,
+            "candidates": 456,
+            "elapsedMs": 94,
+            "hits": [
+              {
+                "id": "station-15:6f80ee45a8a01e1d:0",
+                "sourceId": "station-15",
+                "version": "6f80ee45a8a01e1d",
+                "score": 0.03175,
+                "coverage": 0.214
+              },
+              {
+                "id": "history-sh-hz-trains:5f222a63b6cce02e:0",
+                "sourceId": "history-sh-hz-trains",
+                "version": "5f222a63b6cce02e",
+                "score": 0.02922,
+                "coverage": 0.357
+              },
+              {
+                "id": "community-power-return:10358f145b47ac9c:0",
+                "sourceId": "community-power-return",
+                "version": "10358f145b47ac9c",
+                "score": 0.02806,
+                "coverage": 0.321
+              },
+              {
+                "id": "verified-hongqiao-p10-charging:d5012857ac09a5cc:0",
+                "sourceId": "verified-hongqiao-p10-charging",
+                "version": "d5012857ac09a5cc",
+                "score": 0.0263,
+                "coverage": 0.25
+              },
+              {
+                "id": "sh-power-bank:cb0ac35360170622:0",
+                "sourceId": "sh-power-bank",
+                "version": "cb0ac35360170622",
+                "score": 0.02581,
+                "coverage": 0.179
+              },
+              {
+                "id": "verified-pvg-rest-charging:3c747ba8fb743181:0",
+                "sourceId": "verified-pvg-rest-charging",
+                "version": "3c747ba8fb743181",
+                "score": 0.02414,
+                "coverage": 0.107
+              },
+              {
+                "id": "verified-metro-lockers:ac7d654795dd78d2:0",
+                "sourceId": "verified-metro-lockers",
+                "version": "ac7d654795dd78d2",
+                "score": 0.024,
+                "coverage": 0.214
+              },
+              {
+                "id": "sh-hz-rail:17fdb729f60d1c76:0",
+                "sourceId": "sh-hz-rail",
+                "version": "17fdb729f60d1c76",
+                "score": 0.02393,
+                "coverage": 0.179
+              }
+            ]
+          },
+          "totalMs": 44867
+        },
+        "modelRouting": {
+          "requested": "auto",
+          "selected": "pro",
+          "model": "deepseek-v4-pro",
+          "thinking": true,
+          "effort": "low",
+          "reason": "比较、条件或纠正；多个需求，需要分项处理",
+          "method": "bounded-complexity-rules"
+        },
+        "dataset": "evaluation",
+        "executionId": "dab1e6e8-ae20-4254-917f-7a75d1b3b47b",
+        "assessmentId": "28703cd1-f483-477a-b9dd-b75fed4d50bb"
+      },
+      "error": null,
+      "seconds": 48.1
+    },
+    {
+      "input": "从浦东机场到上海火车站地铁怎么坐？给我地铁图。",
+      "expected": "metro",
+      "answer": {
+        "intent": {
+          "kind": "metro",
+          "origin": "浦东机场",
+          "destination": "上海火车站",
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null,
+          "responseMode": "route"
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 3715,
+          "completion_tokens": 95,
+          "total_tokens": 3810,
+          "prompt_tokens_details": {
+            "cached_tokens": 1280
+          },
+          "prompt_cache_hit_tokens": 1280,
+          "prompt_cache_miss_tokens": 2435
+        },
+        "services": [],
+        "arbitration": {
+          "version": "rubric-6.4",
+          "selected": "tool",
+          "local": {
+            "score": 80,
+            "checks": {
+              "evidence": true,
+              "direct": true,
+              "endpoints": false,
+              "actionable": true,
+              "format": true
+            }
+          },
+          "deepseek": null,
+          "threshold": 60,
+          "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+          "reason": "确定性路线与历史价格保留结构化工具；通过校验的文字可补充说明。"
+        },
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "sh-metro-map",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 90,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "text": "从浦东1号2号航站楼乘坐2号线（往蟠祥路·国家会计学院方向），到人民广场下车。 在人民广场换乘1号线（往富锦路方向），到上海火车站下车。 路线图和途经站在下方。",
+        "sourceIds": [
+          "sh-metro-map"
+        ],
+        "mode": "deepseek-tool",
+        "notice": "model-intent-verified-tool",
+        "tool": {
+          "kind": "metro",
+          "metro": {
+            "kind": "metro",
+            "origin": "浦东1号2号航站楼",
+            "destination": "上海火车站",
+            "via": null
+          },
+          "estimate": null,
+          "request": null,
+          "places": null
+        },
+        "routeVersion": "shanghai-metro-2026-09-25",
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 66
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 1002
+            },
+            {
+              "name": "website_lookup",
+              "status": "review-required"
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 57
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "metro"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 546,
+            "candidates": 493,
+            "elapsedMs": 57,
+            "hits": [
+              {
+                "id": "station-15:6f80ee45a8a01e1d:0",
+                "sourceId": "station-15",
+                "version": "6f80ee45a8a01e1d",
+                "score": 0.03355,
+                "coverage": 0.36
+              },
+              {
+                "id": "sh-metro-map:6a1b43a40e1dfea9:0",
+                "sourceId": "sh-metro-map",
+                "version": "6a1b43a40e1dfea9",
+                "score": 0.02839,
+                "coverage": 0.4
+              },
+              {
+                "id": "arrival-airport-link-guide:75c387d1b32eb18f:0",
+                "sourceId": "arrival-airport-link-guide",
+                "version": "75c387d1b32eb18f",
+                "score": 0.02795,
+                "coverage": 0.36
+              },
+              {
+                "id": "verified-metro-lockers:ac7d654795dd78d2:0",
+                "sourceId": "verified-metro-lockers",
+                "version": "ac7d654795dd78d2",
+                "score": 0.02587,
+                "coverage": 0.36
+              },
+              {
+                "id": "verified-pvg-taxi:cca2a96bbc4759cf:0",
+                "sourceId": "verified-pvg-taxi",
+                "version": "cca2a96bbc4759cf",
+                "score": 0.02412,
+                "coverage": 0.12
+              },
+              {
+                "id": "verified-pvg-rest-charging:3c747ba8fb743181:0",
+                "sourceId": "verified-pvg-rest-charging",
+                "version": "3c747ba8fb743181",
+                "score": 0.02341,
+                "coverage": 0.12
+              },
+              {
+                "id": "history-sh-hz-trains:5f222a63b6cce02e:0",
+                "sourceId": "history-sh-hz-trains",
+                "version": "5f222a63b6cce02e",
+                "score": 0.02298,
+                "coverage": 0.28
+              },
+              {
+                "id": "verified-pvg-taxi:cca2a96bbc4759cf:1",
+                "sourceId": "verified-pvg-taxi",
+                "version": "cca2a96bbc4759cf",
+                "score": 0.02291,
+                "coverage": 0.12
+              }
+            ]
+          },
+          "acquisition": {
+            "status": "review-required",
+            "sourceId": "off-7028a3cee79bebe3",
+            "score": 0,
+            "eligible": false,
+            "method": "model-query → known URL → robots/body fetch → quoted evidence assessment",
+            "usage": {
+              "prompt_tokens": 469,
+              "completion_tokens": 120,
+              "total_tokens": 589,
+              "prompt_tokens_details": {
+                "cached_tokens": 128
+              },
+              "prompt_cache_hit_tokens": 128,
+              "prompt_cache_miss_tokens": 341
+            }
+          },
+          "arbitration": {
+            "version": "rubric-6.4",
+            "selected": "tool",
+            "local": {
+              "score": 80,
+              "checks": {
+                "evidence": true,
+                "direct": true,
+                "endpoints": false,
+                "actionable": true,
+                "format": true
+              }
+            },
+            "deepseek": null,
+            "threshold": 60,
+            "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+            "reason": "确定性路线与历史价格保留结构化工具；通过校验的文字可补充说明。"
+          },
+          "totalMs": 4888
+        },
+        "sourceAcquisition": {
+          "status": "review-required",
+          "sourceId": "off-7028a3cee79bebe3",
+          "score": 0,
+          "eligible": false,
+          "method": "model-query → known URL → robots/body fetch → quoted evidence assessment",
+          "usage": {
+            "prompt_tokens": 469,
+            "completion_tokens": 120,
+            "total_tokens": 589,
+            "prompt_tokens_details": {
+              "cached_tokens": 128
+            },
+            "prompt_cache_hit_tokens": 128,
+            "prompt_cache_miss_tokens": 341
+          }
+        },
+        "modelRouting": {
+          "requested": "flash",
+          "selected": "flash",
+          "model": "deepseek-flash",
+          "thinking": false,
+          "effort": "none",
+          "reason": "由你手动选择",
+          "method": "manual"
+        },
+        "dataset": "evaluation",
+        "executionId": "376e329b-c689-4229-b3ac-21eb2cfc3a2a",
+        "assessmentId": "212ad1db-9931-4c4e-9437-292e181f91bb"
+      },
+      "error": null,
+      "seconds": 8.1
+    },
+    {
+      "input": "Is it possible to buy a train ticket through Trip.com using American Express?",
+      "expected": "payment",
+      "answer": {},
+      "error": "ANSWER_INTENT_SCHEMA",
+      "seconds": 6.9
+    },
+    {
+      "input": "最近上海有什么外国游客可以参加的小吃活动？给我地点和日期。",
+      "expected": "event",
+      "answer": {
+        "text": "目前保存的官方资料里，只有一项明确是面向游客的小吃类活动：上海小吃嘉年华，地点在普陀区环球港南广场，时间为9月17日至27日，集合中国地方小吃及国际风味，并有官方英语页面可供外国游客查阅。\n\n需要说明：资料未核对外语现场服务和每日具体时段，因此不能保证现场有英语服务或每天开放时间一致，建议出发前通过官方渠道再确认。\n\n另外两项同期活动不是小吃活动，但外国游客也可参考：上海国际光影节9月17日至10月16日，覆盖全市各区，具体场地和日期需在官方安排中查询；世界设计之都大会展览9月26日至30日（9月28日上午不开放），地点黄浦区局门路689号，免费但需在官方微信小程序提前登记。\n\n以上均为已保存的官方摘要，非实时核验；活动是否照常举办、现场服务及最新安排请以主办方发布为准。",
+        "sourceIds": [
+          "event-sh-snacks-2026",
+          "event-sh-light-2026",
+          "event-sh-design-2026"
+        ],
+        "mode": "deepseek",
+        "notice": "saved-summaries",
+        "intent": {
+          "kind": "other",
+          "origin": null,
+          "destination": null,
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null,
+          "responseMode": "service"
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 5795,
+          "completion_tokens": 562,
+          "total_tokens": 6357
+        },
+        "services": [],
+        "arbitration": {
+          "version": "rubric-6.4",
+          "selected": "deepseek",
+          "local": null,
+          "deepseek": {
+            "score": 100,
+            "checks": {
+              "evidence": true,
+              "direct": true,
+              "endpoints": true,
+              "actionable": true,
+              "format": true
+            }
+          },
+          "threshold": 60,
+          "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+          "reason": "按已核对证据、直接回答和请求完整性选择。"
+        },
+        "confidence": {
+          "model": 0.82,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "event-sh-snacks-2026",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "event-sh-design-2026",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "event-sh-light-2026",
+              "score": 60,
+              "level": "medium",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "非已核验政府/运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 60,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 72
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 1958
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 43
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "other"
+            },
+            {
+              "name": "grounded_generation",
+              "status": "completed",
+              "reason": "EVIDENCE_ALIGNMENT",
+              "ms": 1786
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 546,
+            "candidates": 20,
+            "elapsedMs": 43,
+            "hits": [
+              {
+                "id": "event-sh-snacks-2026:94f7c4a2753565b5:0",
+                "sourceId": "event-sh-snacks-2026",
+                "version": "94f7c4a2753565b5",
+                "score": 0.02793,
+                "coverage": 0.259
+              },
+              {
+                "id": "event-sh-light-2026:f5d6fd9ca8c3f43f:0",
+                "sourceId": "event-sh-light-2026",
+                "version": "f5d6fd9ca8c3f43f",
+                "score": 0.027,
+                "coverage": 0.222
+              },
+              {
+                "id": "event-sh-design-2026:e7282e8bff745824:0",
+                "sourceId": "event-sh-design-2026",
+                "version": "e7282e8bff745824",
+                "score": 0.0261,
+                "coverage": 0.185
+              },
+              {
+                "id": "news-nihao-china-shanghai-20260817:739f3f5d3d0ae667:0",
+                "sourceId": "news-nihao-china-shanghai-20260817",
+                "version": "739f3f5d3d0ae667",
+                "score": 0.02457,
+                "coverage": 0.111
+              },
+              {
+                "id": "sh-hz-rail:17fdb729f60d1c76:0",
+                "sourceId": "sh-hz-rail",
+                "version": "17fdb729f60d1c76",
+                "score": 0.02338,
+                "coverage": 0.074
+              },
+              {
+                "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                "sourceId": "verified-shanghai-rail-station",
+                "version": "26195dc7b3d7255a",
+                "score": 0.02321,
+                "coverage": 0.074
+              },
+              {
+                "id": "verified-hongqiao-rail-station:1c6991b2bad55c70:0",
+                "sourceId": "verified-hongqiao-rail-station",
+                "version": "1c6991b2bad55c70",
+                "score": 0.02206,
+                "coverage": 0.074
+              },
+              {
+                "id": "verified-rail-12306:b48813c5b2636fa9:0",
+                "sourceId": "verified-rail-12306",
+                "version": "b48813c5b2636fa9",
+                "score": 0.02153,
+                "coverage": 0.074
+              }
+            ]
+          },
+          "arbitration": {
+            "version": "rubric-6.4",
+            "selected": "deepseek",
+            "local": null,
+            "deepseek": {
+              "score": 100,
+              "checks": {
+                "evidence": true,
+                "direct": true,
+                "endpoints": true,
+                "actionable": true,
+                "format": true
+              }
+            },
+            "threshold": 60,
+            "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+            "reason": "按已核对证据、直接回答和请求完整性选择。"
+          },
+          "totalMs": 3965
+        },
+        "modelRouting": {
+          "requested": "auto",
+          "selected": "flash",
+          "model": "deepseek-flash",
+          "thinking": false,
+          "effort": "none",
+          "reason": "单一查询，优先快速响应",
+          "method": "bounded-complexity-rules"
+        },
+        "dataset": "evaluation",
+        "executionId": "84499c94-f578-4df1-89ef-d77f0440492a",
+        "assessmentId": "b2d3a278-cec0-4291-9e56-2a669a36e993"
+      },
+      "error": null,
+      "seconds": 7.3
+    },
+    {
+      "input": "松江区想玩一天，给我可以导出的路线，吃住也加上。",
+      "expected": "itinerary",
+      "answer": {
+        "intent": {
+          "kind": "itinerary",
+          "origin": null,
+          "destination": null,
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null,
+          "theme": "songjiang",
+          "startTime": null,
+          "days": 1,
+          "includeFood": true,
+          "includeHotel": true,
+          "responseMode": "service"
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 1852,
+          "completion_tokens": 646,
+          "total_tokens": 2498,
+          "prompt_tokens_details": {
+            "cached_tokens": 1536
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 515
+          },
+          "prompt_cache_hit_tokens": 1536,
+          "prompt_cache_miss_tokens": 316
+        },
+        "services": [],
+        "sourceIds": [
+          "district-songjiang"
+        ],
+        "text": "已按地理片区把路线排好了。松江区 · 分区漫游。依据政府公开地点记录编排；日期、时段和出发位置可继续调整。没有沿用历史节庆活动。 建议到达时间、吃住候选和地图见下面；可以修改开始时间或导出行程。",
+        "mode": "deepseek-tool",
+        "notice": "model-intent-source-backed-itinerary",
+        "tool": {
+          "kind": "itinerary",
+          "itinerary": {
+            "schemaVersion": 1,
+            "kind": "itinerary",
+            "theme": "songjiang",
+            "language": "zh",
+            "title": "松江区 · 分区漫游",
+            "scope": "依据政府公开地点记录编排；日期、时段和出发位置可继续调整。没有沿用历史节庆活动。",
+            "city": "Shanghai",
+            "startTime": "09:30",
+            "days": [
+              {
+                "day": 1,
+                "title": "松江区",
+                "stops": [
+                  {
+                    "id": "district-songjiang-0",
+                    "title": "佘山国家森林公园",
+                    "nameZh": "佘山国家森林公园",
+                    "nameEn": "Sheshan National Forest Park",
+                    "address": "上海市松江区 · 佘山国家森林公园（请用地图确认入口）",
+                    "description": "纳入本次可调整的分区行程；参观与移动时段为规划建议。",
+                    "station": null,
+                    "category": "sightseeing",
+                    "sourceIds": [
+                      "district-songjiang"
+                    ],
+                    "sourceUrls": [
+                      "https://english.shanghai.gov.cn/en-CityTour/20250427/b2eff944fe05497ea6424937b170b84c.html"
+                    ],
+                    "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E4%BD%98%E5%B1%B1%E5%9B%BD%E5%AE%B6%E6%A3%AE%E6%9E%97%E5%85%AC%E5%9B%AD%20%E4%B8%8A%E6%B5%B7%E5%B8%82%E6%9D%BE%E6%B1%9F%E5%8C%BA%20%C2%B7%20%E4%BD%98%E5%B1%B1%E5%9B%BD%E5%AE%B6%E6%A3%AE%E6%9E%97%E5%85%AC%E5%9B%AD%EF%BC%88%E8%AF%B7%E7%94%A8%E5%9C%B0%E5%9B%BE%E7%A1%AE%E8%AE%A4%E5%85%A5%E5%8F%A3%EF%BC%89&city=310000&view=map&src=visit-china",
+                    "url": "https://english.shanghai.gov.cn/en-CityTour/20250427/b2eff944fe05497ea6424937b170b84c.html",
+                    "phone": null,
+                    "phoneRole": null,
+                    "liveAvailability": false,
+                    "order": 1,
+                    "role": "visit",
+                    "plannedArrival": "09:30",
+                    "plannedDeparture": "11:00",
+                    "plannedDurationMinutes": 90,
+                    "transferBufferMinutes": 0,
+                    "timeBasis": "editorial-planning-allocation",
+                    "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+                  },
+                  {
+                    "id": "district-songjiang-1",
+                    "title": "上海辰山植物园",
+                    "nameZh": "上海辰山植物园",
+                    "nameEn": "Shanghai Chenshan Botanical Garden",
+                    "address": "上海市松江区 · 上海辰山植物园（请用地图确认入口）",
+                    "description": "纳入本次可调整的分区行程；参观与移动时段为规划建议。",
+                    "station": null,
+                    "category": "sightseeing",
+                    "sourceIds": [
+                      "district-songjiang"
+                    ],
+                    "sourceUrls": [
+                      "https://english.shanghai.gov.cn/en-CityTour/20250427/b2eff944fe05497ea6424937b170b84c.html"
+                    ],
+                    "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E4%B8%8A%E6%B5%B7%E8%BE%B0%E5%B1%B1%E6%A4%8D%E7%89%A9%E5%9B%AD%20%E4%B8%8A%E6%B5%B7%E5%B8%82%E6%9D%BE%E6%B1%9F%E5%8C%BA%20%C2%B7%20%E4%B8%8A%E6%B5%B7%E8%BE%B0%E5%B1%B1%E6%A4%8D%E7%89%A9%E5%9B%AD%EF%BC%88%E8%AF%B7%E7%94%A8%E5%9C%B0%E5%9B%BE%E7%A1%AE%E8%AE%A4%E5%85%A5%E5%8F%A3%EF%BC%89&city=310000&view=map&src=visit-china",
+                    "url": "https://english.shanghai.gov.cn/en-CityTour/20250427/b2eff944fe05497ea6424937b170b84c.html",
+                    "phone": null,
+                    "phoneRole": null,
+                    "liveAvailability": false,
+                    "order": 2,
+                    "role": "visit",
+                    "plannedArrival": "12:00",
+                    "plannedDeparture": "13:30",
+                    "plannedDurationMinutes": 90,
+                    "transferBufferMinutes": 60,
+                    "timeBasis": "editorial-planning-allocation",
+                    "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+                  }
+                ]
+              }
+            ],
+            "accommodations": [],
+            "sourceIds": [
+              "district-songjiang"
+            ],
+            "allSourceIds": [
+              "district-songjiang"
+            ],
+            "sources": [
+              {
+                "id": "district-songjiang",
+                "title": "松江区路线地点 / Songjiang route places",
+                "url": "https://english.shanghai.gov.cn/en-CityTour/20250427/b2eff944fe05497ea6424937b170b84c.html",
+                "reviewedAt": "2026-09-25",
+                "publishedAt": "2025-04-27"
+              }
+            ],
+            "missingSourceIds": [],
+            "status": "ready",
+            "timeBasis": "editorial-planning-allocation",
+            "liveAvailability": false,
+            "notes": [
+              "时间为可调整的行程建议，不是开馆时间、实时交通预测或已预约时段。",
+              "出发前核对开放、预约、天气与通行；餐饮和酒店不含实时房态、餐位、价格。",
+              "餐饮可围绕两个停留点搜索；当前尚未核对本区具体餐馆和酒店，不把其他区商户当作附近推荐。"
+            ]
+          }
+        },
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "district-songjiang",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 90,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 49
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 7940
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 54
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "itinerary"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 546,
+            "candidates": 19,
+            "elapsedMs": 54,
+            "hits": [
+              {
+                "id": "sh-marriott-city-centre:d95fbe4d18488db5:0",
+                "sourceId": "sh-marriott-city-centre",
+                "version": "d95fbe4d18488db5",
+                "score": 0.02451,
+                "coverage": 0.12
+              },
+              {
+                "id": "theme-changning-renaissance:0cda4fc63a50416e:0",
+                "sourceId": "theme-changning-renaissance",
+                "version": "0cda4fc63a50416e",
+                "score": 0.01837,
+                "coverage": 0.16
+              },
+              {
+                "id": "district-songjiang:ad2787862f400554:0",
+                "sourceId": "district-songjiang",
+                "version": "ad2787862f400554",
+                "score": 0.018,
+                "coverage": 0.12
+              },
+              {
+                "id": "verified-jw-tomorrow-square:1a36c6dd8670882b:0",
+                "sourceId": "verified-jw-tomorrow-square",
+                "version": "1a36c6dd8670882b",
+                "score": 0.01744,
+                "coverage": 0.12
+              },
+              {
+                "id": "verified-pullman-jingan:d1d198223d8f2b4d:0",
+                "sourceId": "verified-pullman-jingan",
+                "version": "d1d198223d8f2b4d",
+                "score": 0.01703,
+                "coverage": 0.12
+              },
+              {
+                "id": "verified-courtyard-central:be2f9990c74f069c:0",
+                "sourceId": "verified-courtyard-central",
+                "version": "be2f9990c74f069c",
+                "score": 0.01691,
+                "coverage": 0.12
+              },
+              {
+                "id": "verified-hyatt-place-hongqiao:8c0d9b56202f6d23:0",
+                "sourceId": "verified-hyatt-place-hongqiao",
+                "version": "8c0d9b56202f6d23",
+                "score": 0.01678,
+                "coverage": 0.12
+              },
+              {
+                "id": "verified-dazhong-airport:b95e335747df6dee:0",
+                "sourceId": "verified-dazhong-airport",
+                "version": "b95e335747df6dee",
+                "score": 0.01616,
+                "coverage": 0.12
+              }
+            ]
+          },
+          "totalMs": 8147
+        },
+        "modelRouting": {
+          "requested": "auto",
+          "selected": "pro",
+          "model": "deepseek-v4-pro",
+          "thinking": true,
+          "effort": "low",
+          "reason": "多地点或主题行程",
+          "method": "bounded-complexity-rules"
+        },
+        "dataset": "evaluation",
+        "executionId": "faf130b1-25f0-4ac0-9b87-3af4cb45af97",
+        "assessmentId": "a1d0d9ef-35fa-4e56-9351-043f4b0d9e85"
+      },
+      "error": null,
+      "seconds": 11.4
+    },
+    {
+      "input": "上海虹桥到杭州东，比较历史二等座价格，我想选早上六点到七点出发。",
+      "expected": "rail",
+      "answer": {
+        "intent": {
+          "kind": "rail",
+          "origin": "上海虹桥",
+          "destination": "杭州东",
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null,
+          "responseMode": "compare"
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 4037,
+          "completion_tokens": 102,
+          "total_tokens": 4139,
+          "prompt_tokens_details": {
+            "cached_tokens": 1408
+          },
+          "prompt_cache_hit_tokens": 1408,
+          "prompt_cache_miss_tokens": 2629
+        },
+        "services": [
+          {
+            "id": "verified-rail-12306",
+            "kind": "rail",
+            "title": "铁路12306英文购票与证件指引",
+            "description": "12306英文站提供购票、改签、退票等服务；外国旅客可按规则使用有效护照购票。乘车使用购票时的有效证件，行程信息单不能作为车票。未接入本站实时余票、价格或下单。 线上官方服务；非实体门店 · 页面核对记录；营业、可用量和价格请向运营方确认。未接实时库存或预订接口。",
+            "url": "https://www.12306.cn/en/",
+            "sourceUrl": "https://www.12306.cn/en/faq.html",
+            "sourceId": "verified-rail-12306",
+            "status": "official-guide",
+            "address": "线上官方服务；非实体门店",
+            "phone": null,
+            "phoneExtension": null,
+            "phoneRole": null,
+            "station": null,
+            "stations": [],
+            "stationEvidence": [],
+            "checkedAt": "2026-09-25",
+            "liveAvailability": false
+          }
+        ],
+        "arbitration": {
+          "version": "rubric-6.4",
+          "selected": "tool",
+          "local": {
+            "score": 80,
+            "checks": {
+              "evidence": true,
+              "direct": true,
+              "endpoints": false,
+              "actionable": true,
+              "format": true
+            }
+          },
+          "deepseek": null,
+          "threshold": 60,
+          "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+          "reason": "确定性路线与历史价格保留结构化工具；通过校验的文字可补充说明。"
+        },
+        "confidence": {
+          "model": 0.9,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "rail-passport",
+              "score": 85,
+              "level": "high",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "已匹配运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "history-sh-hz-trains",
+              "score": 60,
+              "level": "medium",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "非已核验政府/运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 60,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "text": "可以按二等座／一等座、价格和出发时段比较下方历史记录。记录对应2024年6月15日，不是今天的班次和报价。原文没有的到达时间或席别价格显示“未记录”。请补充实际乘车日期，再到12306按准确车站查票。",
+        "sourceIds": [
+          "history-sh-hz-trains",
+          "rail-passport"
+        ],
+        "mode": "deepseek-tool",
+        "notice": "model-intent-verified-tool",
+        "tool": {
+          "kind": "rail",
+          "metro": null,
+          "estimate": null,
+          "request": null,
+          "places": null
+        },
+        "routeVersion": null,
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 56
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 1277
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 43
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "rail"
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 546,
+            "candidates": 31,
+            "elapsedMs": 43,
+            "hits": [
+              {
+                "id": "history-sh-hz-trains:5f222a63b6cce02e:0",
+                "sourceId": "history-sh-hz-trains",
+                "version": "5f222a63b6cce02e",
+                "score": 0.03047,
+                "coverage": 0.452
+              },
+              {
+                "id": "sh-hz-rail:17fdb729f60d1c76:0",
+                "sourceId": "sh-hz-rail",
+                "version": "17fdb729f60d1c76",
+                "score": 0.02746,
+                "coverage": 0.258
+              },
+              {
+                "id": "verified-hongqiao-rail-station:1c6991b2bad55c70:0",
+                "sourceId": "verified-hongqiao-rail-station",
+                "version": "1c6991b2bad55c70",
+                "score": 0.0262,
+                "coverage": 0.194
+              },
+              {
+                "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                "sourceId": "verified-shanghai-rail-station",
+                "version": "26195dc7b3d7255a",
+                "score": 0.0254,
+                "coverage": 0.194
+              },
+              {
+                "id": "history-airport-link:ad016dd0995915ef:0",
+                "sourceId": "history-airport-link",
+                "version": "ad016dd0995915ef",
+                "score": 0.02498,
+                "coverage": 0.129
+              },
+              {
+                "id": "arrival-airport-link-guide:75c387d1b32eb18f:0",
+                "sourceId": "arrival-airport-link-guide",
+                "version": "75c387d1b32eb18f",
+                "score": 0.02386,
+                "coverage": 0.129
+              },
+              {
+                "id": "sh-metro-map:6a1b43a40e1dfea9:0",
+                "sourceId": "sh-metro-map",
+                "version": "6a1b43a40e1dfea9",
+                "score": 0.02313,
+                "coverage": 0.097
+              },
+              {
+                "id": "verified-hongqiao-airport-taxi:9ec5b44088d58128:0",
+                "sourceId": "verified-hongqiao-airport-taxi",
+                "version": "9ec5b44088d58128",
+                "score": 0.02226,
+                "coverage": 0.065
+              }
+            ]
+          },
+          "arbitration": {
+            "version": "rubric-6.4",
+            "selected": "tool",
+            "local": {
+              "score": 80,
+              "checks": {
+                "evidence": true,
+                "direct": true,
+                "endpoints": false,
+                "actionable": true,
+                "format": true
+              }
+            },
+            "deepseek": null,
+            "threshold": 60,
+            "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+            "reason": "确定性路线与历史价格保留结构化工具；通过校验的文字可补充说明。"
+          },
+          "totalMs": 1470
+        },
+        "modelRouting": {
+          "requested": "flash",
+          "selected": "flash",
+          "model": "deepseek-flash",
+          "thinking": false,
+          "effort": "none",
+          "reason": "由你手动选择",
+          "method": "manual"
+        },
+        "dataset": "evaluation",
+        "executionId": "067844eb-70c5-48b7-8f4d-a78cca2ab69a",
+        "assessmentId": "2b832720-429d-4d6d-9c2b-dacdf4277aa5"
+      },
+      "error": null,
+      "seconds": 4.7
+    }
+  ],
+  "scope": "Actual admin-authenticated DeepSeek calls, evaluation flag. No real microphone or supplier inventory tests."
+}

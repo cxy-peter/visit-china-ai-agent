@@ -1,0 +1,1014 @@
+{
+  "url": "https://visit-china-ai-agent-l1dqy1dhp-cxy-peters-projects.vercel.app",
+  "checks": [
+    {
+      "name": "version 6.4",
+      "passed": true
+    },
+    {
+      "name": "admin login",
+      "passed": true
+    },
+    {
+      "name": "admin connect",
+      "passed": true
+    },
+    {
+      "name": "session persists",
+      "passed": true
+    },
+    {
+      "name": "answer 1",
+      "passed": true
+    },
+    {
+      "name": "real cited response 1",
+      "passed": true
+    },
+    {
+      "name": "channel scoped payment answer 1",
+      "passed": true
+    },
+    {
+      "name": "answer 2",
+      "passed": true
+    },
+    {
+      "name": "real cited response 2",
+      "passed": true
+    },
+    {
+      "name": "channel scoped payment answer 2",
+      "passed": true
+    },
+    {
+      "name": "answer 3",
+      "passed": true
+    },
+    {
+      "name": "real cited response 3",
+      "passed": true
+    },
+    {
+      "name": "upcoming event source cited",
+      "passed": true
+    }
+  ],
+  "answers": [
+    {
+      "input": "高铁票可以用AMEX卡买吗？12306直接付款和Trip.com有什么区别？",
+      "expected": "payment",
+      "answer": {
+        "text": "可以分渠道看：Trip.com 的付款说明明确接受 American Express（AMEX），因此在该平台买高铁票理论上有此付款选项，实际以付款页和发卡行授权为准。12306 直接付款方面，2021年的官方英文渠道指南只列出 Visa、Mastercard、JCB、Diners，未列 AMEX，所以不能确认12306直接刷AMEX；当前需以12306实际付款页显示为准。区别在于：第三方平台的支持范围不能套用到12306；社区经验还提到12306付款或验证可能失败，有人改用支付宝或平台购票，但这不证明所有情况。",
+        "sourceIds": [
+          "channel-trip-payment",
+          "channel-12306-payment-scope",
+          "community-rail-account"
+        ],
+        "mode": "deepseek",
+        "notice": "saved-summaries",
+        "intent": {
+          "kind": "rail",
+          "responseMode": "service",
+          "origin": null,
+          "destination": null,
+          "via": null,
+          "city": null,
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 5368,
+          "completion_tokens": 1230,
+          "total_tokens": 6598
+        },
+        "services": [
+          {
+            "id": "verified-shanghai-rail-station",
+            "kind": "rail",
+            "title": "上海站（国铁）",
+            "description": "政府站场指南列出上海站位于秣陵路，可接地铁1、3、4号线。铁路票应核对出发站名称、日期和车次；上海站不是上海虹桥站。 静安区秣陵路，上海站 · 页面核对记录；营业、可用量和价格请向运营方确认。未接实时库存或预订接口。",
+            "url": "https://www.12306.cn/en/",
+            "sourceUrl": "https://english.shanghai.gov.cn/en-Transportation/20250126/484b92f86eeb49d7b26086d25010d782.html",
+            "sourceId": "verified-shanghai-rail-station",
+            "status": "official-guide",
+            "address": "静安区秣陵路，上海站",
+            "phone": null,
+            "phoneExtension": null,
+            "phoneRole": null,
+            "station": "上海火车站",
+            "stations": [
+              "上海火车站"
+            ],
+            "stationEvidence": [
+              {
+                "station": "上海火车站",
+                "basis": "official-facility-location",
+                "descriptionZh": "政府指南明确列出上海站与地铁1、3、4号线相接。",
+                "description": "The official station guide links Shanghai Railway Station with metro lines 1, 3 and 4.",
+                "sourceUrls": [
+                  "https://english.shanghai.gov.cn/en-Transportation/20250126/484b92f86eeb49d7b26086d25010d782.html"
+                ]
+              }
+            ],
+            "checkedAt": "2026-09-25",
+            "liveAvailability": false
+          },
+          {
+            "id": "verified-hongqiao-rail-station",
+            "kind": "rail",
+            "title": "上海虹桥站（国铁）",
+            "description": "政府站场指南列出上海虹桥站位于申贵路，可接地铁2、10、17号线。高铁查询使用12306，并先确认出发日期、到达站和实际车次。 闵行区申贵路，上海虹桥站 · 页面核对记录；营业、可用量和价格请向运营方确认。未接实时库存或预订接口。",
+            "url": "https://www.12306.cn/en/",
+            "sourceUrl": "https://english.shanghai.gov.cn/en-Transportation/20250126/484b92f86eeb49d7b26086d25010d782.html",
+            "sourceId": "verified-hongqiao-rail-station",
+            "status": "official-guide",
+            "address": "闵行区申贵路，上海虹桥站",
+            "phone": null,
+            "phoneExtension": null,
+            "phoneRole": null,
+            "station": "虹桥火车站",
+            "stations": [
+              "虹桥火车站"
+            ],
+            "stationEvidence": [
+              {
+                "station": "虹桥火车站",
+                "basis": "official-facility-location",
+                "descriptionZh": "政府指南明确列出上海虹桥站与地铁2、10、17号线相接。",
+                "description": "The official station guide links Shanghai Hongqiao with metro lines 2, 10 and 17.",
+                "sourceUrls": [
+                  "https://english.shanghai.gov.cn/en-Transportation/20250126/484b92f86eeb49d7b26086d25010d782.html"
+                ]
+              }
+            ],
+            "checkedAt": "2026-09-25",
+            "liveAvailability": false
+          },
+          {
+            "id": "verified-rail-12306",
+            "kind": "rail",
+            "title": "铁路12306英文购票与证件指引",
+            "description": "12306英文站提供购票、改签、退票等服务；外国旅客可按规则使用有效护照购票。乘车使用购票时的有效证件，行程信息单不能作为车票。未接入本站实时余票、价格或下单。 线上官方服务；非实体门店 · 页面核对记录；营业、可用量和价格请向运营方确认。未接实时库存或预订接口。",
+            "url": "https://www.12306.cn/en/",
+            "sourceUrl": "https://www.12306.cn/en/faq.html",
+            "sourceId": "verified-rail-12306",
+            "status": "official-guide",
+            "address": "线上官方服务；非实体门店",
+            "phone": null,
+            "phoneExtension": null,
+            "phoneRole": null,
+            "station": null,
+            "stations": [],
+            "stationEvidence": [],
+            "checkedAt": "2026-09-25",
+            "liveAvailability": false
+          }
+        ],
+        "arbitration": {
+          "version": "rubric-6.4",
+          "selected": "deepseek",
+          "local": null,
+          "deepseek": {
+            "score": 100,
+            "checks": {
+              "evidence": true,
+              "direct": true,
+              "endpoints": true,
+              "actionable": true,
+              "format": true
+            }
+          },
+          "threshold": 60,
+          "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+          "reason": "按已核对证据、直接回答和请求完整性选择。"
+        },
+        "confidence": {
+          "model": 0.95,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "channel-trip-payment",
+              "score": 60,
+              "level": "medium",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "非已核验政府/运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "channel-12306-payment-scope",
+              "score": 60,
+              "level": "medium",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "非已核验政府/运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "community-rail-account",
+              "score": 60,
+              "level": "medium",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "非已核验政府/运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 60,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 182
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 8816
+            },
+            {
+              "name": "website_lookup",
+              "status": "review-required"
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 111
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "rail"
+            },
+            {
+              "name": "grounded_generation",
+              "status": "completed",
+              "reason": "EVIDENCE_ALIGNMENT",
+              "ms": 7584
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 551,
+            "candidates": 452,
+            "elapsedMs": 111,
+            "hits": [
+              {
+                "id": "channel-trip-payment:25662c9039d861de:0",
+                "sourceId": "channel-trip-payment",
+                "version": "25662c9039d861de",
+                "score": 0.03958,
+                "coverage": 0.522
+              },
+              {
+                "id": "channel-trip-payment:25662c9039d861de:1",
+                "sourceId": "channel-trip-payment",
+                "version": "25662c9039d861de",
+                "score": 0.03299,
+                "coverage": 0.174
+              },
+              {
+                "id": "channel-12306-payment-scope:ef3a1008e627af52:0",
+                "sourceId": "channel-12306-payment-scope",
+                "version": "ef3a1008e627af52",
+                "score": 0.02952,
+                "coverage": 0.435
+              },
+              {
+                "id": "channel-12306-payment-scope:ef3a1008e627af52:1",
+                "sourceId": "channel-12306-payment-scope",
+                "version": "ef3a1008e627af52",
+                "score": 0.02609,
+                "coverage": 0.217
+              },
+              {
+                "id": "rail-passport:777d0039a73326ca:0",
+                "sourceId": "rail-passport",
+                "version": "777d0039a73326ca",
+                "score": 0.0253,
+                "coverage": 0.217
+              },
+              {
+                "id": "verified-rail-12306:b48813c5b2636fa9:0",
+                "sourceId": "verified-rail-12306",
+                "version": "b48813c5b2636fa9",
+                "score": 0.02474,
+                "coverage": 0.217
+              },
+              {
+                "id": "verified-hongqiao-rail-station:1c6991b2bad55c70:0",
+                "sourceId": "verified-hongqiao-rail-station",
+                "version": "1c6991b2bad55c70",
+                "score": 0.0242,
+                "coverage": 0.217
+              },
+              {
+                "id": "community-rail-account:3fc1daa3e406b62b:0",
+                "sourceId": "community-rail-account",
+                "version": "3fc1daa3e406b62b",
+                "score": 0.02408,
+                "coverage": 0.087
+              }
+            ]
+          },
+          "acquisition": {
+            "status": "review-required",
+            "sourceId": "off-75adbad1bd901869",
+            "score": 0,
+            "eligible": false,
+            "method": "model-query → known URL → robots/body fetch → quoted evidence assessment",
+            "usage": {
+              "prompt_tokens": 480,
+              "completion_tokens": 72,
+              "total_tokens": 552,
+              "prompt_tokens_details": {
+                "cached_tokens": 128
+              },
+              "prompt_cache_hit_tokens": 128,
+              "prompt_cache_miss_tokens": 352
+            }
+          },
+          "arbitration": {
+            "version": "rubric-6.4",
+            "selected": "deepseek",
+            "local": null,
+            "deepseek": {
+              "score": 100,
+              "checks": {
+                "evidence": true,
+                "direct": true,
+                "endpoints": true,
+                "actionable": true,
+                "format": true
+              }
+            },
+            "threshold": 60,
+            "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+            "reason": "按已核对证据、直接回答和请求完整性选择。"
+          },
+          "totalMs": 20511
+        },
+        "sourceAcquisition": {
+          "status": "review-required",
+          "sourceId": "off-75adbad1bd901869",
+          "score": 0,
+          "eligible": false,
+          "method": "model-query → known URL → robots/body fetch → quoted evidence assessment",
+          "usage": {
+            "prompt_tokens": 480,
+            "completion_tokens": 72,
+            "total_tokens": 552,
+            "prompt_tokens_details": {
+              "cached_tokens": 128
+            },
+            "prompt_cache_hit_tokens": 128,
+            "prompt_cache_miss_tokens": 352
+          }
+        },
+        "modelRouting": {
+          "requested": "pro",
+          "selected": "pro",
+          "model": "deepseek-v4-pro",
+          "thinking": true,
+          "effort": "low",
+          "reason": "由你手动选择",
+          "method": "manual"
+        },
+        "dataset": "evaluation",
+        "executionId": "b4c31b5c-8ef7-44e2-807f-cef3f71be149",
+        "assessmentId": "32ab3570-2be6-4ea4-80fd-cbc6b20ab20d"
+      },
+      "error": null,
+      "schemaIssue": null,
+      "seconds": 24.6
+    },
+    {
+      "input": "Is it possible to buy a train ticket through Trip.com using American Express?",
+      "expected": "payment",
+      "answer": {
+        "text": "Yes—Trip.com’s own payment guide (updated June 25, 2026) lists American Express alongside Visa, JCB and Mastercard, and provides an Amex option to check when booking a train there. That support is conditional: it depends on the specific checkout flow and your card issuer’s authorization, so the Amex option may not appear or may be declined for a given booking.\n\nImportant distinction: this is a Trip.com channel claim only. It does not show that 12306 accepts Amex directly. A 2021 Beijing government guide for the English 12306 channel listed Visa, Mastercard, JCB and Diners, with no Amex—but that is historical and its silence is not a ban on Amex via other channels. Verify the current 12306 checkout separately if you plan to buy there.\n\nSeparately, Shanghai’s metro bank-card tap-to-ride (extended to the rail network from June 28, 2025) does support American Express contactless cards, subject to card conditions: chip type and ODA capability, small-value PIN-free payment enabled, and sufficient balance or credit. That is direct gate entry, not ticket purchase or app binding.\n\nNo booking has been made. For live confirmation, check the Trip.com checkout page and your card issuer; ask station staff about any failed gate entry.",
+        "sourceIds": [
+          "channel-trip-payment",
+          "channel-12306-payment-scope",
+          "sh-metro-jcb-contactless"
+        ],
+        "mode": "deepseek",
+        "notice": "saved-summaries",
+        "intent": {
+          "kind": "rail",
+          "responseMode": "service",
+          "origin": null,
+          "destination": null,
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 5052,
+          "completion_tokens": 560,
+          "total_tokens": 5612
+        },
+        "services": [
+          {
+            "id": "verified-shanghai-rail-station",
+            "kind": "rail",
+            "title": "Shanghai Railway Station (China Railway)",
+            "description": "The official guide places Shanghai Railway Station on Moling Road with metro lines 1, 3 and 4. Match your railway ticket to its station, date and train; Shanghai and Shanghai Hongqiao are different stations. Shanghai Railway Station, Moling Road, Jing'an · Reviewed public record. Confirm operation, availability and prices with the provider; no live inventory or booking API.",
+            "url": "https://www.12306.cn/en/",
+            "sourceUrl": "https://english.shanghai.gov.cn/en-Transportation/20250126/484b92f86eeb49d7b26086d25010d782.html",
+            "sourceId": "verified-shanghai-rail-station",
+            "status": "official-guide",
+            "address": "Shanghai Railway Station, Moling Road, Jing'an",
+            "phone": null,
+            "phoneExtension": null,
+            "phoneRole": null,
+            "station": "上海火车站",
+            "stations": [
+              "上海火车站"
+            ],
+            "stationEvidence": [
+              {
+                "station": "上海火车站",
+                "basis": "official-facility-location",
+                "descriptionZh": "政府指南明确列出上海站与地铁1、3、4号线相接。",
+                "description": "The official station guide links Shanghai Railway Station with metro lines 1, 3 and 4.",
+                "sourceUrls": [
+                  "https://english.shanghai.gov.cn/en-Transportation/20250126/484b92f86eeb49d7b26086d25010d782.html"
+                ]
+              }
+            ],
+            "checkedAt": "2026-09-25",
+            "liveAvailability": false
+          },
+          {
+            "id": "verified-hongqiao-rail-station",
+            "kind": "rail",
+            "title": "Shanghai Hongqiao Railway Station (China Railway)",
+            "description": "The official guide places Shanghai Hongqiao Railway Station on Shengui Road with metro lines 2, 10 and 17. Query 12306 using the travel date and destination; confirm the actual train and station. Shanghai Hongqiao Railway Station, Shengui Road, Minhang · Reviewed public record. Confirm operation, availability and prices with the provider; no live inventory or booking API.",
+            "url": "https://www.12306.cn/en/",
+            "sourceUrl": "https://english.shanghai.gov.cn/en-Transportation/20250126/484b92f86eeb49d7b26086d25010d782.html",
+            "sourceId": "verified-hongqiao-rail-station",
+            "status": "official-guide",
+            "address": "Shanghai Hongqiao Railway Station, Shengui Road, Minhang",
+            "phone": null,
+            "phoneExtension": null,
+            "phoneRole": null,
+            "station": "虹桥火车站",
+            "stations": [
+              "虹桥火车站"
+            ],
+            "stationEvidence": [
+              {
+                "station": "虹桥火车站",
+                "basis": "official-facility-location",
+                "descriptionZh": "政府指南明确列出上海虹桥站与地铁2、10、17号线相接。",
+                "description": "The official station guide links Shanghai Hongqiao with metro lines 2, 10 and 17.",
+                "sourceUrls": [
+                  "https://english.shanghai.gov.cn/en-Transportation/20250126/484b92f86eeb49d7b26086d25010d782.html"
+                ]
+              }
+            ],
+            "checkedAt": "2026-09-25",
+            "liveAvailability": false
+          },
+          {
+            "id": "verified-rail-12306",
+            "kind": "rail",
+            "title": "China Railway 12306 English ticket and ID guide",
+            "description": "The English 12306 site supports ticket purchase, changes and refunds. Eligible foreign passengers can use valid passports. Carry the ID used to buy the ticket; an itinerary sheet is not a ticket. This app has no live inventory, fare or ordering connection. Official online service, not a physical outlet · Reviewed public record. Confirm operation, availability and prices with the provider; no live inventory or booking API.",
+            "url": "https://www.12306.cn/en/",
+            "sourceUrl": "https://www.12306.cn/en/faq.html",
+            "sourceId": "verified-rail-12306",
+            "status": "official-guide",
+            "address": "Official online service, not a physical outlet",
+            "phone": null,
+            "phoneExtension": null,
+            "phoneRole": null,
+            "station": null,
+            "stations": [],
+            "stationEvidence": [],
+            "checkedAt": "2026-09-25",
+            "liveAvailability": false
+          }
+        ],
+        "arbitration": {
+          "version": "rubric-6.4",
+          "selected": "deepseek",
+          "local": null,
+          "deepseek": {
+            "score": 100,
+            "checks": {
+              "evidence": true,
+              "direct": true,
+              "endpoints": true,
+              "actionable": true,
+              "format": true
+            }
+          },
+          "threshold": 60,
+          "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+          "reason": "按已核对证据、直接回答和请求完整性选择。"
+        },
+        "confidence": {
+          "model": 0.93,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "sh-metro-jcb-contactless",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "channel-trip-payment",
+              "score": 60,
+              "level": "medium",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "非已核验政府/运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "channel-12306-payment-scope",
+              "score": 60,
+              "level": "medium",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "非已核验政府/运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 60,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 142
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 1828
+            },
+            {
+              "name": "website_lookup",
+              "status": "review-required"
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 52
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "rail"
+            },
+            {
+              "name": "grounded_generation",
+              "status": "completed",
+              "reason": "EVIDENCE_ALIGNMENT",
+              "ms": 2023
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 546,
+            "candidates": 464,
+            "elapsedMs": 52,
+            "hits": [
+              {
+                "id": "channel-trip-payment:25662c9039d861de:0",
+                "sourceId": "channel-trip-payment",
+                "version": "25662c9039d861de",
+                "score": 0.04404,
+                "coverage": 0.789
+              },
+              {
+                "id": "channel-12306-payment-scope:ef3a1008e627af52:0",
+                "sourceId": "channel-12306-payment-scope",
+                "version": "ef3a1008e627af52",
+                "score": 0.03289,
+                "coverage": 0.737
+              },
+              {
+                "id": "channel-trip-payment:25662c9039d861de:1",
+                "sourceId": "channel-trip-payment",
+                "version": "25662c9039d861de",
+                "score": 0.0328,
+                "coverage": 0.211
+              },
+              {
+                "id": "channel-12306-payment-scope:ef3a1008e627af52:1",
+                "sourceId": "channel-12306-payment-scope",
+                "version": "ef3a1008e627af52",
+                "score": 0.03163,
+                "coverage": 0.579
+              },
+              {
+                "id": "verified-rail-12306:b48813c5b2636fa9:0",
+                "sourceId": "verified-rail-12306",
+                "version": "b48813c5b2636fa9",
+                "score": 0.02843,
+                "coverage": 0.474
+              },
+              {
+                "id": "sh-metro-jcb-contactless:c5f466ebdc86174e:1",
+                "sourceId": "sh-metro-jcb-contactless",
+                "version": "c5f466ebdc86174e",
+                "score": 0.02712,
+                "coverage": 0.316
+              },
+              {
+                "id": "rail-passport:777d0039a73326ca:0",
+                "sourceId": "rail-passport",
+                "version": "777d0039a73326ca",
+                "score": 0.02561,
+                "coverage": 0.368
+              },
+              {
+                "id": "arrival-airport-link-guide:75c387d1b32eb18f:1",
+                "sourceId": "arrival-airport-link-guide",
+                "version": "75c387d1b32eb18f",
+                "score": 0.02506,
+                "coverage": 0.368
+              }
+            ]
+          },
+          "acquisition": {
+            "status": "review-required",
+            "sourceId": "off-6c57c14cc0a142b9",
+            "score": 0,
+            "eligible": false,
+            "method": "model-query → known URL → robots/body fetch → quoted evidence assessment",
+            "usage": {
+              "prompt_tokens": 693,
+              "completion_tokens": 92,
+              "total_tokens": 785,
+              "prompt_tokens_details": {
+                "cached_tokens": 128
+              },
+              "prompt_cache_hit_tokens": 128,
+              "prompt_cache_miss_tokens": 565
+            }
+          },
+          "arbitration": {
+            "version": "rubric-6.4",
+            "selected": "deepseek",
+            "local": null,
+            "deepseek": {
+              "score": 100,
+              "checks": {
+                "evidence": true,
+                "direct": true,
+                "endpoints": true,
+                "actionable": true,
+                "format": true
+              }
+            },
+            "threshold": 60,
+            "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+            "reason": "按已核对证据、直接回答和请求完整性选择。"
+          },
+          "totalMs": 7646
+        },
+        "sourceAcquisition": {
+          "status": "review-required",
+          "sourceId": "off-6c57c14cc0a142b9",
+          "score": 0,
+          "eligible": false,
+          "method": "model-query → known URL → robots/body fetch → quoted evidence assessment",
+          "usage": {
+            "prompt_tokens": 693,
+            "completion_tokens": 92,
+            "total_tokens": 785,
+            "prompt_tokens_details": {
+              "cached_tokens": 128
+            },
+            "prompt_cache_hit_tokens": 128,
+            "prompt_cache_miss_tokens": 565
+          }
+        },
+        "modelRouting": {
+          "requested": "flash",
+          "selected": "flash",
+          "model": "deepseek-flash",
+          "thinking": false,
+          "effort": "none",
+          "reason": "由你手动选择",
+          "method": "manual"
+        },
+        "dataset": "evaluation",
+        "executionId": "dc5865d1-0db1-403b-95c0-d2b68d230ec2",
+        "assessmentId": "752dfd88-fbcb-497d-85a3-74a602fc02c1"
+      },
+      "error": null,
+      "schemaIssue": null,
+      "seconds": 11.3
+    },
+    {
+      "input": "最近上海有什么外国游客可以参加的小吃活动？给我地点和日期。",
+      "expected": "event",
+      "answer": {
+        "text": "目前保存的官方资料里，与“小吃活动”直接相关的只有一项：上海小吃嘉年华，2026年9月17日至27日，地点在普陀区环球港南广场，集合中国地方小吃及国际风味，并有官方英语页面可供外国游客查阅。\n\n需要说明的是：资料未核对外语现场服务和每日具体时段，因此不能保证现场有英语服务，也不能把整个节期当作每天固定营业时间；出发前请以主办方最新公告为准。\n\n另外两项同期活动不是小吃主题，但对外国游客较友好，可作备选：上海国际光影节（9月17日至10月16日，覆盖全市各区，具体场地与日期需在官方安排中确认）；世界设计之都大会展览（9月26日至30日，9月28日上午不开放，地点黄浦区局门路689号，免费但须在官方微信小程序提前登记）。\n\n以上均为已保存的官方摘要，不是实时核验；活动是否照常、入场方式和当日安排请以主办方最新发布为准。",
+        "sourceIds": [
+          "event-sh-snacks-2026",
+          "event-sh-light-2026",
+          "event-sh-design-2026"
+        ],
+        "mode": "deepseek",
+        "notice": "saved-summaries",
+        "intent": {
+          "kind": "other",
+          "responseMode": "guide",
+          "origin": null,
+          "destination": null,
+          "via": null,
+          "city": "Shanghai",
+          "roadKm": null
+        },
+        "intentProvider": "deepseek",
+        "usage": {
+          "prompt_tokens": 5859,
+          "completion_tokens": 548,
+          "total_tokens": 6407
+        },
+        "services": [],
+        "arbitration": {
+          "version": "rubric-6.4",
+          "selected": "deepseek",
+          "local": null,
+          "deepseek": {
+            "score": 100,
+            "checks": {
+              "evidence": true,
+              "direct": true,
+              "endpoints": true,
+              "actionable": true,
+              "format": true
+            }
+          },
+          "threshold": 60,
+          "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+          "reason": "当前需求是到达说明，优先通过证据检查的完整说明；不强制展示路线图。"
+        },
+        "confidence": {
+          "model": 0.9,
+          "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+          "sources": [
+            {
+              "id": "event-sh-snacks-2026",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "event-sh-design-2026",
+              "score": 90,
+              "level": "high",
+              "requiresReview": false,
+              "government": true,
+              "reasons": [
+                "已匹配政府域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            },
+            {
+              "id": "event-sh-light-2026",
+              "score": 60,
+              "level": "medium",
+              "requiresReview": false,
+              "government": false,
+              "reasons": [
+                "非已核验政府/运营方域名",
+                "有保存摘要",
+                "摘要在复核周期内"
+              ],
+              "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+            }
+          ],
+          "sourceScore": 60,
+          "requiresReview": false,
+          "needsClarification": false,
+          "reasons": [],
+          "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+          "reviewRecorded": true
+        },
+        "execution": {
+          "skillVersion": "skill-1",
+          "stages": [
+            {
+              "name": "retrieve",
+              "status": "completed",
+              "ms": 40
+            },
+            {
+              "name": "intent",
+              "status": "completed",
+              "ms": 2004
+            },
+            {
+              "name": "semantic_retrieval",
+              "status": "completed",
+              "ms": 59
+            },
+            {
+              "name": "tool_or_answer",
+              "status": "completed",
+              "kind": "other"
+            },
+            {
+              "name": "grounded_generation",
+              "status": "completed",
+              "reason": "EVIDENCE_ALIGNMENT",
+              "ms": 2087
+            },
+            {
+              "name": "verify",
+              "status": "completed"
+            },
+            {
+              "name": "observe",
+              "status": "pending-persistence"
+            }
+          ],
+          "retrieval": {
+            "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+            "embedding": "none",
+            "reranker": "deterministic lexical/evidence reranking",
+            "corpusChunks": 546,
+            "candidates": 20,
+            "elapsedMs": 59,
+            "hits": [
+              {
+                "id": "event-sh-snacks-2026:94f7c4a2753565b5:0",
+                "sourceId": "event-sh-snacks-2026",
+                "version": "94f7c4a2753565b5",
+                "score": 0.02768,
+                "coverage": 0.24
+              },
+              {
+                "id": "event-sh-light-2026:f5d6fd9ca8c3f43f:0",
+                "sourceId": "event-sh-light-2026",
+                "version": "f5d6fd9ca8c3f43f",
+                "score": 0.02723,
+                "coverage": 0.24
+              },
+              {
+                "id": "event-sh-design-2026:e7282e8bff745824:0",
+                "sourceId": "event-sh-design-2026",
+                "version": "e7282e8bff745824",
+                "score": 0.02629,
+                "coverage": 0.2
+              },
+              {
+                "id": "news-nihao-china-shanghai-20260817:739f3f5d3d0ae667:0",
+                "sourceId": "news-nihao-china-shanghai-20260817",
+                "version": "739f3f5d3d0ae667",
+                "score": 0.02468,
+                "coverage": 0.12
+              },
+              {
+                "id": "sh-hz-rail:17fdb729f60d1c76:0",
+                "sourceId": "sh-hz-rail",
+                "version": "17fdb729f60d1c76",
+                "score": 0.02345,
+                "coverage": 0.08
+              },
+              {
+                "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                "sourceId": "verified-shanghai-rail-station",
+                "version": "26195dc7b3d7255a",
+                "score": 0.02328,
+                "coverage": 0.08
+              },
+              {
+                "id": "verified-hongqiao-rail-station:1c6991b2bad55c70:0",
+                "sourceId": "verified-hongqiao-rail-station",
+                "version": "1c6991b2bad55c70",
+                "score": 0.02213,
+                "coverage": 0.08
+              },
+              {
+                "id": "verified-rail-12306:b48813c5b2636fa9:0",
+                "sourceId": "verified-rail-12306",
+                "version": "b48813c5b2636fa9",
+                "score": 0.02159,
+                "coverage": 0.08
+              }
+            ]
+          },
+          "arbitration": {
+            "version": "rubric-6.4",
+            "selected": "deepseek",
+            "local": null,
+            "deepseek": {
+              "score": 100,
+              "checks": {
+                "evidence": true,
+                "direct": true,
+                "endpoints": true,
+                "actionable": true,
+                "format": true
+              }
+            },
+            "threshold": 60,
+            "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+            "reason": "当前需求是到达说明，优先通过证据检查的完整说明；不强制展示路线图。"
+          },
+          "totalMs": 4279
+        },
+        "modelRouting": {
+          "requested": "auto",
+          "selected": "flash",
+          "model": "deepseek-flash",
+          "thinking": false,
+          "effort": "none",
+          "reason": "单一查询，优先快速响应",
+          "method": "bounded-complexity-rules"
+        },
+        "dataset": "evaluation",
+        "executionId": "1bab4a88-b0f4-4aee-8e40-8cd775848a0f",
+        "assessmentId": "bf74bb48-b6a1-463b-b9a6-ddea9a7f1b35"
+      },
+      "error": null,
+      "schemaIssue": null,
+      "seconds": 7.8
+    }
+  ],
+  "scope": "Actual admin-authenticated DeepSeek calls, evaluation flag. No real microphone or supplier inventory tests."
+}

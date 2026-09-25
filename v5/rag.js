@@ -10,7 +10,7 @@ function chunks(records,{chunkSize=520,overlap=60,city=null}={}){
  for(const r of records){if(!L.current(r)||Q.source(r).score<60||!(r.content||r.summaryZh||r.summary)||city&&r.city&&r.city!=='China'&&r.city!==city)continue;
   const body=[r.title,(r.topics||[]).join(' '),r.content||[r.summaryZh,r.summary].filter(Boolean).join('\n')].join('\n').replace(/<[^>]*>/g,' ').replace(/\r/g,'').trim(),version=hash(body+String(r.publicationHash||r.reviewedAt));
   for(let start=0,index=0;start<body.length;start+=chunkSize-overlap,index++){
-   const text=body.slice(start,start+chunkSize);rows.push({id:r.id+':'+version+':'+index,sourceId:r.id,version,index,start,end:start+text.length,title:r.title,city:r.city,text,url:r.url,reviewedAt:r.reviewedAt,recordType:r.recordType||'summary',sourceType:r.sourceType||r.kind});if(start+chunkSize>=body.length)break;
+   const text=body.slice(start,start+chunkSize);rows.push({id:r.id+':'+version+':'+index,sourceId:r.id,version,index,start,end:start+text.length,title:r.title,city:r.city,text,url:r.url,reviewedAt:r.reviewedAt,recordType:r.recordType||'summary',sourceType:r.sourceType||r.kind,published:r.published||r.publishedAt,community:r.recordType==='community'});if(start+chunkSize>=body.length)break;
   }
  }
  return rows;
@@ -42,6 +42,6 @@ function retrievePrepared(query,prepared,overrides={}){
  const hits=[...pinned],counts=new Map(pinned.map(c=>[c.sourceId,1]));for(const d of ranked){if(hits.some(h=>h.id===d.id)||(counts.get(d.sourceId)||0)>=2||!d.named&&d.coverage<(config.minCoverage??.06))continue;counts.set(d.sourceId,(counts.get(d.sourceId)||0)+1);const {tf,norm,...safe}=d;hits.push(safe);if(hits.length>=(config.topK||8))break;}
  return{method:'BM25 + sparse TF-IDF cosine + RRF + parent diversification',embedding:'none',reranker:'deterministic lexical/evidence reranking',query:String(query).slice(0,400),corpusChunks:all.length,candidates:scored.length,hits,elapsedMs:Date.now()-started};
 }
-function evidence(result){const out=[];for(const c of result.hits){let r=out.find(r=>r.id===c.sourceId);if(!r){r={id:c.sourceId,title:c.title,city:c.city,summary:'',chunkIds:[],reviewedAt:c.reviewedAt};out.push(r);}r.summary+=[r.summary?'\n':'',c.text].join('');r.chunkIds.push(c.id);}return out;}
+function evidence(result){const out=[];for(const c of result.hits){let r=out.find(r=>r.id===c.sourceId);if(!r){r={id:c.sourceId,title:c.title,city:c.city,summary:'',chunkIds:[],reviewedAt:c.reviewedAt,sourceType:c.sourceType,recordType:c.recordType,published:c.published,community:c.community};out.push(r);}r.summary+=[r.summary?'\n':'',c.text].join('');r.chunkIds.push(c.id);}return out;}
 function trace(result){return{method:result.method,embedding:result.embedding,reranker:result.reranker,corpusChunks:result.corpusChunks,candidates:result.candidates,elapsedMs:result.elapsedMs,hits:result.hits.map(c=>({id:c.id,sourceId:c.sourceId,version:c.version,score:Number(c.score.toFixed(5)),coverage:Number(c.coverage.toFixed(3))}))};}
 module.exports={chunks,compile,retrieve,retrievePrepared,evidence,trace,tokens,hash};

@@ -33,10 +33,10 @@ function metrics(events,now=Date.now(),days=7,kind='rail'){const filtered=events
 }
 function resolution(s,visitor,input,now=Date.now()){
  const {chat,answerId,outcome}=input;if(!/^[-\w]{8,90}$/.test(chat)||!/^[-\w]{8,90}$/.test(answerId)||!['solved','unsolved'].includes(outcome))throw Error('RESOLUTION_SCHEMA');
- const kinds=['rail','flight','hotel','restaurant','taxi','metro','nearby','charging','luggage','metro_ticket','other'];if(!kinds.includes(input.kind)||!['wrong_intent','wrong_route','missing_detail','other',null,undefined].includes(input.reason))throw Error('RESOLUTION_SCHEMA');
+ const kinds=['rail','flight','hotel','restaurant','taxi','metro','nearby','charging','luggage','metro_ticket','itinerary','other'];if(!kinds.includes(input.kind)||!['wrong_intent','wrong_route','missing_detail','other',null,undefined].includes(input.reason))throw Error('RESOLUTION_SCHEMA');
  const M=require('./metro'),route=input.route?{origin:M.resolve(input.route.origin),destination:M.resolve(input.route.destination),via:M.resolve(input.route.via)}:null;
  const key=visitor+':'+chat+':'+answerId;s.resolutions=(s.resolutions||[]).filter(r=>r.at>=now-30*86400000);const old=s.resolutions.find(r=>r.key===key);
- const fields={key,session:visitor+':'+chat,answerId,outcome,reason:outcome==='unsolved'?input.reason||'other':null,kind:input.kind,provider:input.provider==='deepseek'?'deepseek':'local',route,at:now};
+ const fields={key,session:visitor+':'+chat,answerId,outcome,reason:outcome==='unsolved'?input.reason||'other':null,kind:input.kind,provider:input.provider==='deepseek'?'deepseek':'local',feedbackVersion:2,rating:outcome==='solved'?'helpful_solved':'not_solved',route,at:now};
  if(old){const changed=old.outcome!==outcome||old.reason!==fields.reason;Object.assign(old,fields);if(changed){old.status=outcome==='solved'?'resolved':'open';old.handledAt=null;}}else{s.resolutions.push({...fields,id:crypto.randomUUID(),status:outcome==='solved'?'resolved':'open'});}s.resolutions=s.resolutions.slice(-2000);return{saved:true};
 }
 function quality(s,now=Date.now(),days=7,kind='all'){

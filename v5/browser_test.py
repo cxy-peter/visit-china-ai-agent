@@ -60,7 +60,7 @@ try:
         check('mic consent gate enforced',bool(page.locator('#consent-error').inner_text()))
         page.locator('#mic-consent').check();page.locator('#consent-start').click()
         page.wait_for_function("() => TravelApp.getCall().active")
-        check('assistant initiates spoken question',page.evaluate("__spoken.length>0 && __spoken[0].text.includes('Where')"))
+        check('assistant initiates spoken question',page.evaluate("__spoken.length>0 && __spoken[0].text.includes('How can I help you?')"))
         check('call is speaking',page.evaluate("TravelApp.getCall().phase==='speaking'"))
         before=page.evaluate('__cancelCount')
         page.locator('[data-choice="city-sh"]').click()

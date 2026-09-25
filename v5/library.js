@@ -1,17 +1,17 @@
 /* One source catalog for the library, text chat and voice transcript. */
-(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('../v4/core'),require('../v4/data'),require('../data/official/records.json'),require('./discovery'),require('./service-data'),require('./news-data'),require('./theme-routes-data'),require('./transport-history'));else root.TravelLibrary=factory(root.ArrivalCore,root.ArrivalData,root.ArrivalCorpus,root.TravelDiscovery,root.TravelServices,root.TravelNews,root.TravelThemeData,root.TravelTransportHistory);})(globalThis,function(C,D,corpus,Discovery,Services,News,Themes,Transport){
+(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('../v4/core'),require('../v4/data'),require('../data/official/records.json'),require('./discovery'),require('./service-data'),require('./news-data'),require('./theme-routes-data'),require('./transport-history'),require('./community-research-data'),require('./event-data'));else root.TravelLibrary=factory(root.ArrivalCore,root.ArrivalData,root.ArrivalCorpus,root.TravelDiscovery,root.TravelServices,root.TravelNews,root.TravelThemeData,root.TravelTransportHistory,root.TravelResearch,root.TravelEvents);})(globalThis,function(C,D,corpus,Discovery,Services,News,Themes,Transport,Research,Events){
 'use strict';
 const indexed=Array.isArray(corpus)?corpus:corpus?.records||[],seen=new Set();
 const base=[...D.sources,...indexed].filter(r=>{if(seen.has(r.url))return false;seen.add(r.url);return true;}).map(r=>({...r,kind:r.kind||r.source_kind}));
 // Several entities can share a source page (e.g. two railway stations), so supplemental
 // rows are deduplicated by entity ID, not URL. Dated news also retains its own provenance.
-const records=[...new Map([...base,...Discovery.records(),...Services.records,...News.records,...Themes.records,...Transport.records].map(r=>[r.id,r])).values()];
+const records=[...new Map([...base,...Discovery.records(),...Services.records,...News.records,...Themes.records,...Transport.records,...Research.records,...Events.records].map(r=>[r.id,r])).values()];
 const aliases=new Map(Services.verified.items.filter(r=>r.replacementOf).map(r=>[r.id,r.replacementOf]));
 const canonical=id=>aliases.get(id)||id;
 const byId=new Map(records.map(r=>[r.id,r])),baseline=new Map(byId);let dynamicIds=new Set();
 const ids=value=>[...new Set((Array.isArray(value)?value:[]).filter(id=>typeof id==='string').map(canonical).filter(id=>byId.has(id)))].slice(0,3);
 function search(query='',city='Unknown',kind='all'){
- const rows=records.filter(r=>(city==='Unknown'||!r.city||r.city==='China'||r.city===city)&&(kind==='all'||(['station','place','service','news'].includes(kind)?r.recordType===kind:kind==='summary'?Boolean(r.summary||r.summaryZh):!r.summary&&!r.summaryZh)));
+ const rows=records.filter(r=>(city==='Unknown'||!r.city||r.city==='China'||r.city===city)&&(kind==='all'||(['station','place','service','news','event','community'].includes(kind)?r.recordType===kind:kind==='summary'?Boolean(r.summary||r.summaryZh):!r.summary&&!r.summaryZh)));
  return query.trim()?C.rank(query,city,rows.map(r=>({...r,summary:[r.summary,r.summaryZh,r.excerpt].filter(Boolean).join(' ')})),rows.length).map(r=>({...byId.get(r.id),rankScore:r.rankScore})):rows;
 }
 function merge(rows){rows=[...new Map(rows.map(r=>[canonical(r.id),{...r,id:canonical(r.id)}])).values()];const next=new Set(rows.map(r=>r.id));for(const id of dynamicIds){if(!next.has(id)){const i=records.findIndex(r=>r.id===id);if(i>=0)records.splice(i,1);if(baseline.has(id)){records.push(baseline.get(id));byId.set(id,baseline.get(id));}else byId.delete(id);}}dynamicIds=next;for(const r of rows){const i=records.findIndex(x=>x.id===r.id);if(i<0)records.push(r);else records[i]=r;byId.set(r.id,r);}}
@@ -25,6 +25,6 @@ function choose(h,city,pool=records){const map=new Map(pool.map(r=>[r.id,r])),ex
  return [...new Set([...preferred.filter(id=>map.has(id)),...ranked.map(r=>r.id)])].slice(0,3).map(id=>map.get(id));
 }
 function summary(row,language='zh'){return language==='zh'?(row.summaryZh||row.summary||row.excerpt||'没有已保存摘要，请查看原文。'):(row.summary||row.summaryZh||row.excerpt||'No saved summary. Read the original source.');}
-function label(row,language='zh'){if(row.active===false)return language==='zh'?'暂停引用 · 等待复核':'Held from answers · review pending';return row.summary||row.summaryZh?(C.current(row)?(language==='zh'?'已保存摘要 · 在复核周期内':'Saved summary · within review window'):(language==='zh'?'已保存摘要 · 待复核':'Saved summary · review due')):(language==='zh'?'仅索引 · 未人工核对':'Index only · not editorially reviewed');}
-return{records,indexCount:indexed.length,confidence:row=>globalThis.TravelConfidence?.source(row),ids,get:id=>byId.get(canonical(id)),canonical,search,choose,merge,summary,label,current:r=>r.active!==false&&r.lastCheck?.status!=='changed'&&C.current(r)};
+function label(row,language='zh'){if(row.recordType==='community')return language==='zh'?'社区经验补充 · 非官方规则':'Community experience · not an official rule';if(row.recordType==='event'&&Date.parse(row.endDate+'T23:59:59+08:00')<Date.now())return language==='zh'?'活动已结束 · 历史记录':'Event ended · archived record';if(row.active===false)return language==='zh'?'暂停引用 · 等待复核':'Held from answers · review pending';return row.summary||row.summaryZh?(C.current(row)?(language==='zh'?'已保存摘要 · 在复核周期内':'Saved summary · within review window'):(language==='zh'?'已保存摘要 · 待复核':'Saved summary · review due')):(language==='zh'?'仅索引 · 未人工核对':'Index only · not editorially reviewed');}
+return{records,indexCount:indexed.length,confidence:row=>globalThis.TravelConfidence?.source(row),ids,get:id=>byId.get(canonical(id)),canonical,search,choose,merge,summary,label,current:r=>(r.recordType!=='event'||Date.parse(r.endDate+'T23:59:59+08:00')>=Date.now())&&r.active!==false&&r.lastCheck?.status!=='changed'&&C.current(r)};
 });

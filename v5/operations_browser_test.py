@@ -22,7 +22,7 @@ try:
  with sync_playwright() as p:
   browser=p.chromium.launch();context=browser.new_context(viewport={'width':1500,'height':1050});page=context.new_page();page.on('pageerror',lambda e:errors.append(str(e)))
   page.goto(URL);expect(page.locator('#library-refresh-status')).to_contain_text('每三天',timeout=30000)
-  expect(page.locator('#messages')).to_contain_text('有什么具体需求')
+  expect(page.locator('#messages')).to_contain_text('有什么我可以帮您？')
   check('needs-first greeting has no flight/hotel questionnaire',page.locator('#choices button').count()==0)
   def send(text):page.locator('#message').fill(text);page.locator('#send').click()
   send('我想了解上海到杭州的高铁')
