@@ -1,7 +1,7 @@
 {
   "version": "6.0.0",
   "nodeTests": {
-    "passed": 241,
+    "passed": 242,
     "failed": 0
   },
   "browserChecks": {
