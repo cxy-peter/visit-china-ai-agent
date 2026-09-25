@@ -1,7 +1,7 @@
 /* Shared deterministic state contract. Models propose facts; they never execute bookings. */
 (function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory();else root.TravelEngine=factory();})(typeof globalThis!=='undefined'?globalThis:this,function(){
 'use strict';
-const VERSION='5.2.0';
+const VERSION='5.3.0';
 const BASE={version:'wf-1',maxSpokenChars:220,questionOrder:['stage','flight','hotel','transfer','interests'],proactiveExtensions:true,promptSuffix:'Ask one useful question at a time. Accept a click as an answer. Never require listening to finish.'};
 const FIELDS={city:80,stage:['planning','arriving','exploring'],flight:['booked','not_booked','skip'],hotel:['booked','not_booked','skip'],transfer:['metro','taxi','driver','skip'],hotelName:120,area:100,interests:240,party:120,airport:12,terminal:8,zone:['public','restricted','baggage'],network:['online','poor','offline'],battery:'number'};
 const TASKS=['flight','hotel','transfer','explore','power','connection','metro','cash','payment','rail','luggage','help'];
@@ -9,7 +9,7 @@ const TITLES={flight:['选择机票','Choose a flight'],hotel:['安排住宿','F
 const URLS={flight:'https://www.trip.com/flights/',hotel:'https://www.trip.com/hotels/',transfer:'https://www.trip.com/airport-transfers/',taxi:'https://www.didiglobal.com/',rail:'https://www.12306.cn/en/',luggage:'https://usebounce.com/',explore:'https://www.trip.com/travel-guide/destination/shanghai-2/'};
 function clean(value,max=2000){return String(value||'').replace(/[\w.+-]+@[\w.-]+\.[a-z]{2,}/gi,'[email removed]').replace(/\b(?:\d[ -]?){13,19}\b/g,'[number removed]').replace(/(?:passport|护照号|password|密码|otp|验证码)\s*[:：]\s*\S+/gi,'[secret removed]').trim().slice(0,max);}
 function copy(x){return JSON.parse(JSON.stringify(x));}
-function state(policy=BASE){return{schema:5,revision:0,language:'en',facts:{},tasks:[],confirmedRevision:null,history:[],answered:[],lastQuestion:null,policy:copy(policy),currentIssue:null,outcomes:{},lastReply:null};}
+function state(policy=BASE){return{schema:5,revision:0,language:'en',facts:{},tasks:[],confirmedRevision:null,history:[],initialRequest:null,answered:[],lastQuestion:null,policy:copy(policy),currentIssue:null,outcomes:{},lastReply:null};}
 function validatePatch(p){if(!p||typeof p!=='object'||Array.isArray(p))throw Error('FACTS_OBJECT');const out={};for(const[k,v]of Object.entries(p)){const rule=FIELDS[k];if(!rule)throw Error('FIELD_NOT_ALLOWED');if(Array.isArray(rule)){if(!rule.includes(v))throw Error('FIELD_VALUE');out[k]=v;}else if(rule==='number'){if(!Number.isInteger(v)||v<0||v>100)throw Error('BATTERY_RANGE');out[k]=v;}else {if(typeof v!=='string'||!v.trim()||v.length>rule||/https?:|[<>]/i.test(v))throw Error('FIELD_TEXT');out[k]=clean(v,rule);}}return out;}
 function parse(text,previous){const s=clean(text),p={},tasks=[];
  if(['flight','hotel'].includes(previous.lastQuestion)){if(/^(?:yes[, .!]*|already booked|booked|yes it is|已订|订好了|已经订好了)[.!。！\s]*$/i.test(s))p[previous.lastQuestion]='booked';if(/^(?:no|not yet|not booked|还没|还没订|没有|没订)[.!。！\s]*$/i.test(s))p[previous.lastQuestion]='not_booked';}
@@ -30,12 +30,12 @@ function parse(text,previous){const s=clean(text),p={},tasks=[];
  if(/no (?:internet|network|data)|offline|没网|断网/i.test(s))p.network='offline';else if(/weak|poor connection|弱网/i.test(s))p.network='poor';else if(/online now|good network|网络恢复|网络正常/i.test(s))p.network='online';
  if(/prefer (?:the )?metro|take (?:the )?metro|选地铁|坐地铁去/i.test(s))p.transfer='metro';if(/prefer (?:a )?taxi|take (?:a )?taxi|想打车|选出租车/i.test(s))p.transfer='taxi';if(/private driver|airport pickup|司机接送|预约接机/i.test(s))p.transfer='driver';
  const interests=[];for(const [rx,name]of [[/architecture|建筑/i,'architecture'],[/food|美食/i,'food'],[/museum|博物馆/i,'museums'],[/garden|公园|园林/i,'gardens'],[/shopping|购物/i,'shopping']])if(rx.test(s))interests.push(name);if(interests.length)p.interests=interests.join(', ');
- for(const [id,rx]of [['power',/充电|battery|power bank/i],['connection',/网络|internet|sim card|esim|offline|没网/i],['metro',/subway|metro station|地铁站|地铁票/i],['cash',/exchange|换汇|现金|硬币|need cash/i],['payment',/支付|手续费|alipay|wechat|weixin|fee/i],['rail',/train|rail|火车|高铁/i],['luggage',/luggage storage|store.{0,10}bag|寄存/i],['help',/staff|help desk|工作人员|求助/i]])if(rx.test(s))tasks.push(id);
- if(/need (?:a|an) hotel\b/i.test(s))p.hotel='not_booked';if(/need (?:a|an) flight\b/i.test(s))p.flight='not_booked';if(p.flight==='not_booked')tasks.push('flight');if(p.hotel==='not_booked')tasks.push('hotel');if(p.transfer)tasks.push('transfer');if(p.interests)tasks.push('explore');
+ for(const [id,rx]of [['power',/充电|battery|power bank/i],['connection',/网络|internet|sim card|esim|offline|没网/i],['metro',/subway|metro (?:station|ticket)|地铁站|地铁票/i],['cash',/exchange|换汇|现金|硬币|need cash/i],['payment',/支付|手续费|alipay|wechat|weixin|fee/i],['rail',/train|rail|火车|高铁/i],['luggage',/luggage storage|store.{0,10}bag|寄存/i],['help',/staff|help desk|工作人员|求助/i]])if(rx.test(s))tasks.push(id);
+ if(/need (?:a|an) hotel\b|(?:需要|想订|帮我找)(?:一家|一个|一间)?(?:酒店|住宿)(?=和|与|推荐|[，,。.!?\s]|$)/i.test(s))p.hotel='not_booked';if(/need (?:a|an) flight\b/i.test(s))p.flight='not_booked';if(p.flight==='not_booked')tasks.push('flight');if(p.hotel==='not_booked')tasks.push('hotel');if(p.transfer)tasks.push('transfer');if(p.interests)tasks.push('explore');
  if(previous.lastQuestion==='interests'&&!p.interests&&s&&!/^skip|跳过|随便$/i.test(s))p.interests=clean(s,240);
  return{patch:p,tasks};}
 function apply(previous,event){const s=copy(previous);if(!event||typeof event!=='object')throw Error('EVENT_REQUIRED');const before=copy(s.facts);s.revision++;s.confirmedRevision=null;let message='',patch={},tasks=[];
- if(event.type==='text'){message=clean(event.text);if(!message)throw Error('EMPTY_MESSAGE');s.language=/[\u4e00-\u9fff]/.test(message)?'zh':s.language;const parsed=parse(message,s);patch=parsed.patch;tasks=parsed.tasks;
+ if(event.type==='text'){message=clean(event.text);if(!message)throw Error('EMPTY_MESSAGE');s.language=/[\u4e00-\u9fff]/.test(message)?'zh':s.language;if(!s.initialRequest&&!/^(?:hi|hello|你好|您好|yes|no|好的|确认)[!！.。\s]*$/i.test(message))s.initialRequest={text:message,channel:event.channel||'text'};const parsed=parse(message,s);patch=parsed.patch;tasks=parsed.tasks;
   if(/^(?:yes|yes,? that.s right|confirm|confirmed|go ahead|好的|确认|可以|对的)[.!。！\s]*$/i.test(message)&&s.lastQuestion==='confirm')s.confirmedRevision=s.revision;
   if(/^(skip|later|稍后|跳过)[.!。！\s]*$/i.test(message)&&s.lastQuestion)s.answered.push(s.lastQuestion);
  }else if(event.type==='choice'){
@@ -50,7 +50,7 @@ function apply(previous,event){const s=copy(previous);if(!event||typeof event!==
  for(const task of tasks)if(TASKS.includes(task)&&!s.tasks.includes(task))s.tasks.push(task);
  if(patch.hotel==='booked')s.tasks=s.tasks.filter(t=>t!=='hotel');if(patch.flight==='booked')s.tasks=s.tasks.filter(t=>t!=='flight');
  s.history.push({revision:s.revision,text:message,channel:event.channel||'text',factsChanged:Object.keys(s.facts).filter(k=>s.facts[k]!==before[k])});s.history=s.history.slice(-30);
- const result=reply(s);s.lastQuestion=result.question;s.lastReply=result.say;return s;}
+ const result=reply(s);s.lastQuestion=result.question;s.lastReply=result.say;s.history.at(-1).reply=result.say;return s;}
 function reply(s){const zh=s.language==='zh',f=s.facts,p=s.policy||BASE,tr=(a,b)=>zh?a:b;const summary=[];
  if(f.city)summary.push(tr('目的地：','Destination: ')+f.city);if(f.stage)summary.push(tr('旅程阶段：','Stage: ')+({planning:tr('准备出发','planning'),arriving:tr('刚刚抵达','arriving'),exploring:tr('正在游玩','exploring')}[f.stage]));
  if(f.flight)summary.push(tr('机票：','Flight: ')+({booked:tr('已订（你提供）','booked, self-reported'),not_booked:tr('未订','not booked'),skip:tr('稍后','later')}[f.flight]));if(f.hotel)summary.push(tr('住宿：','Hotel: ')+({booked:tr('已订（你提供）','booked, self-reported'),not_booked:tr('需要安排','needed'),skip:tr('稍后','later')}[f.hotel])+(f.hotelName?' · '+f.hotelName:''));if(f.party)summary.push(tr('同行：','Party: ')+f.party);if(f.interests)summary.push(tr('偏好：','Interests: ')+f.interests);
@@ -73,6 +73,15 @@ function reply(s){const zh=s.language==='zh',f=s.facts,p=s.policy||BASE,tr=(a,b)
  const suggestions=[];if(!urgent&&f.network!=='offline'&&p.proactiveExtensions){if(f.hotel==='booked'&&!tasks.includes('luggage'))suggestions.push({task:'luggage',text:tr('提前到店？考虑行李寄存','Early check-in? Explore luggage storage'),url:URLS.luggage});if(f.hotel&&f.city==='Shanghai'&&!tasks.includes('explore'))suggestions.push({task:'explore',text:tr('看看住宿附近想玩的地方','Ideas near your stay'),url:URLS.explore});}
  return{question,say,spoken:say.slice(0,p.maxSpokenChars),options,summary,plan,suggestions,urgent,policyVersion:p.version,mode:'deterministic'};
 }
+// Browser memory is display/input data, never workflow or confirmation authority.
+function restoreMemory(saved,policy=BASE){
+ const s=state(policy);s.facts=validatePatch(saved.facts||{});s.tasks=Array.isArray(saved.tasks)?[...new Set(saved.tasks.filter(t=>TASKS.includes(t)))]:[];s.language=saved.language==='zh'?'zh':'en';
+ s.history=(Array.isArray(saved.history)?saved.history:[]).slice(-30).filter(h=>h&&typeof h.text==='string').map((h,i)=>({revision:i+1,text:clean(h.text),channel:['voice','text','click'].includes(h.channel)?h.channel:'text',reply:typeof h.reply==='string'?clean(h.reply):undefined,factsChanged:[]}));
+ s.revision=s.history.length;s.initialRequest=saved.initialRequest&&typeof saved.initialRequest.text==='string'?{text:clean(saved.initialRequest.text),channel:saved.initialRequest.channel==='voice'?'voice':'text'}:null;
+ s.answered=Array.isArray(saved.answered)?saved.answered.filter(x=>BASE.questionOrder.includes(x)):[];s.currentIssue=TASKS.includes(saved.currentIssue)?saved.currentIssue:null;s.outcomes=Object.fromEntries(Object.entries(saved.outcomes||{}).filter(([k,v])=>TASKS.includes(k)&&v==='done'));
+ s.lastQuestion=reply(s).question;s.lastReply=reply(s).say;return s;
+}
+function memory(s){return{facts:s.facts,tasks:s.tasks,language:s.language,history:s.history,initialRequest:s.initialRequest,answered:s.answered,currentIssue:s.currentIssue,outcomes:s.outcomes};}
 function proposal(p,state){if(!p||!p.facts||!Array.isArray(p.evidence))throw Error('PROPOSAL_SCHEMA');const facts=validatePatch(p.facts),messages=state.history.map(x=>x.text).join('\n');for(const key of Object.keys(facts)){const e=p.evidence.find(e=>e.field===key);if(!e||typeof e.quote!=='string'||!e.quote.trim()||!messages.includes(e.quote))throw Error('PROPOSAL_UNGROUNDED');}return facts;}
-return{VERSION,BASE,FIELDS,TASKS,TITLES,URLS,clean,state,parse,apply,reply,validatePatch,proposal};
+return{VERSION,BASE,FIELDS,TASKS,TITLES,URLS,clean,state,parse,apply,reply,validatePatch,proposal,restoreMemory,memory};
 });

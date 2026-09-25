@@ -4,7 +4,7 @@ Speech recognition/synthesis are controlled test doubles in BOTH modes. No real 
 import os, sys, json, time, pathlib, tempfile, subprocess, hashlib, urllib.request, shutil, socket
 from playwright.sync_api import sync_playwright, expect
 ROOT=pathlib.Path(__file__).resolve().parents[1]
-OUT=ROOT/'evidence/v5.2';OUT.mkdir(parents=True,exist_ok=True)
+OUT=ROOT/'evidence/v5.3';OUT.mkdir(parents=True,exist_ok=True)
 static='--static' in sys.argv
 checks=[]
 def check(name,value):
@@ -51,6 +51,7 @@ try:
             check('browser connects to real Node backend','本机' in page.locator('#mode').inner_text())
         check('LiveKit is honestly unavailable without configuration', page.locator('#voice-provider option[value=livekit]').evaluate('(el)=>el.disabled'))
         check('LiveKit connection code is loaded', page.evaluate("typeof TravelRealtime.Call==='function'"))
+        page.locator('#voice-provider').select_option('browser')
         check('call entry visible',page.locator('#start-call').is_visible())
         page.screenshot(path=str(OUT/('static-desktop.png' if static else 'desktop.png')),full_page=True)
         page.locator('#start-call').click();page.locator('#consent-start').click()
@@ -118,10 +119,35 @@ try:
             page.wait_for_selector('[data-action="rollback"]');page.once('dialog',lambda d:d.accept());page.locator('[data-action="rollback"]').click()
             expect(page.locator('.candidate .status')).to_have_text('rolled_back')
             check('admin rollback works','wf-3' in page.locator('#ops-body').inner_text())
-        page.locator('#ops-close').click();page.set_viewport_size({'width':390,'height':844})
+        page.locator('#ops-close').click()
+        check('conversation is expanded by default',page.locator('#transcript').is_visible())
+        check('voice transcript and assistant replies are visible',page.locator('#transcript .user').count()>0 and page.locator('#transcript .companion').count()>0)
+        opening=page.locator('#initial-request').inner_text()
+        check('opening need survives unrelated later turns','flight' in opening.lower())
+        if not static:
+            expected=page.locator('#transcript').inner_text()
+            page.reload();expect(page.locator('#mode')).to_contain_text('本机')
+            check('server rehydration restores both sides of conversation',page.locator('#transcript').inner_text()==expected)
+            check('server rehydration restores opening need',page.locator('#initial-request').inner_text()==opening)
+        page.set_viewport_size({'width':390,'height':844})
         check('mobile has no horizontal overflow',page.evaluate('document.documentElement.scrollWidth<=innerWidth+2'))
         page.screenshot(path=str(OUT/('static-mobile.png' if static else 'mobile.png')),full_page=True)
         check('no uncaught browser exceptions',not errors)
+        if not static:
+            offline=browser.new_page(viewport={'width':1000,'height':900})
+            offline.route('**/api/v5/**',lambda route:route.fulfill(status=503,content_type='application/json',body='{"error":"NO_BACKEND"}'))
+            offline.goto(base_url);expect(offline.locator('#mode')).to_contain_text('浏览器体验')
+            offline.locator('#message').fill('I want a trip to Shanghai with my parents. I need a hotel.');offline.locator('#send').click()
+            offline.locator('#remember').check()
+            saved=offline.locator('#transcript').inner_text();brief=offline.locator('#initial-request').inner_text()
+            offline.reload();expect(offline.locator('#mode')).to_contain_text('浏览器体验')
+            check('static browser memory restores both sides',offline.locator('#transcript').inner_text()==saved)
+            check('static browser memory restores opening need',offline.locator('#initial-request').inner_text()==brief)
+            offline.locator('#message').fill('Actually Beijing');offline.locator('#send').click()
+            check('correction updates current city but preserves opening request','Beijing' in offline.locator('#summary').inner_text() and offline.locator('#initial-request').inner_text()==brief)
+            offline.locator('#remember').uncheck();offline.reload()
+            check('forgetting browser memory removes saved conversation',offline.locator('#transcript .user').count()==0)
+            offline.close()
         browser.close()
 finally:
     if server:server.terminate();server.wait(timeout=10)

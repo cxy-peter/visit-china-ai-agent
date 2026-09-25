@@ -1,4 +1,10 @@
-# V5.2: LiveKit integration and durable review workflow
+# V5.3: free local voice, visible transcripts and opening request
+
+Vosk now transcribes English/Chinese speech locally in the browser without a paid voice API. The microphone has a real level meter; live captions, both sides of the conversation and the first overall request stay visible. Optional browser memory restores the conversation on reload. See [setup, reference designs, verified behavior and limits](docs/V5_3_FREE_VOICE.md).
+
+The public static site supports this local voice path. LiveKit is optional and is not needed for it. Real human microphone quality remains unmeasured; bilingual synthetic PCM has been decoded with the actual WASM models.
+
+## V5.2: LiveKit integration and durable review workflow
 
 Incremental upgrade from V5.1: optional LiveKit WebRTC media worker, V4 official-source checks inside V5 cards, SQLite transactions and persistent sessions, and OIDC organization-login configuration. See [setup and precise limits](docs/V5_2_HANDOFF.md) and [resume boundaries](docs/V5_2_RESUME.md).
 

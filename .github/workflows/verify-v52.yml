@@ -1,4 +1,4 @@
-name: V5.2 verify actual branch
+name: V5.3 verify actual branch
 on:
   pull_request:
   push:
@@ -27,9 +27,10 @@ jobs:
       - run: npm run voice:check && npm run voice:build && npm run build
       - run: pip install playwright==1.57.0 && python -m playwright install --with-deps chromium
       - run: python v5/browser_test.py
+      - run: python v5/local_voice_browser_test.py --en v5/fixtures/synthetic-en.wav --zh v5/fixtures/synthetic-zh.wav
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: v52-browser-evidence
-          path: evidence/v5.2/
+          name: v53-browser-evidence
+          path: evidence/v5.3/
           retention-days: 14
