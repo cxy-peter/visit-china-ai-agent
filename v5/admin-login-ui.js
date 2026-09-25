@@ -10,6 +10,7 @@ async function enhance(form,u,p,realm){
  const note=document.createElement('p');note.className='muted';note.dataset.loginHint='true';note.setAttribute('role','status');note.textContent='正在确认登录方式…';form.append(note);
  form.addEventListener('submit',()=>{username.value=username.value.trim();},true);
  const reveal=document.createElement('label'),toggle=document.createElement('input');toggle.type='checkbox';toggle.dataset.showLoginPassword='true';reveal.append(toggle,document.createTextNode(' 显示密码'));form.append(reveal);
+ reveal.style.cssText='display:flex;align-items:center;gap:8px';toggle.style.cssText='width:auto;flex:none;margin:0';
  toggle.onchange=()=>{password.type=toggle.checked?'text':'password';};
  if(location.protocol==='file:'){note.textContent='这是单文件预览，没有登录后端。请运行 npm start，再从本机地址打开；这里不会假装登录成功。';return;}
  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),4000);
