@@ -7,7 +7,7 @@ const items={
  hotel:{kind:'hotel',zh:'查看住宿选择',en:'Explore places to stay',url:'https://www.trip.com/hotels/'},
  car:{kind:'taxi',zh:'比较自驾租车',en:'Compare self-drive rentals',url:'https://www.trip.com/carhire/'},
  transfer:{kind:'taxi',zh:'比较带司机接送',en:'Compare transfers with a driver',url:'https://www.trip.com/airport-transfers/'},
- tour:{kind:'nearby',zh:'看看一日游与当地体验',en:'Explore day tours and experiences',url:'https://www.trip.com/things-to-do/'},
+ tour:{kind:'nearby',zh:'看看一日团与当地体验',en:'Explore day tours and experiences',url:'https://www.trip.com/things-to-do/'},
  food:{kind:'restaurant',zh:'查看餐饮与本地生活',en:'Explore dining and local services',url:'https://www.dianping.com/'}
 };
 const providers={
