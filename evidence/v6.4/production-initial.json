@@ -1,0 +1,347 @@
+{
+  "url": "https://visit-china-ai-agent.vercel.app/?v=6.4",
+  "checks": [
+    {
+      "name": "production version 6.4",
+      "passed": true
+    },
+    {
+      "name": "20 starter questions",
+      "passed": true
+    },
+    {
+      "name": "single welcome sentence",
+      "passed": true
+    },
+    {
+      "name": "direct admin login and model connection",
+      "passed": true
+    },
+    {
+      "name": "browser speech only",
+      "passed": true
+    },
+    {
+      "name": "real cited answer 1",
+      "passed": true
+    },
+    {
+      "name": "charging intent",
+      "passed": true
+    },
+    {
+      "name": "charging does not create rail task",
+      "passed": true
+    },
+    {
+      "name": "charging no rail itinerary or upsell",
+      "passed": true
+    },
+    {
+      "name": "merged feedback",
+      "passed": true
+    },
+    {
+      "name": "contextual issue report retains original question",
+      "passed": true
+    },
+    {
+      "name": "real cited answer 2",
+      "passed": false
+    }
+  ],
+  "errors": [],
+  "answers": [
+    {
+      "input": "上海火车站周围有充电宝吗？我不需要火车行程。",
+      "seconds": 36.7,
+      "response": {
+        "answer": {
+          "text": "上海火车站周围可以在商场、餐厅、地铁站等公共场所寻找共享充电宝租借柜。但本站没有柜机定位、剩余数量或实时价格，具体可借、可还点需用地图或柜机运营商小程序核实。有旅客游记提到上海商店内有共享充电宝，仅供参考，不能证明上海火车站某台机器有库存。建议到站后留意站内商铺或周边商场，打开主流充电宝品牌小程序查看附近点位。",
+          "sourceIds": [
+            "sh-power-bank",
+            "community-power-return"
+          ],
+          "mode": "deepseek",
+          "notice": "saved-summaries",
+          "intent": {
+            "kind": "charging",
+            "responseMode": "service",
+            "origin": null,
+            "destination": "上海火车站",
+            "via": null,
+            "city": "Shanghai",
+            "roadKm": null
+          },
+          "intentProvider": "deepseek",
+          "usage": {
+            "prompt_tokens": 5909,
+            "completion_tokens": 2173,
+            "total_tokens": 8082
+          },
+          "services": [
+            {
+              "id": "service-charging",
+              "kind": "charging",
+              "title": "上海火车站 · 查询充电宝租借柜",
+              "description": "查询入口；此链接不证明该位置设有柜机。请在运营方核对位置、收费与可用量。",
+              "url": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%E7%81%AB%E8%BD%A6%E7%AB%99%20%E5%85%85%E7%94%B5%E5%AE%9D&city=上海&view=map",
+              "sourceId": "sh-power-bank",
+              "status": "provider-search",
+              "liveAvailability": false
+            },
+            {
+              "id": "guide-charging",
+              "kind": "charging",
+              "title": "官方使用与查询指引",
+              "description": "商场、餐厅、地铁站等公共场所可寻找共享充电宝租借柜。扫码后先核对费用和归还规则，再按页面操作租借。本站没有接入柜机定位、剩余数量或实时价格，请使用地图和柜机运营商核实附近可借、可还的位置。",
+              "url": "https://english.shanghai.gov.cn/en-MobileAndInternet/20260727/56b62a3a9d2f4ddaa8d77367c206b2ae.html",
+              "sourceId": "sh-power-bank",
+              "status": "official-guide",
+              "liveAvailability": false
+            }
+          ],
+          "arbitration": {
+            "version": "rubric-6.4",
+            "selected": "deepseek",
+            "local": null,
+            "deepseek": {
+              "score": 100,
+              "checks": {
+                "evidence": true,
+                "direct": true,
+                "endpoints": true,
+                "actionable": true,
+                "format": true
+              }
+            },
+            "threshold": 60,
+            "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+            "reason": "按已核对证据、直接回答和请求完整性选择。"
+          },
+          "confidence": {
+            "model": 0.97,
+            "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+            "sources": [
+              {
+                "id": "sh-power-bank",
+                "score": 90,
+                "level": "high",
+                "requiresReview": false,
+                "government": true,
+                "reasons": [
+                  "已匹配政府域名",
+                  "有保存摘要",
+                  "摘要在复核周期内"
+                ],
+                "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+              },
+              {
+                "id": "community-power-return",
+                "score": 60,
+                "level": "medium",
+                "requiresReview": false,
+                "government": false,
+                "reasons": [
+                  "非已核验政府/运营方域名",
+                  "有保存摘要",
+                  "摘要在复核周期内"
+                ],
+                "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+              }
+            ],
+            "sourceScore": 60,
+            "requiresReview": false,
+            "needsClarification": false,
+            "reasons": [],
+            "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+            "reviewRecorded": true
+          },
+          "execution": {
+            "skillVersion": "skill-1",
+            "stages": [
+              {
+                "name": "retrieve",
+                "status": "completed",
+                "ms": 175
+              },
+              {
+                "name": "intent",
+                "status": "completed",
+                "ms": 21633
+              },
+              {
+                "name": "website_lookup",
+                "status": "review-required"
+              },
+              {
+                "name": "semantic_retrieval",
+                "status": "completed",
+                "ms": 80
+              },
+              {
+                "name": "tool_or_answer",
+                "status": "completed",
+                "kind": "charging"
+              },
+              {
+                "name": "grounded_generation",
+                "status": "completed",
+                "reason": "EVIDENCE_ALIGNMENT",
+                "ms": 9805
+              },
+              {
+                "name": "verify",
+                "status": "completed"
+              },
+              {
+                "name": "observe",
+                "status": "pending-persistence"
+              }
+            ],
+            "retrieval": {
+              "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+              "embedding": "none",
+              "reranker": "deterministic lexical/evidence reranking",
+              "corpusChunks": 546,
+              "candidates": 460,
+              "elapsedMs": 80,
+              "hits": [
+                {
+                  "id": "station-15:6f80ee45a8a01e1d:0",
+                  "sourceId": "station-15",
+                  "version": "6f80ee45a8a01e1d",
+                  "score": 0.03244,
+                  "coverage": 0.261
+                },
+                {
+                  "id": "community-power-return:10358f145b47ac9c:0",
+                  "sourceId": "community-power-return",
+                  "version": "10358f145b47ac9c",
+                  "score": 0.03057,
+                  "coverage": 0.478
+                },
+                {
+                  "id": "sh-power-bank:cb0ac35360170622:0",
+                  "sourceId": "sh-power-bank",
+                  "version": "cb0ac35360170622",
+                  "score": 0.02886,
+                  "coverage": 0.348
+                },
+                {
+                  "id": "verified-hongqiao-p10-charging:d5012857ac09a5cc:0",
+                  "sourceId": "verified-hongqiao-p10-charging",
+                  "version": "d5012857ac09a5cc",
+                  "score": 0.02795,
+                  "coverage": 0.348
+                },
+                {
+                  "id": "verified-metro-lockers:ac7d654795dd78d2:0",
+                  "sourceId": "verified-metro-lockers",
+                  "version": "ac7d654795dd78d2",
+                  "score": 0.02508,
+                  "coverage": 0.261
+                },
+                {
+                  "id": "verified-pvg-rest-charging:3c747ba8fb743181:0",
+                  "sourceId": "verified-pvg-rest-charging",
+                  "version": "3c747ba8fb743181",
+                  "score": 0.02481,
+                  "coverage": 0.13
+                },
+                {
+                  "id": "verified-shanghai-rail-station:26195dc7b3d7255a:0",
+                  "sourceId": "verified-shanghai-rail-station",
+                  "version": "26195dc7b3d7255a",
+                  "score": 0.02453,
+                  "coverage": 0.261
+                },
+                {
+                  "id": "history-sh-hz-trains:5f222a63b6cce02e:0",
+                  "sourceId": "history-sh-hz-trains",
+                  "version": "5f222a63b6cce02e",
+                  "score": 0.0237,
+                  "coverage": 0.261
+                }
+              ]
+            },
+            "acquisition": {
+              "status": "review-required",
+              "sourceId": "off-67ec98450773051e",
+              "score": 0,
+              "eligible": false,
+              "method": "model-query → known URL → robots/body fetch → quoted evidence assessment",
+              "usage": {
+                "prompt_tokens": 1135,
+                "completion_tokens": 105,
+                "total_tokens": 1240,
+                "prompt_tokens_details": {
+                  "cached_tokens": 128
+                },
+                "prompt_cache_hit_tokens": 128,
+                "prompt_cache_miss_tokens": 1007
+              }
+            },
+            "arbitration": {
+              "version": "rubric-6.4",
+              "selected": "deepseek",
+              "local": null,
+              "deepseek": {
+                "score": 100,
+                "checks": {
+                  "evidence": true,
+                  "direct": true,
+                  "endpoints": true,
+                  "actionable": true,
+                  "format": true
+                }
+              },
+              "threshold": 60,
+              "scope": "可追溯规则评分：引用35、直接回答25、端点20、行动15、格式5；无端点要求时直接回答45。不是准确率，不检查私人思考链。",
+              "reason": "按已核对证据、直接回答和请求完整性选择。"
+            },
+            "totalMs": 35990
+          },
+          "sourceAcquisition": {
+            "status": "review-required",
+            "sourceId": "off-67ec98450773051e",
+            "score": 0,
+            "eligible": false,
+            "method": "model-query → known URL → robots/body fetch → quoted evidence assessment",
+            "usage": {
+              "prompt_tokens": 1135,
+              "completion_tokens": 105,
+              "total_tokens": 1240,
+              "prompt_tokens_details": {
+                "cached_tokens": 128
+              },
+              "prompt_cache_hit_tokens": 128,
+              "prompt_cache_miss_tokens": 1007
+            }
+          },
+          "modelRouting": {
+            "requested": "auto",
+            "selected": "pro",
+            "model": "deepseek-v4-pro",
+            "thinking": true,
+            "effort": "low",
+            "reason": "多地点或主题行程",
+            "method": "bounded-complexity-rules"
+          },
+          "dataset": "evaluation",
+          "executionId": "0c7098db-affa-408a-9b53-561e137f8f24",
+          "assessmentId": "bcdb4d0f-1a26-44bd-9754-aa272d96a08a"
+        },
+        "revision": 1
+      }
+    },
+    {
+      "input": "呃，我现在从浦东机场降落了，然后我要去上海虹桥火车站，需要注意什么以及怎么走？",
+      "seconds": 40.2,
+      "response": {
+        "error": "ANSWER_NUMBER"
+      }
+    }
+  ],
+  "scope": "Real production admin login and DeepSeek answers; analytics and resolution writes intercepted, answer calls tagged evaluation. No human microphone or supplier inventory test."
+}
