@@ -1,3 +1,7 @@
+# V5.5: unified conversation and source library
+
+Search the original official-source catalog inside the active chat, attach references to text or voice turns, and open source details without losing the trip. Both views share one model status/consent control and the existing backend DeepSeek client. Public static mode stays explicit about its missing model backend. See [behavior, open-source references and verification](docs/V5_5_UNIFIED_WORKSPACE.md).
+
 # V5.4: chat-first travel companion
 
 Pastel message bubbles, full conversation context, top call controls, independent input/output languages, simulated hotel/flight/rail/restaurant cards, and a transparent taxi estimate. New chat clears the previous scenario and carries preferences only when requested. See [V5.4 behavior, verification and limits](docs/V5_4_CHAT.md).

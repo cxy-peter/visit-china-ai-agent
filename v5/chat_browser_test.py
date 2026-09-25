@@ -2,7 +2,7 @@
 import json, os, pathlib, shutil, socket, subprocess, tempfile, time, urllib.request
 from playwright.sync_api import sync_playwright, expect
 ROOT=pathlib.Path(__file__).resolve().parents[1]
-OUT=ROOT/('evidence/v5.4/hosted' if os.environ.get('CHAT_TEST_URL') else 'evidence/v5.4');OUT.mkdir(parents=True,exist_ok=True)
+OUT=ROOT/('evidence/v5.5/hosted' if os.environ.get('CHAT_TEST_URL') else 'evidence/v5.5');OUT.mkdir(parents=True,exist_ok=True)
 with socket.socket() as s:s.bind(('127.0.0.1',0));port=s.getsockname()[1]
 runtime=tempfile.mkdtemp(prefix='vc54-chat-');server=None;checks=[]
 def check(name,result):

@@ -1,0 +1,190 @@
+{
+  "passed": 46,
+  "checks": [
+    {
+      "name": "browser connects to real Node backend",
+      "passed": true
+    },
+    {
+      "name": "LiveKit is honestly unavailable without configuration",
+      "passed": true
+    },
+    {
+      "name": "LiveKit connection code is loaded",
+      "passed": true
+    },
+    {
+      "name": "call entry visible",
+      "passed": true
+    },
+    {
+      "name": "mic consent gate enforced",
+      "passed": true
+    },
+    {
+      "name": "assistant initiates spoken question",
+      "passed": true
+    },
+    {
+      "name": "call is speaking",
+      "passed": true
+    },
+    {
+      "name": "choice while TTS speaks changes city",
+      "passed": true
+    },
+    {
+      "name": "choice cancels prior playback without hangup",
+      "passed": true
+    },
+    {
+      "name": "automatically listens after playback",
+      "passed": true
+    },
+    {
+      "name": "interim transcript is displayed",
+      "passed": true
+    },
+    {
+      "name": "final speech commits without Send",
+      "passed": true
+    },
+    {
+      "name": "choice during partial speech keeps an unsent draft",
+      "passed": true
+    },
+    {
+      "name": "partial speech does not create an invented fact",
+      "passed": true
+    },
+    {
+      "name": "understood needs stay visible",
+      "passed": true
+    },
+    {
+      "name": "one-click confirmation updates task list",
+      "passed": true
+    },
+    {
+      "name": "call survives confirmation",
+      "passed": true
+    },
+    {
+      "name": "text during call preserves chosen transfer",
+      "passed": true
+    },
+    {
+      "name": "relevant extension appears",
+      "passed": true
+    },
+    {
+      "name": "low power switches to readable help card",
+      "passed": true
+    },
+    {
+      "name": "low power pauses microphone",
+      "passed": true
+    },
+    {
+      "name": "low power suppresses upsells",
+      "passed": true
+    },
+    {
+      "name": "hangup stops call",
+      "passed": true
+    },
+    {
+      "name": "publisher guide and original link are shown",
+      "passed": true
+    },
+    {
+      "name": "official photo is opt-in",
+      "passed": true
+    },
+    {
+      "name": "real admin login loads operations",
+      "passed": true
+    },
+    {
+      "name": "candidate is explicitly template without model key",
+      "passed": true
+    },
+    {
+      "name": "author cannot approve",
+      "passed": true
+    },
+    {
+      "name": "1 approval(s) cannot publish",
+      "passed": true
+    },
+    {
+      "name": "2 approval(s) cannot publish",
+      "passed": true
+    },
+    {
+      "name": "3 approval(s) cannot publish",
+      "passed": true
+    },
+    {
+      "name": "4 approval(s) cannot publish",
+      "passed": true
+    },
+    {
+      "name": "fifth distinct login publishes exact candidate",
+      "passed": true
+    },
+    {
+      "name": "active policy version is updated",
+      "passed": true
+    },
+    {
+      "name": "admin rollback works",
+      "passed": true
+    },
+    {
+      "name": "conversation is expanded by default",
+      "passed": true
+    },
+    {
+      "name": "voice transcript and assistant replies are visible",
+      "passed": true
+    },
+    {
+      "name": "opening need survives unrelated later turns",
+      "passed": true
+    },
+    {
+      "name": "server rehydration restores both sides of conversation",
+      "passed": true
+    },
+    {
+      "name": "server rehydration restores opening need",
+      "passed": true
+    },
+    {
+      "name": "mobile has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "no uncaught browser exceptions",
+      "passed": true
+    },
+    {
+      "name": "static browser memory restores both sides",
+      "passed": true
+    },
+    {
+      "name": "static browser memory restores opening need",
+      "passed": true
+    },
+    {
+      "name": "correction updates current city but preserves opening request",
+      "passed": true
+    },
+    {
+      "name": "forgetting browser memory removes saved conversation",
+      "passed": true
+    }
+  ],
+  "scope": "Real Chromium -> Node HTTP. Five separate authenticated test accounts; NOT five real reviewers. Speech APIs are synthetic test doubles, not microphone or spoken-audio validation. No paid model, booking, or provider inventory calls."
+}
