@@ -38,7 +38,7 @@ class Call extends Voice.Call{
    this.processor.onaudioprocess=event=>{
     if(!this.active||this.muted||this.phase!=='listening'||!this.rec||this.finalizing)return;
     const samples=event.inputBuffer.getChannelData(0);let sum=0;for(const n of samples)sum+=n*n;
-    const rms=Math.sqrt(sum/samples.length),now=Date.now();this.onLevel(Math.min(1,rms*6));if(rms>.015)this.lastSound=now;if(this.pendingInterim&&this.lastSound&&now-this.lastSound>1400&&!this.finalizing)this.finish();
+    const rms=Math.sqrt(sum/samples.length),now=Date.now();this.onLevel(Math.min(1,rms*6));if(rms>.015)this.lastSound=now;if(this.pendingInterim&&this.lastSound&&now-this.lastSound>(this.fastEndpoint?500:900)&&!this.finalizing)this.finish();
     try{this.rec.acceptWaveform(event.inputBuffer);}catch(_){this.mute(true);this.emit('voice_error','本机识别暂停，请恢复麦克风或改用文字。');}
    };
    this.ready=true;const say=this.pendingSay;this.pendingSay=null;
@@ -57,13 +57,14 @@ class Call extends Voice.Call{
    const text=normalize(m.result.text);if(text)segments.push(text);
    // Natural phrase boundaries can be shorter than a conversational turn. Keep all
    // finalized phrases visible until our silence endpoint (or explicit Send).
-   if(!this.finalizing){this.pendingInterim=segments.join('\n');lastPartial='';this.onCaption(this.pendingInterim);if(text){clearTimeout(this.phraseTimer);this.phraseTimer=setTimeout(()=>{if(this.active&&token===this.epoch)this.finish();},1400);}return;}
-   const final=segments.join('\n');if(!final)return;
-   sent=true;clearTimeout(this.finalTimer);this.finalizing=false;this.pendingInterim='';this.onCaption(final);this.emit('processing');this.onText(final);
+   if(!this.finalizing&&this.fastEndpoint&&text&&this.acceptText(segments.join('\n'))){sent=true;this.pendingInterim='';this.deliver(segments.join('\n'));return;}
+   if(!this.finalizing){this.pendingInterim=segments.join('\n');lastPartial='';this.onCaption(this.pendingInterim);if(text){clearTimeout(this.phraseTimer);this.phraseTimer=setTimeout(()=>{if(this.active&&token===this.epoch)this.finish();},this.fastEndpoint?500:900);}return;}
+   const final=segments.join('\n');if(!final){this.finalizing=false;clearTimeout(this.finalTimer);this.listen();return;}
+   sent=true;clearTimeout(this.finalTimer);this.finalizing=false;this.pendingInterim='';this.onCaption(final);this.deliver(final);
   });
   this.emit('listening','本机识别中 · 说完稍停即可发送，也可点击“说完了”。');
  }
- finish(){if(this.phase!=='listening'||!this.rec||this.finalizing)return;clearTimeout(this.phraseTimer);this.finalizing=true;const token=this.epoch;this.rec.retrieveFinalResult();this.finalTimer=setTimeout(()=>{if(token!==this.epoch||!this.active)return;this.cancel({preserveInterim:true});this.muted=true;this.emit('muted','未取得完整识别结果。片段已保留，可编辑发送或恢复麦克风。');},5000);}
+ finish(){if(this.phase!=='listening'||!this.rec||this.finalizing)return;clearTimeout(this.phraseTimer);this.finalizing=true;const token=this.epoch;this.rec.retrieveFinalResult();this.finalTimer=setTimeout(()=>{if(token!==this.epoch||!this.active)return;if(!this.acceptText(this.pendingInterim)){this.onRejected(this.pendingInterim);this.cancel();this.listen();return;}this.cancel({preserveInterim:true});this.muted=true;this.emit('muted','未取得完整识别结果。片段已保留，可编辑发送或恢复麦克风。');},5000);}
  mute(value=true){if(value){this.cancel({preserveInterim:true});this.muted=true;this.emit('muted');}else super.mute(false);}
  stop(){this.lifecycle=(this.lifecycle||0)+1;this.cancelLoading?.();this.cancelLoading=null;super.stop();this.ready=false;this.pendingSay=null;
   if(this.processor){this.processor.onaudioprocess=null;this.processor.disconnect();}this.source?.disconnect();this.silent?.disconnect();

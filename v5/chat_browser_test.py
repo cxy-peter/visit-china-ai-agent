@@ -2,7 +2,7 @@
 import json, os, pathlib, shutil, socket, subprocess, tempfile, time, urllib.request
 from playwright.sync_api import sync_playwright, expect
 ROOT=pathlib.Path(__file__).resolve().parents[1]
-OUT=ROOT/('evidence/v5.5/hosted' if os.environ.get('CHAT_TEST_URL') else 'evidence/v5.5');OUT.mkdir(parents=True,exist_ok=True)
+OUT=ROOT/('evidence/v5.6/hosted' if os.environ.get('CHAT_TEST_URL') else 'evidence/v5.6');OUT.mkdir(parents=True,exist_ok=True)
 with socket.socket() as s:s.bind(('127.0.0.1',0));port=s.getsockname()[1]
 runtime=tempfile.mkdtemp(prefix='vc54-chat-');server=None;checks=[]
 def check(name,result):
@@ -17,7 +17,7 @@ try:
         except Exception:time.sleep(.2)
     with sync_playwright() as p:
         browser=p.chromium.launch(headless=True);page=browser.new_page(viewport={'width':1440,'height':1000});errors=[]
-        page.on('pageerror',lambda e:errors.append(str(e)));page.goto(url);expect(page.locator('#mode')).to_contain_text('浏览器体验' if os.environ.get('CHAT_TEST_URL') else '本机')
+        page.on('pageerror',lambda e:errors.append(str(e)));page.goto(url);expect(page.locator('#mode')).to_contain_text('云端聊天后端' if os.environ.get('CHAT_TEST_URL') else '本机')
         def send(text):page.locator('#message').fill(text);page.locator('#send').click()
         check('chat greets without microphone consent',page.locator('#transcript .companion').count()==1 and not page.evaluate('TravelApp.getCall().active'))
         check('entry does not scroll the top controls off screen',page.evaluate('scrollY<2'))
@@ -54,6 +54,25 @@ try:
         check('mobile preference controls update the same shared state',page.evaluate("TravelApp.getState().preferences.pace==='relaxed'"))
         send('我需要酒店');check('mobile has no horizontal overflow',page.evaluate('document.documentElement.scrollWidth<=innerWidth+2'))
         page.screenshot(path=str(OUT/'chat-mobile.png'),full_page=True)
+        page.set_viewport_size({'width':1440,'height':1000});page.locator('#new-chat-top').click()
+        send('从虹桥火车站坐地铁去豫园怎么走？')
+        expect(page.locator('.metro-card')).to_have_count(1)
+        check('metro guide separates rail station from airport',page.evaluate("!TravelApp.getState().facts.airport") and page.locator('.offer-group').count()==0)
+        check('Yuyuan metro diagram is visible',page.locator('.metro-map').is_visible() and '10' in page.locator('.metro-map').text_content())
+        page.locator('[data-metro-origin=lujiazui]').click()
+        check('origin selection creates a traceable new route turn',page.locator('.metro-card').count()==2 and '14' in page.locator('.metro-map').last.text_content())
+        check('dated official network map and reusable skill are linked',page.locator('.metro-network').count()==2 and page.locator('a[href="skills/shanghai-metro-guide/SKILL.md"]').count()==2)
+        check('composer does not repeat speech or settings',page.locator('.compose #interim').count()==0 and page.locator('.compose #remember').count()==0 and page.locator('.compose').bounding_box()['height']<100)
+        check('desktop transcript is expanded',page.locator('#transcript').bounding_box()['height']>430)
+        check('jump to latest is an overlay',page.locator('#jump-latest').evaluate("el=>getComputedStyle(el).position==='absolute'"))
+        page.screenshot(path=str(OUT/'metro-conversation-desktop.png'),full_page=True)
+        page.locator('#new-chat-top').click();page.locator('[data-demo=railout]').click()
+        check('outbound Shanghai rail example follows conversation','上海虹桥 → 杭州东' in page.locator('.offer-group').inner_text())
+        page.locator('#new-chat-top').click();page.locator('[data-demo=flight]').click()
+        check('inbound flight example follows conversation','北京 → 上海' in page.locator('.offer-group').filter(has_text='模拟航班').inner_text())
+        page.set_viewport_size({'width':390,'height':844});page.locator('#new-chat-top').click();send('从陆家嘴到豫园的地铁怎么走')
+        check('mobile metro fits without horizontal overflow',page.evaluate('document.documentElement.scrollWidth<=innerWidth+2'))
+        page.screenshot(path=str(OUT/'metro-conversation-mobile.png'),full_page=True)
         check('no uncaught errors in chat workflow',not errors)
         browser.close()
 finally:

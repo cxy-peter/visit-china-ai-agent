@@ -5,7 +5,7 @@ import argparse, base64, json, os, pathlib, shutil, socket, subprocess, tempfile
 from playwright.sync_api import sync_playwright, expect
 
 ROOT=pathlib.Path(__file__).resolve().parents[1]
-OUT=ROOT/'evidence/v5.5';OUT.mkdir(parents=True,exist_ok=True)
+OUT=ROOT/'evidence/v5.6';OUT.mkdir(parents=True,exist_ok=True)
 args=argparse.ArgumentParser();args.add_argument('--en',required=True);args.add_argument('--zh',required=True);args=args.parse_args()
 with socket.socket() as sock:
     sock.bind(('127.0.0.1',0));port=sock.getsockname()[1]
@@ -42,6 +42,7 @@ try:
               };
               Object.defineProperty(window,'speechSynthesis',{configurable:true,value:{getVoices:()=>[],cancel(){},speak(){throw Error('Unexpected cloud TTS');}}});
             }''',audio)
+            before=page.evaluate('TravelApp.getState().history.length')
             page.locator('#voice-language').select_option(language)
             page.locator('#start-call').click();page.locator('#mic-consent').check();page.locator('#consent-start').click()
             page.wait_for_function("()=>['listening','unavailable','permission_denied','voice_error'].includes(TravelApp.getCall().phase)",timeout=150000)
@@ -49,7 +50,7 @@ try:
             check(language+' actual WASM model listens',True)
             page.wait_for_function("()=>document.querySelector('#voice-level').value>0.005",timeout=15000)
             check(language+' microphone level reflects PCM energy',True)
-            page.wait_for_function('(word)=>document.querySelector("#transcript").textContent.toLowerCase().includes(word)',arg=expected,timeout=45000)
+            page.wait_for_function('({word,before})=>TravelApp.getState().history.slice(before).some(h=>h.text.toLowerCase().includes(word))',arg={'word':expected,'before':before},timeout=45000)
             check(language+' actual audio becomes saved transcript',True)
             page.wait_for_function("()=>TravelApp.getCall().phase==='listening'",timeout=15000)
             check(language+' automatically listens for the next turn',True)
@@ -64,7 +65,7 @@ try:
             page.evaluate('__fixtureAudio.close()')
         check('bilingual audio builds shared trip context',page.evaluate('TravelApp.getState().facts.city==="Shanghai" && TravelApp.getState().facts.party==="with parents"'))
         check('hotel need is not confused with a booked flight',page.evaluate('TravelApp.getState().facts.hotel==="not_booked"'))
-        check('final speech remains visible after hangup','地铁票' in page.locator('#interim').inner_text())
+        check('final speech remains visible after hangup','地铁票' in page.locator('#messages .user').last.inner_text() and not page.locator('#live-caption').is_visible())
         check('no external speech or paid API requests',all(r.startswith(url) for r in requests))
         check('no uncaught browser errors',not errors)
         page.screenshot(path=str(OUT/'local-voice-real-asr.png'),full_page=True)

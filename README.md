@@ -1,3 +1,7 @@
+# V5.6: deployed DeepSeek chat and metro routes
+
+The public site now has a private-access, stateless DeepSeek chat endpoint shared by voice and text. Live captions move into a larger conversation area; accidental voice fragments stay silent; Yu Garden metro diagrams and directional Shanghai train/flight examples appear below the relevant turn. See [setup, behavior and verification](docs/V5_6_CLOUD_CHAT.md). Historical release sections below describe their original scope.
+
 # V5.5: unified conversation and source library
 
 Search the original official-source catalog inside the active chat, attach references to text or voice turns, and open source details without losing the trip. Both views share one model status/consent control and the existing backend DeepSeek client. Public static mode stays explicit about its missing model backend. See [behavior, open-source references and verification](docs/V5_5_UNIFIED_WORKSPACE.md).
@@ -16,7 +20,7 @@ The public static site supports this local voice path. LiveKit is optional and i
 
 Incremental upgrade from V5.1: optional LiveKit WebRTC media worker, V4 official-source checks inside V5 cards, SQLite transactions and persistent sessions, and OIDC organization-login configuration. See [setup and precise limits](docs/V5_2_HANDOFF.md) and [resume boundaries](docs/V5_2_RESUME.md).
 
-**Real microphone, LiveKit-provider and organization SSO acceptance are still pending.** This is not a measured full-duplex release. SQLite supports processes on one persistent host, not multiple cloud hosts. Vercel remains a static preview.
+**Real microphone, LiveKit-provider and organization SSO acceptance are still pending.** This is not a measured full-duplex release. SQLite supports processes on one persistent host, not multiple cloud hosts. That V5.2 deployment was a static preview; V5.6 adds cloud chat while the persistent review/SSO backend remains separate.
 
 The browser-voice fallback and original regression behavior below remain available. Node >= 22.13 is required.
 

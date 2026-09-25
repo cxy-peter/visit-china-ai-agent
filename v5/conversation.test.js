@@ -91,3 +91,13 @@ test('local TTS output language can differ from the recognition language',async(
 test('model phrase endpoint can finalize despite sustained background energy',async()=>{
  const r=rig();await r.call.start({consent:true});const rec=r.call.rec;rec.listeners.result({result:{text:'Shanghai'}});r.call.lastSound=Date.now();await new Promise(resolve=>setTimeout(resolve,1450));assert.equal(rec.finalRequested,true);assert.equal(r.texts.length,0);rec.listeners.result({result:{text:''}});assert.deepEqual(r.texts,['Shanghai']);r.call.stop();
 });
+
+
+test('interrupted local ASR sends an accepted final immediately, rejects noise and ignores stale results',async()=>{
+ const r=rig();r.call.acceptText=t=>E.speechDecision(t).accepted;const rejected=[];r.call.onRejected=t=>rejected.push(t);
+ await r.call.start({consent:true});r.call.interruptAndListen();const old=r.call.rec;
+ old.listeners.result({result:{text:'啊'}});assert.equal(r.texts.length,0);
+ r.call.finish();old.listeners.result({result:{text:''}});assert.equal(r.texts.length,0);assert.equal(rejected.length,1);
+ const current=r.call.rec;assert.notEqual(current,old);current.listeners.result({result:{text:'上海地铁怎么走'}});
+ assert.equal(r.texts.length,1);assert.equal(r.texts[0],'上海地铁怎么走');old.listeners.result({result:{text:'late train'}});assert.equal(r.texts.length,1);r.call.stop();
+});

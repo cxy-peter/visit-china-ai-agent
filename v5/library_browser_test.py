@@ -3,7 +3,7 @@ import json,os,pathlib,shutil,socket,subprocess,tempfile,time,urllib.request
 from playwright.sync_api import sync_playwright,expect
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 HOSTED=os.environ.get('LIBRARY_TEST_URL')
-OUT=ROOT/('evidence/v5.5/hosted-library' if HOSTED else 'evidence/v5.5');OUT.mkdir(parents=True,exist_ok=True)
+OUT=ROOT/('evidence/v5.6/hosted-library' if HOSTED else 'evidence/v5.6');OUT.mkdir(parents=True,exist_ok=True)
 checks=[]
 def check(name,value):
     assert value,name
@@ -22,7 +22,7 @@ try:
     with sync_playwright() as p:
         browser=p.chromium.launch(headless=True);page=browser.new_page(viewport={'width':1440,'height':1000});errors=[]
         page.on('pageerror',lambda e:errors.append(str(e)));page.goto(url)
-        expect(page.locator('#mode')).to_contain_text('浏览器体验' if HOSTED else '本机')
+        expect(page.locator('#mode')).to_contain_text('云端聊天后端' if HOSTED else '本机')
         def send(text):page.locator('#message').fill(text);page.locator('#send').click()
         send('我计划和父母去上海，机票已经订好，想看看地铁怎么坐。')
         expect(page.locator('#transcript .user')).to_have_count(1)
@@ -42,7 +42,7 @@ try:
         check('opening request is preserved after source question','父母' in page.locator('#initial-request').inner_text())
         page.locator('#shared-model-open').click();expect(page.locator('#shared-model-dialog')).to_be_visible()
         if HOSTED:
-            check('hosted model status is honest about backend absence','后端未连接' in page.locator('#shared-model-detail').inner_text());page.locator('#shared-model-close').click()
+            check('hosted model status identifies deployed cloud backend','云端接口' in page.locator('#shared-model-detail').inner_text());page.locator('#shared-model-close').click()
         else:
             page.locator('#model-settings-open').click();page.locator('#ops-password').fill('test-admin');page.locator('#ops-login').click();expect(page.locator('#ops-body')).to_contain_text('当前工作流');page.locator('#ops-close').click()
             page.locator('#shared-model-open').click();page.locator('#shared-model-consent').check();page.locator('#shared-model-close').click()
@@ -69,7 +69,7 @@ try:
             page.locator('#nav-library').click();check('active call remains controllable in source library',page.locator('#library-hangup').is_visible() and page.evaluate('TravelApp.getCall().active'))
             page.locator('#library-hangup').click();check('library hangup stops the same call',not page.evaluate('TravelApp.getCall().active'));page.locator('#library-back').click()
         page.screenshot(path=str(OUT/'unified-chat-desktop.png'),full_page=True)
-        page.locator('#remember').check();page.reload();expect(page.locator('#transcript .user')).not_to_have_count(0)
+        page.locator('#chat-settings-open').click();page.locator('#remember').check();page.reload();expect(page.locator('#transcript .user')).not_to_have_count(0)
         check('stored chat keeps per-turn source references',page.locator('.turn-sources').count()>=2)
         page.locator('#new-chat-top').click();expect(page.locator('#transcript .user')).to_have_count(0)
         check('new chat removes old references and answers',page.evaluate('TravelApp.getSourceIds().length===0') and page.locator('.turn-sources,.assistant-answer').count()==0)

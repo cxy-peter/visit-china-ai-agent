@@ -1,7 +1,7 @@
 /* Shared deterministic state contract. Models propose facts; they never execute bookings. */
 (function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory();else root.TravelEngine=factory();})(typeof globalThis!=='undefined'?globalThis:this,function(){
 'use strict';
-const VERSION='5.5.0';
+const VERSION='5.6.0';
 const BASE={version:'wf-1',maxSpokenChars:220,questionOrder:['stage','flight','hotel','transfer','interests'],proactiveExtensions:true,promptSuffix:'Ask one useful question at a time. Accept a click as an answer. Never require listening to finish.'};
 const FIELDS={city:80,stage:['planning','arriving','exploring'],flight:['booked','not_booked','skip'],hotel:['booked','not_booked','skip'],transfer:['metro','taxi','driver','skip'],hotelName:120,area:100,interests:240,party:120,airport:12,terminal:8,zone:['public','restricted','baggage'],network:['online','poor','offline'],battery:'number'};
 const TASKS=['flight','hotel','transfer','explore','power','connection','metro','cash','payment','rail','luggage','help','restaurant'];
@@ -18,12 +18,12 @@ function parse(text,previous){const s=clean(text),p={},tasks=[];
  if(['flight','hotel'].includes(previous.lastQuestion)){if(/^(?:yes[, .!]*|already booked|booked|yes it is|已订|订好了|已经订好了)[.!。！\s]*$/i.test(s))p[previous.lastQuestion]='booked';if(/^(?:no|not yet|not booked|还没|还没订|没有|没订)[.!。！\s]*$/i.test(s))p[previous.lastQuestion]='not_booked';}
  if(/上海|shanghai|\bpvg\b|浦东/i.test(s))p.city='Shanghai';if(/北京|beijing|\bpek\b|\bpkx\b/i.test(s))p.city='Beijing';
  if(/boston|波士顿/i.test(s))p.city='Boston';else if(/new york|纽约|\bnyc\b/i.test(s))p.city='New York';
- const destination=s.match(/(?:to |到|去)(上海|shanghai|北京|beijing|波士顿|boston|纽约|new york)/i);if(destination)p.city=({'上海':'Shanghai','shanghai':'Shanghai','北京':'Beijing','beijing':'Beijing','波士顿':'Boston','boston':'Boston','纽约':'New York','new york':'New York'})[destination[1].toLowerCase()];
+ const destination=s.match(/(?:to |到|去|飞往)(上海|shanghai|北京|beijing|波士顿|boston|纽约|new york)/i);if(destination)p.city=({'上海':'Shanghai','shanghai':'Shanghai','北京':'Beijing','beijing':'Beijing','波士顿':'Boston','boston':'Boston','纽约':'New York','new york':'New York'})[destination[1].toLowerCase()];
  const other=s.match(/(?:going to|visit|heading to|去|想去)\s*(Tokyo|Paris|London|Chengdu|Hangzhou|Xi.an|东京|巴黎|伦敦|成都|杭州|西安)/i);if(other)p.city=other[1];
  if(/planning|next (?:month|week)|haven.t started|还没出发|准备去|计划去|下个月/i.test(s))p.stage='planning';
  if(/just (?:landed|arrived)|at (?:the )?airport|刚到|刚落地|在机场|public arrivals/i.test(s))p.stage='arriving';
  if(/already exploring|in (?:the )?(?:city|metro|subway)|在地铁|已经在玩|在市区/i.test(s))p.stage='exploring';
- if(/\bpvg\b|浦东/i.test(s))p.airport='PVG';if(/\bsha\b|虹桥/i.test(s))p.airport='SHA';if(/\bpek\b|首都机场/i.test(s))p.airport='PEK';if(/\bpkx\b|大兴机场/i.test(s))p.airport='PKX';const terminal=s.match(/\bT\s*([123])\b|([123])号航站楼/i);if(terminal)p.terminal='T'+(terminal[1]||terminal[2]);
+ if(/\bpvg\b|浦东/i.test(s))p.airport='PVG';if(/\bsha\b|虹桥/i.test(s)&&!/虹桥(?:火车站|站)|hongqiao (?:railway|train)/i.test(s))p.airport='SHA';if(/\bpek\b|首都机场/i.test(s))p.airport='PEK';if(/\bpkx\b|大兴机场/i.test(s))p.airport='PKX';const terminal=s.match(/\bT\s*([123])\b|([123])号航站楼/i);if(terminal)p.terminal='T'+(terminal[1]||terminal[2]);
  if(/public arrivals|landside|公共到达|公共区域/i.test(s))p.zone='public';if(/airside|restricted|安检内/i.test(s))p.zone='restricted';if(/baggage claim|行李提取/i.test(s))p.zone='baggage';
  for(const [field,word]of [['flight','flight|air ticket|机票'],['hotel','hotel|accommodation|酒店|住宿']]){
   if(new RegExp('(?:booked|reserved|already have).{0,28}(?:'+word+')|(?:'+word+').{0,15}(?:is booked|already booked|已订|已经订|订好了)|(?:已订|订好).{0,8}(?:'+word+')','i').test(s))p[field]='booked';
@@ -36,14 +36,25 @@ function parse(text,previous){const s=clean(text),p={},tasks=[];
  if(/prefer (?:the )?metro|take (?:the )?metro|选地铁|坐地铁去/i.test(s))p.transfer='metro';if(/prefer (?:a )?taxi|take (?:a )?taxi|想打车|选出租车/i.test(s))p.transfer='taxi';if(/private driver|airport pickup|司机接送|预约接机/i.test(s))p.transfer='driver';
  const interests=[];for(const [rx,name]of [[/architecture|建筑/i,'architecture'],[/food|美食/i,'food'],[/museum|博物馆/i,'museums'],[/garden|公园|园林/i,'gardens'],[/shopping|购物/i,'shopping']])if(rx.test(s))interests.push(name);if(interests.length)p.interests=interests.join(', ');
  for(const [id,rx]of [['restaurant',/restaurant|where to eat|dining|餐厅|饭店|吃饭|美食推荐/i],['power',/充电|battery|power bank/i],['connection',/网络|internet|sim card|esim|offline|没网/i],['metro',/subway|metro (?:station|ticket)|地铁站|地铁票/i],['cash',/exchange|换汇|现金|硬币|need cash/i],['payment',/支付|手续费|alipay|wechat|weixin|fee/i],['rail',/train|rail|火车|高铁/i],['luggage',/luggage storage|store.{0,10}bag|寄存/i],['help',/staff|help desk|工作人员|求助/i]])if(rx.test(s))tasks.push(id);
+ if(/豫园|yuyuan|yu garden/i.test(s)){p.city='Shanghai';if(!tasks.includes('metro'))tasks.push('metro');if(!/火车票|高铁票|train tickets|rail tickets/i.test(s)){const i=tasks.indexOf('rail');if(i>=0)tasks.splice(i,1);}}
  const requested=s.match(/(?:需要|想订|帮我找|推荐)(?:一家|一个|一间|一张)?(?:酒店|住宿|机票|飞机票|火车票|高铁票|饭店|餐厅)(?:[和与、，,\s]+(?:酒店|住宿|机票|飞机票|火车票|高铁票|饭店|餐厅))*/g)||[];
- if(/need (?:a|an) hotel\b|(?:需要|想订|帮我找)(?:一家|一个|一间)?(?:酒店|住宿)(?=和|与|推荐|[、，,。.!?\s]|$)/i.test(s)||requested.some(x=>/酒店|住宿/.test(x)))p.hotel='not_booked';if(/need (?:a|an) flight\b|(?:需要|想订|帮我找)(?:一张)?(?:机票|飞机票)/i.test(s)||requested.some(x=>/机票/.test(x)))p.flight='not_booked';if(p.flight==='not_booked')tasks.push('flight');if(p.hotel==='not_booked')tasks.push('hotel');if(p.transfer)tasks.push('transfer');if(p.interests)tasks.push('explore');
+ if(/need (?:a|an) hotel\b|(?:需要|想订|帮我找)(?:一家|一个|一间)?(?:酒店|住宿)(?=和|与|推荐|[、，,。.!?\s]|$)/i.test(s)||requested.some(x=>/酒店|住宿/.test(x)))p.hotel='not_booked';if(/need (?:a|an) flight\b|(?:需要|想订|帮我找)(?:一张)?(?:机票|飞机票)/i.test(s)||requested.some(x=>/机票/.test(x)))p.flight='not_booked';if(p.flight==='not_booked'||(/机票|飞机票|flight tickets?|air tickets?/i.test(s)&&p.flight!=='booked'))tasks.push('flight');if(p.hotel==='not_booked')tasks.push('hotel');if(p.transfer)tasks.push('transfer');if(p.interests)tasks.push('explore');
  // A comma-separated request must not swallow an explicit booked status for
  // the following service (e.g. 需要酒店，机票已订).
  for(const [field,word]of [['flight','机票|飞机票'],['hotel','酒店|住宿']])if(new RegExp('(?:'+word+')(?:已经|早就|已)?(?:订好了|订好|订了|订妥|预订好了)|(?:'+word+')已订').test(s)){p[field]='booked';const i=tasks.indexOf(field);if(i>=0)tasks.splice(i,1);}
  if(/taxi|cab\b|打车|出租车|车费/i.test(s)){p.transfer='taxi';if(!tasks.includes('transfer'))tasks.push('transfer');}
  if(previous.lastQuestion==='interests'&&!p.interests&&s&&!/^skip|跳过|随便$/i.test(s))p.interests=clean(s,240);
  return{patch:p,tasks};}
+function speechDecision(text,s=state()){
+ const t=clean(text,2000).replace(/[\s，。！？,.!?…]/g,'').toLowerCase();
+ if(t.length<2)return{accepted:false,reason:'too-short'};
+ if(/^(?:嗯|啊|哦|呃|额|唉|诶|喂|哈|嘿|uh|um|hmm|ah|oh)+$/i.test(t)||/^(.)\1{2,}$/u.test(t))return{accepted:false,reason:'filler'};
+ const context=['flight','hotel','confirm','issue','stage','transfer','interests'].includes(s.lastQuestion);
+ if(/^(?:yes|no|ok|okay|confirm|done|好的|确认|可以|对的|不是|没有|还没|已订|订好了|跳过|稍后|稍后再说)$/i.test(t))return{accepted:context,reason:context?'context-answer':'no-context'};
+ if(/^(?:你好|您好|hello|hi)$/i.test(t))return{accepted:!s.history?.length,reason:'greeting'};
+ const travel=/上海|北京|杭州|南京|苏州|广州|深圳|成都|西安|东京|巴黎|伦敦|纽约|波士顿|上海虹桥|豫园|城隍庙|人民广场|陆家嘴|南京东路|机场|地铁|酒店|住宿|机票|飞机|航班|火车|高铁|车票|打车|出租车|车费|公里|分钟|预算|出发|抵达|落地|出行|旅游|旅行|游玩|预订|餐厅|饭店|吃饭|美食|博物馆|建筑|公园|园林|购物|行李|寄存|支付|签证|护照|网络|电量|充电|父母|孩子|没网|工作人员|求助|吃素|素食|轻松|慢游|经济实惠|舒适|省钱|当地风味|明天|后天|下周|周末|天气|路线|怎么走|换乘|shanghai|beijing|hangzhou|nanjing|suzhou|guangzhou|shenzhen|chengdu|xi.an|tokyo|paris|london|boston|new york|hongqiao|yuyuan|yu garden|lujiazui|nanjing road|airport|metro|subway|hotel|flight|plane|train|rail|ticket|taxi|cab\b|budget|travel|trip|arriv|depart|book|restaurant|food|museum|architecture|garden|luggage|payment|visa|passport|internet|network|battery|power|parents|children|vegetarian|relaxed|comfort|kilomet|\bkm\b|tomorrow|weekend|weather|route|transfer/i;
+ return{accepted:travel.test(text),reason:travel.test(text)?'travel-intent':'unclear-intent'};
+}
 function apply(previous,event){const s=copy(previous);if(!event||typeof event!=='object')throw Error('EVENT_REQUIRED');const before=copy(s.facts);if(event.type==='preferences'){s.preferences=preferences(event.preferences);s.revision++;s.confirmedRevision=null;return s;}if(event.type==='language'){if(!['auto','zh','en'].includes(event.language))throw Error('LANGUAGE_VALUE');s.outputLanguage=event.language;if(event.language!=='auto')s.language=event.language;else {const last=[...s.history].reverse().find(h=>h.channel!=='click');if(last)s.language=/[\u4e00-\u9fff]/.test(last.text)?'zh':'en';}s.revision++;if(previous.confirmedRevision===previous.revision)s.confirmedRevision=s.revision;s.lastReply=reply(s).say;return s;}s.revision++;s.confirmedRevision=null;let message='',patch={},tasks=[];
  if(event.type==='text'){message=clean(event.text);if(!message)throw Error('EMPTY_MESSAGE');s.language=s.outputLanguage&&s.outputLanguage!=='auto'?s.outputLanguage:/[\u4e00-\u9fff]/.test(message)?'zh':/[a-z]/i.test(message)?'en':s.language;if(!s.initialRequest&&!/^(?:hi|hello|你好|您好|yes|no|好的|确认)[!！.。\s]*$/i.test(message))s.initialRequest={text:message,channel:event.channel||'text'};const parsed=parse(message,s);patch=parsed.patch;tasks=parsed.tasks;s.preferences=s.preferences||{};if(/预算低|经济实惠|便宜一点|省钱|low budget|budget friendly/i.test(message))s.preferences.budget='economy';if(/舒适优先|住好一点|comfort first/i.test(message))s.preferences.budget='comfort';if(/轻松|慢游|慢一点|relaxed pace|take it slow/i.test(message))s.preferences.pace='relaxed';if(/多看多玩|行程紧凑|packed itinerary/i.test(message))s.preferences.pace='full';if(/吃素|素食|vegetarian/i.test(message)&&!/不吃素|不要素食|not vegetarian/i.test(message))s.preferences.diet='vegetarian';if(/当地风味|local food/i.test(message))s.preferences.diet='local';if(/不吃素|不要素食|not vegetarian/i.test(message))delete s.preferences.diet;
   if(/^(?:yes|yes,? that.s right|confirm|confirmed|go ahead|好的|确认|可以|对的)[.!。！\s]*$/i.test(message)&&s.lastQuestion==='confirm')s.confirmedRevision=s.revision;
@@ -95,5 +106,5 @@ function restoreMemory(saved,policy=BASE){
 }
 function memory(s){return{facts:s.facts,tasks:s.tasks,language:s.language,outputLanguage:s.outputLanguage,preferences:s.preferences||{},history:s.history,initialRequest:s.initialRequest,answered:s.answered,currentIssue:s.currentIssue,outcomes:s.outcomes};}
 function proposal(p,state){if(!p||!p.facts||!Array.isArray(p.evidence))throw Error('PROPOSAL_SCHEMA');const facts=validatePatch(p.facts),messages=state.history.map(x=>x.text).join('\n');for(const key of Object.keys(facts)){const e=p.evidence.find(e=>e.field===key);if(!e||typeof e.quote!=='string'||!e.quote.trim()||!messages.includes(e.quote))throw Error('PROPOSAL_UNGROUNDED');}return facts;}
-return{VERSION,BASE,PREFS,preferences,FIELDS,TASKS,TITLES,URLS,clean,state,parse,apply,reply,validatePatch,proposal,restoreMemory,memory};
+return{VERSION,BASE,PREFS,preferences,FIELDS,TASKS,TITLES,URLS,clean,state,parse,speechDecision,apply,reply,validatePatch,proposal,restoreMemory,memory};
 });
