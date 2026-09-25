@@ -1,0 +1,26 @@
+name: V6.6 working source snapshot
+on:
+  push:
+    branches: [upgrade/v6-6-services-operations]
+    paths: ['.github/workflows/v66-source-snapshot.yml']
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Archive public source and full repository metadata
+        run: |
+          git archive --format=tar HEAD | gzip > /tmp/v66-working-source.tar.gz
+          git bundle create /tmp/v66-working-history.bundle --all
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v66-working-source-not-acceptance
+          path: |
+            /tmp/v66-working-source.tar.gz
+            /tmp/v66-working-history.bundle
+          retention-days: 2
