@@ -1,3 +1,7 @@
+# V5.4: chat-first travel companion
+
+Pastel message bubbles, full conversation context, top call controls, independent input/output languages, simulated hotel/flight/rail/restaurant cards, and a transparent taxi estimate. New chat clears the previous scenario and carries preferences only when requested. See [V5.4 behavior, verification and limits](docs/V5_4_CHAT.md).
+
 # V5.3: free local voice, visible transcripts and opening request
 
 Vosk now transcribes English/Chinese speech locally in the browser without a paid voice API. The microphone has a real level meter; live captions, both sides of the conversation and the first overall request stay visible. Optional browser memory restores the conversation on reload. See [setup, reference designs, verified behavior and limits](docs/V5_3_FREE_VOICE.md).

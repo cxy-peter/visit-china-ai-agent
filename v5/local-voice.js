@@ -36,9 +36,9 @@ class Call extends Voice.Call{
    this.processor=this.audio.createScriptProcessor(4096,1,1);this.silent=this.audio.createGain();this.silent.gain.value=0;
    this.source.connect(this.processor);this.processor.connect(this.silent);this.silent.connect(this.audio.destination);
    this.processor.onaudioprocess=event=>{
-    if(!this.active||this.muted||this.phase!=='listening'||!this.rec)return;
+    if(!this.active||this.muted||this.phase!=='listening'||!this.rec||this.finalizing)return;
     const samples=event.inputBuffer.getChannelData(0);let sum=0;for(const n of samples)sum+=n*n;
-    this.onLevel(Math.min(1,Math.sqrt(sum/samples.length)*6));
+    const rms=Math.sqrt(sum/samples.length),now=Date.now();this.onLevel(Math.min(1,rms*6));if(rms>.015)this.lastSound=now;if(this.pendingInterim&&this.lastSound&&now-this.lastSound>1400&&!this.finalizing)this.finish();
     try{this.rec.acceptWaveform(event.inputBuffer);}catch(_){this.mute(true);this.emit('voice_error','本机识别暂停，请恢复麦克风或改用文字。');}
    };
    this.ready=true;const say=this.pendingSay;this.pendingSay=null;
@@ -46,16 +46,24 @@ class Call extends Voice.Call{
   }catch(error){if(life!==this.lifecycle||!this.active)return;this.stop();this.emit(error.name==='NotAllowedError'?'permission_denied':'unavailable',error.name==='NotAllowedError'?'麦克风未获允许，可在地址栏开启权限或继续打字。':error.message);}
  }
  emit(phase,detail=''){if(this.stream)this.stream.getAudioTracks().forEach(t=>{t.enabled=phase==='listening'&&!this.muted;});super.emit(phase,detail);}
- cancel(options={}){if(this.rec){this.rec.remove();this.rec=null;}super.cancel(options);this.onLevel?.(0);}
+ cancel(options={}){clearTimeout(this.phraseTimer);clearTimeout(this.finalTimer);this.finalizing=false;this.lastSound=0;if(this.rec){this.rec.remove();this.rec=null;}super.cancel(options);this.onLevel?.(0);}
  speak(text){if(this.active&&!this.ready){this.pendingSay=text;return;}super.speak(text);}
  listen(){
   if(!this.active||!this.ready)return;if(this.muted){this.emit('muted');return;}
-  if(this.rec)this.rec.remove();const token=++this.epoch,rec=new this.model.KaldiRecognizer(this.audio.sampleRate);this.rec=rec;let sent=false;
-  rec.on('partialresult',m=>{if(!this.active||this.muted||token!==this.epoch||sent)return;this.pendingInterim=normalize(m.result.partial);this.onCaption(this.pendingInterim);});
-  rec.on('result',m=>{if(!this.active||this.muted||token!==this.epoch||sent)return;const text=normalize(m.result.text);if(!text)return;sent=true;this.pendingInterim='';this.onCaption(text);this.emit('processing');this.onText(text);});
+  clearTimeout(this.phraseTimer);clearTimeout(this.finalTimer);this.finalizing=false;this.lastSound=0;if(this.rec)this.rec.remove();const token=++this.epoch,rec=new this.model.KaldiRecognizer(this.audio.sampleRate);this.rec=rec;let sent=false,segments=[],lastPartial='';
+  rec.on('partialresult',m=>{if(!this.active||this.muted||token!==this.epoch||sent||this.finalizing)return;const partial=normalize(m.result.partial);if(partial&&partial!==lastPartial){this.lastSound=Date.now();clearTimeout(this.phraseTimer);}lastPartial=partial;this.pendingInterim=[...segments,partial].filter(Boolean).join('\n');this.onCaption(this.pendingInterim);});
+  rec.on('result',m=>{
+   if(!this.active||this.muted||token!==this.epoch||sent)return;
+   const text=normalize(m.result.text);if(text)segments.push(text);
+   // Natural phrase boundaries can be shorter than a conversational turn. Keep all
+   // finalized phrases visible until our silence endpoint (or explicit Send).
+   if(!this.finalizing){this.pendingInterim=segments.join('\n');lastPartial='';this.onCaption(this.pendingInterim);if(text){clearTimeout(this.phraseTimer);this.phraseTimer=setTimeout(()=>{if(this.active&&token===this.epoch)this.finish();},1400);}return;}
+   const final=segments.join('\n');if(!final)return;
+   sent=true;clearTimeout(this.finalTimer);this.finalizing=false;this.pendingInterim='';this.onCaption(final);this.emit('processing');this.onText(final);
+  });
   this.emit('listening','本机识别中 · 说完稍停即可发送，也可点击“说完了”。');
  }
- finish(){if(this.phase==='listening')this.rec?.retrieveFinalResult();}
+ finish(){if(this.phase!=='listening'||!this.rec||this.finalizing)return;clearTimeout(this.phraseTimer);this.finalizing=true;const token=this.epoch;this.rec.retrieveFinalResult();this.finalTimer=setTimeout(()=>{if(token!==this.epoch||!this.active)return;this.cancel({preserveInterim:true});this.muted=true;this.emit('muted','未取得完整识别结果。片段已保留，可编辑发送或恢复麦克风。');},5000);}
  mute(value=true){if(value){this.cancel({preserveInterim:true});this.muted=true;this.emit('muted');}else super.mute(false);}
  stop(){this.lifecycle=(this.lifecycle||0)+1;this.cancelLoading?.();this.cancelLoading=null;super.stop();this.ready=false;this.pendingSay=null;
   if(this.processor){this.processor.onaudioprocess=null;this.processor.disconnect();}this.source?.disconnect();this.silent?.disconnect();

@@ -49,6 +49,20 @@ test('begin resume pins workflow; new call after hangup picks new version',async
  const {app,client}=await server(t),c=client();await c('begin',{});app.db.mutate('test','version-change',{},s=>{s.active.version='wf-2';s.counter=2;return {};});
  assert.equal((await c('begin',{})).body.state.policy.version,'wf-1');await c('end',{});assert.equal((await c('begin',{})).body.state.policy.version,'wf-2');
 });
+test('new chat resets all scenario data and only keeps explicitly supplied preferences',async t=>{
+ const {client}=await server(t),c=client();await c('status');await c('turn',{requestId:'trip',expectedRevision:0,event:{type:'text',text:'Shanghai, I need a hotel'}});
+ const next=await c('begin',{reset:true,language:'zh',outputLanguage:'zh',preferences:{budget:'economy'}});
+ assert.equal(next.body.state.history.length,0);assert.deepEqual(next.body.state.facts,{});assert.deepEqual(next.body.state.tasks,[]);assert.equal(next.body.state.initialRequest,null);assert.equal(next.body.state.preferences.budget,'economy');assert.equal(next.body.state.outputLanguage,'zh');
+ const clear=await c('begin',{reset:true});assert.deepEqual(clear.body.state.preferences,{});
+});
+test('language and preference events use revision guards without granting model facts authority',async t=>{
+ const {client}=await server(t),c=client();await c('status');const lang=await c('turn',{requestId:'lang',expectedRevision:0,event:{type:'language',language:'en'}});assert.equal(lang.status,200);
+ const prefs=await c('turn',{requestId:'prefs',expectedRevision:1,event:{type:'preferences',preferences:{diet:'vegetarian'}}});assert.equal(prefs.status,200);assert.equal(prefs.body.state.preferences.diet,'vegetarian');assert.equal(prefs.body.state.history.length,0);
+ assert.equal((await c('turn',{requestId:'bad',expectedRevision:2,event:{type:'preferences',preferences:{hotel:'booked'}}})).status,400);
+});
+test('Boston trip cannot retrieve China-only rail guidance',async t=>{
+ const {client}=await server(t),c=client();await c('status');await c('turn',{requestId:'boston',expectedRevision:0,event:{type:'text',text:'New York to Boston by train'}});const out=await c('guide',{task:'rail',revision:1,live:false});assert.equal(out.status,400);assert.equal(out.body.error,'CITY_SOURCE_UNAVAILABLE');
+});
 test('context viewing cannot mutate facts, revision or produce new speech',async t=>{const {client}=await server(t),c=client();const out=await c('turn',{requestId:'view',expectedRevision:0,event:{type:'context',view:'rail',facts:{city:'Beijing'}}});assert.equal(out.status,200);assert.equal(out.body.state.revision,0);assert.deepEqual(out.body.state.facts,{});assert.equal(out.body.reply,null);});
 test('same event ID with different input is rejected',async t=>{const {client}=await server(t),c=client();const b={requestId:'x',expectedRevision:0,event:{type:'text',text:'Shanghai'}};await c('turn',b);assert.equal((await c('turn',{...b,event:{type:'text',text:'Beijing'}})).status,409);});
 test('V5 guide retrieves official text and distinguishes cached responses',async t=>{

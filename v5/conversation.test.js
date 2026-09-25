@@ -70,3 +70,24 @@ test('hangup while model loads cannot later open the microphone',async()=>{
 test('denied microphone releases model and reports permission failure',async()=>{
  const r=rig({deny:true});await r.call.start({consent:true});assert.equal(r.call.active,false);assert.equal(r.phases.at(-1),'permission_denied');assert.ok(r.models[0].terminated);
 });
+test('local short phrase breaks accumulate into one complete multiline turn',async()=>{
+ const r=rig();await r.call.start({consent:true});const rec=r.call.rec;
+ rec.listeners.result({result:{text:'I am going to Shanghai.'}});
+ rec.listeners.partialresult({result:{partial:'I also need a'}});
+ assert.equal(r.texts.length,0);assert.match(r.captions.at(-1),/Shanghai\.\nI also/);
+ r.call.finish();rec.listeners.result({result:{text:'I also need a hotel.'}});
+ assert.equal(r.texts.length,1);assert.equal(r.texts[0],'I am going to Shanghai.\nI also need a hotel.');r.call.stop();
+});
+test('silence requests a real final result and never commits an interim transcript',async()=>{
+ const r=rig();await r.call.start({consent:true});const rec=r.call.rec;
+ rec.listeners.partialresult({result:{partial:'Shanghai'}});r.call.lastSound=Date.now()-1500;
+ r.call.processor.onaudioprocess({inputBuffer:{getChannelData:()=>new Float32Array(4096)}});
+ assert.equal(rec.finalRequested,true);assert.equal(r.texts.length,0);
+ rec.listeners.result({result:{text:'Shanghai'}});assert.deepEqual(r.texts,['Shanghai']);r.call.stop();
+});
+test('local TTS output language can differ from the recognition language',async()=>{
+ const r=rig();r.synth.getVoices=()=>[{localService:true,lang:'zh-CN'}];await r.call.start({consent:true,language:'en-US'});r.call.outputLanguage='zh-CN';r.call.speak('准备好了吗');assert.equal(r.synth.last.lang,'zh-CN');assert.equal(r.call.language,'en-US');r.synth.last.onend();assert.equal(r.call.phase,'listening');r.call.stop();
+});
+test('model phrase endpoint can finalize despite sustained background energy',async()=>{
+ const r=rig();await r.call.start({consent:true});const rec=r.call.rec;rec.listeners.result({result:{text:'Shanghai'}});r.call.lastSound=Date.now();await new Promise(resolve=>setTimeout(resolve,1450));assert.equal(rec.finalRequested,true);assert.equal(r.texts.length,0);rec.listeners.result({result:{text:''}});assert.deepEqual(r.texts,['Shanghai']);r.call.stop();
+});

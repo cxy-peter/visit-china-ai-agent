@@ -5,7 +5,7 @@ import argparse, base64, json, os, pathlib, shutil, socket, subprocess, tempfile
 from playwright.sync_api import sync_playwright, expect
 
 ROOT=pathlib.Path(__file__).resolve().parents[1]
-OUT=ROOT/'evidence/v5.3';OUT.mkdir(parents=True,exist_ok=True)
+OUT=ROOT/'evidence/v5.4';OUT.mkdir(parents=True,exist_ok=True)
 args=argparse.ArgumentParser();args.add_argument('--en',required=True);args.add_argument('--zh',required=True);args=args.parse_args()
 with socket.socket() as sock:
     sock.bind(('127.0.0.1',0));port=sock.getsockname()[1]
@@ -36,8 +36,8 @@ try:
               window.__fixtureTracks=[];
               navigator.mediaDevices.getUserMedia=async()=>{
                 const dest=__fixtureAudio.createMediaStreamDestination();
-                const source=__fixtureAudio.createBufferSource();source.buffer=buffer;
-                source.connect(dest);await __fixtureAudio.resume();source.start(__fixtureAudio.currentTime+1);
+                window.__playFixture=()=>{const source=__fixtureAudio.createBufferSource();source.buffer=buffer;source.connect(dest);source.start(__fixtureAudio.currentTime+.4);};
+                await __fixtureAudio.resume();__playFixture();
                 window.__fixtureTracks.push(...dest.stream.getTracks());return dest.stream;
               };
               Object.defineProperty(window,'speechSynthesis',{configurable:true,value:{getVoices:()=>[],cancel(){},speak(){throw Error('Unexpected cloud TTS');}}});
@@ -51,6 +51,13 @@ try:
             check(language+' microphone level reflects PCM energy',True)
             page.wait_for_function('(word)=>document.querySelector("#transcript").textContent.toLowerCase().includes(word)',arg=expected,timeout=45000)
             check(language+' actual audio becomes saved transcript',True)
+            page.wait_for_function("()=>TravelApp.getCall().phase==='listening'",timeout=15000)
+            check(language+' automatically listens for the next turn',True)
+            if language=='en-US':
+                previous=page.evaluate('TravelApp.getState().history.length')
+                page.evaluate('__playFixture()')
+                page.wait_for_function('(n)=>TravelApp.getState().history.length>n',arg=previous,timeout=45000)
+                check('second actual audio turn submits without Send or restarting call',True)
             check(language+' first request remains visible',bool(page.locator('#initial-request').inner_text()))
             page.locator('#hangup').click()
             check(language+' microphone track stopped',page.evaluate('__fixtureTracks.every(t=>t.readyState==="ended")'))

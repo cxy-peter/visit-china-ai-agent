@@ -4,6 +4,7 @@ const NODE_PROMPT='Produce one practical travel task node ONLY from supplied evi
 const categories={metro:'transport',transfer:'transport',explore:'destination',luggage:'general',help:'general',flight:'general'};
 async function guide({state,task,live,modelAllowed,base,signal}){
  if(!E.TASKS.includes(task))throw Error('TASK_NOT_ALLOWED');
+ if(['boston','new york','tokyo','paris','london','东京','巴黎','伦敦'].includes(String(state.facts.city||'').toLowerCase()))throw Error('CITY_SOURCE_UNAVAILABLE');
  const d={...state.facts,city:state.facts.city||'Unknown',battery:state.facts.battery??null,language:state.language,location:{airport:state.facts.airport||'Unknown',terminal:state.facts.terminal||'',zone:state.facts.zone||''}};
  const low=E.reply(state).urgent||['offline','poor'].includes(d.network);
  const need={id:task,category:categories[task]||task,text:E.reply(state).plan.find(x=>x.id===task)?.title||task};

@@ -4,7 +4,7 @@ Speech recognition/synthesis are controlled test doubles in BOTH modes. No real 
 import os, sys, json, time, pathlib, tempfile, subprocess, hashlib, urllib.request, shutil, socket
 from playwright.sync_api import sync_playwright, expect
 ROOT=pathlib.Path(__file__).resolve().parents[1]
-OUT=ROOT/'evidence/v5.3';OUT.mkdir(parents=True,exist_ok=True)
+OUT=ROOT/'evidence/v5.4';OUT.mkdir(parents=True,exist_ok=True)
 static='--static' in sys.argv
 checks=[]
 def check(name,value):
@@ -52,6 +52,7 @@ try:
         check('LiveKit is honestly unavailable without configuration', page.locator('#voice-provider option[value=livekit]').evaluate('(el)=>el.disabled'))
         check('LiveKit connection code is loaded', page.evaluate("typeof TravelRealtime.Call==='function'"))
         page.locator('#voice-provider').select_option('browser')
+        page.locator('#voice-language').select_option('en-US')
         check('call entry visible',page.locator('#start-call').is_visible())
         page.screenshot(path=str(OUT/('static-desktop.png' if static else 'desktop.png')),full_page=True)
         page.locator('#start-call').click();page.locator('#consent-start').click()
