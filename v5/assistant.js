@@ -7,10 +7,12 @@ function validate(value,evidence,history){
  const text=E.clean(value.text,900);
  if(/https?:|www\.|已(?:出票|扣款|预订成功)|booking (?:is )?confirmed|reservation (?:is )?confirmed|(?:send|upload|provide).{0,30}(?:passport|password|otp)|(?:发送|上传|提供).{0,20}(?:护照|密码|验证码)/i.test(text))throw Error('ANSWER_UNSAFE');
  const used=evidence.filter(e=>sourceIds.includes(e.id));
- const supported=[history.map(h=>h.text).join(' '),...used.map(e=>e.summary)].join(' ');
+ const supported=[history.map(h=>h.text).join(' '),...used.map(e=>[e.summary,e.reviewedAt,e.published].filter(Boolean).join(' '))].join(' ');
  // A line-leading list marker is formatting, not a fare, distance or other claim.
  const claims=text.replace(/(^|\n)\s*\d{1,2}[.)、]\s+(?=\S)/g,'$1');
- if((claims.match(/\d+(?:[.,]\d+)?\s*%?/g)||[]).some(n=>!supported.includes(n)))throw Error('ANSWER_NUMBER');
+ const numbers=value=>(value.match(/\d+(?:[.,]\d+)*\s*%?/g)||[]).map(n=>n.trim().replace(/\s+/g,''));
+ const supportedNumbers=new Set(numbers(supported));
+ if(numbers(claims).some(n=>!supportedNumbers.has(n)))throw Error('ANSWER_NUMBER');
  if(evidence.length&&!sourceIds.length)throw Error('ANSWER_CITATION_REQUIRED');
  return{text,sourceIds,mode:'deepseek',notice:evidence.length?'saved-summaries':'conversation-only'};
 }

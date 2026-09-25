@@ -51,11 +51,23 @@ function answerRows(h){
  const anchor=key==='taxi'?(intent.origin||intent.destination||previous||''):(intent.destination||intent.origin||previous||'');
  return TravelServices.cards(key,anchor,h.language||state.language,TravelLibrary.records);
 }
+function visibleRows(rows,limit=6){
+ const groups=new Map(),seen=new Set();
+ for(const row of rows){if(!usable(row)||seen.has(row.id))continue;seen.add(row.id);if(!groups.has(row.kind))groups.set(row.kind,[]);groups.get(row.kind).push(row);}
+ const queues=[...groups.values()],result=[],capacity=Math.max(limit,queues.length);
+ // Give each requested service a slot before adding another option of one kind.
+ // If a question covers more than six kinds, retain one per kind rather than hide one.
+ while(result.length<capacity&&queues.some(group=>group.length))for(const group of queues){if(group.length)result.push(group.shift());if(result.length>=capacity)break;}
+ return result;
+}
 function answerHTML(h){
- const a=h.assistance,zh=(h.language||TravelApp.getState().language)==='zh',rows=answerRows(h),body=cards(rows.slice(0,6),zh);
+ const a=h.assistance,zh=(h.language||TravelApp.getState().language)==='zh',rows=answerRows(h),body=cards(visibleRows(rows),zh);
  const evidence=[...new Set((a?.execution?.retrieval?.hits||[]).map(hit=>hit.sourceId))].map(id=>TravelLibrary.get(id)).filter(Boolean);
  return (body?'<div class="answer-services">'+body+'</div><p class="muted">'+(zh?'可在运营方查询当前价格和可用量；未下单或预订。':'Check providers for current prices and availability; no order or reservation has been made.')+'</p>':'')+(a?.execution?'<details class="answer-evidence"><summary>'+(zh?'这次回答查了哪些资料？':'What evidence was retrieved?')+'</summary><ul>'+evidence.map(r=>{const url=webUrl(r.url);return url?'<li><a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">'+esc(r.title)+' ↗</a></li>':'';}).join('')+'</ul></details>':'');
 }
 function hasVerified(h){return answerRows(h).some(row=>row.status!=='provider-search'&&usable(row));}
 window.TravelServiceUI={render,answerHTML,answerRows,cards,hasVerified};render();
+// app.js restores memory before this module loads. Redraw once after exporting;
+// ordinary service renders never call refresh, so app -> service render cannot recurse.
+if(TravelApp.getState().history.length)TravelApp.refresh?.();
 })();

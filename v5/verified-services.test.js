@@ -148,3 +148,29 @@ test('deep-copied browser state resolves old service follow-ups by answer ID the
  assert.equal(sourceIds({...oldTurn,revision:'2'}).length,0);
  assert.equal(history[1].assistance,undefined);
 });
+
+test('loading the service UI redraws restored offline conversation once after publishing its API',()=>{
+ const fs=require('node:fs'),vm=require('node:vm'),E=require('./engine');
+ const original=E.apply(E.state(),{type:'text',text:'上海需要酒店'}),restored=E.restoreMemory(JSON.parse(JSON.stringify(E.memory(original))));
+ let refreshes=0,html='模拟酒店卡';
+ const context={window:{},document:{getElementById:()=>null},URL,TravelLibrary:L,TravelServices:S,TravelDiscovery:Discovery,TravelApp:{
+  getState:()=>JSON.parse(JSON.stringify(restored)),
+  refresh:()=>{refreshes++;assert.ok(context.window.TravelServiceUI);html=context.window.TravelServiceUI.answerHTML(restored.history[0]);context.window.TravelServiceUI.render();}
+ }};
+ vm.runInNewContext(fs.readFileSync(require.resolve('./service-ui'),'utf8'),context);
+ assert.equal(refreshes,1);assert.match(html,/已核对地点/);assert.match(html,/梅园路330号/);assert.ok(!html.includes('模拟酒店卡'));
+ context.window.TravelServiceUI.render();assert.equal(refreshes,1);assert.equal(restored.history[0].assistance,undefined);
+});
+
+test('mixed hotel, restaurant and rail requests each keep real cards within the six-card display budget',()=>{
+ const fs=require('node:fs'),vm=require('node:vm');
+ const h={revision:1,text:'上海需要酒店、餐厅、火车票和机票',language:'zh',context:{city:'Shanghai'}},state={language:'zh',facts:{city:'Shanghai'},history:[h]};
+ const context={window:{},document:{getElementById:()=>null},URL,TravelLibrary:L,TravelServices:S,TravelDiscovery:Discovery,TravelApp:{getState:()=>JSON.parse(JSON.stringify(state))}};
+ vm.runInNewContext(fs.readFileSync(require.resolve('./service-ui'),'utf8'),context);
+ const ui=context.window.TravelServiceUI,rows=ui.answerRows(h),html=ui.answerHTML(h);
+ assert.ok(rows.length>6);
+ const displayed=[...html.matchAll(/<article class="service-card" data-metric-kind="([^"]+)"/g)].map(m=>m[1]);
+ assert.equal(displayed.length,6);
+ for(const kind of ['hotel','restaurant','rail'])assert.equal(displayed.filter(k=>k===kind).length,2,kind);
+ assert.ok(!displayed.includes('flight'));assert.ok(!html.includes('模拟推荐'));
+});
