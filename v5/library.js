@@ -1,11 +1,11 @@
 /* One source catalog for the library, text chat and voice transcript. */
-(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('../v4/core'),require('../v4/data'),require('../data/official/records.json'),require('./discovery'),require('./service-data'),require('./news-data'),require('./theme-routes-data'));else root.TravelLibrary=factory(root.ArrivalCore,root.ArrivalData,root.ArrivalCorpus,root.TravelDiscovery,root.TravelServices,root.TravelNews,root.TravelThemeData);})(globalThis,function(C,D,corpus,Discovery,Services,News,Themes){
+(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory(require('../v4/core'),require('../v4/data'),require('../data/official/records.json'),require('./discovery'),require('./service-data'),require('./news-data'),require('./theme-routes-data'),require('./transport-history'));else root.TravelLibrary=factory(root.ArrivalCore,root.ArrivalData,root.ArrivalCorpus,root.TravelDiscovery,root.TravelServices,root.TravelNews,root.TravelThemeData,root.TravelTransportHistory);})(globalThis,function(C,D,corpus,Discovery,Services,News,Themes,Transport){
 'use strict';
 const indexed=Array.isArray(corpus)?corpus:corpus?.records||[],seen=new Set();
 const base=[...D.sources,...indexed].filter(r=>{if(seen.has(r.url))return false;seen.add(r.url);return true;}).map(r=>({...r,kind:r.kind||r.source_kind}));
 // Several entities can share a source page (e.g. two railway stations), so supplemental
 // rows are deduplicated by entity ID, not URL. Dated news also retains its own provenance.
-const records=[...new Map([...base,...Discovery.records(),...Services.records,...News.records,...Themes.records].map(r=>[r.id,r])).values()];
+const records=[...new Map([...base,...Discovery.records(),...Services.records,...News.records,...Themes.records,...Transport.records].map(r=>[r.id,r])).values()];
 const aliases=new Map(Services.verified.items.filter(r=>r.replacementOf).map(r=>[r.id,r.replacementOf]));
 const canonical=id=>aliases.get(id)||id;
 const byId=new Map(records.map(r=>[r.id,r])),baseline=new Map(byId);let dynamicIds=new Set();

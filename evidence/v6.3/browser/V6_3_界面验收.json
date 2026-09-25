@@ -1,0 +1,134 @@
+{
+  "checks": [
+    {
+      "name": "model mode defaults Auto",
+      "passed": true
+    },
+    {
+      "name": "manual mode persists",
+      "passed": true
+    },
+    {
+      "name": "admin direct login and private DeepSeek connection",
+      "passed": true
+    },
+    {
+      "name": "only browser online speech selectable",
+      "passed": true
+    },
+    {
+      "name": "sourced district route visible",
+      "passed": true
+    },
+    {
+      "name": "itinerary hotel phone",
+      "passed": true
+    },
+    {
+      "name": "timestamps and real map links",
+      "passed": true
+    },
+    {
+      "name": "itinerary export includes sources",
+      "passed": true
+    },
+    {
+      "name": "mobile itinerary has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "time adjustment sends contextual request",
+      "passed": true
+    },
+    {
+      "name": "Auto chooses Pro",
+      "passed": true
+    },
+    {
+      "name": "typing keeps generation running",
+      "passed": true
+    },
+    {
+      "name": "queued middle fragment does not remain pending",
+      "passed": true
+    },
+    {
+      "name": "original query finishes in its own turn",
+      "passed": true
+    },
+    {
+      "name": "followup request retains both turns",
+      "passed": true
+    },
+    {
+      "name": "natural pause does not send phrase 0",
+      "passed": true
+    },
+    {
+      "name": "natural pause does not send phrase 1",
+      "passed": true
+    },
+    {
+      "name": "natural pause does not send phrase 2",
+      "passed": true
+    },
+    {
+      "name": "three phrases saved in a single turn",
+      "passed": true
+    },
+    {
+      "name": "recognizer detached while speaking",
+      "passed": true
+    },
+    {
+      "name": "automatic listening resumes after playback",
+      "passed": true
+    },
+    {
+      "name": "partial-only browser service result no longer disappears",
+      "passed": true
+    },
+    {
+      "name": "hangup stops recorder",
+      "passed": true
+    },
+    {
+      "name": "new chat retains archive",
+      "passed": true
+    },
+    {
+      "name": "archived conversation restores full transcript",
+      "passed": true
+    },
+    {
+      "name": "chat archive survives reload",
+      "passed": true
+    },
+    {
+      "name": "two numbered requests rendered",
+      "passed": true
+    },
+    {
+      "name": "historical seat comparison preserves unknown prices",
+      "passed": true
+    },
+    {
+      "name": "empty historical time window is honest",
+      "passed": true
+    },
+    {
+      "name": "multiple itinerary controls export the correct subtask",
+      "passed": true
+    },
+    {
+      "name": "source self-assessment entry available",
+      "passed": true
+    },
+    {
+      "name": "no uncaught browser errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "scope": "Local browser with fixture model and synthetic recognition events, not human microphone quality."
+}

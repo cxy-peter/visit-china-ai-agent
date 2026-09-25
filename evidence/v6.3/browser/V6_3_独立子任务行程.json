@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "kind": "itinerary",
+  "theme": "qingpu",
+  "language": "zh",
+  "title": "青浦区 · 分区漫游",
+  "scope": "依据政府公开地点记录编排；日期、时段和出发位置可继续调整。没有沿用历史节庆活动。",
+  "city": "Shanghai",
+  "startTime": "09:30",
+  "days": [
+    {
+      "day": 1,
+      "title": "青浦区",
+      "stops": [
+        {
+          "id": "district-qingpu-0",
+          "title": "元荡桥",
+          "nameZh": "元荡桥",
+          "nameEn": "Yuandang Bridge",
+          "address": "上海市青浦区 · 元荡桥（请用地图确认入口）",
+          "description": "纳入本次可调整的分区行程；参观与移动时段为规划建议。",
+          "station": null,
+          "category": "sightseeing",
+          "sourceIds": [
+            "district-qingpu"
+          ],
+          "sourceUrls": [
+            "https://english.shanghai.gov.cn/en-CityTour/20250427/b2eff944fe05497ea6424937b170b84c.html"
+          ],
+          "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E5%85%83%E8%8D%A1%E6%A1%A5%20%E4%B8%8A%E6%B5%B7%E5%B8%82%E9%9D%92%E6%B5%A6%E5%8C%BA%20%C2%B7%20%E5%85%83%E8%8D%A1%E6%A1%A5%EF%BC%88%E8%AF%B7%E7%94%A8%E5%9C%B0%E5%9B%BE%E7%A1%AE%E8%AE%A4%E5%85%A5%E5%8F%A3%EF%BC%89&city=310000&view=map&src=visit-china",
+          "url": "https://english.shanghai.gov.cn/en-CityTour/20250427/b2eff944fe05497ea6424937b170b84c.html",
+          "phone": null,
+          "phoneRole": null,
+          "liveAvailability": false,
+          "order": 1,
+          "role": "visit",
+          "plannedArrival": "09:30",
+          "plannedDeparture": "11:00",
+          "plannedDurationMinutes": 90,
+          "transferBufferMinutes": 0,
+          "timeBasis": "editorial-planning-allocation",
+          "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+        },
+        {
+          "id": "district-qingpu-1",
+          "title": "金泽古镇",
+          "nameZh": "金泽古镇",
+          "nameEn": "Jinze Ancient Town",
+          "address": "上海市青浦区 · 金泽古镇（请用地图确认入口）",
+          "description": "纳入本次可调整的分区行程；参观与移动时段为规划建议。",
+          "station": null,
+          "category": "sightseeing",
+          "sourceIds": [
+            "district-qingpu"
+          ],
+          "sourceUrls": [
+            "https://english.shanghai.gov.cn/en-CityTour/20250427/b2eff944fe05497ea6424937b170b84c.html"
+          ],
+          "mapUrl": "https://uri.amap.com/search?keyword=%E4%B8%8A%E6%B5%B7%20%E9%87%91%E6%B3%BD%E5%8F%A4%E9%95%87%20%E4%B8%8A%E6%B5%B7%E5%B8%82%E9%9D%92%E6%B5%A6%E5%8C%BA%20%C2%B7%20%E9%87%91%E6%B3%BD%E5%8F%A4%E9%95%87%EF%BC%88%E8%AF%B7%E7%94%A8%E5%9C%B0%E5%9B%BE%E7%A1%AE%E8%AE%A4%E5%85%A5%E5%8F%A3%EF%BC%89&city=310000&view=map&src=visit-china",
+          "url": "https://english.shanghai.gov.cn/en-CityTour/20250427/b2eff944fe05497ea6424937b170b84c.html",
+          "phone": null,
+          "phoneRole": null,
+          "liveAvailability": false,
+          "order": 2,
+          "role": "visit",
+          "plannedArrival": "12:00",
+          "plannedDeparture": "13:30",
+          "plannedDurationMinutes": 90,
+          "transferBufferMinutes": 60,
+          "timeBasis": "editorial-planning-allocation",
+          "transferNote": "预留移动与休息时间；实际交通请打开地图。"
+        }
+      ]
+    }
+  ],
+  "accommodations": [],
+  "sourceIds": [
+    "district-qingpu"
+  ],
+  "allSourceIds": [
+    "district-qingpu"
+  ],
+  "sources": [
+    {
+      "id": "district-qingpu",
+      "title": "青浦区路线地点 / Qingpu route places",
+      "url": "https://english.shanghai.gov.cn/en-CityTour/20250427/b2eff944fe05497ea6424937b170b84c.html",
+      "reviewedAt": "2026-09-25",
+      "publishedAt": "2025-04-27"
+    }
+  ],
+  "missingSourceIds": [],
+  "status": "ready",
+  "timeBasis": "editorial-planning-allocation",
+  "liveAvailability": false,
+  "notes": [
+    "时间为可调整的行程建议，不是开馆时间、实时交通预测或已预约时段。",
+    "出发前核对开放、预约、天气与通行；餐饮和酒店不含实时房态、餐位、价格。",
+    "餐饮可围绕两个停留点搜索；当前尚未核对本区具体餐馆和酒店，不把其他区商户当作附近推荐。"
+  ]
+}
