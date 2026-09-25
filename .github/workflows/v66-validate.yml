@@ -27,15 +27,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Apply readable exact-baseline integration on feature branch only
+      - name: Apply source-verified completion on feature branch only
         if: github.event_name == 'push' && github.ref == 'refs/heads/upgrade/v6-6-services-operations'
         run: |
-          if test -f .upgrade/integrate-v66.py; then
-            python3 .upgrade/integrate-v66.py
+          if test -f .upgrade/complete-v66.py; then
+            python3 .upgrade/complete-v66.py
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git add package.json package-lock.json v5/ .upgrade/
-            git commit -m 'feat: integrate V6.6 related services and bounded operator workflow'
+            git add v5/ .upgrade/
+            git commit -m 'fix: visible pending review, consistent departure filters and retained state'
             git push origin HEAD:upgrade/v6-6-services-operations
           fi
       - run: npm ci --ignore-scripts --no-audit --no-fund
@@ -65,7 +65,12 @@ jobs:
           counts={k:int(re.search(r'^# '+k+r' (\d+)$',log,re.M).group(1)) for k in ['tests','pass','fail','skipped']}
           b=json.loads((out/'browser/report.json').read_text());assert b['checks'] and all(c['passed'] for c in b['checks']) and not b['errors']
           p=json.loads((root/'evidence/v6.5/prompt-preservation.json').read_text());assert p['passed']==p['total']
-          result={'version':'6.6.0','testedCommit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'run':os.environ['GITHUB_RUN_ID'],'checkedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'program':counts,'browser':{'total':len(b['checks']),'passed':sum(c['passed'] for c in b['checks'])},'promptPreservation':{'passed':p['passed'],'total':p['total']},'sourceHashes':{str(f):hashlib.sha256(f.read_bytes()).hexdigest() for f in sorted((root/'v5').glob('*.js'))},'scope':'Development contracts, historical synthetic corpus, Chromium and local HTTP with controlled model responses. No new paid LLM, real microphone, supplier inventory, orders or production acceptance.'}
+          compatibility={}
+          for folder in ['browser','compat-browser']:
+              report=json.loads((root/'evidence/v6.5'/folder/'report.json').read_text())
+              assert report['checks'] and all(c['passed'] for c in report['checks']) and not report['errors']
+              compatibility[folder]={'passed':sum(c['passed'] for c in report['checks']),'total':len(report['checks'])}
+          result={'version':'6.6.0','testedCommit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'run':os.environ['GITHUB_RUN_ID'],'checkedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'program':counts,'browser':{'total':len(b['checks']),'passed':sum(c['passed'] for c in b['checks'])},'compatibility':compatibility,'promptPreservation':{'passed':p['passed'],'total':p['total']},'sourceHashes':{str(f):hashlib.sha256(f.read_bytes()).hexdigest() for f in sorted((root/'v5').glob('*.js'))},'scope':'Development contracts, historical synthetic corpus, Chromium and local HTTP with controlled model responses. No new paid LLM, real microphone, supplier inventory, orders or production acceptance.'}
           (out/'acceptance.json').write_text(json.dumps(result,ensure_ascii=False,indent=2));(out/'prompt-preservation.json').write_text(json.dumps(p,ensure_ascii=False,indent=2));print(json.dumps(result,ensure_ascii=False))
           PY
       - name: Evidence
