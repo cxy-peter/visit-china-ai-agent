@@ -1,13 +1,13 @@
 'use strict';
 // Reproducible, dependency-free sparse retrieval. These vectors are NOT learned embeddings.
-const crypto=require('node:crypto'),L=require('./library'),Q=require('./confidence');
+const crypto=require('node:crypto'),L=require('./library'),Q=require('./confidence'),Cities=require('./city-scope');
 const hash=s=>crypto.createHash('sha256').update(s).digest('hex').slice(0,16);
 const aliases=[[/地铁|subway|metro/gi,' metro 地铁'],[/火车|高铁|train|railway/gi,' rail 火车 高铁'],[/酒店|住宿|hotel/gi,' hotel 酒店'],[/寄存|存包|luggage|storage|bounce/gi,' luggage 行李 寄存'],[/充电宝|power bank|charging/gi,' charging 充电宝'],[/买票|购票|tickets?/gi,' ticket 购票'],[/豫园|yu garden|yuyuan/gi,' 豫园 yuyuan'],[/人民广场|people.?s square/gi,' 人民广场'],[/浦东机场|pudong airport|pvg/gi,' 浦东机场']];
 function normalize(s){let q=String(s||'').toLowerCase();for(const [p,v] of aliases)q=q.replace(p,m=>m+' '+v);return q;}
 function tokens(s){const q=normalize(s),en=q.match(/[a-z0-9]{2,}/g)||[],cn=q.match(/[\u3400-\u9fff]+/g)||[];return [...en,...cn.flatMap(w=>w.length===1?[w]:Array.from({length:w.length-1},(_,i)=>w.slice(i,i+2)))];}
 function chunks(records,{chunkSize=520,overlap=60,city=null}={}){
  const rows=[];
- for(const r of records){if(!L.current(r)||Q.source(r).score<60||!(r.content||r.summaryZh||r.summary)||city&&r.city&&r.city!=='China'&&r.city!==city)continue;
+ for(const r of records){if(!L.current(r)||Q.source(r).score<60||!(r.content||r.summaryZh||r.summary)||!Cities.applies(r,city))continue;
   const body=[r.title,(r.topics||[]).join(' '),r.content||[r.summaryZh,r.summary].filter(Boolean).join('\n')].join('\n').replace(/<[^>]*>/g,' ').replace(/\r/g,'').trim(),version=hash(body+String(r.publicationHash||r.reviewedAt));
   for(let start=0,index=0;start<body.length;start+=chunkSize-overlap,index++){
    const text=body.slice(start,start+chunkSize);rows.push({id:r.id+':'+version+':'+index,sourceId:r.id,version,index,start,end:start+text.length,title:r.title,city:r.city,text,url:r.url,reviewedAt:r.reviewedAt,recordType:r.recordType||'summary',sourceType:r.sourceType||r.kind,published:r.published||r.publishedAt,community:r.recordType==='community'});if(start+chunkSize>=body.length)break;
@@ -43,5 +43,5 @@ function retrievePrepared(query,prepared,overrides={}){
  return{method:'BM25 + sparse TF-IDF cosine + RRF + parent diversification',embedding:'none',reranker:'deterministic lexical/evidence reranking',query:String(query).slice(0,400),corpusChunks:all.length,candidates:scored.length,hits,elapsedMs:Date.now()-started};
 }
 function evidence(result){const out=[];for(const c of result.hits){let r=out.find(r=>r.id===c.sourceId);if(!r){r={id:c.sourceId,title:c.title,city:c.city,summary:'',chunkIds:[],reviewedAt:c.reviewedAt,sourceType:c.sourceType,recordType:c.recordType,published:c.published,community:c.community};out.push(r);}r.summary+=[r.summary?'\n':'',c.text].join('');r.chunkIds.push(c.id);}return out;}
-function trace(result){return{method:result.method,embedding:result.embedding,reranker:result.reranker,corpusChunks:result.corpusChunks,candidates:result.candidates,elapsedMs:result.elapsedMs,hits:result.hits.map(c=>({id:c.id,sourceId:c.sourceId,version:c.version,score:Number(c.score.toFixed(5)),coverage:Number(c.coverage.toFixed(3))}))};}
+function trace(result){return{method:result.method,embedding:result.embedding,reranker:result.reranker,queryPlan:result.queryPlan,corpusChunks:result.corpusChunks,candidates:result.candidates,elapsedMs:result.elapsedMs,hits:result.hits.map(c=>({id:c.id,sourceId:c.sourceId,version:c.version,score:Number(c.score.toFixed(5)),coverage:Number(c.coverage.toFixed(3))}))};}
 module.exports={chunks,compile,retrieve,retrievePrepared,evidence,trace,tokens,hash};

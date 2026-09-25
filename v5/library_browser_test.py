@@ -54,7 +54,9 @@ try:
             expect(page.locator('.assistant-answer')).to_have_count(1)
             check('one shared consent enables model response inside existing conversation','This is a test response.' in page.locator('.assistant-answer').inner_text() and page.locator('#model-consent').is_checked())
             page.locator('.turn-sources').last.locator('summary').click()
-            check('automatic RAG citations link back to the same source drawer','AI 引用' in page.locator('.turn-sources').last.inner_text() and page.evaluate("TravelApp.getState().history.at(-1).assistance.sourceIds.every(id=>!!TravelLibrary.get(id))"))
+            # A citation can now come from zero-generation KB as well as a model.
+            # Keep the nonempty-ID and exact source-drawer contract; do not label all citations AI.
+            check('automatic RAG citations link back to the same source drawer','本轮引用' in page.locator('.turn-sources').last.inner_text() and page.evaluate("TravelApp.getState().history.at(-1).assistance.sourceIds.length>0 && TravelApp.getState().history.at(-1).assistance.sourceIds.every(id=>!!TravelLibrary.get(id))"))
             page.evaluate("TravelApp.commit({type:'text',text:'我在上海，继续看看地铁',channel:'text'})")
             expect(page.locator('.assistant-answer')).to_have_count(2)
             check('later turns preserve earlier model answer',page.locator('.assistant-answer').count()==2)

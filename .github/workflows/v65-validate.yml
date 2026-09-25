@@ -1,0 +1,81 @@
+name: V6.5 knowledge closure validation
+on:
+  push:
+    branches: [upgrade/v6-5-knowledge-closure, main]
+  pull_request:
+    paths: ['v5/**', 'docs/V6_5*', 'tools/verify-v65-preservation.cjs', '.github/workflows/v65-validate.yml']
+permissions:
+  contents: read
+concurrency:
+  group: v65-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Original prompt and model capability contracts
+        run: node tools/verify-v65-preservation.cjs
+      - name: Program and interface contracts
+        run: |
+          mkdir -p evidence/v6.5
+          set -o pipefail
+          npm test | tee evidence/v6.5/program-tests.log
+      - run: npm run build
+      - name: Historical synthetic corpus
+        run: node tools/run-corpus-evaluation.cjs --output evidence/v6.5/historical-regression.json
+      - name: Install browser test runtime
+        run: |
+          python3 -m pip install playwright==1.57.0
+          python3 -m playwright install --with-deps chromium
+      - name: Five-city public KB and Operations
+        run: python3 v5/v65_browser_test.py
+      - name: Existing V6.4 interaction compatibility
+        run: python3 v5/v65_compat_browser_test.py
+      - name: Summarize actual checks
+        run: |
+          python3 - <<'PY'
+          import json,re,pathlib,subprocess,hashlib,os,datetime,gzip
+          root=pathlib.Path('.');out=root/'evidence/v6.5';log=(out/'program-tests.log').read_text()
+          counts={k:int(re.search(r'^# '+k+r' (\d+)$',log,re.M).group(1)) for k in ['tests','pass','fail','skipped']}
+          preservation=json.loads((out/'prompt-preservation.json').read_text())
+          assert preservation['checks'] and all(c['passed'] for c in preservation['checks'])
+          browser={}
+          for folder in ['browser','compat-browser']:
+              d=json.loads((out/folder/'report.json').read_text());checks=d['checks']
+              assert checks and all(c['passed'] for c in checks) and not d['errors']
+              browser[folder]={'checks':len(checks),'passed':sum(c['passed'] for c in checks),'scope':d['scope']}
+          corpus=json.loads((out/'historical-regression.json').read_text())
+          summary={k:v for k,v in corpus.items() if k not in ['results','failures','samples','rows','cases']}
+          summary={k:v for k,v in summary.items() if len(json.dumps(v))<10000}
+          files={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted((root/'v5').glob('*.js'))}
+          result={'version':'6.5.0','testedCommit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'run':os.environ['GITHUB_RUN_ID'],'checkedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'program':counts,'preservation':{'baseline':preservation['baseline'],'passed':preservation['passed'],'total':preservation['total'],'report':'prompt-preservation.json'},'browser':browser,'corpus':summary,'sourceHashes':files,'scope':'Development, preserved prompt literals and model routing contracts, synthetic corpus, real browser and local API with mock model. No new paid DeepSeek, real microphone, supplier inventory or production validation.'}
+          (out/'acceptance.json').write_text(json.dumps(result,ensure_ascii=False,indent=2))
+          with gzip.open(out/'historical-regression.json.gz','wb') as f:f.write((out/'historical-regression.json').read_bytes())
+          (out/'historical-regression.json').unlink()
+          print(json.dumps({'program':counts,'preservation':result['preservation'],'browser':browser},ensure_ascii=False))
+          PY
+      - name: Evidence artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v65-validation-evidence
+          path: evidence/v6.5/
+          retention-days: 14
+      - name: Public source archive
+        if: success()
+        run: git archive --format=tar HEAD | gzip > /tmp/visit-china-v65.tar.gz
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: v65-verified-source
+          path: /tmp/visit-china-v65.tar.gz
+          retention-days: 7

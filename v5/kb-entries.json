@@ -1,0 +1,72 @@
+[
+  {
+    "id": "kb-v65-sh-arrival-help",
+    "city": "Shanghai",
+    "languageIndependentAliases": [
+      "上海机场哪里可以找工作人员帮助？",
+      "Where can I get arrival help at Shanghai airports?"
+    ],
+    "sourceId": "v65-sh-arrival-help",
+    "sourceHash": "d9945a6e97c338a94e7ef1f5ea91013168a30767cecc7fa156576917405fb5e0",
+    "version": 1,
+    "status": "approved",
+    "approvedIn": "v6.5 source-controlled review",
+    "kind": "other"
+  },
+  {
+    "id": "kb-v65-bj-language-help",
+    "city": "Beijing",
+    "languageIndependentAliases": [
+      "北京大兴机场在哪里找语言帮助？",
+      "Where can I get language help at Beijing Daxing Airport?"
+    ],
+    "sourceId": "v65-bj-language-help",
+    "sourceHash": "a988b33e9fdc1097a0e6981bcf4983e6edd832654495e705adf7371d87279a12",
+    "version": 1,
+    "status": "approved",
+    "approvedIn": "v6.5 source-controlled review",
+    "kind": "other"
+  },
+  {
+    "id": "kb-v65-gz-arrival-help",
+    "city": "Guangzhou",
+    "languageIndependentAliases": [
+      "广州白云机场T2哪里有国际服务中心？",
+      "Where is international arrival help at Guangzhou Baiyun T2?"
+    ],
+    "sourceId": "v65-gz-arrival-help",
+    "sourceHash": "42636c890782db51ea98192a533f4fe0b6834a7b528429b15d852cfb65536b84",
+    "version": 1,
+    "status": "approved",
+    "approvedIn": "v6.5 source-controlled review",
+    "kind": "other"
+  },
+  {
+    "id": "kb-v65-sz-arrival-help",
+    "city": "Shenzhen",
+    "languageIndependentAliases": [
+      "深圳宝安机场T3哪里有国际服务中心？",
+      "Where is international arrival help at Shenzhen Airport T3?"
+    ],
+    "sourceId": "v65-sz-arrival-help",
+    "sourceHash": "677840b06646670f3ab6f3b3570285babe80c8563c3f3e8942d124dfaa62c0b5",
+    "version": 1,
+    "status": "approved",
+    "approvedIn": "v6.5 source-controlled review",
+    "kind": "other"
+  },
+  {
+    "id": "kb-v65-hk-airport-express-qr",
+    "city": "Hong Kong",
+    "languageIndependentAliases": [
+      "香港机场快线线上二维码票怎么使用？",
+      "How do I use my online Hong Kong Airport Express QR ticket?"
+    ],
+    "sourceId": "v65-hk-airport-express-qr",
+    "sourceHash": "f291fb8928f726b867ff279254a940958582ee6a717e1f32240822eda9166e02",
+    "version": 1,
+    "status": "approved",
+    "approvedIn": "v6.5 source-controlled review",
+    "kind": "metro_ticket"
+  }
+]
