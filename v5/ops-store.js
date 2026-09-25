@@ -4,7 +4,9 @@ const path=require('node:path'),fs=require('node:fs');
 function createStore(env=process.env,sdkOverride){
  if(env.BLOB_STORE_ID||env.BLOB_READ_WRITE_TOKEN){
   const sdk=sdkOverride||require('@vercel/blob'),name='operations/state-v1.json';
-  async function read(){const r=await sdk.get(name,{access:'private',useCache:false});if(!r)return{value:null,etag:null};if(r.statusCode!==200)throw Error('STORE_UNAVAILABLE');return{value:JSON.parse(await new Response(r.stream).text()),etag:r.blob.etag};}
+  // Compressed responses carry W/ ETags, which cannot authorize a strong If-Match write.
+  // Request the identity representation so the version belongs to the bytes being updated.
+  async function read(){const r=await sdk.get(name,{access:'private',useCache:false,headers:{'accept-encoding':'identity'}});if(!r)return{value:null,etag:null};if(r.statusCode!==200)throw Error('STORE_UNAVAILABLE');if(!r.blob.etag||r.blob.etag.startsWith('W/'))throw Error('STORE_STRONG_VERSION_REQUIRED');return{value:JSON.parse(await new Response(r.stream).text()),etag:r.blob.etag};}
   return{kind:'private-blob',read:async()=> (await read()).value,async mutate(fn){
    for(let n=0;n<6;n++){const old=await read(),value=old.value||require('./operations').initial();const result=fn(value);value.revision++;
     try{await sdk.put(name,JSON.stringify(value),{access:'private',addRandomSuffix:false,allowOverwrite:Boolean(old.etag),...(old.etag?{ifMatch:old.etag}:{}),contentType:'application/json',cacheControlMaxAge:0});return result;}

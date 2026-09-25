@@ -61,10 +61,13 @@ try:
               Object.defineProperty(window,'speechSynthesis',{value:{speak(u){__said.push(u.text);setTimeout(()=>u.onend?.(),20);},cancel(){}},configurable:true});
             }''')
             page.locator('#voice-provider').select_option('browser');page.locator('#start-call').click();page.locator('#mic-consent').check();page.locator('#consent-start').click()
-            page.wait_for_function("TravelApp.getCall().phase==='listening'")
+            expect(page.locator("#orb")).to_have_attribute("data-phase","listening")
             page.evaluate("__recognizer.onresult({resultIndex:0,results:[Object.assign([{transcript:'我在上海，想继续了解地铁'}],{isFinal:true})]})")
             expect(page.locator('.assistant-answer')).to_have_count(3)
-            page.wait_for_function("__said.some(t=>t.includes('This is a test response.'))")
+            for _ in range(100):
+                if page.evaluate("__said.some(t=>t.includes('This is a test response.'))"):break
+                page.wait_for_timeout(50)
+            assert page.evaluate("__said.some(t=>t.includes('This is a test response.'))")
             check('voice uses same source context and speaks shared model answer',page.evaluate("TravelApp.getState().history.at(-1).channel==='voice' && TravelApp.getState().history.at(-1).sourceIds[0]==='sh-metro'"))
             page.locator('#nav-library').click();check('active call remains controllable in source library',page.locator('#library-hangup').is_visible() and page.evaluate('TravelApp.getCall().active'))
             page.locator('#library-hangup').click();check('library hangup stops the same call',not page.evaluate('TravelApp.getCall().active'));page.locator('#library-back').click()

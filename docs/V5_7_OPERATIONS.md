@@ -38,7 +38,7 @@ Shanghai–Hangzhou examples distinguish Shanghai Hongqiao / Hangzhou East and r
 
 ## Deployment and credentials
 
-Existing Vercel project and GitHub branch are retained. Private Vercel Blob JSON storage uses uncached private reads and ETag conditional writes with retries, so concurrent reviewers cannot silently overwrite each other's votes. Local development uses a transactional SQLite adapter. Blob is used within the existing Hobby allowance; no paid-plan upgrade or LiveKit Cloud subscription was made. Hobby usage limits still apply. DeepSeek API usage is billed separately by the provider.
+Existing Vercel project and GitHub branch are retained. Private Vercel Blob JSON storage uses uncached identity-encoded private reads (avoiding compressed weak ETags) and strong ETag conditional writes with retries, so concurrent reviewers cannot silently overwrite each other's votes. Local development uses a transactional SQLite adapter. Blob is used within the existing Hobby allowance; no paid-plan upgrade or LiveKit Cloud subscription was made. Hobby usage limits still apply. DeepSeek API usage is billed separately by the provider.
 
 Production variables: `DEEPSEEK_API_KEY`, `TRAVEL_CHAT_ACCESS_CODE`, linked `BLOB_READ_WRITE_TOKEN` (or supported OIDC `BLOB_STORE_ID`), `OPS_USERS_JSON`, `OPS_SESSION_SECRET`, `CRON_SECRET`. Only salted scrypt password hashes go into `OPS_USERS_JSON`. Passwords and signing secrets are not in this repository or the public browser bundle. The private delivery file contains admin and reviewer credentials. Rotate those outside Git. Do not copy production data/credentials into development or public evidence.
 
