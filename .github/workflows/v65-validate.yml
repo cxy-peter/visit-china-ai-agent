@@ -1,0 +1,31 @@
+name: V6.5 knowledge closure validation
+on:
+  push:
+    branches: [upgrade/v6-5-knowledge-closure]
+  pull_request:
+    paths: ['v5/**', 'docs/V6_5*', '.github/workflows/v65-validate.yml']
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Archive tracked public source
+        run: git archive --format=tar HEAD | gzip > /tmp/visit-source.tar.gz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v65-source
+          path: /tmp/visit-source.tar.gz
+          retention-days: 7
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npm test
+      - run: npm run build
