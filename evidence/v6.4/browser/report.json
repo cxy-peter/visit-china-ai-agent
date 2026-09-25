@@ -69,6 +69,10 @@
       "passed": true
     },
     {
+      "name": "ignored response safely stays silent",
+      "passed": true
+    },
+    {
       "name": "no browser errors",
       "passed": true
     }

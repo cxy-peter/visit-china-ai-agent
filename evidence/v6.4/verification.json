@@ -5,8 +5,8 @@
   "browserChecks": {
     "legacy": 169,
     "voiceAndMultiRequest": 33,
-    "newInteraction": 18,
-    "total": 220
+    "newInteraction": 19,
+    "total": 221
   },
   "officialIndex": 5000,
   "communityQuestions": {
