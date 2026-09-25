@@ -1,0 +1,107 @@
+{
+  "url": "http://127.0.0.1:4161",
+  "checks": [
+    {
+      "name": "page loads with cloud endpoint",
+      "passed": true
+    },
+    {
+      "name": "API Key mistaken for trial code is rejected before network",
+      "passed": true
+    },
+    {
+      "name": "mistaken key field cleared",
+      "passed": true
+    },
+    {
+      "name": "account roles available below login",
+      "passed": true
+    },
+    {
+      "name": "admin authenticated",
+      "passed": true
+    },
+    {
+      "name": "one-time friendly trial code generated",
+      "passed": true
+    },
+    {
+      "name": "trial clear text and hashes absent from dashboard API",
+      "passed": true
+    },
+    {
+      "name": "one-time code can be hidden",
+      "passed": true
+    },
+    {
+      "name": "metric table explains denominators and unavailable order metrics",
+      "passed": true
+    },
+    {
+      "name": "new code connects actual UI case-insensitively",
+      "passed": true
+    },
+    {
+      "name": "metro answer and route diagram rendered",
+      "passed": true
+    },
+    {
+      "name": "transcript sharing defaults off",
+      "passed": true
+    },
+    {
+      "name": "report previews selected conversation",
+      "passed": true
+    },
+    {
+      "name": "detailed issue persisted with user-selected category",
+      "passed": true
+    },
+    {
+      "name": "Operations restores question, answer and issue together",
+      "passed": true
+    },
+    {
+      "name": "case creates bounded skill candidate without publishing",
+      "passed": true
+    },
+    {
+      "name": "revoked cookie rejected immediately",
+      "passed": true
+    },
+    {
+      "name": "official index count 5000",
+      "passed": true
+    },
+    {
+      "name": "manual source insertion removed",
+      "passed": true
+    },
+    {
+      "name": "new service aliases searchable",
+      "passed": true
+    },
+    {
+      "name": "return from source preserves composer",
+      "passed": true
+    },
+    {
+      "name": "station-associated real hotels render phone",
+      "passed": true
+    },
+    {
+      "name": "unknown station does not receive citywide fake nearby hotels",
+      "passed": true
+    },
+    {
+      "name": "mobile chat has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "no uncaught page errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "scope": "Local end-to-end UI, private persistent fixture store and fixture model; not real provider accuracy"
+}
