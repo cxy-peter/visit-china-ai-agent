@@ -109,6 +109,10 @@
       "passed": true
     },
     {
+      "name": "service task retains its own lookup cards",
+      "passed": true
+    },
+    {
       "name": "historical seat comparison preserves unknown prices",
       "passed": true
     },
