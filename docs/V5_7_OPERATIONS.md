@@ -56,3 +56,5 @@ The implementation borrows product patterns, not source code or hosted paid serv
 - [Blob SDK](https://vercel.com/docs/vercel-blob/using-blob-sdk), [Blob allowance and billing](https://vercel.com/docs/vercel-blob/usage-and-pricing), [cron limits](https://vercel.com/docs/cron-jobs/usage-and-pricing).
 
 The existing `vosk-browser` dependency retains its reported transitive `uuid` moderate advisory; this release does not call uuid v3/v5/v6 buffer APIs. No compatible upstream fix was reported by npm audit. The separate voice runtime and synthetic microphone fixtures remain part of CI; no human microphone acceptance is claimed.
+
+Core taxi/metro/rail tools are tied to the shipped curated source revision. Publishing a replacement for those three tool sources pauses their hardcoded factual output until the corresponding code is reviewed and updated; changing a text summary cannot silently change a calculation rule. Other approved source additions become available to retrieval immediately.
