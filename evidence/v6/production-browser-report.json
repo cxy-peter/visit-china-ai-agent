@@ -1,0 +1,302 @@
+{
+  "url": "https://visit-china-ai-agent.vercel.app",
+  "manifest": {
+    "version": "6.0.0",
+    "sourceCommit": "b5698a51cf0d1ec0e27fcff63498265a90d82762",
+    "builtAt": "2026-09-25T05:24:20.121Z",
+    "files": {
+      "index.html": "24bee77a427e6f8bb27bba34d85af3d37bf39b2692d241c88e5f76f09e5c4038",
+      "style.css": "b6d1f81bf31758386a5026911d1b6580f53dbec2fa89cb3e0ac033625b18aab6",
+      "engine.js": "a68317e07930ce7ac46cb5d21d0727a8976b56cf5bc4f30edff33a0390fde6c8",
+      "voice.js": "2047b6044bb454709a3fc268a318e6fab469754e70a2b66ca736e7adf28c4cd0",
+      "app.js": "2f288cd5591a118374e0ed8757ac92891a37a792aa694a01ca43ffdede895ab7",
+      "ops.js": "c83f6a4a830000f880b9c9af97a6f08951b0025a859b7501edae0c22add06dbc",
+      "realtime.js": "dadd6735b1ba6cfae5ffeb75338654ed9c5de6f3757eaa75c04641783e71065b",
+      "v4-data.js": "392947d57cc684611bdf159eef42532e115869405d0e250eec2c8bdd9117f25a",
+      "livekit.js": "7fa17e37af5e996d8a25f15a637dcc0620215bc01b394e5d209f726afe7dc04d",
+      "local-voice.js": "883a239275696f331f6142b6b9c9016023f85981e8fe2b7169ac41244aebcf0c",
+      "travel-tools.js": "8bc9e1ba7a76146fa6cb2ff2dd28bdb7f1f596a459be56c2447f5b4212c0501b",
+      "metro-data.js": "f4fae0c8ccf9fa8beb736220cdcb8ab99554b1b14a53d14db31d29e40e0c3974",
+      "metro.js": "51a1db096fca56e6f66725255d1d8299b47805045db5a3b63c25f45c50c3c4a7",
+      "place-data.js": "c727361d95173be3726206d236cf1a705c50b686e701ebf5e0cb4a9223e468cb",
+      "discovery.js": "d1e0af178de4474796479b66fe64bafd230efe22972d06980ad65b50452fb3bc",
+      "confidence.js": "02d640d2689d9f39de1fcef797bb8806934ca4e0aefba806614384da824d5606",
+      "intent-tools.js": "32215cbd5c535b763dd5aa298481e71fd9a217633129e70aa0b973560f34aaae",
+      "ops-dashboard.js": "9aa086e13f1a177abe12e36e4d089e4c1ef26a10516769b401ae50d94d4802b0",
+      "access-code.js": "0834216b41bae3e10eef0304e8919cf921952da640bb2a78220a0cb4c1f835e9",
+      "service-data.js": "b1fb2122dbb3d7117751009a4af86bc4702936896972b0ab2ab6707674f6f8f2",
+      "ops-harness-ui.js": "aebef156591ce7765d02867be7ed52f73a1416ff31173c5c8fae46a82fb44280",
+      "service-ui.js": "1cf80ef9c4073fa13bedc33b9e9ccb7a0da9ba56d0c9457d427b5b58108b11f5",
+      "ops-client.js": "a1284eea10a9d81e44492b19365b07273293e0cdf99e247c2052cbd1329281b7",
+      "library.js": "2fdc2e524e5ae426ac69de32831555f1a504cb557c817fa9961775b0f9475fae",
+      "library-ui.js": "3dc79a4281fe77a22f03d4bd35591175c78cbc5dc30d7635b45059dd0e35589f",
+      "core.js": "b8b932a8645013fd9dc6d7472b56402264ced3e919b40bd4e32015b72c66a32b",
+      "corpus.js": "1d4f45e1d218e340b3c911f8fd62f9da31303e341ccaae1c43ffd6931a0a9c4b",
+      "vosk.js": "f140047e09d6835d95d07501f7d6d4aa317605451d6e8f1e862f35e22ac91993",
+      "vosk-worker.js": "7ba6b482f49ff3d49290b85f4ca13d5c6a5787b237cac1c6d15129668d36f529",
+      "models/en-us.tar.gz": "e6fd44c42fb0f5b1dbe605b31c50e857358d86ff03c0e47ed05c15bb440682a6",
+      "models/zh-cn.tar.gz": "25280dbb070e0136ca06811ba8f571e90546516437a7f239937cd607bf681737"
+    },
+    "scope": "Browser Vosk ASR runs locally without paid APIs. System local voices handle playback when available. Cloud chat runs through a stateless Vercel Function with server-side credentials; Operations, approved sources and anonymous events use private Blob CAS persistence. Admin source submissions publish directly with audit/rollback; verified government excerpts have a fast path. Workflow changes retain independent account approval. Client funnel is not purchase conversion. Real human microphone quality is not measured."
+  },
+  "checks": [
+    {
+      "name": "main URL serves V6 verified release",
+      "passed": true
+    },
+    {
+      "name": "deployed asset hash: app.js",
+      "passed": true
+    },
+    {
+      "name": "deployed asset hash: engine.js",
+      "passed": true
+    },
+    {
+      "name": "deployed asset hash: service-ui.js",
+      "passed": true
+    },
+    {
+      "name": "deployed asset hash: ops-harness-ui.js",
+      "passed": true
+    },
+    {
+      "name": "service search stays out of conversation",
+      "passed": true
+    },
+    {
+      "name": "delivered private code document works through actual UI",
+      "passed": true
+    },
+    {
+      "name": "login lists account roles without public passwords",
+      "passed": true
+    },
+    {
+      "name": "authenticated quality dashboard loads shared data",
+      "passed": true
+    },
+    {
+      "name": "accepted release and rollback records visible in Operations",
+      "passed": true
+    },
+    {
+      "name": "public production retrieval lab returns real versioned chunks",
+      "passed": true
+    },
+    {
+      "name": "real model execution rows persisted",
+      "passed": true
+    },
+    {
+      "name": "admin reconnects through UI without access code",
+      "passed": true
+    },
+    {
+      "name": "real DeepSeek respects explicit English output for Chinese input",
+      "passed": true
+    },
+    {
+      "name": "explicit-language answer cites actual luggage source",
+      "passed": true
+    },
+    {
+      "name": "service UI changes output language",
+      "passed": true
+    },
+    {
+      "name": "mobile has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "no uncaught JavaScript errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "realAnswer": {
+    "text": "To find luggage storage near People's Square (人民广场) in Shanghai, use the official tourist-service luggage-storage guide, which links to storage points at metro stations, parks and commercial areas plus the Cunzhiji (存知己) search platform. Search by your location (People's Square) to see nearby options. Always re-check with the provider for current opening hours, locker availability, fees and bag-size limits, since live inventory is not shown here.",
+    "sourceIds": [
+      "sh-luggage-guide",
+      "station-12"
+    ],
+    "mode": "deepseek",
+    "notice": "saved-summaries",
+    "intent": {
+      "kind": "luggage",
+      "origin": null,
+      "destination": "人民广场",
+      "via": null,
+      "city": "Shanghai",
+      "roadKm": null
+    },
+    "intentProvider": "deepseek",
+    "usage": {
+      "prompt_tokens": 2471,
+      "completion_tokens": 150,
+      "total_tokens": 2621,
+      "prompt_tokens_details": {
+        "cached_tokens": 640
+      },
+      "prompt_cache_hit_tokens": 640,
+      "prompt_cache_miss_tokens": 1831
+    },
+    "services": [
+      {
+        "id": "service-luggage",
+        "kind": "luggage",
+        "title": "Luggage storage near 人民广场",
+        "description": "Search the provider; confirm locations, opening hours and availability there.",
+        "url": "https://uri.amap.com/search?keyword=%E4%BA%BA%E6%B0%91%E5%B9%BF%E5%9C%BA%20%E8%A1%8C%E6%9D%8E%E5%AF%84%E5%AD%98&city=上海&view=map",
+        "sourceId": "sh-luggage-guide",
+        "status": "provider-search"
+      },
+      {
+        "id": "guide-luggage",
+        "kind": "luggage",
+        "title": "Official guide",
+        "description": "The official tourist-service guide links to metro, park and commercial-area luggage storage and the Cunzhiji search platform. Check the provider for current hours, availability, fees and bag-size limits.",
+        "url": "https://english.shanghai.gov.cn/en-Individuals-Tourism-TouristServices/20260916/719ada5276444dfdb0d4f342ff68da26.html",
+        "sourceId": "sh-luggage-guide",
+        "status": "official-guide"
+      }
+    ],
+    "confidence": {
+      "model": 0.95,
+      "modelLabel": "DeepSeek 自评（未经校准，非正确率）",
+      "sources": [
+        {
+          "id": "station-12",
+          "score": 85,
+          "level": "high",
+          "requiresReview": false,
+          "government": false,
+          "reasons": [
+            "已匹配运营方域名",
+            "有保存摘要",
+            "摘要在复核周期内",
+            "静态站点快照，非实时运营"
+          ],
+          "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+        },
+        {
+          "id": "sh-luggage-guide",
+          "score": 90,
+          "level": "high",
+          "requiresReview": false,
+          "government": true,
+          "reasons": [
+            "已匹配政府域名",
+            "有保存摘要",
+            "摘要在复核周期内"
+          ],
+          "scope": "资料证据评分；不是事实正确概率，也不保证实时适用"
+        }
+      ],
+      "sourceScore": 85,
+      "requiresReview": false,
+      "reasons": [],
+      "scope": "置信度辅助排查，不替代原文核对；高分不保证答案正确",
+      "reviewRecorded": true
+    },
+    "execution": {
+      "skillVersion": "skill-1",
+      "stages": [
+        {
+          "name": "retrieve",
+          "status": "completed",
+          "ms": 37
+        },
+        {
+          "name": "intent",
+          "status": "completed",
+          "ms": 1993
+        },
+        {
+          "name": "tool_or_answer",
+          "status": "completed",
+          "kind": "luggage"
+        },
+        {
+          "name": "verify",
+          "status": "completed"
+        },
+        {
+          "name": "observe",
+          "status": "pending-persistence"
+        }
+      ],
+      "retrieval": {
+        "method": "BM25 + sparse TF-IDF cosine + RRF + parent diversification",
+        "embedding": "none",
+        "reranker": "deterministic lexical/evidence reranking",
+        "corpusChunks": 452,
+        "candidates": 12,
+        "elapsedMs": 37,
+        "hits": [
+          {
+            "id": "station-12:9cc8b4c2057c9e4c:0",
+            "sourceId": "station-12",
+            "version": "9cc8b4c2057c9e4c",
+            "score": 0.03203,
+            "coverage": 0.2
+          },
+          {
+            "id": "sh-luggage-guide:30603d82ca13f40a:0",
+            "sourceId": "sh-luggage-guide",
+            "version": "30603d82ca13f40a",
+            "score": 0.02867,
+            "coverage": 0.333
+          },
+          {
+            "id": "sh-marriott-city-centre:d95fbe4d18488db5:0",
+            "sourceId": "sh-marriott-city-centre",
+            "version": "d95fbe4d18488db5",
+            "score": 0.02734,
+            "coverage": 0.333
+          },
+          {
+            "id": "sh-power-bank:cb0ac35360170622:0",
+            "sourceId": "sh-power-bank",
+            "version": "cb0ac35360170622",
+            "score": 0.02225,
+            "coverage": 0.133
+          },
+          {
+            "id": "place-history:6c2d0e8f7b683e6a:0",
+            "sourceId": "place-history",
+            "version": "6c2d0e8f7b683e6a",
+            "score": 0.01948,
+            "coverage": 0.333
+          },
+          {
+            "id": "place-peoplespark:07b124febe00cd0b:0",
+            "sourceId": "place-peoplespark",
+            "version": "07b124febe00cd0b",
+            "score": 0.01888,
+            "coverage": 0.267
+          },
+          {
+            "id": "place-taikoosquare:7db6b5b430cb24f6:0",
+            "sourceId": "place-taikoosquare",
+            "version": "7db6b5b430cb24f6",
+            "score": 0.01689,
+            "coverage": 0.133
+          },
+          {
+            "id": "place-coffee:de39552d40b87682:0",
+            "sourceId": "place-coffee",
+            "version": "de39552d40b87682",
+            "score": 0.01664,
+            "coverage": 0.133
+          }
+        ]
+      },
+      "totalMs": 2031
+    },
+    "dataset": "evaluation",
+    "executionId": "f6c86f1d-7d7e-40a6-92e6-9dc4956be3b6",
+    "assessmentId": "c4f04597-208e-4be5-bd70-92686ef457bf"
+  },
+  "scope": "Main-domain UI plus one tagged real DeepSeek evaluation; no purchase or simulated traveler conversation"
+}
