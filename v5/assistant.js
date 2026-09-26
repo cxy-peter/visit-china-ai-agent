@@ -47,6 +47,8 @@ async function smartAssist({state,model,signal,records,skillConfig=H.DEFAULT,exe
  execution.retrieval=R.trace(retrieval);execution.stages.push({name:'retrieve',status:pool.length?'completed':'empty',ms:retrieval.elapsedMs});
  const began=Date.now(),out=interpreted||await MI.interpret(state,model,pool,signal,skillConfig);let intent=out.intent;signal?.throwIfAborted();
  execution.stages.push({name:'intent',status:'completed',ms:Date.now()-began});if(out.intentSchemaRepaired)execution.stages.push({name:'intent_schema_repair',status:'completed',attempts:1});
+ const clarification=require('./planning-clarification').build(h.text,out.value,state);
+ if(clarification){execution.stages.push({name:'needs_clarification',status:'completed',questionIds:clarification.questions.map(q=>q.id)});return{...clarification,intent:{kind:'other',responseMode:'general',city:state.facts.city||intent.city||null},intentProvider:'deepseek',usage:out.usage,services:[]};}
  if(!interpreted&&out.tasks?.length>1){
   const tasks=await Promise.all(out.tasks.map(async(t,i)=>{const last={...h,text:t.request,sourceIds:[]},branch={...state,history:[...prior,last]},trace={stages:[]};let answer;try{answer=await smartAssist({state:branch,model,signal,records,skillConfig,execution:trace,acquire,interpreted:{value:t,intent:t.intent,confidence:out.confidence,usage:i===0?out.usage:{}}});}catch(error){
    if(!['ANSWER_NUMBER','ANSWER_SOURCE','ANSWER_LANGUAGE','ANSWER_SCHEMA','ANSWER_CITATION_REQUIRED','ANSWER_UNSAFE'].includes(error.message))throw error;signal?.throwIfAborted();
