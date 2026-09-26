@@ -1,0 +1,11 @@
+{
+  "restored_from": "8520ae4319cf7908455209207c28bd45d954bb01",
+  "latest_fetched_batch_from": "779c6ef",
+  "preserved_old_index_urls": 5000,
+  "latest_batch_fetched_pages": 1200,
+  "unique_union_urls": 5088,
+  "fetched_metadata_urls": 1226,
+  "body_not_fetched": 3862,
+  "new_urls": 88,
+  "scope": "Offline recovery and deduplication from existing public Git history; no new network collection or editorial verification."
+}

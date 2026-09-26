@@ -142,6 +142,8 @@ def main():
  ap=argparse.ArgumentParser(); ap.add_argument('--target',type=int,default=1200); ap.add_argument('--minutes',type=int,default=20); ap.add_argument('--output',default='data/official'); args=ap.parse_args()
  if not 1<=args.target<=5000: raise SystemExit('target must be between 1 and 5000')
  output=Path(args.output); per_host=(args.target+1)//2
+ previous=json.loads((output/'records.json').read_text(encoding='utf-8')) if (output/'records.json').exists() else []
+ previous_report=json.loads((output/'collection-report.json').read_text(encoding='utf-8')) if (output/'collection-report.json').exists() else {}
  with ThreadPoolExecutor(max_workers=2) as pool:
   jobs=[pool.submit(crawl_host,h,s,per_host,args.minutes,output/'audit') for h,s in SEEDS.items()]
   results=[j.result() for j in jobs]
@@ -152,9 +154,8 @@ def main():
     seen_urls.add(r['canonical_url']); seen_content.add(r['content_sha256']); records.append(r)
  records.sort(key=lambda x:(x['city'],x['url']))
  output.mkdir(parents=True,exist_ok=True)
- (output/'records.json').write_text(json.dumps(records,ensure_ascii=False,indent=2))
- (output/'records.jsonl').write_text(''.join(json.dumps(r,ensure_ascii=False)+'\n' for r in records))
- report={'started_at':NOW,'finished_at':dt.datetime.now(dt.timezone.utc).isoformat(),'requested_target':args.target,'unique_fetched_pages':len(records),'target_met':len(records)>=args.target,'minimum_1000_met':len(records)>=1000,'reviewed_for_current_policy':0,'by_city':dict(collections.Counter(r['city'] for r in records)),'topic_counts_nonexclusive':dict(collections.Counter(t for r in records for t in r['topics'])),'records_sha256':hashlib.sha256((output/'records.json').read_bytes()).hexdigest(),'count_definition':'One unique successful HTML article URL and unique extracted-body hash. Discovery lists, fragments, failed fetches and duplicate bodies excluded. Not all records are operational guides; destination and event references are separately tagged. Fetch != editorial validation.'}
- (output/'collection-report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
+ from official_corpus_merge import save_refresh
+ batch={'started_at':NOW,'requested_target':args.target,'target_met':len(records)>=args.target}
+ report=save_refresh(output,previous,records,previous_report,batch)
  print(json.dumps(report,ensure_ascii=False,indent=2),flush=True)
 if __name__=='__main__': main()
