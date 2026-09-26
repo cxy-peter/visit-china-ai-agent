@@ -23,6 +23,8 @@ jobs:
         with:
           python-version: '3.11'
       - run: npm ci
+      - name: Preserve the official index during smaller refresh batches
+        run: python -m unittest discover -s tools/tests -p 'test_official_corpus_merge.py'
       - run: npm test
       - run: python tools/collect-official-v61.py --target 5000 --verify-only
       - run: npm run voice:check && npm run voice:build && npm run build
