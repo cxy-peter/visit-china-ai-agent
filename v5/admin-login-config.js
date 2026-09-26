@@ -3,7 +3,7 @@
 // Custom credentials, hashes, signing secrets and provider keys are never returned.
 const crypto=require('node:crypto');
 const loopback=value=>['localhost','127.0.0.1','::1','[::1]','::ffff:127.0.0.1'].includes(String(value||'').toLowerCase());
-function localEnvironment(env){return !env.VERCEL&&env.NODE_ENV!=='production'&&!env.OIDC_ISSUER&&!env.OIDC_ISSUER_URL&&!env.BLOB_STORE_ID&&!env.BLOB_READ_WRITE_TOKEN&&loopback(env.HOST||'127.0.0.1');}
+function localEnvironment(env){return !env.VERCEL&&env.NODE_ENV!=='production'&&!env.OIDC_ISSUER&&!env.OIDC_ISSUER_URL&&env.OPS_STORE!=='mongo'&&!env.BLOB_STORE_ID&&!env.BLOB_READ_WRITE_TOKEN&&loopback(env.HOST||'127.0.0.1');}
 function localRequest(req){try{
  if(!loopback(req.socket?.remoteAddress))return false;
  const url=new URL('http://'+req.headers.host);if(!loopback(url.hostname))return false;
