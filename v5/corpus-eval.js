@@ -1,5 +1,5 @@
 'use strict';
-const crypto=require('node:crypto'),corpus=require('../data/evaluation/v6.1-cases.json'),I=require('./intent-tools'),M=require('./metro'),D=require('./metro-data'),E=require('./engine'),Places=require('./discovery'),R=require('./rag'),L=require('./library');
+const crypto=require('node:crypto'),corpus=require('./evaluation-data').loadCorpus(),I=require('./intent-tools'),M=require('./metro'),D=require('./metro-data'),E=require('./engine'),Places=require('./discovery'),R=require('./rag'),L=require('./library');
 function catalog(){return{version:corpus.version,total:corpus.cases.length,sha256:crypto.createHash('sha256').update(JSON.stringify(corpus)).digest('hex'),scope:corpus.scope,types:corpus.cases.reduce((a,c)=>(a[c.type]=(a[c.type]||0)+1,a),{}),provenance:corpus.cases.reduce((a,c)=>(a[c.provenance.type]=(a[c.provenance.type]||0)+1,a),{}),download:'/evaluation-cases.json',stats:corpus.stats,paidModelCalls:0};}
 function check(c,context={}){const failures=[],expect=(v,n)=>{if(!v)failures.push(n);};let actual='';try{
  if(c.type==='rag'||c.type==='rag-boundary'){
