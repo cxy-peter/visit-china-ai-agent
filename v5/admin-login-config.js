@@ -32,6 +32,8 @@ function configuration(env){try{
  return 'configured';
 }catch(_){return 'invalid';}}
 function info(req,prepared,realm='operations'){
+ const demoAccounts=realm!=='local'?require('./demo-accounts').configured(prepared.env):[];
+ if(demoAccounts.length)return {realm:'operations',configured:true,status:'configured',publicDemo:true,accounts:demoAccounts,prefill:demoAccounts.find(a=>a.username==='admin')||demoAccounts[0],message:'演示账号已在服务端配置。点击下方账号填入，再登录；错误账号或密码仍会被拒绝。'};
  const original=prepared.original||prepared.env,env=prepared.env;
  const allowed=localEnvironment(original)&&localRequest(req),legacy=realm==='local';
  const configured=legacy?(!!legacyPassword(original)?'configured':'missing'):configuration(env);

@@ -19,6 +19,14 @@ async function enhance(form,u,p,realm){
   if(!touched&&username.value===initialUser&&!username.value)username.value=value.prefill?.username||'admin';
   const local=['localhost','127.0.0.1','[::1]'].includes(location.hostname);
   if(local&&value.localDemo===true&&!touched&&password.value===initialPassword&&!password.value&&value.prefill?.password==='demo2026')password.value=value.prefill.password;
+  if(value.publicDemo===true&&Array.isArray(value.accounts)){
+   const box=document.createElement('section');box.className='ops-account-help';box.dataset.demoAccounts='true';
+   const title=document.createElement('h3');title.textContent='演示账号 · 点击填入';box.append(title);
+   for(const account of value.accounts){const button=document.createElement('button');button.type='button';button.className='outline';button.dataset.demoUsername=account.username;button.textContent=account.username+' / '+account.password+' · '+(account.role==='admin'?'管理员':'监督员');button.onclick=()=>{username.value=account.username;password.value=account.password;touched=true;username.dispatchEvent(new Event('input',{bubbles:true}));password.focus();};box.append(button);}
+   form.append(box);
+   if(!touched&&!password.value){username.value=value.prefill.username;password.value=value.prefill.password;}
+   if(form.id==='chat-admin-login'){form.classList.remove('hidden');const legacy=document.getElementById('cloud-legacy-access');if(legacy)legacy.classList.add('hidden');}
+  }
   note.textContent=value.message||'请输入当前服务端配置的账号。';form.dataset.authConfigured=String(value.configured===true);
  }catch(_){if(form.isConnected)note.textContent='未取得登录配置。检查本机服务是否已更新并启动；线上站点请使用实际 Operations 账号，不能用模型 API Key 登录。';}
  finally{clearTimeout(timer);}

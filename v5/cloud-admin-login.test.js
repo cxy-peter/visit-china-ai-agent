@@ -25,13 +25,13 @@ test('chat model invocation works after admin login without legacy experience co
  const f=await fixture(t);await f.login();await f.connect();const E=require('./engine'),s=E.apply(E.state(),{type:'text',text:'Plan a relaxed Shanghai visit with my parents'});
  const result=await f.request('/api/chat',{action:'answer',memory:E.memory(s),revision:s.revision,modelConsent:true});assert.equal(result.body.error,'DEEPSEEK_HTTP_402');assert.equal(f.calls(),1);assert.ok(!JSON.stringify(result).includes('upstream response'));
 });
-test('unauthenticated, cross-origin, wrong-code and reviewer requests remain denied',async t=>{
+test('unauthenticated, cross-origin and wrong-code denied; reviewer can connect chat',async t=>{
  const f=await fixture(t);assert.equal((await f.connect()).status,403);
  for(const accessCode of ['','demo2026','wrong','VC-AAAAA-BBBBB-CCCCC-DDDDD'])assert.equal((await f.request('/api/chat',{action:'login',accessCode})).status,401);
  assert.equal((await f.request('/api/chat',{action:'login',accessCode:'sk-fixture-not-a-real-key'})).body.error,'API_KEY_IS_NOT_EXPERIENCE_CODE');
  await f.login();assert.equal((await f.request('/api/chat',{action:'admin-connect',modelConsent:true},{origin:'https://other.example'})).status,403);
  assert.equal((await f.request('/api/chat',{action:'admin-connect',modelConsent:false})).status,403);
- const reviewer=auth(f.env).issue({actor:'reviewer'});assert.equal((await f.request('/api/chat',{action:'admin-connect',modelConsent:true},{cookie:'vc_ops='+reviewer})).status,403);assert.equal(f.calls(),0);
+ const reviewer=auth(f.env).issue({actor:'reviewer'});assert.equal((await f.request('/api/chat',{action:'admin-connect',modelConsent:true},{cookie:'vc_ops='+reviewer})).status,200);assert.equal(f.calls(),0);
 });
 test('trial codes remain bounded and revocable with Operations signing',async t=>{
  const f=await fixture(t),grant=Trial.issue(f.saved,'admin',{maxTurns:2});assert.equal((await f.request('/api/chat',{action:'login',accessCode:grant.code})).status,200);

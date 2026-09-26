@@ -57,6 +57,8 @@ jobs:
         run: python v5/cloud-admin-browser-test.py
       - name: Public travel chat without credentials
         run: python v5/public-chat-browser-test.py
+      - name: Six configured demo accounts and role switching
+        run: python v5/demo-accounts-browser-test.py
       - name: Evidence
         if: always()
         uses: actions/upload-artifact@v4
