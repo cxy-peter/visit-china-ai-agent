@@ -1,0 +1,36 @@
+name: Public chat production release smoke
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/public-chat-production-smoke.py'
+      - '.github/workflows/public-chat-production-smoke.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: public-chat-production-release
+  cancel-in-progress: false
+jobs:
+  smoke:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Prepare real browser
+        run: |
+          pip install playwright==1.57.0
+          python -m playwright install --with-deps chromium
+      - name: Verify deployed release and one synthetic DeepSeek question
+        run: python tools/public-chat-production-smoke.py
+      - name: Preserve success or failure without secrets
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-chat-production-verification
+          path: evidence/public-chat-production/
+          retention-days: 14
