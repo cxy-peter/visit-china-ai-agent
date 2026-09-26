@@ -3,6 +3,7 @@
 const http=require('node:http'),fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
 const salt='cloud-login-test-salt',env={OPS_SESSION_SECRET:'cloud-login-test-secret-minimum-32-characters',OPS_USERS_JSON:JSON.stringify({admin:{role:'admin',salt,hash:crypto.scryptSync('demo2026',salt,32).toString('hex')}}),DEEPSEEK_API_KEY:'test-fixture-key'};
 if(process.env.TEST_PUBLIC==='1')env.TRAVEL_CHAT_PUBLIC='1';
+if(process.env.TEST_DEMO_ACCOUNTS==='1'){env.OPS_PUBLIC_DEMO_ACCOUNTS='1';env.OPS_USERS_JSON=JSON.stringify(require('../v5/demo-accounts').provision());}
 let saved=require('../v5/operations').initial();const store={kind:'test-memory',read:async()=>saved,mutate:async fn=>fn(saved)};
 let modelCalls=0;
 const ops=require('../v5/ops-api').createOps({env,store}),chat=require('../v5/cloud-chat').createCloudChat({env,store,fetcher:async(url,options)=>{
