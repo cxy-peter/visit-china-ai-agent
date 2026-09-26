@@ -48,5 +48,22 @@
       "path": "/api/source-refresh",
       "schedule": "0 6 * * *"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/evaluation-cases.json",
+      "destination": "https://github.com/cxy-peter/visit-china-ai-agent/releases/download/v6.6-public-data-20260926/v6.1-cases.json",
+      "permanent": false
+    },
+    {
+      "source": "/community-evaluation-5000.jsonl.gz",
+      "destination": "https://github.com/cxy-peter/visit-china-ai-agent/releases/download/v6.6-public-data-20260926/v6.4-community-5000.jsonl.gz",
+      "permanent": false
+    },
+    {
+      "source": "/community-evaluation-manifest.json",
+      "destination": "https://github.com/cxy-peter/visit-china-ai-agent/releases/download/v6.6-public-data-20260926/v6.4-community-manifest.json",
+      "permanent": false
+    }
   ]
 }
