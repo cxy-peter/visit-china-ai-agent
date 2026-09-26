@@ -1097,8 +1097,8 @@
   },
   {
     "url": "https://english.beijing.gov.cn/quickguideservices/homepurchaseservicesforforeignersinbeijing/index.html",
-    "kind": "fetch_error",
-    "reason": "HTTPSConnectionPool(host='english.beijing.gov.cn', port=443): Read timed out. (read timeout=20)"
+    "kind": "discovery_only",
+    "links": 0
   },
   {
     "url": "https://english.beijing.gov.cn/livinginbeijing/educationforchildren/",
@@ -1832,8 +1832,23 @@
   },
   {
     "url": "https://english.beijing.gov.cn/studyinginbeijing/youmayneed/scholarshipapplication/index.html",
-    "kind": "fetch_error",
-    "reason": "HTTPSConnectionPool(host='english.beijing.gov.cn', port=443): Read timed out. (read timeout=20)"
+    "kind": "discovery_only",
+    "links": 5
+  },
+  {
+    "url": "https://english.beijing.gov.cn/studyinginbeijing/youmayneed/scholarshipapplication/",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.beijing.gov.cn/studyinginbeijing/youmayneed/scholarshipapplication/universityscholarships/index.html",
+    "kind": "discovery_only",
+    "links": 23
+  },
+  {
+    "url": "https://english.beijing.gov.cn/studyinginbeijing/youmayneed/scholarshipapplication/universityscholarships/",
+    "kind": "discovery_only",
+    "links": 0
   },
   {
     "url": "https://english.beijing.gov.cn/quickguideservices/index.html",
@@ -1869,11 +1884,6 @@
     "url": "https://english.beijing.gov.cn/beijinginfo/culture/culturaltreasures/thecityofperformingarts/list/202401/t20240116_3536851.html",
     "kind": "discovery_only",
     "links": 3
-  },
-  {
-    "url": "https://english.beijing.gov.cn/beijinginfo/culture/culturaltreasures/culturalfocus/202504/t20250401_4051710.html",
-    "kind": "fetch_error",
-    "reason": "HTTPSConnectionPool(host='english.beijing.gov.cn', port=443): Read timed out. (read timeout=20)"
   },
   {
     "url": "https://english.beijing.gov.cn/whatson/events/performance/202609/t20260909_4856610.html",
@@ -2181,11 +2191,6 @@
     "links": 0
   },
   {
-    "url": "https://english.beijing.gov.cn/specials/parktours/themetours/icesports/202301/t20230116_2901342.html",
-    "kind": "fetch_error",
-    "reason": "HTTPSConnectionPool(host='english.beijing.gov.cn', port=443): Read timed out. (read timeout=20)"
-  },
-  {
     "url": "https://english.beijing.gov.cn/travellinginbeijing/citytours/",
     "kind": "discovery_only",
     "links": 0
@@ -2207,11 +2212,6 @@
     "url": "https://english.beijing.gov.cn/beijinginfo/sistercities/relatednews/",
     "kind": "discovery_only",
     "links": 4
-  },
-  {
-    "url": "https://english.beijing.gov.cn/specials/livablegreenbeijing/greenliving/greenlivingwasteclassification/202605/t20260529_4671395.html",
-    "kind": "fetch_error",
-    "reason": "HTTPSConnectionPool(host='english.beijing.gov.cn', port=443): Read timed out. (read timeout=20)"
   },
   {
     "url": "https://english.beijing.gov.cn/specials/livablegreenbeijing/greenliving/",
@@ -2332,11 +2332,6 @@
     "links": 0
   },
   {
-    "url": "https://english.beijing.gov.cn/specials/completeguidetostudyinginbeijing/beforeyouarrive/202604/t20260427_4616452.html",
-    "kind": "fetch_error",
-    "reason": "HTTPSConnectionPool(host='english.beijing.gov.cn', port=443): Read timed out. (read timeout=20)"
-  },
-  {
     "url": "https://english.beijing.gov.cn/specials/completeguidetostudyinginbeijing/proceduresafterarrival/",
     "kind": "discovery_only",
     "links": 0
@@ -2345,5 +2340,83 @@
     "url": "https://english.beijing.gov.cn/specials/completeguidetostudyinginbeijing/longtermstay/",
     "kind": "discovery_only",
     "links": 0
+  },
+  {
+    "url": "https://english.beijing.gov.cn/studyinginbeijing/programsimg/2025summerschools/applynow/",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.beijing.gov.cn/livinginbeijing/guideforlivinginbeijing/202605/t20260528_4670273.html",
+    "kind": "duplicate_body"
+  },
+  {
+    "url": "https://english.beijing.gov.cn/livinginbeijing/guideforlivinginbeijing/202604/t20260430_4630680.html",
+    "kind": "duplicate_body"
+  },
+  {
+    "url": "https://english.beijing.gov.cn/travellinginbeijing/quickguideontravelservices/traveltips/",
+    "kind": "discovery_only",
+    "links": 2
+  },
+  {
+    "url": "https://english.beijing.gov.cn/travellinginbeijing/quickguideontravelservices/traveltips/traveldocumentsextensionandreplacement/index.html",
+    "kind": "discovery_only",
+    "links": 5
+  },
+  {
+    "url": "https://english.beijing.gov.cn/travellinginbeijing/quickguideontravelservices/traveltips/traveldocumentsextensionandreplacement/",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.beijing.gov.cn/livinginbeijing/lossofpassports/index.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.beijing.gov.cn/travellinginbeijing/quickguideontravelservices/",
+    "kind": "discovery_only",
+    "links": 6
+  },
+  {
+    "url": "https://english.beijing.gov.cn/travellinginbeijing/quickguideontravelservices/forforeignerstoenterchina/visaapplication/index.html",
+    "kind": "discovery_only",
+    "links": 2
+  },
+  {
+    "url": "https://english.beijing.gov.cn/travellinginbeijing/quickguideontravelservices/forforeignerstoenterchina/",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.beijing.gov.cn/travellinginbeijing/quickguideontravelservices/forforeignerstoenterchina/visaapplication/",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.beijing.gov.cn/travellinginbeijing/dining/",
+    "kind": "discovery_only",
+    "links": 6
+  },
+  {
+    "url": "https://english.beijing.gov.cn/travellinginbeijing/shopping/",
+    "kind": "discovery_only",
+    "links": 6
+  },
+  {
+    "url": "https://english.beijing.gov.cn/travellinginbeijing/shopping/shoppingcenters/index.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.beijing.gov.cn/travellinginbeijing/shopping/shoppingstreets/index.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.beijing.gov.cn/livinginbeijing/faqs/",
+    "kind": "discovery_only",
+    "links": 1
   }
 ]

@@ -72,13 +72,8 @@
   },
   {
     "url": "https://english.shanghai.gov.cn/en-TravelTips/index.html",
-    "kind": "discovery_only",
-    "links": 5
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-240HourVisaFreeTransit/index.html",
-    "kind": "discovery_only",
-    "links": 0
+    "kind": "fetch_error",
+    "reason": "Response ended prematurely"
   },
   {
     "url": "https://english.shanghai.gov.cn/en-EasyShanghai/index.html",
@@ -107,48 +102,8 @@
   },
   {
     "url": "https://english.shanghai.gov.cn/en-2026ShanghaiSummer/index.html",
-    "kind": "discovery_only",
-    "links": 9
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-NewsAndHighlights-2026ShanghaiSummer/index.html",
-    "kind": "discovery_only",
-    "links": 6
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-BrandPopups-2026ShanghaiSummer/index.html",
-    "kind": "discovery_only",
-    "links": 5
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-CityPicks-2026ShanghaiSummer/index.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-ArtExhibitions-2026ShanghaiSummer/index.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-Performances-2026ShanghaiSummer/index.html",
     "kind": "fetch_error",
     "reason": "Response ended prematurely"
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-StreetMarkets-2026ShanghaiSummer/index.html",
-    "kind": "discovery_only",
-    "links": 2
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-NightExperiences-2026ShanghaiSummer/index.html",
-    "kind": "discovery_only",
-    "links": 3
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-Sports-2026ShanghaiSummer/index.html",
-    "kind": "discovery_only",
-    "links": 3
   },
   {
     "url": "https://english.shanghai.gov.cn/en-2026ShanghaiTourismFestival/index.html",
@@ -157,13 +112,138 @@
   },
   {
     "url": "https://english.shanghai.gov.cn/en-IWantto/index.html",
+    "kind": "discovery_only",
+    "links": 7
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-GuideforNewStudents/index.html",
+    "kind": "discovery_only",
+    "links": 32
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-BeforeDeparture/index.html",
+    "kind": "discovery_only",
+    "links": 1
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-ApplicationandAdmission/index.html",
+    "kind": "discovery_only",
+    "links": 1
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-VisaandResidence/index.html",
+    "kind": "discovery_only",
+    "links": 1
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-StudentInsurance/index.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-PackingList/index.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-StudentUsefulApps/index.html",
+    "kind": "discovery_only",
+    "links": 1
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-EntryPolicies/index.html",
+    "kind": "discovery_only",
+    "links": 1
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-UponArrival/index.html",
+    "kind": "discovery_only",
+    "links": 2
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-StudentEssentials/index.html",
+    "kind": "discovery_only",
+    "links": 4
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-CampusLife/index.html",
+    "kind": "discovery_only",
+    "links": 7
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-SafetyGuide/index.html",
+    "kind": "discovery_only",
+    "links": 2
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-DailyLife/index.html",
+    "kind": "discovery_only",
+    "links": 5
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-Settlingin/index.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-Exploring-Shanghai/index.html",
+    "kind": "discovery_only",
+    "links": 7
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-StudentFAQs/index.html",
+    "kind": "discovery_only",
+    "links": 7
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-ExtracurricularLifeinShanghai/index.html",
+    "kind": "discovery_only",
+    "links": 5
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-StudentClubs/index.html",
+    "kind": "discovery_only",
+    "links": 9
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-VolunteerActivities/index.html",
+    "kind": "discovery_only",
+    "links": 8
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-TechInnovation/index.html",
+    "kind": "discovery_only",
+    "links": 5
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-SportsNews/index.html",
+    "kind": "discovery_only",
+    "links": 7
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-Specials/index.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-SportsActivities/index.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-StudyinShanghaiFitness/index.html",
     "kind": "fetch_error",
     "reason": "Response ended prematurely"
   },
   {
+    "url": "https://english.shanghai.gov.cn/en-PracticalAppsforStudents/index.html",
+    "kind": "discovery_only",
+    "links": 3
+  },
+  {
     "url": "https://english.shanghai.gov.cn/en-DoBusiness/index.html",
     "kind": "discovery_only",
-    "links": 75
+    "links": 73
   },
   {
     "url": "https://english.shanghai.gov.cn/en-Editorspick-DoBusiness/index.html",
@@ -182,8 +262,8 @@
   },
   {
     "url": "https://english.shanghai.gov.cn/en-AdministrativeDistricts/index.html",
-    "kind": "fetch_error",
-    "reason": "Response ended prematurely"
+    "kind": "discovery_only",
+    "links": 4
   },
   {
     "url": "https://english.shanghai.gov.cn/en-NationalDevelopmentZone/index.html",
@@ -197,8 +277,28 @@
   },
   {
     "url": "https://english.shanghai.gov.cn/en-EasternHubIBCZ/index.html",
-    "kind": "fetch_error",
-    "reason": "Response ended prematurely"
+    "kind": "discovery_only",
+    "links": 11
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-IBCZ-Latest/index.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-IBCZ-Policies/index.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-IBCZ-Services/index.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-IBCZ-Events/index.html",
+    "kind": "discovery_only",
+    "links": 0
   },
   {
     "url": "https://english.shanghai.gov.cn/en-InvestmentCalendar/index.html",
@@ -403,7 +503,7 @@
   {
     "url": "https://english.shanghai.gov.cn/en-WorkinShanghai/index.html",
     "kind": "discovery_only",
-    "links": 21
+    "links": 18
   },
   {
     "url": "https://english.shanghai.gov.cn/en-wisEditor'spick/index.html",
@@ -453,137 +553,12 @@
   {
     "url": "https://english.shanghai.gov.cn/en-StudyinShanghai/index.html",
     "kind": "discovery_only",
-    "links": 20
+    "links": 15
   },
   {
     "url": "https://english.shanghai.gov.cn/en-Editor'sPick-StudyinShanghai/index.html",
     "kind": "discovery_only",
     "links": 2
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-GuideforNewStudents/index.html",
-    "kind": "discovery_only",
-    "links": 30
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-BeforeDeparture/index.html",
-    "kind": "discovery_only",
-    "links": 1
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-ApplicationandAdmission/index.html",
-    "kind": "discovery_only",
-    "links": 1
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-VisaandResidence/index.html",
-    "kind": "discovery_only",
-    "links": 1
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-StudentInsurance/index.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-PackingList/index.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-StudentUsefulApps/index.html",
-    "kind": "fetch_error",
-    "reason": "Response ended prematurely"
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-EntryPolicies/index.html",
-    "kind": "discovery_only",
-    "links": 1
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-UponArrival/index.html",
-    "kind": "discovery_only",
-    "links": 2
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-StudentEssentials/index.html",
-    "kind": "discovery_only",
-    "links": 3
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-CampusLife/index.html",
-    "kind": "discovery_only",
-    "links": 7
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-SafetyGuide/index.html",
-    "kind": "discovery_only",
-    "links": 2
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-DailyLife/index.html",
-    "kind": "discovery_only",
-    "links": 5
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-Settlingin/index.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-Exploring-Shanghai/index.html",
-    "kind": "discovery_only",
-    "links": 7
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-StudentFAQs/index.html",
-    "kind": "discovery_only",
-    "links": 6
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-ExtracurricularLifeinShanghai/index.html",
-    "kind": "discovery_only",
-    "links": 5
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-StudentClubs/index.html",
-    "kind": "discovery_only",
-    "links": 8
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-VolunteerActivities/index.html",
-    "kind": "discovery_only",
-    "links": 8
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-TechInnovation/index.html",
-    "kind": "discovery_only",
-    "links": 5
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-SportsNews/index.html",
-    "kind": "discovery_only",
-    "links": 7
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-Specials/index.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-SportsActivities/index.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-StudyinShanghaiFitness/index.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-PracticalAppsforStudents/index.html",
-    "kind": "discovery_only",
-    "links": 4
   },
   {
     "url": "https://english.shanghai.gov.cn/en-Choices/index.html",
@@ -653,7 +628,7 @@
   {
     "url": "https://english.shanghai.gov.cn/en-WhatsNew/index.html",
     "kind": "discovery_only",
-    "links": 181
+    "links": 182
   },
   {
     "url": "https://english.shanghai.gov.cn/en-WAIC2026/index.html",
@@ -674,6 +649,31 @@
     "url": "https://english.shanghai.gov.cn/en-AIAdvantage/index.html",
     "kind": "discovery_only",
     "links": 1
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-240HourVisaFreeTransit/index.html",
+    "kind": "discovery_only",
+    "links": 21
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-ThingsToDo/index.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en- PlacestoGo/index.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-TravelAcrossChina/index.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-VisaFreeTravelTips/index.html",
+    "kind": "discovery_only",
+    "links": 0
   },
   {
     "url": "https://english.shanghai.gov.cn/en-GlobalTasteinShanghai2026/index.html",
@@ -1158,7 +1158,7 @@
   {
     "url": "https://english.shanghai.gov.cn/en-Q&A-TravelinShanghai/index.html",
     "kind": "discovery_only",
-    "links": 5
+    "links": 6
   },
   {
     "url": "https://english.shanghai.gov.cn/en-SpringFestival2025/index.html",
@@ -1488,12 +1488,7 @@
   {
     "url": "https://english.shanghai.gov.cn/en-ScenicSpots/index.html",
     "kind": "discovery_only",
-    "links": 14
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en- PlacestoGo/index.html",
-    "kind": "discovery_only",
-    "links": 0
+    "links": 13
   },
   {
     "url": "https://english.shanghai.gov.cn/en-HeritageZones/index.html",
@@ -1518,12 +1513,7 @@
   {
     "url": "https://english.shanghai.gov.cn/en-Nightlife/index.html",
     "kind": "discovery_only",
-    "links": 12
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-ThingsToDo/index.html",
-    "kind": "discovery_only",
-    "links": 0
+    "links": 11
   },
   {
     "url": "https://english.shanghai.gov.cn/en-CultureHeritage/index.html",
@@ -1738,7 +1728,7 @@
   {
     "url": "https://english.shanghai.gov.cn/en-MajorConsumerEvents/index.html",
     "kind": "discovery_only",
-    "links": 6
+    "links": 9
   },
   {
     "url": "https://english.shanghai.gov.cn/en-ConsumerExpos/index.html",
@@ -1788,7 +1778,7 @@
   {
     "url": "https://english.shanghai.gov.cn/en-UsefulApps/index.html",
     "kind": "discovery_only",
-    "links": 4
+    "links": 3
   },
   {
     "url": "https://english.shanghai.gov.cn/en-PaymentsInShanghai/index.html",
@@ -1858,7 +1848,7 @@
   {
     "url": "https://english.shanghai.gov.cn/en-CityTour/index.html",
     "kind": "discovery_only",
-    "links": 10
+    "links": 9
   },
   {
     "url": "https://english.shanghai.gov.cn/en-BookstoresLibraries/index.html",
@@ -1948,7 +1938,7 @@
   {
     "url": "https://english.shanghai.gov.cn/en-CulturalPerformances/index.html",
     "kind": "discovery_only",
-    "links": 8
+    "links": 7
   },
   {
     "url": "https://english.shanghai.gov.cn/en-SportsEvents/index.html",
@@ -2092,7 +2082,7 @@
   {
     "url": "https://english.shanghai.gov.cn/en-ShanghaiShowreel-Videos-WhatsNew/index.html",
     "kind": "discovery_only",
-    "links": 4
+    "links": 3
   },
   {
     "url": "https://english.shanghai.gov.cn/en-ExpatServices-Videos-WhatsNew/index.html",
@@ -2117,7 +2107,7 @@
   {
     "url": "https://english.shanghai.gov.cn/en-CulturalandArtisticExperiences-Videos-WhatsNew/index.html",
     "kind": "discovery_only",
-    "links": 4
+    "links": 6
   },
   {
     "url": "https://english.shanghai.gov.cn/en-SightseeingSpotlights-Videos-WhatsNew/index.html",
@@ -2235,10 +2225,6 @@
     "links": 0
   },
   {
-    "url": "https://english.shanghai.gov.cn/en-TravelTips/20240410/740b7597ba6b4acd9fb3a9bf62b9896f.html",
-    "kind": "content_rejected"
-  },
-  {
     "url": "https://english.shanghai.gov.cn/en-PopularShanghai/20260203/9a869b02147f41d3a2d622119a736bf1.html",
     "kind": "discovery_only",
     "links": 0
@@ -2262,66 +2248,6 @@
     "kind": "content_rejected"
   },
   {
-    "url": "https://english.shanghai.gov.cn/en-EditorsPick-ShopinShanghai/20260821/2f04ed407cec452b8050ccc0bb78b4a9.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-Latest-WhatsNew/20260715/cc4a1ec5b06546739184246e2cc0e07d.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-EditorsPick-ShopinShanghai/20260709/b37ea34b53a74ec3891c0c207aead7bf.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-LatestEvents/20260717/4c78aec0d5434dc0b83568439de9d987.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-LatestEvents/20260706/b67370c412ce4791a4584d7488ab1712.html",
-    "kind": "discovery_only",
-    "links": 1
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-2026ShanghaiShoppingFestival/index.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-StreetMarkets-2026ShanghaiSummer/20260721/088906e732104d8590af51533d0d4561.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-LatestEvents/20260709/9f3abc3008eb4c55a97604f07e198ef2.html",
-    "kind": "discovery_only",
-    "links": 1
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-NightExperiences-2026ShanghaiSummer/20260728/e291e65d3f1a40eda32f028312e92161.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-LatestEvents/20260626/ebea376153ec447dbcd000c6a183ba7d.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-LatestEvents/20260624/36d573b51681485dbf1db5ab7fa39cff.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-LatestEvents/20260624/608ea4072481464288e6572331f13dff.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
     "url": "https://english.shanghai.gov.cn/en-2026ShanghaiTourismFestival/20260908/f3afb280f913430994b5f23ed51ceb2d.html",
     "kind": "duplicate_body"
   },
@@ -2336,6 +2262,55 @@
   {
     "url": "https://english.shanghai.gov.cn/en-2026ShanghaiTourismFestival/20260908/2e0741bdaecf46eead402a40feaf6f8c.html",
     "kind": "duplicate_body"
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-ApplyforScholarships/index.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-PredepartureGuideForStudyingInShanghai/index.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-UsefulApps/20231214/3cac2d8cc7f847da92a72252bae06705.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-3SOthers/20240614/730cd92e10f64a95ae3809f9d34d103a.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-Fitness/20240229/a716d53cdb004252849c80aaf8d40bfa.html",
+    "kind": "fetch_error",
+    "reason": "Response ended prematurely"
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-UsefulApps/20240312/f2968c5dcb2d41c895643afa9219ce89.html",
+    "kind": "fetch_error",
+    "reason": "Oversized page"
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-FAQS-WorkinShanghai/20240507/39b3d03ae00e4328a1c151d46c02b8d6.html",
+    "kind": "content_rejected"
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-Editor'sPick-StudyinShanghai/20240521/017e4420dad04af987a589ae279ee21c.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-Editor'sPick-StudyinShanghai/20241011/b61edf983d824ea08d2e7f1d6f523082.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-UsefulApps/20241211/5ff10b950a874fd3a54bd0584235f7a2.html",
+    "kind": "discovery_only",
+    "links": 0
   },
   {
     "url": "https://english.shanghai.gov.cn/en-BusinessEnvironmentUpdates/index.html",
@@ -2358,7 +2333,32 @@
     "links": 0
   },
   {
+    "url": "https://english.shanghai.gov.cn/en-AdministrativeDistricts/20231212/3276816dc2c046baa809770587694d72.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-AdministrativeDistricts/20231212/6f71628f86d945d8a67760f04b19ef4e.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-AdministrativeDistricts/20231212/3e5270f336e24df09549262d07c53c94.html",
+    "kind": "discovery_only",
+    "links": 1
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-AdministrativeDistricts/20231212/6965b32407ac4fa1890b043b7b949b7e.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
     "url": "https://english.shanghai.gov.cn/en-NationalDevelopmentZone/20231209/20c8cfc21af74ab4ab1fdc447bf42c31.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-IBCZ-About%20/20260211/80310a4816474dedaab49b1807c5531b.html",
     "kind": "discovery_only",
     "links": 0
   },
@@ -2506,55 +2506,6 @@
     "links": 0
   },
   {
-    "url": "https://english.shanghai.gov.cn/en-ApplyforScholarships/index.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-PredepartureGuideForStudyingInShanghai/index.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-3SOthers/20240614/730cd92e10f64a95ae3809f9d34d103a.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-Fitness/20240229/a716d53cdb004252849c80aaf8d40bfa.html",
-    "kind": "fetch_error",
-    "reason": "Oversized page"
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-UsefulApps/20240312/f2968c5dcb2d41c895643afa9219ce89.html",
-    "kind": "fetch_error",
-    "reason": "Oversized page"
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-FAQS-WorkinShanghai/20240507/39b3d03ae00e4328a1c151d46c02b8d6.html",
-    "kind": "content_rejected"
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-Editor'sPick-StudyinShanghai/20240521/017e4420dad04af987a589ae279ee21c.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-Editor'sPick-StudyinShanghai/20241011/b61edf983d824ea08d2e7f1d6f523082.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-UsefulApps/20231214/3cac2d8cc7f847da92a72252bae06705.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-UsefulApps/20241211/5ff10b950a874fd3a54bd0584235f7a2.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
     "url": "https://english.shanghai.gov.cn/en-Choices/20231207/910e05afd7c34112bd6816e658a0cfed.html",
     "kind": "discovery_only",
     "links": 0
@@ -2601,6 +2552,26 @@
   },
   {
     "url": "https://english.shanghai.gov.cn/en-FirstStores/20260624/50f678163fcf42a1b0dc4409376de73b.html",
+    "kind": "discovery_only",
+    "links": 1
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-2026ShanghaiShoppingFestival/index.html",
+    "kind": "discovery_only",
+    "links": 13
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-TopNews-2026ShanghaiShoppingFestival/index.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-KeyEvents-2026ShanghaiShoppingFestival/index.html",
+    "kind": "discovery_only",
+    "links": 0
+  },
+  {
+    "url": "https://english.shanghai.gov.cn/en-FeaturedEvents-2026ShanghaiShoppingFestival/index.html",
     "kind": "discovery_only",
     "links": 0
   },
@@ -2654,11 +2625,6 @@
     "links": 0
   },
   {
-    "url": "https://english.shanghai.gov.cn/en-IBCZ-Services/index.html",
-    "kind": "discovery_only",
-    "links": 4
-  },
-  {
     "url": "https://english.shanghai.gov.cn/en-Latest-WhatsNew/20260214/d772a535abac4368a3d55395e07aa968.html",
     "kind": "discovery_only",
     "links": 0
@@ -2710,8 +2676,8 @@
   },
   {
     "url": "https://english.shanghai.gov.cn/en-InFocus/20240628/0bcb584c7b5c453b9418b53e3b93b6bb.html",
-    "kind": "discovery_only",
-    "links": 0
+    "kind": "fetch_error",
+    "reason": "Response ended prematurely"
   },
   {
     "url": "https://english.shanghai.gov.cn/en-InFocus/20240528/f08884bb1c4247c9a6c8c97322672bb5.html",
@@ -2895,31 +2861,6 @@
   },
   {
     "url": "https://english.shanghai.gov.cn/en-Latest-WhatsNew/20251110/254f6441a36542678ebf4e2f483d36fc.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-CIIE2025Exhibitor/20251110/ece2fab4f4b84e7fab27a76b7cec83e1.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-CIIE2025Exhibitor/20251109/0e8b90129ceb4b62bce8634639567c1b.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-CIIE2025Exhibitor/20251109/55510062807e44f0a42a61a620abf2b2.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-ArtExhibitions/20251028/09470859d2dc48cf9a6f669a6191184a.html",
-    "kind": "discovery_only",
-    "links": 0
-  },
-  {
-    "url": "https://english.shanghai.gov.cn/en-FestivalsCelebrations/20251028/8235d9316c07417a863feb3a908543a2.html",
     "kind": "discovery_only",
     "links": 0
   }
