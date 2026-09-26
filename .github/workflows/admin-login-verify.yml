@@ -53,6 +53,10 @@ jobs:
       - run: pip install playwright==1.57.0 && python -m playwright install --with-deps chromium
       - name: Actual input values, default/custom login and operator access
         run: python v5/admin-login-browser-test.py
+      - name: Hosted admin to cloud-chat session without legacy experience code
+        run: python v5/cloud-admin-browser-test.py
+      - name: Public travel chat without credentials
+        run: python v5/public-chat-browser-test.py
       - name: Evidence
         if: always()
         uses: actions/upload-artifact@v4
