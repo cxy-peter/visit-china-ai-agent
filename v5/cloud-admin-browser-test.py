@@ -29,8 +29,11 @@ try:
         assert not page.request.get(url+'/api/chat').json()['authorized']
         # Cookie rejection must never be presented as a successful connection.
         def lose_cookie(route):
-            response=route.fetch(); headers=dict(response.headers); headers.pop('set-cookie',None)
-            route.fulfill(response=response,headers=headers)
+            # route.fetch shares the browser cookie jar, so do not use it to simulate a dropped cookie.
+            if route.request.method=='POST' and route.request.post_data_json.get('action')=='admin-connect':
+                route.fulfill(status=200,content_type='application/json',body='{"authorized":true}')
+            else:
+                route.continue_()
         page.route('**/api/chat',lose_cookie)
         page.locator('#shared-model-consent').check()
         page.locator('#cloud-admin-connect').click()
