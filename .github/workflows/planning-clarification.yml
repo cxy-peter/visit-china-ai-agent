@@ -1,0 +1,58 @@
+name: Explicit needs clarification with preserved factual guards
+on:
+  push:
+    branches: [fix/public-needs-clarification]
+  pull_request:
+    paths: ['v5/planning-clarification*', '.github/workflows/planning-clarification.yml']
+permissions:
+  contents: read
+concurrency:
+  group: planning-clarification-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Apply exact-baseline additive integration on feature branch
+        if: github.event_name == 'push' && github.ref == 'refs/heads/fix/public-needs-clarification'
+        run: |
+          if test -f .upgrade/integrate-clarification.py; then
+            python3 .upgrade/integrate-clarification.py
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add v5/assistant.js v5/app.js package.json tools/public-chat-production-smoke.py .upgrade/
+            git commit -m 'fix: distinguish bounded needs questions from grounded factual answers'
+            git push origin HEAD:fix/public-needs-clarification
+          fi
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: node tools/verify-v65-preservation.cjs
+      - name: All existing and new program contracts
+        run: |
+          mkdir -p evidence/planning-clarification
+          set -o pipefail
+          npm test | tee evidence/planning-clarification/program-tests.log
+      - run: npm run voice:check && npm run build
+      - run: |
+          pip install playwright==1.57.0
+          python3 -m playwright install --with-deps chromium
+      - name: Public question, opt-out and protected operations
+        run: python3 v5/public-chat-browser-test.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: planning-clarification-verification
+          path: |
+            evidence/planning-clarification/
+            evidence/admin-login/public-chat/
+            evidence/v6.5/prompt-preservation.json
+          retention-days: 14
