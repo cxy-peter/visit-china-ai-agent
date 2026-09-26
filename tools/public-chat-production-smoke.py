@@ -7,6 +7,8 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 OUT = ROOT / 'evidence/public-chat-production'
 OUT.mkdir(parents=True, exist_ok=True)
 URL = 'https://visit-china-ai-agent.vercel.app'
+# Reuse the original failing production question; do not cherry-pick another prompt.
+# deepseek-clarification is a model-selected bounded needs-question path, not a factual answer.
 QUESTION = ('I am planning a visit to Shanghai with my parents. Before making an itinerary, '
             'tell me which travel needs you would clarify first. Do not invent bookings, '
             'prices or opening hours.')
